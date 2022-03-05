@@ -1,0 +1,19 @@
+.logo {
+    position: relative;
+}
+
+.svg {
+    width: 52px;
+    height: 33px;
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: -55px;
+}
+
+@media (min-width: 280px) {
+    .svg {
+        display: block;
+        pointer-events: none;
+    }
+}

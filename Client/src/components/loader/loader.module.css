@@ -1,0 +1,27 @@
+.wrapper {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--graphite);
+    animation: background 1s ease-out forwards;
+}
+
+@keyframes background {
+    to {
+        background-color: white;
+    }
+}
+
+.logo {
+    opacity: 0;
+    animation: logo 1s ease-out forwards;
+}
+
+@keyframes logo {
+    to {
+        opacity: 1;
+    }
+}

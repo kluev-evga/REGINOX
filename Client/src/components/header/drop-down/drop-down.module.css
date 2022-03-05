@@ -1,0 +1,48 @@
+.sub_menu {
+    width: 260px;
+    position: relative;
+}
+
+.sub_menu button {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub_menu_container {
+    width: 100%;
+    padding: 20px 15px 5px;
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    box-shadow: var(--shadow);
+    background-color: var(--white);
+}
+
+.sub_menu_container a {
+    padding-bottom: 8px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.open .sub_menu_container {
+    display: flex;
+}
+
+.open.reversed button,
+.open.reversed .sub_menu_container {
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+    animation: submenu 0.1s ease forwards;
+}
+
+@keyframes submenu {
+    to {
+        background-color: #0009;
+    }
+}

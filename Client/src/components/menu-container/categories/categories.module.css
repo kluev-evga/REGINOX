@@ -1,0 +1,11 @@
+.categories {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.categories a {
+    margin-right: 70px;
+    line-height: 1.5;
+}

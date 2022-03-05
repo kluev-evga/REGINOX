@@ -1,0 +1,187 @@
+.cards {
+    padding: 20px 0;
+    margin-bottom: 40px;
+    background-color: var(--gray-light);
+}
+
+.wrapper {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.cards_item svg {
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+.cards_item b {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cards_item p {
+    line-height: 1.5;
+}
+
+@media (min-width: 576px) {
+    .cards {
+        padding: 50px 0;
+    }
+
+    .wrapper {
+        grid-template-columns: auto;
+        justify-content: center;
+        gap: 30px;
+        text-align: left;
+    }
+
+    .cards_item {
+        display: flex;
+        align-items: center;
+    }
+
+    .cards_item svg{
+        margin: 0 30px 0 0;
+    }
+
+    .cards_item b {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+        text-align: center;
+    }
+
+    .cards_item {
+        display: block;
+    }
+
+    .cards_item svg{
+        margin: 0 auto 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        align-items: center;
+        text-align: left;
+    }
+
+    .cards {
+        padding: 90px 0;
+        margin-bottom: 50px;
+    }
+
+    .cards_item {
+        display: flex;
+    }
+
+    .cards_item svg{
+        margin: 0 30px 0 0;
+    }
+}
+
+@media (min-width: 1400px) {
+    .cards_item p {
+        font-size: 18px;
+    }
+}
+/* ---------------------------------------------- */
+
+.accomplishments {
+    padding-top: 10px;
+    display: grid;
+    gap: 20px;
+    color: var(--white);
+}
+
+.accomplishments div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: var(--black);
+}
+
+.accomplishments img {
+    grid-area: 1 / 1 / 2 / -1;
+    width: 100%;
+}
+
+.accomplishments p {
+    padding: 20px;
+}
+
+.accomplishments span {
+    display: block;
+    padding: 20px;
+    grid-area: 1 / 1 / 2 / -1;
+    place-self: center;
+}
+
+@media (min-width: 340px) {
+    .accomplishments span {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 576px) {
+    .accomplishments {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .accomplishments span {
+        font-size: 20px;
+        place-self: end start;
+    }
+
+    .accomplishments p {
+        padding-bottom: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .accomplishments p {
+        padding: 20px 30px 30px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .accomplishments {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+    }
+
+    .accomplishments div {
+        grid-template-rows: unset;
+        background-color: var(--black);
+        cursor: pointer;
+    }
+
+    .accomplishments div:hover p {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .accomplishments span {
+        justify-self: center;
+        text-align: center;
+    }
+    
+    .accomplishments p {
+        grid-area: 1 / 1 / 2 / -1;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        margin: -20px 0 0 -20px;
+        
+        opacity: 0;
+        background-color: var(--black);
+        transform: scale(0.8, 0.7);
+        transition: opacity 0.2s cubic-bezier(.8,.07,.8,.7), transform 0.2s ease-out;
+    }
+}

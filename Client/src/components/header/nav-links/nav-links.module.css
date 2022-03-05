@@ -1,0 +1,16 @@
+.nav {
+    margin: 40px -15px 0 -15px;
+
+    grid-column: 1 / -1;
+
+    display:flex;
+    justify-content: space-between;
+}
+
+.link {
+    padding: 15px;
+}
+
+.link:hover {
+    color: var(--gray-med);
+}

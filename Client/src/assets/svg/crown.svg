@@ -1,0 +1,9 @@
+<svg width="600" height="424" viewBox="0 0 600 424" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M34.1299 141.549L115.259 306.605L485.655 304.367L565.106 133.156H490.691L441.454 223.797H342.421V141.549H259.613V223.797H157.222L115.259 141.549H34.1299Z"
+        fill="#ECECEC" />
+    <path d="M115.259 423.552V358.648H491.81V423.552H115.259Z" fill="#ECECEC" />
+    <circle cx="51.475" cy="51.475" r="51.475" fill="#ECECEC" />
+    <circle cx="299.898" cy="51.475" r="51.475" fill="#ECECEC" />
+    <circle cx="548.321" cy="51.475" r="51.475" fill="#ECECEC" />
+</svg>

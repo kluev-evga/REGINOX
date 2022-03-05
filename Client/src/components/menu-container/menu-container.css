@@ -1,0 +1,107 @@
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3)!important;
+}
+
+.bm-menu{
+    background: var(--black);
+    padding: 80px 20px 0 25px;
+}
+
+.bm-menu::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+
+.bm-menu::-webkit-scrollbar-thumb {
+    background: var(--white);
+    border-radius: 3px;
+}
+
+.bm-menu::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+.bm-menu::-webkit-scrollbar-thumb:hover:active {
+    background: rgb(140, 140, 160);
+}
+
+.bm-item-list {
+    color: var(--white);
+}
+
+.bm-item-list a:hover {
+    color: var(--gray-med);
+}
+
+.bm-cross-button {
+    padding: 20px 0 0 22px;
+    top: 0px!important;
+    left:0;
+    height: auto !important;
+    width: 50%!important;
+    color: white;
+}
+
+.bm-cross-button::before {
+    content: '';
+    display: block;
+    width: calc(200% - 15px);
+    height: 160%;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: linear-gradient(var(--black) 60px, #0005);
+}
+
+.bm-cross {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    pointer-events: none;
+}
+
+.bm-cross svg {
+    width: 25px;
+    margin-right: 12px;
+}
+
+@media (min-width: 340px) {
+    .bm-menu{
+        padding: 80px 50px 0 25px;
+    padding: 80px 20px 0 25px;
+
+    }
+}
+
+@media (min-width: 768px) {
+    .bm-cross {
+        font-size: 18px;
+    }
+
+    .bm-cross svg {
+        width: unset;
+    }
+
+    .bm-menu::-webkit-scrollbar-track {
+        margin: 5px 0;
+    }
+    
+    .bm-menu::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    .bm-menu::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bm-menu::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    .bm-menu::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+    }
+}

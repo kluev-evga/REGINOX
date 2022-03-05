@@ -1,0 +1,102 @@
+.button {
+    margin: 0 -10px;
+    width: calc(100% + 20px);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: 600;
+    text-align: left;
+}
+
+.button_active {
+    margin-top: 10px;
+    background-color: var(--white);
+}
+
+.button svg {
+    width: 15px;
+    margin-left: 10px;
+    align-self: start;
+}
+
+.button_active svg {
+    transform: rotate(180deg);
+}
+
+.tab {
+    display:none;
+    margin: 0 -10px 10px;
+    padding: 10px 10px 15px;
+    width: calc(100% + 20px);
+    background-color: var(--white);
+}
+
+.tab_open {
+    display:block;
+}
+
+.tab address {
+    padding-bottom:10px;
+    color: var(--gray);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.link {
+    margin-top: 18px;
+    display: flex;
+    font-weight: 500;
+}
+
+.link svg {
+    color: var(--grey);
+    margin-right: 20px;
+}
+
+.link:hover svg {
+    color: var(--red);
+}
+
+@media (min-width: 576px) {
+    .button {
+        justify-content: unset;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tab_item {
+        position: relative;
+    }
+
+    .button {
+        margin-top: 0;
+        padding: 20px 30px 20px;
+
+        position: relative;
+        z-index: 1;
+        background-color: transparent;
+    }
+
+    .button_active {
+        margin-top: 0px;
+    }
+
+    .tab_open {
+        margin: 0 -10px 0px;
+        padding: 74px 30px 25px;
+        position: absolute;
+        top: 10px;
+        background-color: transparent;
+        animation: tabContent 0.2s ease-out forwards;
+    }
+
+    @keyframes tabContent {
+        to {
+            top: 0px;
+            background-color: var(--white);
+            opacity: 1;
+        }
+    }
+}
