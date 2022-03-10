@@ -2,8 +2,21 @@ import cn from 'classnames';
 import styles from './card-slider.module.css';
 
 
-const CardSlider = ({ name, img, alt, children, date, dateTime, fixed, sm, md, width, height }) => (
-    <div className={cn(styles.wrapper, { [styles.fixed]: fixed })}>
+const CardSlider = ({
+    name,
+    img,
+    alt,
+    children,
+    date,
+    dateTime,
+    fixed,
+    sm,
+    md,
+    width,
+    height,
+    isLocked
+}) => (
+    <div className={cn(styles.wrapper, { [styles.fixed]: fixed, [styles.isLocked]: isLocked })}>
         <span>
             {children}
         </span>

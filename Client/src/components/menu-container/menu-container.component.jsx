@@ -41,9 +41,7 @@ const MenuContainer = ({ children, isOpen, mainMenu, closeMenu }) => {
 
             </Menu>
 
-            <main id="page-wrap">
-                {children}
-            </main>
+            {children}
         </div>
     );
 };

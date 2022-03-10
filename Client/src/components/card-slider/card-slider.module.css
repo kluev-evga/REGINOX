@@ -5,11 +5,18 @@
 .wrapper:hover img,
 .wrapper:hover div {
     transition: transform 0.5s cubic-bezier(.3,.7,.3,1) 0.1s;
-    transform: translateY(-49px);
     z-index: 1;
 }
 
+.wrapper:hover span {
+    opacity: 1;
+    transition: none;
+}
+
+
 .wrapper span {
+    transition: opacity 0.2s steps(1, end);
+
     align-self: end;
     grid-area: 1 / 1 / -1 / -1;
 
@@ -18,6 +25,7 @@
 
     display: flex;
     align-items: center;
+    opacity: 0;
 
     color: var(--white);
     background-color: var(--red);
@@ -33,6 +41,7 @@
 
 .wrapper div {
     grid-area: 1 / 1 / -1 / -1;
+    z-index: 1;
 
     display: flex;
     flex-direction: column;
@@ -45,6 +54,7 @@
 
 .wrapper img {
     grid-area: 1 / 1 / -1 / -1;
+    z-index: 1;
     width: 100%;
     height: auto;
     transition: transform 0.2s ease-in;
@@ -97,6 +107,13 @@
     }
 }
 
+@media (max-width: 767.98px) {
+    .wrapper:hover img,
+    .wrapper:hover div {
+        transform: translateY(-49px);
+    }
+}
+
 @media (min-width: 768px) {
     .wrapper p {
         padding: 40px;
@@ -107,7 +124,9 @@
         height: 60px;
         padding: 0 35px;
     }
+}
 
+@media (min-width: 768px) and (max-width: 1199.98px) {
     .wrapper:hover img,
     .wrapper:hover div {
         transform: translateY(-59px);
@@ -132,6 +151,7 @@
 @media (max-width: 1199.98px) {
     .fixed span {
         grid-area: 2 / 1 / 3 / -1;
+        opacity: 1;
     }
 
     .fixed:hover img,
@@ -151,8 +171,8 @@
         height: 70px;
     }
 
-    .wrapper:hover img,
-    .wrapper:hover div {
+    .wrapper:not(.isLocked):hover img,
+    .wrapper:not(.isLocked):hover div {
         transform: translateY(-69px);
     }
 

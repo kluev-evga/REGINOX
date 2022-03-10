@@ -4,13 +4,15 @@
     color: var(--gray-med);
 }
 
-@media (max-width: 420px) {
+@media (max-width: 340px) {
     .title {
-        font-size: 16px !important;
-    }
-    
-    .sub_title {
         font-size: 14px;
+    }
+}
+
+@media (min-width: 340px) and (max-width: 420px) {
+    .title {
+        font-size: 22px;
     }
 }
 

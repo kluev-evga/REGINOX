@@ -1,0 +1,21 @@
+.wrapper {
+    max-width: 400px;
+    margin: 30px auto 0;
+}
+
+.wrapper button {
+    padding: 10px 0;
+    display: block;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.wrapper button:disabled {
+    display:none;
+}
+
+@media (min-width: 576px) {
+    .wrapper {
+        max-width: unset;
+    }
+}

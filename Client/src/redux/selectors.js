@@ -1,14 +1,65 @@
 import { createSelector } from 'reselect';
 
 
+
 export const catalog = (state) => state.catalog.entities;
 export const catalogLoading = (state) => state.catalog.loading;
 export const catalogError = (state) => state.catalog.error;
 export const catalogCategories = (state, props) => catalog(state)[props.id].categories;
 
+
 export const catalogs = (state) => state.catalogs.entities;
 export const catalogsLoading = (state) => state.catalogs.loading;
 export const catalogsError = (state) => state.catalogs.error;
+export const catalogsTotal = (state) => state.catalogs.total;
+export const selectCatalogsSize = createSelector(
+    catalogs,
+    (catalogsObj) => Object.keys(catalogsObj).length
+);
+
+export const sertificates = (state) => state.sertificates.entities;
+export const sertificatesLoading = (state) => state.sertificates.loading;
+export const sertificatesLoaded = (state) => state.sertificates.loaded;
+export const sertificatesError = (state) => state.sertificates.error;
+export const sertificatesItem = (state, {id}) => sertificates(state)[id];
+export const sertificatesItemMatched = (state, props) => sertificates(state)[props.match.params.sertificateId];
+export const selectSertificatesList = createSelector(
+    sertificates,
+    Object.keys
+);
+export const sertificatesSlide = (state) => state.sertificates.sliderSlide;
+export const sertificatesScroll = (state) => state.sertificates.scroll;
+
+
+export const brands = (state) => state.brands.entities;
+export const brandsLoading = (state) => state.brands.loading;
+export const brandsLoaded = (state) => state.brands.loaded;
+export const brandsError = (state) => state.brands.error;
+
+
+export const articlesItem = (state, {id}) => state.articles.entities[id];
+export const articlesItemLoading = (state, page) => state.articles.loading[page];
+export const articlesItemLoaded = (state, page) => state.articles.loaded[page];
+export const articlesError = (state) => state.articles.error;
+export const articlesTotal = (state) => state.articles.total;
+export const articlesPages = (state) => state.articles.pages;
+export const articlesCurrentPage = (state) => state.articles.currentPage;
+export const articlesSelectedIsLoaded = (state) => state.articles.loaded[articlesCurrentPage(state)];
+export const articlesList = (state) => articlesPages(state)[articlesCurrentPage(state)];
+export const selectArticlesTotalPages = createSelector(
+    articlesTotal,
+    (total) => Math.ceil(total / 5)
+);
+export const selectArticlesPages = createSelector(
+    selectArticlesTotalPages,
+    (total) => [...Array(total)].map((_, i) => i+1)
+);
+
+
+
+
+
+
 
 const home = (state) => state.home.entities;
 export const homeLoading = (state) => state.home.loading;

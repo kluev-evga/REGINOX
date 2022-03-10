@@ -5,7 +5,6 @@ import { ReactComponent as CasualIcon } from '../../assets/svg/casual.svg';
 import { ReactComponent as ProfessionalyIcon } from '../../assets/svg/professionaly.svg';
 
 
-
 const WhyUs = () => (
     <div>
         <div className="container">
@@ -84,32 +83,32 @@ const WhyUs = () => (
 
             <div className={styles.accomplishments}>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_1.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_1.webp'} width='355' height='238' alt="accomplishments" />
                     <span>В ассортименте фабрик</span>
                     <p>Гибкое партнерство в кухонном производстве</p>
                 </div>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_2.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_2.webp'} width='355' height='238' alt="accomplishments" />
                     <span>В самолетах ИЛ-96-300</span>
                     <p>Сантехника в аэропортах Санкт-Петербурга</p>
                 </div>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_3.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_3.webp'} width='355' height='238' alt="accomplishments" />
                     <span>В промышленном производстве</span>
                     <p>Тверской вагоностроительный и Гомельский вагоностроительный заводы и другие</p>
                 </div>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_4.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_4.webp'} width='355' height='238' alt="accomplishments" />
                     <span>В судостроении</span>
                     <p>Поставки продукции в судоходные компании</p>
                 </div>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_5.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_5.webp'} width='355' height='238' alt="accomplishments" />
                     <span>В проектах строительства</span>
                     <p>Партнер основных застройщиков москвы</p>
                 </div>
                 <div>
-                    <img src={process.env.PUBLIC_URL + './assets/accomplishments/accomplishments_6.webp'} alt="accomplishments" />
+                    <img src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_6.webp'} width='355' height='238' alt="accomplishments" />
                     <span>Для оснащения общественных предприятий</span>
                     <p>Сеть ресторанов BurgerKing и Мcdonalds</p>
                 </div>

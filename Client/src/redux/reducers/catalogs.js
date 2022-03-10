@@ -1,12 +1,11 @@
 import {REQUEST, SUCCESS, FAILURE, LOAD_CATALOGS} from '../types';
 import { arrToMap } from '../utils';
 
-
 const INITIAL_STATE = {
-  entities: null,
-  loading: true,
-  loaded: false,
-  error: null,
+  entities: {},
+  total: null,
+  loading: false,
+  error: null
 }
 
 const catalogReducer = function (state = INITIAL_STATE, action) {
@@ -22,15 +21,14 @@ const catalogReducer = function (state = INITIAL_STATE, action) {
     case LOAD_CATALOGS + SUCCESS:
       return {
         ...state,
-        entities: arrToMap(data),
+        entities: {...state.entities, ...arrToMap(data.catalogs)},
+        total: data.total,
         loading: false,
-        loaded: true,
       };
     case LOAD_CATALOGS + FAILURE:
       return {
         ...state,
         loading: false,
-        loaded: false,
         error: error
       };
     default:

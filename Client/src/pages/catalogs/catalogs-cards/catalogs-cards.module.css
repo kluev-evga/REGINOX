@@ -1,0 +1,11 @@
+.spinner {
+    order: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner svg {
+    width: 500px;
+}

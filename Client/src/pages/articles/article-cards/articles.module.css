@@ -1,10 +1,18 @@
 .wrapper {
     margin-top: 20px;
-
     display: grid;
     grid-template-columns: minmax(auto, 400px);
     justify-content: center;
     grid-gap: 20px;
+}
+
+.loading {
+    background: #00000009;
+}
+
+.loading svg {
+    width: 100%;
+    height: auto;
 }
 
 @media (min-width: 576px) {
@@ -13,11 +21,13 @@
         grid-gap: 30px;
     }
 
-    .wrapper a:first-of-type {
+    .wrapper a:first-of-type,
+    .loading:first-of-type {
         grid-area: 1 / 1 / 2 / -1;
     }
 
-    .wrapper a:first-of-type img {
+    .wrapper a:first-of-type img,
+    .loading:first-of-type svg {
         max-height: 43vw;
         object-fit: cover;
         object-position: center
@@ -25,14 +35,15 @@
 }
 
 @media (min-width: 1200px) {
-    .wrapper a:first-of-type img {
+    .wrapper a:first-of-type img,
+    .loading:first-of-type svg  {
         max-height: 500px;
     }
 
     .wrapper a:first-of-type p {
         font-size: 32px;
     }
-    
+
     .wrapper a:first-of-type time {
         font-size: 22px;
         line-height: 2;

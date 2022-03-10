@@ -1,11 +1,13 @@
 
 import { connect } from 'react-redux';
-import { selectCatalogs } from '../../../redux/selectors';
+import { selectCatalogs, catalogsLoading } from '../../../redux/selectors';
 import CardSlider from '../../../components/card-slider/card-slider.component';
 import { ReactComponent as DownloadIcon } from '../../../assets/svg/download.svg';
+import { ReactComponent as Spinner } from '../../../assets/svg/spinner.svg';
+import styles from './catalogs-cards.module.css';
 
 
-const CatalogsContent = ({ catalogs }) => (
+const CatalogsContent = ({ catalogs, loading }) => (
     <div className='cards-wrapper'>
         {
             catalogs.map(({ url, id, ...rest }) => (
@@ -23,11 +25,13 @@ const CatalogsContent = ({ catalogs }) => (
                 </a>
             ))
         }
+        {loading && <div className={styles.spinner}><Spinner /></div>}
     </div>
 );
 
 const mapStateToProps = (state) => ({
     catalogs: selectCatalogs(state),
+    loading: catalogsLoading(state),
 });
 
 export default connect(mapStateToProps)(CatalogsContent);

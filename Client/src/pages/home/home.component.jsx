@@ -10,13 +10,12 @@ import Catalog from "../../components/catalog/catalog.component";
 import HomeAbout from '../../components/home-about/home-about.component';
 
 import { ReactComponent as Spinner } from '../../assets/svg/spinner.svg';
-import styles from './home.module.css'
 
 
 const Home = ({ loadHome, loading, error }) => {
     useEffect(() => { loadHome() }, [loadHome]);
 
-    if (loading) return <div className={styles.spinner}><Spinner /></div>;
+    if (loading) return <div className='spinner'><Spinner /></div>;
 
     return (
         <div>

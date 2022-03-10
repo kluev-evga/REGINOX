@@ -1,20 +1,24 @@
 .cards {
     display: grid;
     grid-auto-rows: 1fr;
-    gap: 10px;
+    gap: 20px;
+}
+
+.cards figure {
+    margin: 0;
 }
 
 .cards figcaption {
-    margin-top: 15px;
+    margin-top: 5px;
     text-align: center;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .cards svg,
 .cards img {
     margin: 0 auto;
-    width: 250px;
+    width: 220px;
     height: auto;
 }
 
@@ -26,14 +30,23 @@
 
 @media (min-width: 576px) {
     .cards {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 240px);
+        justify-content: center;
+        column-gap: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(2, 280px);
+        column-gap: 80px;
     }
 }
 
 @media (min-width: 992px) {
     .cards {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(3, 280px);
+        column-gap: 50px;
     }
 
     .cards figcaption {
@@ -42,14 +55,19 @@
 }
 
 @media (min-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(3, 320px);
+        gap: 0;
+    }
+
     .cards figure {
-        padding: 50px 0;
+        padding: 35px 0;
         position: relative;
     }
 
     .cards figcaption {
         margin-top: 0;
-        padding: 25px;
+        padding: 20px;
 
         position: absolute;
         top: 0;
@@ -64,7 +82,7 @@
 
         background-color: var(--gray-light);
         opacity: 0;
-        transition: opacity 0.2s linear;
+        transition: opacity 0.2s linear 0.1s;
     }
 
     .cards a {
@@ -78,9 +96,11 @@
 
     .cards figure:hover figcaption{
         opacity: 1;
+        transition: opacity 0.2s linear;
     }
 
     .cards figure:hover img{
         opacity: 0;
+        transition: opacity 0.1s linear 0.1s;
     }
 }

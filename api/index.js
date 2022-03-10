@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { catalog, home, catalogs } = require('./mock');
+const { catalog, home, catalogs, sertificates, brands, articles } = require('./mock');
 const { reply, getById } = require('./utils');
 
 router.get('/catalog', (req, res, next) => {
@@ -11,7 +11,31 @@ router.get('/home', (req, res, next) => {
 });
 
 router.get('/catalogs', (req, res, next) => {
-  reply(res, catalogs);
+  const {size, current} = req.query;
+  const total = catalogs.length;
+  const arr = catalogs.slice(current, size);
+  composedCatalogs = {catalogs:arr, total};
+  reply(res, composedCatalogs);
+});
+
+router.get('/sertificates', (req, res, next) => {
+  reply(res, sertificates);
+});
+
+router.get('/brands', (req, res, next) => {
+  reply(res, brands);
+});
+
+router.get('/articles', (req, res, next) => {
+  const {page} = req.query;
+
+  const start = 5 * Number(page) - 5;
+  const end = 5 * Number(page);
+  const arr = articles.slice(start, end);
+  const total = articles.length;
+  composedArticles = {entities:arr, total};
+
+  reply(res, composedArticles);
 });
 
 // router.get('/products', (req, res, next) => {

@@ -1,7 +1,7 @@
 const normalizedCatalog = [
   {
     id: '0015bfc8-c63a-45f7-ad67-4d16dc608bf9',
-    img: './assets/catalog/sinks.webp',
+    img: '/assets/catalog/sinks.webp',
     alt: 'sinks',
     name: 'Мойки',
     url: 'sinks',
@@ -25,7 +25,7 @@ const normalizedCatalog = [
   },
   {
     id: '4e24f752-0707-4d03-9fb7-b736926e6220',
-    img: './assets/catalog/taps.webp',
+    img: '/assets/catalog/taps.webp',
     alt: 'taps',
     name: 'Смесители',
     url: 'taps',
@@ -54,7 +54,7 @@ const normalizedCatalog = [
   },
   {
     id: 'd70990e4-4854-4aee-85ff-77e966658bfd',
-    img: './assets/catalog/range.webp',
+    img: '/assets/catalog/range.webp',
     alt: 'range',
     name: 'Плиты',
     url: 'ranges',
@@ -93,7 +93,7 @@ const normalizedCatalog = [
   },
   {
     id: '732d59a1-5f70-4e20-8abf-c16ee4eb602f',
-    img: './assets/catalog/washstands.webp',
+    img: '/assets/catalog/washstands.webp',
     alt: 'washstands',
     name: 'Умывальники',
     url: 'washstands',
@@ -112,7 +112,7 @@ const normalizedCatalog = [
   },
   {
     id: 'f751f8eb-94d4-4c37-a37c-62aba74cee42',
-    img: './assets/catalog/accessories.webp',
+    img: '/assets/catalog/accessories.webp',
     alt: 'accessories',
     name: 'Аксессуары',
     url: 'accessories',
@@ -151,7 +151,7 @@ const normalizedCatalog = [
   },
   {
     id: 'c5ce17f1-0488-487c-8200-6fec72cc4caa',
-    img: './assets/catalog/countertops.webp',
+    img: '/assets/catalog/countertops.webp',
     alt: 'storage Manhattan',
     name: 'Системы хранения Manhattan',
     url: 'storage-manhattan',
@@ -175,7 +175,7 @@ const normalizedCatalog = [
   },
   {
     id: '5c9bca2d-13a8-4df3-91a2-cb51b8f36268',
-    img: './assets/catalog/muscellaneous.webp',
+    img: '/assets/catalog/muscellaneous.webp',
     alt: 'muscellaneous',
     name: 'Другая продукция',
     url: 'muscellaneous',
@@ -239,7 +239,7 @@ const normalizedCatalog = [
   },
   {
     id: '0f20d5f3-bcf7-447b-88af-97899e6815a7',
-    img: './assets/catalog/garbagedisposers.webp',
+    img: '/assets/catalog/garbagedisposers.webp',
     alt: 'garbagedisposers',
     name: 'Измельчители Bone Crusher',
     url: 'garbage-disposers',
@@ -247,7 +247,7 @@ const normalizedCatalog = [
   },
   {
     id: '2889d9d0-3a37-4593-9415-434ee08649d2',
-    img: './assets/catalog/storage.webp',
+    img: '/assets/catalog/storage.webp',
     alt: 'storage',
     name: 'Дозаторы',
     url: 'soap-dispensers',
@@ -261,44 +261,44 @@ const normalizedHome = {
       id: 'a70a9dec-aa45-46ea-9823-c5fc8ba651c3',
       title: 'Мойки, смесители и аксессуары',
       subtitle: 'от ведущего производителя сантехники для кухни Reginox',
-      img: './assets/slider/slide-sinks.webp',
+      img: '/assets/slider/slide-sinks.webp',
       alt: 'slide sinks',
       url: '/products/sinks',
       titleLink: 'Встраиваемые газовые плиты',
-      imgLink: './assets/slider/link-sinks.webp',
+      imgLink: '/assets/slider/link-sinks.webp',
       altLink: 'раковины',
     },
     {
         id: 'ea137ef0-01e6-43e6-89a8-bf21147ea295',
         title: 'Газовые конфорки PiTT',
         subtitle: 'встраиваемые системы от производителя из голандии',
-        img: './assets/slider/slide-ranges.webp',
+        img: '/assets/slider/slide-ranges.webp',
         alt: 'slide sinks',
         url: '/products/ranges',
         titleLink: 'Газовые конфорки PiTT',
-        imgLink: './assets/slider/link-ranges.webp',
+        imgLink: '/assets/slider/link-ranges.webp',
         altLink: 'плиты',
     },
     {
         id: '05f7d4c0-2acb-4c4b-989d-3a3046bb1d89',
         title: 'Умывальники и краны для раковин',
         subtitle: 'мультирычажные и сенсорные системы Reginox',
-        img: './assets/slider/slide-washstands.webp',
+        img: '/assets/slider/slide-washstands.webp',
         alt: 'slide sinks',
         url: '/products/washstands',
         titleLink: 'Умывальники и краны для раковин',
-        imgLink: './assets/slider/link-washstands.webp',
+        imgLink: '/assets/slider/link-washstands.webp',
         altLink: 'умывальники',
     },
     {
         id: '6480b394-f8d5-4965-97c0-354cc1702c72',
         title: 'системы хранения manhattan ',
         subtitle: 'встраиваемые кухонные системы европейского качества',
-        img: './assets/slider/slide-manhattan.webp',
+        img: '/assets/slider/slide-manhattan.webp',
         alt: 'slide sinks',
         url: '/products/storage-manhattan',
         titleLink: 'системы хранения manhattan',
-        imgLink: './assets/slider/link-manhattan.webp',
+        imgLink: '/assets/slider/link-manhattan.webp',
         altLink: 'системы хранения',
     },
   ],
@@ -344,75 +344,502 @@ const normalizedHome = {
 };
 
 const normalizedCatalogs = [
+  {
+    id: '4cd4c494-94b7-4fe6-887e-e24bba65c05f',
+    name: 'Каталог январь 2020',
+    img: '/assets/catalogs/catalog_jan_20.webp',
+    alt: 'Каталог январь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'd1c4028f-289f-423e-8385-846815455b57',
+    name: 'Каталог февраль 2020',
+    img: '/assets/catalogs/catalog_feb_20.webp',
+    alt: 'Каталог февраль 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '9e482ae2-05ce-42b2-bcea-bfe70bc5831a',
+    name: 'Каталог март 2020',
+    img: '/assets/catalogs/catalog_mar_20.webp',
+    alt: 'Каталог март 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'a7227db2-3181-4c55-843a-394acddd5d00',
+    name: 'Каталог апрель 2020',
+    img: '/assets/catalogs/catalog_apr_20.webp',
+    alt: 'Каталог апрель 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '0f4eb3e8-a461-417d-8249-d0ad3f13dfca',
+    name: 'Каталог май 2020',
+    img: '/assets/catalogs/catalog_may_20.webp',
+    alt: 'Каталог май 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '9dc5cb57-a038-4d89-aab7-fc5ed513a90f',
+    name: 'Каталог июнь 2020',
+    img: '/assets/catalogs/catalog_jun_20.webp',
+    alt: 'Каталог июнь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'dfacecd5-cfeb-487f-9cf2-6f18765154ca',
+    name: 'Каталог июль 2020',
+    img: '/assets/catalogs/catalog_jul_20.webp',
+    alt: 'Каталог июль 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'fa1b9184-151e-42e9-bccb-4c2fa1b96c00',
+    name: 'Каталог август 2020',
+    img: '/assets/catalogs/catalog_aug_20.webp',
+    alt: 'Каталог август 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '73baa82d-af4c-4565-9526-821213c83848',
+    name: 'Каталог сентябрь 2020',
+    img: '/assets/catalogs/catalog_sep_20.webp',
+    alt: 'Каталог сентябрь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '8806179b-e0af-444d-a830-8b45a78993de',
+    name: 'Каталог октябрь 2020',
+    img: '/assets/catalogs/catalog_oct_20.webp',
+    alt: 'Каталог октябрь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '42f9b07c-96d2-460e-be92-ed0ce0dd541a',
+    name: 'Каталог ноябрь 2020',
+    img: '/assets/catalogs/catalog_nov_20.webp',
+    alt: 'Каталог октябрь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'ab49d0bc-340f-4fc0-9cf2-58955cccfcb0',
+    name: 'Каталог декабрь 2020',
+    img: '/assets/catalogs/catalog_dec_20.webp',
+    alt: 'Каталог октябрь 2020',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'ca25b9e8-5e5b-4a5b-a2d9-8354c6642e69',
+    name: 'Каталог январь 2021',
+    img: '/assets/catalogs/catalog_jan_21.webp',
+    alt: 'Каталог январь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'b66d56ca-6d38-4ff1-8c3e-11b15adbb14d',
+    name: 'Каталог февраль 2021',
+    img: '/assets/catalogs/catalog_feb_21.webp',
+    alt: 'Каталог февраль 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '3abc05df-0114-4759-aca0-61aada2ec03c',
+    name: 'Каталог март 2021',
+    img: '/assets/catalogs/catalog_mar_21.webp',
+    alt: 'Каталог март 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '1a05ff5a-7f80-475a-ac0f-e4cf41791b65',
+    name: 'Каталог апрель 2021',
+    img: '/assets/catalogs/catalog_apr_21.webp',
+    alt: 'Каталог апрель 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'b4fb2aba-3e0d-4540-aa81-4da158c03464',
+    name: 'Каталог май 2021',
+    img: '/assets/catalogs/catalog_may_21.webp',
+    alt: 'Каталог май 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'd85d750f-4202-4ae1-a0d3-d39db3f6ac53',
+    name: 'Каталог июнь 2021',
+    img: '/assets/catalogs/catalog_jun_21.webp',
+    alt: 'Каталог июнь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '2eaf70b5-b554-46a3-a551-cfec7b04686b',
+    name: 'Каталог июль 2021',
+    img: '/assets/catalogs/catalog_jul_21.webp',
+    alt: 'Каталог июль 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '98212ace-e4ee-4570-b3c6-2dd479a24306',
+    name: 'Каталог август 2021',
+    img: '/assets/catalogs/catalog_aug_21.webp',
+    alt: 'Каталог август 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '60b73117-38f5-41c6-b604-57ed8c38c4d2',
+    name: 'Каталог сентябрь 2021',
+    img: '/assets/catalogs/catalog_sep_21.webp',
+    alt: 'Каталог сентябрь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'e0a6ac4b-c4d2-4b85-8350-f05eb0043393',
+    name: 'Каталог октябрь 2021',
+    img: '/assets/catalogs/catalog_oct_21.webp',
+    alt: 'Каталог октябрь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: 'e6657be1-1717-4ca1-861a-c69861f99c79',
+    name: 'Каталог ноябрь 2021',
+    img: '/assets/catalogs/catalog_nov_21.webp',
+    alt: 'Каталог октябрь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+  {
+    id: '7df3801d-5a16-43ca-8685-2c5d13870d7a',
+    name: 'Каталог декабрь 2021',
+    img: '/assets/catalogs/catalog_dec_21.webp',
+    alt: 'Каталог октябрь 2021',
+    url: './assets/catalogs/catalog_jan_21.pdf'
+  },
+];
+
+const normalizedSertificates = [
     {
-        id: '1932e990-9531-4b09-9e44-5646bad6eabb',
-        name: 'Каталог январь 2021',
-        img: './assets/catalogs/catalog_jan_22.webp',
-        alt: 'Каталог январь 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '53d57263-d565-4d2b-997f-7698594fc85c',
+        name: 'Авторизованный диллер webert',
+        img: 'authorized.webert.webp',
+        alt: 'sertificate',
+        width: '744',
+        height: '1028',
     },
     {
-        id: '0d30670e-e760-4c73-834f-38b54d4c1ceb',
-        name: 'Каталог февраль 2021',
-        img: './assets/catalogs/catalog_feb_22.webp',
-        alt: 'Каталог февраль 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '0a6403a6-abd3-419c-bdd3-2324ef0d3c14',
+        name: 'Официальный дистрибьютер Проминтех',
+        img: 'certificate-of-authorisation-fraisa_rus.webp',
+        alt: 'sertificate',
+        width: '1061',
+        height: '1500',
     },
     {
-        id: 'ba72e4fa-f646-41b4-bb70-5af52cf0b397',
-        name: 'Каталог март 2021',
-        img: './assets/catalogs/catalog_mar_22.webp',
-        alt: 'Каталог март 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '0beaf1a0-a7e2-44b5-a643-f11986797c3f',
+        name: 'Kordi GmbH дистрибьютер',
+        img: 'sert2014_2.webp',
+        alt: 'sertificate',
+        width: '1671',
+        height: '2362',
     },
     {
-      id: '56d9bd00-4e7f-429b-b87e-9244a8e38dbc',
-        name: 'Каталог апрель 2021',
-        img: './assets/catalogs/catalog_apr_22.webp',
-        alt: 'Каталог апрель 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: 'e34618b7-1791-4215-b345-0aa935cbc3a3',
+        name: 'ITE Group PLc',
+        img: 'mbnew10.webp',
+        alt: 'sertificate',
+        width: '731',
+        height: '1044',
     },
     {
-        id: '15deb6ac-6ed5-4baa-a58f-0c34755a943d',
-        name: 'Каталог май 2021',
-        img: './assets/catalogs/catalog_may_22.webp',
-        alt: 'Каталог май 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: 'fd842681-0d69-42e1-8bb6-09f11049eff1',
+        name: 'Санитарно техническая экспертиза',
+        img: 'e3_2.webp',
+        alt: 'sertificate',
+        width: '921',
+        height: '1307',
     },
     {
-        id: '5c8c6656-4889-4571-9b84-3449d8d33089',
-        name: 'Каталог июнь 2021',
-        img: './assets/catalogs/catalog_jun_22.webp',
-        alt: 'Каталог июнь 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '1cde65bd-edb7-4048-84a0-05bf7d09909e',
+        name: 'Корди MosBuild',
+        img: 'MosBuild.webp',
+        alt: 'sertificate',
+        width: '610',
+        height: '872',
     },
     {
-        id: 'ef8c3257-de32-498e-9f66-9e4510c89dbc',
-        name: 'Каталог июль 2021',
-        img: './assets/catalogs/catalog_jul_22.webp',
-        alt: 'Каталог июль 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '37eb3316-a388-424a-84f6-ab997839505a',
+        name: 'The ITE Group Евросант',
+        img: 'mbnew11.webp',
+        alt: 'sertificate',
+        width: '731',
+        height: '1044',
     },
     {
-        id: '9803c494-efe7-409a-82a5-d065c17ad66b',
-        name: 'Каталог август 2021',
-        img: './assets/catalogs/catalog_aug_22.webp',
-        alt: 'Каталог август 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: 'fb9ebf7b-c182-41ab-82b8-d13d0dd295ba',
+        name: 'Mitutoyo',
+        img: 'MITUTOYO-2018.webp',
+        alt: 'sertificate',
+        width: '600',
+        height: '849',
     },
     {
-        id: 'da8bd025-96ee-43af-8197-8a28c93c3a46',
-        name: 'Каталог сентябрь 2021',
-        img: './assets/catalogs/catalog_sep_22.webp',
-        alt: 'Каталог сентябрь 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: '0d588ce9-5c94-444f-ab09-37a484c595ed',
+        name: 'Mos Build выставка',
+        img: 'di-BI77AW.webp',
+        alt: 'sertificate',
+        width: '1000',
+        height: '1409',
     },
     {
-        id: '2e01ece7-06d4-42a7-aaa6-92a554842aa4',
-        name: 'Каталог октябрь 2021',
-        img: './assets/catalogs/catalog_oct_22.webp',
-        alt: 'Каталог октябрь 2021',
-        url: './assets/catalogs/catalog_jan_21.pdf'
+        id: 'ba9ac4d8-c384-4c47-90db-feb2927d2867',
+        name: 'e3 Awwards',
+        img: 'e3_1.webp',
+        alt: 'sertificate',
+        width: '921',
+        height: '1317',
+    },
+    {
+        id: '02e7b372-8f99-4b8e-9a11-19c1ce8697e6',
+        name: 'Mos Build 2014',
+        img: 'di-FWFUGM.webp',
+        alt: 'sertificate',
+        width: '1000',
+        height: '1413',
+    },
+    {
+        id: '5fe95c85-a14b-4c17-9e79-87972e15c9e7',
+        name: 'ГОСТ ISO 9001-2008',
+        img: '7232438.webp',
+        alt: 'sertificate',
+        width: '537',
+        height: '768',
+    },
+    {
+        id: '2b7b2392-92be-4815-ae14-bcc7adebeec9',
+        name: 'ARTIS Srl',
+        img: 'certificate-artis-2018-2021.webp',
+        alt: 'sertificate',
+        width: '700',
+        height: '988',
+    },
+    {
+        id: 'f1432052-e6a8-4195-8776-50429e0ea7b3',
+        name: 'Душевая сантехника',
+        img: 'byonsert.webp',
+        alt: 'sertificate',
+        width: '686',
+        height: '899',
+    },
+    {
+        id: '69272455-bc50-4a17-b07c-28eca4df0e1b',
+        name: 'Арматура и сантехника',
+        img: 'sertif_12_b.webp',
+        alt: 'sertificate',
+        width: '600',
+        height: '845',
+    },
+    {
+        id: 'd01ad9ca-dd2d-4a9d-b890-89ee1a75a2eb',
+        name: 'Forbs & Company',
+        img: 'totem_iso-9001_2008.webp',
+        alt: 'sertificate',
+        width: '700',
+        height: '991',
+    },
+    {
+        id: 'a0a5cdcb-5c23-4fee-9de7-ba80476bf271',
+        name: 'Краны и смесители для кухонных моек',
+        img: 'sertificate_2017.webp',
+        alt: 'sertificate',
+        width: '600',
+        height: '829',
+    },
+    {
+        id: '71b03119-6edb-466e-bb30-badc77163da0',
+        name: 'Reginox approval',
+        img: 'Certificaat_ISO_9001_2015.webp',
+        alt: 'sertificate',
+        width: '1178',
+        height: '1689',
+    },
+    {
+        id: 'cb6531ea-e714-47c3-b5ff-f0c0680bd313',
+        name: 'Сертификат соответствия H08858',
+        img: 'sertif_14_b.webp',
+        alt: 'sertificate',
+        width: '600',
+        height: '844',
+    },
+];
+
+const normalizedBrands = [
+    {
+        id: '9beff978-d656-4f5d-ad4f-cc27d0aba961',
+        img: '/assets/brands/reginox.webp',
+        alt: 'reginox',
+        about: 'Reginox (Голандия) – Раковины и смесители',
+        warranty: 'Reginox (Голандия) гарантия 6 лет',
+        url: 'www.reginox.com',
+    },
+    {
+        id: 'a56775bf-35af-46f7-aceb-ab9920a9cf20',
+        img: '/assets/brands/webert.webp',
+        alt: 'webert',
+        about: 'Webert (Италия) – Премиальная сантехника',
+        warranty: 'Webert (Италия) гарантия 5 лет',
+        url: 'www.webert.com'
+    },
+    {
+        id: '2185b9b1-ee0d-49aa-a16a-892135f722fc',
+        img: '/assets/brands/rodi.webp',
+        alt: 'rodi',
+        about: 'Rodi (Франция) – Раковины из нержавеющей стали',
+        warranty: 'Rodi (Франция) гарантия 8 лет',
+        url: 'www.rodi.com'
+    },
+    {
+        id: '8c6ccf48-e7a3-4e94-b8b2-2f901cffb3af',
+        img: '/assets/brands/effepi.webp',
+        alt: 'effepi',
+        about: 'Effepi (Италия) – Сантехника из Италии',
+        warranty: 'Effepi (Италия) гарантия 10 лет',
+        url: 'www.effepi.com'
+    },
+    {
+        id: 'e97622b6-2277-46ff-9dd5-e244881b9ff1',
+        img: '/assets/brands/pitt.webp',
+        alt: 'pitt',
+        about: 'Pitt (Голандия) – встроенные газовые комфорки',
+        warranty: 'Pitt (Голандия) гарантия 6 лет',
+        url: 'www.pitt.com'
+    },
+    {
+        id: '77a32f68-8cee-45a3-a794-8b98cba327f1',
+        img: '/assets/brands/bone-crusher.webp',
+        alt: 'bone crusher',
+        about: 'Bone Crusher (Германия) – измельчители для раковин',
+        warranty: 'Bone Crusher (Германия) гарантия 7 лет',
+        url: 'www.bone-crusher.com'
+    },
+    {
+        id: 'becbb844-7577-431c-9e85-050f26eebfa2',
+        img: '/assets/brands/armando-vicario.webp',
+        alt: 'armando vicario',
+        about: 'armando-vicario (Италия) – кухни и душевые',
+        warranty: 'Armando Vicario (Италия) гарантия 6 лет',
+        url: 'www.armando-vicario.com'
+    },
+];
+
+const normalizedArticles = [
+    {
+        id: 'b6c8448a-d78c-4702-9324-99adc728db97',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19'},
+        img: '/assets/articles/previews/article_1.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '0aa284e1-1393-43cd-8970-c50fb767e067',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_2.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '2073284c-23fc-43dd-ab92-effe42dc20e2',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_3.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: 'b8e0a0fa-7236-4485-8ca3-111507db4244',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_4.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '763fcd1b-817b-4142-9e7d-f6ef7639baff',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: 'ec1164a9-abad-4723-8c62-7fa889b64fca',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: 'eeb1b667-7121-421d-97e8-14352b63697a',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: 'd3a4cedd-9135-4614-bc95-099dcb911f98',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '7eb07cd2-eeff-4edb-a8f3-560bce647db8',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '97042857-e8b6-4b3f-a602-11bc051e5713',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '82c98534-07e8-49c6-bdfc-bcfa82218864',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '2c13c9b0-46be-416f-bd52-37b54e4bd828',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: 'b78c6a28-e9f3-4616-ac17-f5f922da867d',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
+    },
+    {
+        id: '8d53cdd3-a215-4426-875d-f101a7c35ab9',
+        name: 'Ontario — стильный дизайн и надежность!',
+        date: { d:'16', m:'12', y:'19' },
+        img: '/assets/articles/previews/article_5.webp',
+        alt: 'ontario',
+        url: 'ontario',
     },
 ];
 
@@ -420,4 +847,7 @@ module.exports = {
   catalog: normalizedCatalog,
   home: normalizedHome,
   catalogs: normalizedCatalogs,
+  sertificates: normalizedSertificates,
+  brands: normalizedBrands,
+  articles: normalizedArticles
 };
