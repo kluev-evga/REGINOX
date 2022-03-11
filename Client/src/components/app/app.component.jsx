@@ -27,7 +27,7 @@ import NotFound from '../../pages/not-found/not-found.component';
 import Loader from '../../components/loader/loader.coponent';
 import Error from '../../components/error/error.component';
 
-import SwiperCore, { Pagination, Navigation, A11y, Autoplay, FreeMode } from 'swiper';
+import SwiperCore, { Pagination, Navigation, A11y, Autoplay } from 'swiper';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
@@ -37,7 +37,7 @@ import srollRestoration from '../../hoc/scroll-restoration';
 
 import './app.scss';
 
-SwiperCore.use([Pagination, Navigation, A11y, Autoplay, FreeMode]);
+SwiperCore.use([Pagination, Navigation, A11y, Autoplay]);
 
 const WhyUsPage = srollRestoration(WhyUs);
 const PartnersPage = srollRestoration(Partners);

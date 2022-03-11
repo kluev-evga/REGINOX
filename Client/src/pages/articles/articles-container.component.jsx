@@ -9,7 +9,7 @@ const ArticlePage = srollRestoration(Article);
 const ArticlesContainer = () => (
     <Switch>
         <Route exact path='/articles' component={Articles} />
-        <Route exact path='/articles/:articleId' component={ArticlePage} />
+        <Route exact path='/articles/:article' component={ArticlePage} />
         <Redirect to='/not-found' />
     </Switch>
 );

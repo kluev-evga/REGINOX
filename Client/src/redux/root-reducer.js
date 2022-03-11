@@ -6,6 +6,7 @@ import catalogsReducer from './reducers/catalogs';
 import sertificatesReducer from './reducers/sertificates';
 import brandsReducer from './reducers/brands';
 import articlesReducer from './reducers/articles';
+import articleReducer from './reducers/article';
 
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
   catalogs: catalogsReducer,
   sertificates: sertificatesReducer,
   brands: brandsReducer,
-  articles: articlesReducer
+  articles: articlesReducer,
+  article: articleReducer
 });

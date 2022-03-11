@@ -38,7 +38,7 @@ const SertificatesPage = ({ scroll }) => {
 };
 
 const mapStateToProps = (state) => ({
-    scroll: sertificatesScroll(state)
+    scroll: sertificatesScroll(state),
 });
 
 export default connect(mapStateToProps)(SertificatesPage);

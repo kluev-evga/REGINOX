@@ -37,7 +37,7 @@
     background: linear-gradient(0deg, #0008, #0001);
 }
 
-.swiper_slide svg {
+.swiper_slide a svg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,6 +47,12 @@
     width: 80px;
 
     color: #3333;
+}
+
+.spinner svg{
+    width: 100%;
+    height: auto;
+    opacity: 0.3;
 }
 
 @media (min-width: 576px) {
@@ -85,7 +91,7 @@
         padding: 35px 30px;
     }
 
-    .swiper_slide svg {
+    .swiper_slide a svg {
         height: 120px;
         width: 120px;
         opacity: 0;
@@ -93,7 +99,7 @@
         transition: opacity 0.2s ease-in 0.1s;
     }
 
-    .swiper_slide:hover svg {
+    .swiper_slide:hover a svg {
         opacity: 1;
     }
 }

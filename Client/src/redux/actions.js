@@ -14,6 +14,7 @@ import {
     LOAD_BRANDS,
     LOAD_ARTICLES,
     SELECT_ARTICLES_PAGE,
+    LOAD_ARTICLE
 } from './types';
 
 import {
@@ -25,6 +26,8 @@ import {
     selectCatalogsSize,
     articlesItemLoading,
     articlesItemLoaded,
+    articleLoading,
+    articleLoaded
 } from './selectors';
 
 
@@ -131,3 +134,24 @@ export const loadArticles = (page) => async (dispatch, getState) => {
 };
 
 export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
+
+export const loadArticle = (match) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = articleLoading(state, {match});
+    const loaded = articleLoaded(state, {match});
+    if (loading || loaded) return;
+
+    const article = match.params.article;
+
+    dispatch({ type: LOAD_ARTICLE + REQUEST, article });
+
+    try {
+        const req = await fetch(`/article?article=${article}`);
+        const data = await req.json();
+        (data.valid)
+            ? dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article })
+            : dispatch({ type: LOAD_ARTICLE + FAILURE, error: 'invalidURL', article });
+    } catch (error) {
+        dispatch({ type: LOAD_ARTICLE + FAILURE, error });
+    }
+};

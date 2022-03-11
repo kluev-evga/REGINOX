@@ -1,79 +1,45 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { loadArticle } from '../../redux/actions';
+import { article, articleLoaded, articleError } from '../../redux/selectors';
+import { Link, Redirect } from 'react-router-dom';
+import ArticleContent from './article-content/article-content.component';
+import { ReactComponent as SpinnerIcon } from '../../assets/svg/spinner.svg';
+import styles from './article.module.css';
 
-const img1 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_1.webp';
-const img2 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_2.webp';
-const img3 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_3.webp';
-const img4 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_4.webp';
-const img5 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_5.webp';
-const img6 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_6.webp';
-const img7 = process.env.PUBLIC_URL + '/assets/articles/ontario/ontario_7.webp';
 
+const Article = ({ match, loadArticle, article, loaded, error }) => {
+    useEffect(() => { loadArticle(match) }, [loadArticle, match]);
 
-const Article = () => (
-    <div className="container">
-        <div className="breadcrumbs">
-            <Link to='/home'>Главная</Link> / <Link to='/articles'>Статьи</Link> / Ontario — стильный дизайн и надежность!
+    if (error === 'invalidURL') return <Redirect replace to='/not-found' />
+    if (!loaded) return <div className={styles.spinner}><SpinnerIcon /></div>;
+
+    const { date, title } = article;
+    const { d, m, y } = date;
+    const dateText = d + ' / ' + m + ' / ' + y;
+    const dateTime = '20' + y + '-' + m + '-' + d;
+
+    return (
+        <div className="container">
+            <div className="breadcrumbs">
+                <Link to='/home'>Главная</Link> / <Link to='/articles'>Статьи</Link> / {title}
+            </div>
+            <h1 className="title">{title}</h1>
+            <time dateTime={dateTime} className='article-date'>{dateText}</time>
+
+            <ArticleContent entities={article.content} />
         </div>
-        <h1 className="title">Ontario — стильный дизайн и надежность!</h1>
+    );
+};
 
+const mapStateToProps = (state, props) => ({
+    article: article(state, props),
+    loaded: articleLoaded(state, props),
+    error: articleError(state, props),
+})
 
-        <time dateTime='2019-12-16' className='article-date'>16 / 12 / 19</time>
+const mapDispatchToProps = ({
+    loadArticle
+});
 
-        <div className="article">
-            <b>
-                Кухонные мойки серии Ontario – оригинальный элемент для кухни любого стиля. Сварная чаша выполнена из миллиметровой полированной нержавеющей стали 304 категории 18/10, что гарантирует необходимые для кухонной зоны гигиенические свойства и безопасность. Радиус угла чаши 0мм, что делает ее форму сдержанной и брутальной. Идеальная обработка швов – гарантия долговечной эксплуатации мойки.
-            </b>
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-        </div>
-
-        <div className='image-container'>
-            <img src={img1} alt="ontario" />
-            <img src={img2} alt="ontario" />
-        </div>
-
-        <div className="article">
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-        </div>
-
-        <div className='image-container'>
-            <img src={img3} alt="ontario" />
-        </div>
-
-        <div className="article">
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-        </div>
-
-        <div className='image-container'>
-            <img src={img4} alt="ontario" />
-            <img src={img5} alt="ontario" />
-            <img src={img6} alt="ontario" />
-        </div>
-
-        <div className="article">
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-        </div>
-
-        <div className="image-container">
-            <img src={img7} alt="ontario" width='600' />
-        </div>
-
-        <div className="article">
-            <p>
-                Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.
-            </p>
-        </div>
-    </div>
-);
-
-export default Article;
+export default connect(mapStateToProps, mapDispatchToProps)(Article);

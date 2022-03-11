@@ -1,13 +1,15 @@
 .wrapper {
     margin-top: 20px;
     display: grid;
+    grid-auto-flow: dense;
     grid-template-columns: minmax(auto, 400px);
     justify-content: center;
     grid-gap: 20px;
 }
 
 .loading {
-    background: #00000009;
+    background: var(--gray-light);
+    padding-bottom: 50px;
 }
 
 .loading svg {
@@ -21,31 +23,27 @@
         grid-gap: 30px;
     }
 
-    .wrapper a:first-of-type,
-    .loading:first-of-type {
-        grid-area: 1 / 1 / 2 / -1;
+    .loading:nth-of-type(1) {
+        grid-column: 1 / span 2;
     }
 
-    .wrapper a:first-of-type img,
-    .loading:first-of-type svg {
+    .loading:nth-of-type(1) svg {
         max-height: 43vw;
-        object-fit: cover;
-        object-position: center
+    }
+}
+
+@media (min-width: 768px) {
+    .loading {
+        padding-bottom: 60px;
     }
 }
 
 @media (min-width: 1200px) {
-    .wrapper a:first-of-type img,
-    .loading:first-of-type svg  {
+    .loading {
+        padding-bottom: 0;
+    }
+
+    .loading:nth-of-type(1) svg {
         max-height: 500px;
-    }
-
-    .wrapper a:first-of-type p {
-        font-size: 32px;
-    }
-
-    .wrapper a:first-of-type time {
-        font-size: 22px;
-        line-height: 2;
     }
 }

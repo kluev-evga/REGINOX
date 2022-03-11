@@ -181,7 +181,6 @@
     .accomplishments div {
         grid-template-rows: unset;
         background-color: var(--black);
-        cursor: pointer;
         background: none;
     }
 

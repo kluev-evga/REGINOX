@@ -1,0 +1,6 @@
+.spinner {
+    height: 400px;
+    padding-top: 350px;
+    display: flex;
+    justify-content: center;
+}

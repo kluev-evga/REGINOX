@@ -735,7 +735,8 @@ const normalizedArticles = [
         date: { d:'16', m:'12', y:'19'},
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
-        url: 'ontario',
+        url: 'ontari',
+        wide: true,
     },
     {
         id: '0aa284e1-1393-43cd-8970-c50fb767e067',
@@ -769,6 +770,7 @@ const normalizedArticles = [
         alt: 'ontario',
         url: 'ontario',
     },
+
     {
         id: 'ec1164a9-abad-4723-8c62-7fa889b64fca',
         name: 'Ontario — стильный дизайн и надежность!',
@@ -784,6 +786,7 @@ const normalizedArticles = [
         img: '/assets/articles/previews/article_5.webp',
         alt: 'ontario',
         url: 'ontario',
+        wide: true,
     },
     {
         id: 'd3a4cedd-9135-4614-bc95-099dcb911f98',
@@ -809,6 +812,7 @@ const normalizedArticles = [
         alt: 'ontario',
         url: 'ontario',
     },
+    
     {
         id: '82c98534-07e8-49c6-bdfc-bcfa82218864',
         name: 'Ontario — стильный дизайн и надежность!',
@@ -816,6 +820,7 @@ const normalizedArticles = [
         img: '/assets/articles/previews/article_5.webp',
         alt: 'ontario',
         url: 'ontario',
+        wide: true,
     },
     {
         id: '2c13c9b0-46be-416f-bd52-37b54e4bd828',
@@ -843,11 +848,80 @@ const normalizedArticles = [
     },
 ];
 
+const articlesItems = {
+  'ontario' : {
+    title: 'Ontario — стильный дизайн и надежность!',
+    date: { d:'16', m:'12', y:'19' },
+    content: [
+      {
+        type: 'article',
+        entities: [
+            {type:'b', text: 'Кухонные мойки серии Ontario – оригинальный элемент для кухни любого стиля. Сварная чаша выполнена из миллиметровой полированной нержавеющей стали 304 категории 18/10, что гарантирует необходимые для кухонной зоны гигиенические свойства и безопасность. Радиус угла чаши 0мм, что делает ее форму сдержанной и брутальной. Идеальная обработка швов – гарантия долговечной эксплуатации мойки.'},
+            {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'}
+          ],
+      },
+      {
+        type: 'Image',
+        entities: [
+            {url: '/assets/articles/ontario/ontario_1.webp', alt: 'ontario'},
+            {url: '/assets/articles/ontario/ontario_2.webp', alt: 'ontario'},
+        ]
+      },
+      {
+        type: 'article',
+        entities: [
+          {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'},
+          {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'}
+        ]
+      },
+      {
+        type: 'Image',
+        entities: [
+            {url: '/assets/articles/ontario/ontario_3.webp', alt: 'ontario'},
+        ]
+      },
+      {
+        type: 'article',
+        entities: [
+          {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'},
+        ]
+      },
+      {
+        type: 'Image',
+        entities: [
+            {url: '/assets/articles/ontario/ontario_4.webp', alt: 'ontario'},
+            {url: '/assets/articles/ontario/ontario_5.webp', alt: 'ontario'},
+            {url: '/assets/articles/ontario/ontario_6.webp', alt: 'ontario'},
+        ]
+      },
+      {
+        type: 'article',
+        entities: [
+          {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'},
+        ]
+      },
+      {
+        type: 'Image',
+        entities: [
+            {url: '/assets/articles/ontario/ontario_7.webp', alt: 'ontario'},
+        ]
+      },
+      {
+        type: 'article',
+        entities: [
+          {type: 'p', text: 'Если при получении товара внешний вид, количество, качество и иные характеристики устраивают покупателя, то он расписывается на товарном чеке (товарной накладной), передает денежные средства водителю-экспедитору и получает товар. Оплата покупки осуществляется наличными средствами в рублях.'},
+        ]
+      },
+    ]
+  }
+};
+
 module.exports = {
   catalog: normalizedCatalog,
   home: normalizedHome,
   catalogs: normalizedCatalogs,
   sertificates: normalizedSertificates,
   brands: normalizedBrands,
-  articles: normalizedArticles
+  articles: normalizedArticles,
+  articlesItems: articlesItems
 };

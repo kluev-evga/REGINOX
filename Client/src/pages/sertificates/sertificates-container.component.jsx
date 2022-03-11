@@ -2,15 +2,13 @@ import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadSertificates, setSertificatesScroll, setSertificatesSlide } from '../../redux/actions';
-import { sertificatesLoaded, sertificatesError } from '../../redux/selectors';
+import { sertificatesError } from '../../redux/selectors';
 
 import SertificatesPage from './sertificates-page/sertificates-page.component';
 import SertificatePopUp from './sertificate-pop-up/sertificate-pop-up.component';
 
-import { ReactComponent as Spinner } from '../../assets/svg/spinner.svg';
 
-
-const SertificatesContainer = ({ loadSertificates, setSertificatesScroll, setSertificatesSlide, loaded, error }) => {
+const SertificatesContainer = ({ loadSertificates, setSertificatesScroll, setSertificatesSlide, error }) => {
     useEffect(() => {
         loadSertificates()
         return () => {
@@ -18,8 +16,6 @@ const SertificatesContainer = ({ loadSertificates, setSertificatesScroll, setSer
             setSertificatesSlide(0);
         };
     }, [loadSertificates, setSertificatesScroll, setSertificatesSlide]);
-
-    if (!loaded) return <div className='spinner'><Spinner /></div>;
 
     return (
         <Switch>
@@ -33,7 +29,6 @@ const SertificatesContainer = ({ loadSertificates, setSertificatesScroll, setSer
 };
 
 const mapStateToProps = (state) => ({
-    loaded: sertificatesLoaded(state),
     error: sertificatesError(state),
 });
 

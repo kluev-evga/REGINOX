@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { catalog, home, catalogs, sertificates, brands, articles } = require('./mock');
+const { catalog, home, catalogs, sertificates, brands, articles, articlesItems } = require('./mock');
 const { reply, getById } = require('./utils');
 
 router.get('/catalog', (req, res, next) => {
@@ -36,6 +36,13 @@ router.get('/articles', (req, res, next) => {
   composedArticles = {entities:arr, total};
 
   reply(res, composedArticles);
+});
+
+router.get('/article', (req, res, next) => {
+  const {article} = req.query;
+  const valid = (articlesItems[article]) ? true : false;
+  const response = {...articlesItems[article], valid}
+  reply(res, response);
 });
 
 // router.get('/products', (req, res, next) => {

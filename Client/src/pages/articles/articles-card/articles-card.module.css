@@ -1,0 +1,26 @@
+@media (min-width: 576px) {
+    .wide {
+        grid-column: 1 / span 2;
+    }
+
+    .wide img {
+        max-height: 43vw;
+        object-fit: cover;
+        object-position: center
+    }
+}
+
+@media (min-width: 1200px) {
+    .wide img {
+        max-height: 500px;
+    }
+
+    .wide p {
+        font-size: 32px;
+    }
+
+    .wide time {
+        font-size: 22px;
+        line-height: 2;
+    }
+}

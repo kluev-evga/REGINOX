@@ -55,6 +55,12 @@ export const selectArticlesPages = createSelector(
     (total) => [...Array(total)].map((_, i) => i+1)
 );
 
+export const article = (state, {match}) => state.article.entities[match.params.article];
+export const articleLoading = (state, {match}) => state.article.loading[match.params.article];
+export const articleLoaded = (state, {match}) => !!state.article.loaded[match.params.article];
+export const articleError = (state, {match}) => state.article.error?.[match.params.article];
+
+
 
 
 
