@@ -1,9 +1,9 @@
 import { useEffect, useCallback, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadCatalogs } from '../../redux/actions';
 import { catalogsError, catalogsTotal, selectCatalogsSize } from '../../redux/selectors';
-import CatalogsContent from './catalogs-cards/catalogs-cards.component';
+import CatalogsCards from './catalogs-cards/catalogs-cards.component';
 import styles from './catalogs.module.css';
 
 
@@ -30,6 +30,8 @@ const Catalogs = ({ location, history, loadCatalogs, error, total, loadedSize })
         if (total && pageSize > total) history.replace(`/catalogs?size=${total}`);
     }, [total, pageSize, history]);
 
+    if (error) <Redirect to='/error' />
+
     const handleClick = useCallback(() => {
         if (pageSize < total) {
             const newSize = (pageSize + 3 < total) ? pageSize + 3 : total;
@@ -45,7 +47,7 @@ const Catalogs = ({ location, history, loadCatalogs, error, total, loadedSize })
             </div>
             <h1 className="title">Каталоги</h1>
 
-            <CatalogsContent />
+            <CatalogsCards />
 
             <div className={styles.wrapper}>
                 <button

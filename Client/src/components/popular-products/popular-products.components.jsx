@@ -1,9 +1,9 @@
-import img from '../../assets/products/product_1.jpg';
-import img2 from '../../assets/products/product_2.jpg';
-import img3 from '../../assets/products/product_3.jpg';
-import img4 from '../../assets/products/product_4.jpg';
-import img5 from '../../assets/products/product_5.jpg';
-import img6 from '../../assets/products/product_6.jpg';
+const img = '/assets/products/product_1.jpg';
+const img2 = '/assets/products/product_2.jpg';
+const img3 = '/assets/products/product_3.jpg';
+const img4 = '/assets/products/product_4.jpg';
+const img5 = '/assets/products/product_5.jpg';
+const img6 = '/assets/products/product_6.jpg';
 
 
 const data = [
@@ -46,17 +46,15 @@ const data = [
 ]
 
 const PopularProducts = () => (
-    <div>
-        <div className='container'>
-            <h2 className='title-1'>Популярные товары</h2>
+    <div className='container'>
+        <h2 className='title-1'>Популярные товары</h2>
 
-            <div>
-                {
-                    data.map(({ name }, i) =>
-                        <div key={i}>{name}</div>
-                    )
-                }
-            </div>
+        <div>
+            {
+                data.map(({ name }, i) =>
+                    <div key={i}>{name}</div>
+                )
+            }
         </div>
     </div>
 );

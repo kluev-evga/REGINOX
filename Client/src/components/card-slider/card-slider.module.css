@@ -4,15 +4,14 @@
 
 .wrapper:hover img,
 .wrapper:hover div {
-    transition: transform 0.5s cubic-bezier(.3,.7,.3,1) 0.1s;
-    z-index: 1;
+    transition: all 0.5s cubic-bezier(.3,.7,.3,1) 0.2s;
+    z-index: 2;
 }
 
 .wrapper:hover span {
     opacity: 1;
-    transition: none;
+    transition: opacity 0.2s steps(1, end);
 }
-
 
 .wrapper span {
     transition: opacity 0.2s steps(1, end);
@@ -47,9 +46,8 @@
     flex-direction: column;
     justify-content: flex-end;
 
-    transition: transform 0.2s ease-in;
-
     background: linear-gradient(0deg, #000b 10%, #0005 50%, transparent);
+    transition: transform 0.2s ease-in;
 }
 
 .wrapper img {

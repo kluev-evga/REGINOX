@@ -1,7 +1,12 @@
 const Article = ({ entities }) => (
     <div className='article'>
-        {entities.map(({ type, text }, i) =>
-            type === 'b' ? <b key={i}>{text}</b> : <p key={i}>{text}</p>)}
+        {entities.map(({ type, text, list }, i) =>
+            type === 'b'
+                ? <b key={i}>{text}</b>
+                : type === 'p'
+                    ? <p key={i}>{text}</p>
+                    : <ul key={i}>{list.map((text, i) => <li key={i}>{text}</li>)}</ul>)
+        }
     </div>
 );
 

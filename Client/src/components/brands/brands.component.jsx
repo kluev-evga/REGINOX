@@ -2,13 +2,16 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadBrands } from '../../redux/actions';
 import { brandsLoaded, brandsError, brands } from '../../redux/selectors';
+import { Redirect } from 'react-router-dom';
+import { ReactComponent as Spinner } from '../../assets/svg/spinner.svg';
 import styles from './brands.module.css';
 
 
 const Brands = ({ loadBrands, loaded, error, brands, withUrl }) => {
     useEffect(() => loadBrands(), [loadBrands]);
 
-    if (!loaded) return <div>Загрузка</div>
+    if (!loaded) return <Spinner width='400' className={styles.spinner} />
+    if (error) <Redirect to='/error' />
 
     return (
         <div className={styles.cards}>

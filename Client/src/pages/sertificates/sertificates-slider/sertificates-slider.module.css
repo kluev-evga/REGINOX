@@ -49,10 +49,13 @@
     color: #3333;
 }
 
-.spinner svg{
+.spinner {
+    background: linear-gradient(0deg, #0008, #0001);
+}
+
+.spinner svg {
     width: 100%;
     height: auto;
-    opacity: 0.3;
 }
 
 @media (min-width: 576px) {

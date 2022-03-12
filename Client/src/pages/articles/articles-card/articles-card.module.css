@@ -16,11 +16,11 @@
     }
 
     .wide p {
-        font-size: 32px;
+        font-size: 32px !important;
     }
 
     .wide time {
-        font-size: 22px;
-        line-height: 2;
+        font-size: 22px !important;
+        line-height: 2 !important;
     }
 }

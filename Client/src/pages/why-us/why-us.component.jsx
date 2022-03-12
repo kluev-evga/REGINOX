@@ -6,7 +6,7 @@ import { ReactComponent as ProfessionalyIcon } from '../../assets/svg/profession
 
 
 const WhyUs = () => (
-    <div>
+    < div >
         <div className="container">
             <div className="breadcrumbs">
                 <Link to='/home'>Главная</Link> / Почему мы
@@ -114,7 +114,7 @@ const WhyUs = () => (
                 </div>
             </div>
         </div>
-    </div>
+    </div >
 );
 
 export default WhyUs;

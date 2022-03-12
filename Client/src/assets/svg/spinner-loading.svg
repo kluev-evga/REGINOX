@@ -1,10 +1,10 @@
-<svg width='1250' height='900' viewBox='0 0 1250 900' xmlns="http://www.w3.org/2000/svg">
+<svg viewBox='0 0 1250 900' xmlns="http://www.w3.org/2000/svg">
   <text x="50%" y="50%" text-anchor="middle" dy="0.38em" fill="none" stroke-linecap="round" stroke-linejoin="round"
     stroke="#ffffff" stroke-width="4" font-size="320" font-family="arial">
     loading
-    <animate attributeName="stroke-dasharray" repeatCount="indefinite" calcMode="spline" dur="1.2s"
+    <animate attributeName="stroke-dasharray" repeatCount="indefinite" calcMode="spline" dur="1.5s"
       values="0 1500;1500 1500" keyTimes="0;1" keySplines="0.3 0 0.7 1"></animate>
-    <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1.2s" values="0;0;-100" keyTimes="0;1">
+    <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1.5s" values="0;0;-100" keyTimes="0;1">
     </animate>
   </text>
 </svg>

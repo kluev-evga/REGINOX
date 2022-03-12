@@ -7,22 +7,27 @@ import { useMediaQuery } from 'react-responsive';
 import ProductCard from '../product-card/product-card.component';
 import ButtonsTiles from '../buttons-tiles/buttons-tiles.component';
 
-import img1 from '../../../assets/products/product_1.webp';
-import img2 from '../../../assets/products/product_2.webp';
-import img3 from '../../../assets/products/product_3.webp';
-import img4 from '../../../assets/products/product_4.webp';
-import img5 from '../../../assets/products/product_5.webp';
-import img6 from '../../../assets/products/product_6.webp';
 import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron.svg';
 import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg';
 
 import styles from './products-section.module.css';
 
 
+const img1 = process.env.PUBLIC_URL + '/assets/products/product_1.webp';
+const img2 = process.env.PUBLIC_URL + '/assets/products/product_2.webp';
+const img3 = process.env.PUBLIC_URL + '/assets/products/product_3.webp';
+const img4 = process.env.PUBLIC_URL + '/assets/products/product_4.webp';
+const img5 = process.env.PUBLIC_URL + '/assets/products/product_5.webp';
+const img6 = process.env.PUBLIC_URL + '/assets/products/product_6.webp';
+
+
+// Категории - отдельно берутся из каталогов...
+// Но при нажатии - переход не происходит - идет фильтрация тоже
 
 const data = {
     filters: [
         {
+
             id: '',
             name: '',
             query: '',
@@ -31,11 +36,18 @@ const data = {
     products: [
         {
             id: '1',
+            promo: true,
+            new: 'true',
             name: 'Amsterdam 25 Dark chocolate',
             img: img1,
             alt: 'asdf',
-            price: '9950',
             url: 'amsterdam-25-dark-chocolate',
+            category: 'stainless-steel',
+            price: '9950',
+            size: '300',
+            shape: 'round',
+            color: 'white',
+            rating: '5',
         },
         {
             id: '2',
@@ -48,11 +60,27 @@ const data = {
         {
             id: '3',
             name: 'Amsterdam 25 Dark chocolate',
-            img: img2,
+            img: img3,
             alt: 'asdf',
             price: '9950',
             url: 'amsterdam-25-dark-chocolate',
-        }
+        },
+        {
+            id: '4',
+            name: 'Amsterdam 25 Dark chocolate',
+            img: img4,
+            alt: 'asdf',
+            price: '9950',
+            url: 'amsterdam-25-dark-chocolate',
+        },
+        {
+            id: '5',
+            name: 'Amsterdam 25 Dark chocolate',
+            img: img5,
+            alt: 'asdf',
+            price: '9950',
+            url: 'amsterdam-25-dark-chocolate',
+        },
     ],
     newProducts: [
         { id: '' }

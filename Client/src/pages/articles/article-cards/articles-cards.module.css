@@ -1,7 +1,6 @@
 .wrapper {
     margin-top: 20px;
     display: grid;
-    grid-auto-flow: dense;
     grid-template-columns: minmax(auto, 400px);
     justify-content: center;
     grid-gap: 20px;
@@ -19,8 +18,8 @@
 
 @media (min-width: 576px) {
     .wrapper {
+        padding: 0 10px;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 30px;
     }
 
     .loading:nth-of-type(1) {
@@ -33,17 +32,32 @@
 }
 
 @media (min-width: 768px) {
+    .wrapper {
+        padding: 0;
+        grid-gap: 30px;
+    }
+
     .loading {
         padding-bottom: 60px;
     }
 }
 
 @media (min-width: 1200px) {
+    .wrapper {
+        grid-gap: 40px;
+    }
+    
     .loading {
         padding-bottom: 0;
     }
 
     .loading:nth-of-type(1) svg {
         max-height: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        grid-gap: 50px;
     }
 }

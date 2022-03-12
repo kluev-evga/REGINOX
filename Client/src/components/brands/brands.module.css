@@ -28,6 +28,10 @@
     font-weight: 700;
 }
 
+.spinner {
+    margin: 0 auto;
+}
+
 @media (min-width: 576px) {
     .cards {
         grid-template-columns: repeat(2, 240px);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { sertificatesItemMatched, sertificatesLoaded } from '../../../redux/selectors';
 import cn from 'classnames'
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
-import { ReactComponent as Spinner } from '../../../assets/svg/spinner-comets.svg';
+import { ReactComponent as Spinner } from '../../../assets/svg/spinner-loading.svg';
 import styles from './sertificate-pop-up.module.css';
 
 
@@ -13,7 +13,7 @@ const SertificatePopUp = ({ sertificate, loaded }) => {
     const toggleZoom = useCallback(() => setZoom(!zoom), [zoom])
 
     if (loaded && !sertificate) return <Redirect to='/not-found' />
-    if (!loaded) return <div className={styles.wrapper}><Spinner /></div>
+    if (!loaded) return <div className={styles.wrapper}><Spinner width='300' /></div>
 
     const { img, alt, width, height } = sertificate;
 

@@ -7,7 +7,7 @@ import { ReactComponent as Spinner } from '../../../assets/svg/spinner.svg';
 import styles from './catalogs-cards.module.css';
 
 
-const CatalogsContent = ({ catalogs, loading }) => (
+const CatalogsCards = ({ catalogs, loading }) => (
     <div className='cards-wrapper'>
         {
             catalogs.map(({ url, id, ...rest }) => (
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => ({
     loading: catalogsLoading(state),
 });
 
-export default connect(mapStateToProps)(CatalogsContent);
+export default connect(mapStateToProps)(CatalogsCards);

@@ -1,11 +1,10 @@
-import { useMemo } from 'react';
 import { connect } from 'react-redux';
 import { setSertificatesSlide } from '../../../redux/actions';
 import { sertificatesSlide, selectSertificatesList, sertificatesLoaded } from '../../../redux/selectors';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useMediaQuery } from 'react-responsive';
 import SliderItem from '../slider-item/slider-item.component';
-import { ReactComponent as Spinner } from '../../../assets/svg/spinner-comets.svg';
+import { ReactComponent as Spinner } from '../../../assets/svg/spinner-loading.svg';
 import styles from './sertificates-slider.module.css';
 
 
@@ -14,9 +13,6 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide, loa
     const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
     const isTabletLg = useMediaQuery({ query: '(min-width: 992px)' });
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
-
-    const placeholder = useMemo(() => [...Array(3)].map((_, i) => i), []);
-    const list = (loaded) ? sertificatesList : placeholder;
 
     return (
         <div className={styles.slider_container}>
@@ -32,9 +28,9 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide, loa
                 onSlideChange={(swiper) => setSertificatesSlide(swiper.activeIndex)}
             >
                 {
-                    list.map(id => (
+                    sertificatesList.map(id => (
                         <SwiperSlide key={id} className={styles.swiper_slide}>
-                            {loaded ? <SliderItem id={id} /> : <div className={styles.spinner}> <Spinner /></div>}
+                            {loaded ? <SliderItem id={id} /> : <div className={styles.spinner}> <Spinner width='360' height='540' /></div>}
                         </SwiperSlide>
                     ))
                 }

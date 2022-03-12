@@ -33,7 +33,7 @@ const ArticlesCard = ({ article }) => {
 };
 
 const mapStateToProps = (state, props) => ({
-    article: articlesItem(state, props)
+    article: articlesItem(state, props),
 });
 
 export default connect(mapStateToProps)(ArticlesCard);
