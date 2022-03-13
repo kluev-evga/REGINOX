@@ -14,7 +14,11 @@ import {
     LOAD_BRANDS,
     LOAD_ARTICLES,
     SELECT_ARTICLES_PAGE,
-    LOAD_ARTICLE
+    LOAD_ARTICLE,
+    SELECT_PRODUCTS_ID,
+    LOAD_PRODUCTS,
+    LOAD_FILTERS,
+    FILTER_BY_CATEGORY
 } from './types';
 
 import {
@@ -27,7 +31,12 @@ import {
     articlesItemLoading,
     articlesItemLoaded,
     articleLoading,
-    articleLoaded
+    articleLoaded,
+    productsLoading,
+    productsLoaded,
+    filtersLoading,
+    filtersLoaded,
+    products,
 } from './selectors';
 
 
@@ -154,4 +163,59 @@ export const loadArticle = (match) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({ type: LOAD_ARTICLE + FAILURE, error });
     }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const selectProductsId = (id) => ({type: SELECT_PRODUCTS_ID, id});
+
+export const loadProducts = (id) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = productsLoading(state, id);
+    const loaded = productsLoaded(state, id);
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_PRODUCTS + REQUEST, id });
+
+    try {
+        const req = await fetch(`/products?id=${id}`);
+        const data = await req.json();
+        dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, id })
+    } catch (error) {
+        dispatch({ type: LOAD_PRODUCTS + FAILURE, error, id });
+    }
+};
+
+export const loadFilters = (id) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = filtersLoading(state, id);
+    const loaded = filtersLoaded(state, id);
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_FILTERS + REQUEST, id });
+
+    try {
+        const req = await fetch(`/filters?id=${id}`);
+        const data = await req.json();
+        dispatch({ type: LOAD_FILTERS + SUCCESS, data, id })
+    } catch (error) {
+        dispatch({ type: LOAD_FILTERS + FAILURE, error, id });
+    }
+};
+
+export const filterByCategory = () => async (dispatch, getState) => {
+    const state = getState();
+    const productsList = products(state);
+
+    dispatch({ type: FILTER_BY_CATEGORY });
 };

@@ -7,7 +7,7 @@ import styles from './product-card.module.css';
 const ProductCard = ({ tiles, img, alt, name, price }) => (
     <div className={cn(styles.card, { [styles.tiles]: tiles })}>
         <Link to='/' className={styles.link}>
-            <img src={img} alt={alt} className={styles.img} />
+            <img src={process.env.PUBLIC_URL + img} alt={alt} className={styles.img} />
             <div className={styles.card_text}>
                 <p className={styles.name}>{name}</p>
                 <p className={styles.price}>{price} руб</p>

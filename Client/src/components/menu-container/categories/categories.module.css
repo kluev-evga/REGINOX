@@ -1,11 +1,19 @@
 .categories {
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+    background: linear-gradient(180deg, #151515, #1a1a1a 95%, #222);
 }
 
-.categories a {
-    margin-right: 70px;
-    line-height: 1.5;
+.button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button svg {
+    margin-left: 5px;
+    flex-shrink: 0;
+    width: 15px;
+    color: #333;
 }

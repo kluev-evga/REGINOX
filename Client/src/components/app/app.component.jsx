@@ -68,7 +68,11 @@ function App({ loadCatalog, loading, error }) {
                 <Switch>
                     <Redirect exact from='/' to='/home' />
                     <Route exact path='/home' component={Home} />
-                    <Route path='/products' component={Products} />
+
+                    <Route exact path='/products'>
+                        <Redirect to='home' />
+                    </Route>
+                    <Route exact path='/products/:product/:category?' component={Products} />
 
                     <Route exact path='/why-us' component={WhyUsPage} />
                     <Route exact path='/partners' component={PartnersPage} />

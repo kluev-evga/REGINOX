@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { catalog, home, catalogs, sertificates, brands, articles, articlesItems } = require('./mock');
+const { filters, products } = require('./mock-products');
 const { reply, getById } = require('./utils');
 
 router.get('/catalog', (req, res, next) => {
@@ -44,6 +45,18 @@ router.get('/article', (req, res, next) => {
   const response = {...articlesItems[article], valid}
   reply(res, response);
 });
+
+router.get('/filters', (req, res, next) => {
+  const {id} = req.query;
+  reply(res, filters[id]);
+});
+
+router.get('/products', (req, res, next) => {
+  const {id} = req.query;
+  reply(res, products[id]);
+});
+
+
 
 // router.get('/products', (req, res, next) => {
 //   const { id } = req.query;

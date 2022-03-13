@@ -5,20 +5,29 @@ import MenuItem from '../menu-item/menu-item.component';
 import styles from './menu.module.css';
 
 
-const MenuBlock = ({ catalog }) => (
-    <div className={styles.menu}>
+const MenuBlock = ({ catalog }) => {
 
-        {catalog.map((item, index) => <MenuItem key={item.id} index={index} {...item} />)}
+    return (
+        <div className={styles.menu}>
 
-        <div className={styles.pages_links}>
-            <NavLink to='/promo' className={styles.link} activeClassName='link_active'>Акции</NavLink>
-            <NavLink to='/latest' className={styles.link} activeClassName='link_active'>Новинки</NavLink>
-            <NavLink to='/delivery' className={styles.link} activeClassName='link_active'>Доставка и оплата</NavLink>
-            <NavLink to='/contacts' className={styles.link} activeClassName='link_active'>Контакты</NavLink>
+            {catalog.map((item, index) =>
+                <MenuItem
+                    key={item.id}
+                    {...item}
+                    index={index}
+                    withCategories={!!item.categories} />
+            )}
+
+            <div className={styles.links_container}>
+                <NavLink to='/promo' activeClassName='menu-active-link'>Акции</NavLink>
+                <NavLink to='/latest' activeClassName='menu-active-link'>Новинки</NavLink>
+                <NavLink to='/delivery' activeClassName='menu-active-link'>Доставка и оплата</NavLink>
+                <NavLink to='/contacts' activeClassName='menu-active-link'>Контакты</NavLink>
+            </div>
+
         </div>
-
-    </div>
-);
+    );
+};
 
 const mapStateToProps = (state) => ({
     catalog: selectCatalog(state)

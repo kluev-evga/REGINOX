@@ -1,11 +1,20 @@
 import { createSelector } from 'reselect';
 
 
-
 export const catalog = (state) => state.catalog.entities;
 export const catalogLoading = (state) => state.catalog.loading;
 export const catalogError = (state) => state.catalog.error;
 export const catalogCategories = (state, props) => catalog(state)[props.id].categories;
+export const selectCatalogUrlToId = createSelector(
+    catalog,
+    (catalog) => Object.values(catalog)
+        .reduce((prev, {id, url}) => {
+            prev[url] = id;
+            return prev;
+        } ,{})
+);
+export const catalogId = (state, props) => selectCatalogUrlToId(state)[props.match.params.product];
+export const catalogName = (state, props) => catalog(state)[catalogId(state, props)].name;
 
 
 export const catalogs = (state) => state.catalogs.entities;
@@ -16,6 +25,27 @@ export const selectCatalogsSize = createSelector(
     catalogs,
     (catalogsObj) => Object.keys(catalogsObj).length
 );
+export const selectCatalog = createSelector(
+    catalog,
+    Object.values
+);
+export const selectCatalogs = createSelector(
+    catalogs,
+    Object.values
+);
+
+
+const home = (state) => state.home.entities;
+export const homeLoading = (state) => state.home.loading;
+export const homeError = (state) => state.home.error;
+export const selectSlider = createSelector(home, (home) => home.slider);
+export const selectAddressBar = createSelector(home, (home) => home.addressBar);
+
+
+export const menuMain = (state) => state.menu.mainMenu;
+export const menuFilters = (state) => state.menu.filtersMenu;
+export const menuIsOpen = (state) => state.menu.isOpen;
+
 
 export const sertificates = (state) => state.sertificates.entities;
 export const sertificatesLoading = (state) => state.sertificates.loading;
@@ -56,13 +86,6 @@ export const selectArticlesPages = createSelector(
 );
 
 
-
-
-
-
-
-
-
 export const article = (state, {match}) => state.article.entities[match.params.article];
 export const articleLoading = (state, {match}) => state.article.loading[match.params.article];
 export const articleLoaded = (state, {match}) => !!state.article.loaded[match.params.article];
@@ -71,115 +94,13 @@ export const articleError = (state, {match}) => state.article.error?.[match.para
 
 
 
-
-
-
-
-const home = (state) => state.home.entities;
-export const homeLoading = (state) => state.home.loading;
-export const homeError = (state) => state.home.error;
-export const selectSlider = createSelector(home, (home) => home.slider);
-export const selectAddressBar = createSelector(home, (home) => home.addressBar);
-
-export const selectCatalog = createSelector(
-    catalog,
-    Object.values
-);
-
-export const selectCatalogs = createSelector(
-    catalogs,
-    Object.values
-);
-
-export const menuMain = (state) => state.menu.mainMenu;
-export const menuIsOpen = (state) => state.menu.isOpen;
-
-
-// const restaurantsSelector = (state) => state.restaurants.entities;
-// const productsSelector = (state) => state.products.entities;
-// const orderSelector = (state) => state.order;
-// const reviewsSelector = (state) => state.reviews.entities;
-// const usersSelector = (state) => state.users.entities;
-
-// export const categorySelector = (state, id) => state.catalog[id].categories;
-
-
-// Object.values(catalog).map(
-//     ({id, imageUrl, alt, name, url}) => ({id,imageUrl, alt, name, url})
-// )
-
-
-
-
-
-
-// const catalogCategories = Object.keys(initial_state);
-
-
-// const test = catalogCategories.map(id => initial_state[id].categories);
-
-
-// export const restaurantsLoadingSelector = (state) => state.restaurants.loading;
-// export const restaurantsLoadedSelector = (state) => state.restaurants.loaded;
-
-// export const productsLoadingSelector = (state, props) =>
-//   state.products.loading[props.restId];
-// export const productsLoadedSelector = (state, props) =>
-//   state.products.loaded[props.restId];
-
-// export const reviewsLoadingSelector = (state, props) =>
-//   state.reviews.loading[props.restId];
-// export const reviewsLoadedSelector = (state, props) =>
-//   state.reviews.loaded[props.restId];
-
-// export const usersLoadingSelector = (state) => state.users.loading;
-// export const usersLoadedSelector = (state) => state.users.loaded;
-
-// export const restaurantsListSelector = createSelector(
-//   restaurantsSelector,
-//   Object.values
-// );
-
-// export const restaurantSelector = (state, { id }) =>
-//   restaurantsSelector(state)[id];
-// export const productSelector = (state, { id }) => productsSelector(state)[id];
-// export const reviewSelector = (state, { id }) => reviewsSelector(state)[id];
-// export const amountSelector = (state, { id }) => orderSelector(state)[id] || 0;
-// export const orderProductsSelector = createSelector(
-//   [productsSelector, orderSelector],
-//   (products, order) =>
-//     Object.keys(order)
-//       .filter((productId) => order[productId] > 0)
-//       .map((productId) => products[productId])
-//       .map((product) => ({
-//         product,
-//         amount: order[product.id],
-//         subtotal: order[product.id] * product.price,
-//       }))
-// );
-
-// export const totalSelector = createSelector(
-//   [orderProductsSelector],
-//   (orderProducts) =>
-//     orderProducts.reduce((acc, { subtotal }) => acc + subtotal, 0)
-// );
-
-// export const reviewWitUserSelector = createSelector(
-//   reviewSelector,
-//   usersSelector,
-//   (review, users) => ({
-//     ...review,
-//     user: users[review.userId]?.name,
-//   })
-// );
-
-// export const averageRatingSelector = createSelector(
-//   reviewsSelector,
-//   restaurantSelector,
-//   (reviews, restaurant) => {
-//     const ratings = restaurant.reviews.map((id) => reviews[id]?.rating || 0);
-//     return Math.round(
-//       ratings.reduce((acc, rating) => acc + rating, 0) / ratings.length
-//     );
-//   }
-// );
+export const productsId = (state) => state.products.productsId;
+export const filters = (state) => state.products.filters[productsId(state)];
+export const filtersIsLoaded = (state) => state.products.filtersLoaded[productsId(state)];
+export const productsLoading = (state, id) => state.products.productsLoading[id];
+export const productsLoaded = (state, id) => state.products.productsLoaded[id];
+export const productsIsLoaded = (state) => state.products.productsLoaded[productsId(state)];
+export const filtersLoading = (state, id) => state.products.filtersLoading[id];
+export const filtersLoaded = (state, id) => state.products.filtersLoaded[id];
+export const products = (state) => state.products.products[productsId(state)];
+export const productCategories = (state) => state.catalog.entities[productsId(state)];

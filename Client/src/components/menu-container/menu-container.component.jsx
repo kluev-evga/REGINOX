@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { closeMenu } from '../../redux/actions';
-import { menuMain, menuIsOpen } from '../../redux/selectors';
+import { menuMain, menuFilters, menuIsOpen } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 
 import Menu from 'react-burger-menu/lib/menus/reveal';
@@ -13,19 +13,13 @@ import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg';
 import './menu-container.css';
 
 
-const MenuContainer = ({ children, isOpen, mainMenu, closeMenu }) => {
+const MenuContainer = ({ children, isOpen, mainMenu, filtersMenu, closeMenu }) => {
     const isPhone = useMediaQuery({ query: '(max-width: 767.99px)' });
-    const isDesktop = useMediaQuery({ query: '(max-width: 1200px)' });
-
-    const menuIsOpen = useMemo(() => isOpen, [isOpen]);
-    useEffect(() => { menuIsOpen && closeMenu() }, [isPhone, closeMenu, menuIsOpen]);
-    useEffect(() => { menuIsOpen && closeMenu() }, [isDesktop, closeMenu, menuIsOpen]);
-
+    useEffect(() => { isOpen && closeMenu() }, [isPhone]);//eslint-disable-line
     const handleMenuStateChange = useCallback((state) => !state.isOpen && closeMenu(), [closeMenu]);
 
     return (
         <div id="outer-container">
-
             <Menu
                 outerContainerId={"outer-container"}
                 pageWrapId={"page-wrap"}
@@ -36,9 +30,7 @@ const MenuContainer = ({ children, isOpen, mainMenu, closeMenu }) => {
                 width={isPhone ? '100%' : '400px'}
                 right={mainMenu ? false : true}
             >
-
                 {mainMenu ? <MenuBlock /> : <Filters />}
-
             </Menu>
 
             {children}
@@ -48,6 +40,7 @@ const MenuContainer = ({ children, isOpen, mainMenu, closeMenu }) => {
 
 const mapStateToProps = (state) => ({
     mainMenu: menuMain(state),
+    filtersMenu: menuFilters(state),
     isOpen: menuIsOpen(state)
 });
 

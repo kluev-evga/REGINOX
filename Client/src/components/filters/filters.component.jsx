@@ -1,86 +1,43 @@
+import { useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { filters, filtersIsLoaded, productsIsLoaded } from '../../redux/selectors';
+import { filterByCategory } from '../../redux/actions';
+import Categories from './categories/categories.component';
+import FiltersSection from './filters-section/filters-section.component';
 import styles from './filters.module.css';
-import { ReactComponent as ChevronIcon } from '../../assets/svg/chevron.svg';
-import { ReactComponent as CheckIcon } from '../../assets/svg/check-mark.svg';
 
 
-const data = {
-    'links': {
-        id: '',
-        name: 'Категории',
-        filters: [
-            { name: 'Нержавеющая сталь', count: '10' },
-            { name: 'Гранит', count: '20' },
-            { name: 'PVD-покрытие (Miami)', count: '15' },
-            { name: 'Окрашенные (Regi Color)', count: '8' },
-        ]
-    },
-    'filters': [
-        {
-            'name': 'Материал',
-            'filters': ['нержавеющая сталь', 'гранит', 'PVD-покрытие (серия Miami)', 'окрашенные (серия Regi Color)', 'керамика']
-        },
-        {
-            'name': 'Метод установки',
-            'filters': ['врезной', 'подстольный', 'вровень со столешницей']
-        },
-        {
-            'name': 'Размер шкафа',
-            'filters': ['300мм', '400мм', '450мм', '500мм', '600мм', '700мм', '800мм', '900мм', '900мм х 900мм', '1000мм']
-        },
-        {
-            'name': 'Форма',
-            'filters': ['круглая', 'квадратная', 'прямоугольная', 'овальная', 'с крылом', 'двойная']
-        },
-        {
-            'name': 'Цвет',
-            'filters': ['полированная', 'матовая', 'брашированная', 'текстурированная', 'медь', 'золото', 'белый', 'бежевый', 'серый', 'черный', 'коричневый']
-        },
-    ]
-};
+const Filters = ({ filters, productsLoaded, filtersLoaded, filterByCategory }) => {
+    const match = useRouteMatch('/products/:product?/:category?');
 
-const Tab = ({ name }) => {
+    useEffect(() => {
+        if (productsLoaded && filtersLoaded) {
+            match.params.category !== 'all' && filterByCategory();
+        };
+    }, [productsLoaded, filtersLoaded]);// eslint-disable-line
+
+    if (!filtersLoaded && !productsLoaded) return <div>loading</div>
+    const categorySelected = match.params.category;
+
     return (
-        <button className={styles.tab}>
-            {name}
-            <ChevronIcon />
-        </button>
-    );
-}
+        <div className={styles.wrapper}>
 
-const CategoryButton = ({ name, count }) => (
-    <button className={styles.button}>
-        {name}
-        <span>{count}</span>
-    </button>
-);
+            {categorySelected && <Categories />}
 
-const FiltersButton = ({ name }) => {
-    return (
-        <button className={styles.button}>
-            <CheckIcon className={styles.checkmark} />
-            {name}
-        </button>
-    );
-};
-
-const FiltersBlock = ({ name, filters }) => {
-    return (
-        <div className={styles.container}>
-            <Tab name={name} />
-            {filters.map(name => <FiltersButton key={name} name={name} />)}
+            {filters.map(item =>
+                <FiltersSection key={item.name} {...item} />
+            )}
         </div>
     );
 };
 
-const Filters = () => (
-    <div className={styles.wrapper}>
-        <div className={styles.container}>
-            <Tab name={data.links.name} />
-            {data.links.filters.map(item => <CategoryButton key={item.name} {...item} />)}
-        </div>
+const mapStateToProps = state => ({
+    productsLoaded: productsIsLoaded(state),
+    filtersLoaded: filtersIsLoaded(state),
+    filters: filters(state),
+});
 
-        {data.filters.map(item => <FiltersBlock key={item.name} {...item} />)}
-    </div>
-);
+const mapDispatchToProps = ({ filterByCategory });
 
-export default Filters;
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

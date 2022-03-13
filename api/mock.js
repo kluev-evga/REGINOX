@@ -7,6 +7,11 @@ const normalizedCatalog = [
     url: 'sinks',
     categories: [
       {
+          id:'84ccbe24-f184-485e-b6c8-710d9dedecb2',
+          name: 'Все',
+          url: 'all'
+      },
+      {
           id:'51add9b1-f5e7-4763-ab9f-caf1b2830bf6',
           name: 'Нержавеющая сталь',
           url: 'sinks-stainless-steel'
@@ -30,6 +35,11 @@ const normalizedCatalog = [
     name: 'Смесители',
     url: 'taps',
     categories: [
+      {
+          id:'14b6bed1-6d57-4abf-b610-ea1b294b39c1',
+          name: 'Все',
+          url: 'all'
+      },
       {
           id:'bb5497f5-404c-4778-b837-2c8f80a99b5c',
           name: 'Встроенные',
@@ -59,6 +69,11 @@ const normalizedCatalog = [
     name: 'Плиты',
     url: 'ranges',
     categories: [
+      {
+          id:'b5ccedd3-618e-48a4-b267-d96fc6906656',
+          name: 'Все',
+          url: 'all'
+      },
       {
         id:'b272effb-72dc-49f4-8b57-7e669cc826f2',
         name: '1 конфорка',
@@ -99,6 +114,11 @@ const normalizedCatalog = [
     url: 'washstands',
     categories: [
       {
+          id:'e94fd86c-6f28-498d-a719-b0967c525739',
+          name: 'Все',
+          url: 'all'
+      },
+      {
         id:'0437b4c5-745d-4711-8580-12254a64fe40',
         name: 'Нержавеющая сталь',
         url: 'washstands-stainless-steel'
@@ -117,6 +137,11 @@ const normalizedCatalog = [
     name: 'Аксессуары',
     url: 'accessories',
     categories: [
+      {
+          id:'3b387eae-6410-4055-bae9-429fe5378569',
+          name: 'Все',
+          url: 'all'
+      },
       {
         id:'eb17d85e-afb5-4f91-966f-f51fb919f48f',
         name: 'Разделочные доски',
@@ -157,6 +182,11 @@ const normalizedCatalog = [
     url: 'storage-manhattan',
     categories: [
       {
+          id:'ddf703e8-cfdc-4d14-93c3-46c2820f86d5',
+          name: 'Все',
+          url: 'all'
+      },
+      {
         id:'27a15135-eb8b-43fd-b7c6-2f48ca8a29ce',
         name: 'Manhattan',
         url: 'storage-Manhattan'
@@ -180,6 +210,11 @@ const normalizedCatalog = [
     name: 'Другая продукция',
     url: 'muscellaneous',
     categories: [
+      {
+          id:'250c81ac-8c93-432b-8de0-2bd79f4ada65',
+          name: 'Все',
+          url: 'all'
+      },
       {
         id:'1a73e2d3-9251-4802-a1ba-43b7736cfc40',
         name: 'Мойки Rodi (Португалия)',
@@ -243,7 +278,7 @@ const normalizedCatalog = [
     alt: 'garbagedisposers',
     name: 'Измельчители Bone Crusher',
     url: 'garbage-disposers',
-    categories: [],
+    categories: false,
   },
   {
     id: '2889d9d0-3a37-4593-9415-434ee08649d2',
@@ -251,7 +286,7 @@ const normalizedCatalog = [
     alt: 'storage',
     name: 'Дозаторы',
     url: 'soap-dispensers',
-    categories: [],
+    categories: false,
   },
 ];
 
@@ -1019,9 +1054,6 @@ const normalizedArticles = [
   url: 'history-plumbing',
 },
 ];
-
-
-
 
 const articlesItems = {
   'ontario' : {
