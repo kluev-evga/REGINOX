@@ -1,22 +1,19 @@
 import { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { closeMenu } from '../../redux/actions';
-import { menuMain, menuFilters, menuIsOpen } from '../../redux/selectors';
+import { isMainMenu, menuIsOpen } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
-
 import Menu from 'react-burger-menu/lib/menus/reveal';
-
-import MenuBlock from './menu/menu.component';
+import MainMenu from '../main-menu/main-menu.component';
 import Filters from '../filters/filters.component';
-
 import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg';
 import './menu-container.css';
 
 
-const MenuContainer = ({ children, isOpen, mainMenu, filtersMenu, closeMenu }) => {
+const MenuContainer = ({ children, isOpen, isMainMenu, closeMenu }) => {
     const isPhone = useMediaQuery({ query: '(max-width: 767.99px)' });
     useEffect(() => { isOpen && closeMenu() }, [isPhone]);//eslint-disable-line
-    const handleMenuStateChange = useCallback((state) => !state.isOpen && closeMenu(), [closeMenu]);
+    const handleMenuStateChange = useCallback((state) => !state.isOpen && isOpen && closeMenu(), [isOpen]);//eslint-disable-line
 
     return (
         <div id="outer-container">
@@ -28,19 +25,21 @@ const MenuContainer = ({ children, isOpen, mainMenu, filtersMenu, closeMenu }) =
                 customBurgerIcon={false}
                 customCrossIcon={<div><CrossIcon />Закрыть</div>}
                 width={isPhone ? '100%' : '400px'}
-                right={mainMenu ? false : true}
+                right={isMainMenu ? false : true}
             >
-                {mainMenu ? <MenuBlock /> : <Filters />}
+                {isMainMenu ? <MainMenu /> : <Filters />}
             </Menu>
 
             {children}
+
         </div>
     );
 };
 
+
+
 const mapStateToProps = (state) => ({
-    mainMenu: menuMain(state),
-    filtersMenu: menuFilters(state),
+    isMainMenu: isMainMenu(state),
     isOpen: menuIsOpen(state)
 });
 

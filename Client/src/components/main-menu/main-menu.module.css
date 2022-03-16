@@ -7,8 +7,17 @@
     margin: 40px 0 0;
 }
 
+.link {
+    margin: 5px 0 0 !important;
+}
+
 @media (min-width: 340px) {
     .links_container a {
+        font-weight: 700;
+        font-size: 17px;
+    }
+
+    .link {
         font-weight: 700;
         font-size: 17px;
     }

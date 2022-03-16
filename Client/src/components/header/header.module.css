@@ -36,6 +36,10 @@
     justify-content: center;
 }
 
+.logo a:hover {
+    color: unset !important;
+}
+
 .burger {
     order: 1;
 }
@@ -47,7 +51,7 @@
 }
 
 .header button:hover,
-.row_top a:hover {
+.header a:hover {
     color: var(--gray-med);
 }
 

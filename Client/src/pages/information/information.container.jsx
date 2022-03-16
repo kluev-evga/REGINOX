@@ -5,8 +5,8 @@ import Partners from './partners/partners.component';
 import scrollRestoration from '../../hoc/scroll-restoration';
 
 
-const BuyersPage = scrollRestoration(Buyers);
-const PartnersPage = scrollRestoration(Partners);
+const BuyersPage = scrollRestoration(Buyers, true);
+const PartnersPage = scrollRestoration(Partners, true);
 
 const InformationContainer = () => (
     <Switch>

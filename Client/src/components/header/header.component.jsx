@@ -41,7 +41,8 @@ const Header = ({ openMainMenu, isHome }) => (
                     <button aria-label='корзина'><Cart /></button>
                 </div>
 
-                <NavLinks />
+                <NavLinks key={isHome} />
+
             </div>
         </div>
     </div>

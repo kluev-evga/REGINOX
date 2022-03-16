@@ -1,10 +1,13 @@
 import { createSelector } from 'reselect';
 
 
-export const catalog = (state) => state.catalog.entities;
 export const catalogLoading = (state) => state.catalog.loading;
 export const catalogError = (state) => state.catalog.error;
-export const catalogCategories = (state, props) => catalog(state)[props.id].categories;
+export const catalogLinks = (state) => state.catalog.links;
+export const catalogCategories = (state) => state.catalog.categories;
+
+//////////////////////////
+export const catalog = (state) => state.catalog.entities;
 export const selectCatalogUrlToId = createSelector(
     catalog,
     (catalog) => Object.values(catalog)
@@ -15,6 +18,13 @@ export const selectCatalogUrlToId = createSelector(
 );
 export const catalogId = (state, props) => selectCatalogUrlToId(state)[props.match.params.product];
 export const catalogName = (state, props) => catalog(state)[catalogId(state, props)].name;
+export const selectCatalog = createSelector(
+    catalog,
+    Object.values
+);
+//////////////////////////
+
+
 
 
 export const catalogs = (state) => state.catalogs.entities;
@@ -24,10 +34,6 @@ export const catalogsTotal = (state) => state.catalogs.total;
 export const selectCatalogsSize = createSelector(
     catalogs,
     (catalogsObj) => Object.keys(catalogsObj).length
-);
-export const selectCatalog = createSelector(
-    catalog,
-    Object.values
 );
 export const selectCatalogs = createSelector(
     catalogs,
@@ -42,8 +48,7 @@ export const selectSlider = createSelector(home, (home) => home.slider);
 export const selectAddressBar = createSelector(home, (home) => home.addressBar);
 
 
-export const menuMain = (state) => state.menu.mainMenu;
-export const menuFilters = (state) => state.menu.filtersMenu;
+export const isMainMenu = (state) => state.menu.isMainMenu;
 export const menuIsOpen = (state) => state.menu.isOpen;
 
 
@@ -103,4 +108,4 @@ export const productsIsLoaded = (state) => state.products.productsLoaded[product
 export const filtersLoading = (state, id) => state.products.filtersLoading[id];
 export const filtersLoaded = (state, id) => state.products.filtersLoaded[id];
 export const products = (state) => state.products.products[productsId(state)];
-export const productCategories = (state) => state.catalog.entities[productsId(state)];
+export const productCategories = (state) => state.catalog.entities[productsId(state)].categories;

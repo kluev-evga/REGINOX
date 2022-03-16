@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-const srollRestoration = (WrappedComponent) => (props) => {
-    useEffect(() => {window.scrollTo(0, 0)}, []);
+const srollRestoration = (WrappedComponent, noScroll) => (props) => {
+    useEffect(() => {window.scrollTo({top: 193, behavior: noScroll ? 'auto':'smooth'})}, []);
     return <WrappedComponent {...props} />
 };
 

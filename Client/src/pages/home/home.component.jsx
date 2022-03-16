@@ -16,7 +16,6 @@ import styles from './home.module.css';
 
 const Home = ({ loadHome, loading, error }) => {
     useEffect(() => { loadHome() }, [loadHome]);
-
     if (loading) return <div className={styles.spinner}><Spinner width='200' /></div>;
     if (error) <Redirect to='/error' />
 

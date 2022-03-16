@@ -4,34 +4,54 @@
 }
 
 .sub_menu button {
-    padding: 15px;
+    padding: 8px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    line-height: 24px;
+
+    position: relative;
+    z-index: 1;
 }
 
 .sub_menu_container {
-    width: 100%;
-    padding: 20px 15px 5px;
     display: none;
-    flex-direction: column;
-
+    padding-top: 51px;
+    width: calc(100% + 20px);
     position: absolute;
-    top: 100%;
-    left: 0;
-
-    box-shadow: var(--shadow);
+    top: -10px;
+    left: -10px;
     background-color: var(--white);
 }
 
+.sub_menu_container >div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 90px 15px 10px;
+
+    box-shadow: -6px 6px 6px 0px #00000014;
+    position: relative;
+}
+
+.sub_menu_container >div::before {
+    box-shadow: 6px 0px 6px 0px #00000014;
+    position: absolute;
+    content: '';
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 .sub_menu_container a {
-    padding-bottom: 8px;
+    padding: 8px;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .open .sub_menu_container {
-    display: flex;
+    display: block;
 }
 
 .open.reversed button,

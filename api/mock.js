@@ -1,294 +1,129 @@
-const normalizedCatalog = [
-  {
-    id: '0015bfc8-c63a-45f7-ad67-4d16dc608bf9',
-    img: '/assets/catalog/sinks.webp',
-    alt: 'sinks',
-    name: 'Мойки',
-    url: 'sinks',
-    categories: [
-      {
-          id:'84ccbe24-f184-485e-b6c8-710d9dedecb2',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-          id:'51add9b1-f5e7-4763-ab9f-caf1b2830bf6',
-          name: 'Нержавеющая сталь',
-          url: 'sinks-stainless-steel'
-      },
-      {
-          id: '66516e54-1ddd-451f-91d7-5b176e6525cd',
-          name: 'Гранит и керамика',
-          url: 'sinks-porcelain'
-      },
-      {
-          id: '195a7a5b-fa72-4ac0-a9f2-af6ab3faf752',
-          name: 'PVD покрытие',
-          url: 'sinks-coated'
-      }
+const normalizedCatalog = {
+    links: [
+        {
+            title: 'Мойки',
+            img: '/assets/catalog/sinks.webp',
+            alt: 'sinks',
+            url: 'sinks',
+            id: '0015bfc8-c63a-45f7-ad67-4d16dc608bf9',
+        },
+        {
+            title: 'Смесители',
+            img: '/assets/catalog/taps.webp',
+            alt: 'taps',
+            url: 'taps',
+            id: '4e24f752-0707-4d03-9fb7-b736926e6220',
+        },
+        {
+            title: 'Плиты',
+            img: '/assets/catalog/range.webp',
+            alt: 'range',
+            url: 'ranges',
+            id: 'd70990e4-4854-4aee-85ff-77e966658bfd',
+        },
+        {
+            title: 'Умывальники',
+            img: '/assets/catalog/washstands.webp',
+            alt: 'washstands',
+            url: 'washstands',
+            id: '732d59a1-5f70-4e20-8abf-c16ee4eb602f',
+        },
+        {
+            title: 'Аксессуары',
+            img: '/assets/catalog/accessories.webp',
+            alt: 'accessories',
+            url: 'accessories',
+            id: 'f751f8eb-94d4-4c37-a37c-62aba74cee42',
+        },
+        {
+            title: 'Системы хранения Manhattan',
+            img: '/assets/catalog/countertops.webp',
+            alt: 'storage Manhattan',
+            url: 'storage-manhattan',
+            id: 'c5ce17f1-0488-487c-8200-6fec72cc4caa',
+        },
+        {
+            title: 'Другая продукция',
+            img: '/assets/catalog/muscellaneous.webp',
+            alt: 'muscellaneous',
+            url: 'muscellaneous',
+            id: '5c9bca2d-13a8-4df3-91a2-cb51b8f36268',
+        },
+        {
+            title: 'Измельчители Bone Crusher',
+            img: '/assets/catalog/garbagedisposers.webp',
+            alt: 'garbagedisposers',
+            url: 'garbage-disposers',
+            id: '0f20d5f3-bcf7-447b-88af-97899e6815a7',
+        },
+        {
+            title: 'Дозаторы',
+            img: '/assets/catalog/storage.webp',
+            alt: 'storage',
+            url: 'soap-dispensers',
+            categories: false,
+            id: '2889d9d0-3a37-4593-9415-434ee08649d2',
+        },
     ],
-  },
-  {
-    id: '4e24f752-0707-4d03-9fb7-b736926e6220',
-    img: '/assets/catalog/taps.webp',
-    alt: 'taps',
-    name: 'Смесители',
-    url: 'taps',
-    categories: [
-      {
-          id:'14b6bed1-6d57-4abf-b610-ea1b294b39c1',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-          id:'bb5497f5-404c-4778-b837-2c8f80a99b5c',
-          name: 'Встроенные',
-          url: 'taps-insink'
-      },
-      {
-          id:'c70f9b05-2d3e-488d-a4c2-551a00f49034',
-          name: 'Сенсорные',
-          url: 'taps-sensor'
-      },
-      {
-          id:'2514ddec-9325-4e55-97e4-bb87ae7b145f',
-          name: 'Ванны и душевые кабины',
-          url: 'taps-shower'
-      },
-      {
-          id:'889cb640-e39d-446d-85fc-bb940d2fda75',
-          name: 'Биде и гигиенический душ',
-          url: 'taps-sanitary'
-      },
-    ],
-  },
-  {
-    id: 'd70990e4-4854-4aee-85ff-77e966658bfd',
-    img: '/assets/catalog/range.webp',
-    alt: 'range',
-    name: 'Плиты',
-    url: 'ranges',
-    categories: [
-      {
-          id:'b5ccedd3-618e-48a4-b267-d96fc6906656',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-        id:'b272effb-72dc-49f4-8b57-7e669cc826f2',
-        name: '1 конфорка',
-        url: 'range-single'
-      },
-      {
-        id:'75a0d253-858e-441e-95fe-9a239dea2b5c',
-        name: '2 конфорки',
-        url: 'range-double'
-      },
-      {
-        id:'b24571d9-392c-4c4b-b8fc-e29792be7931',
-        name: '3 конфорки',
-        url: 'range-triple'
-      },
-      {
-        id:'f728d8ce-39d5-4875-8528-b274b282f43b',
-        name: '4 конфорки',
-        url: 'range-4-way'
-      },
-      {
-        id:'a54b08ae-2346-4cfe-b572-2f501b92fbb6',
-        name: '5 конфорок',
-        url: 'range-5-way'
-      },
-      {
-        id:'7a376198-a3d6-4c34-8ba6-505346e6c04c',
-        name: '6 конфорок',
-        url: 'range-6-way'
-      },
-    ],
-  },
-  {
-    id: '732d59a1-5f70-4e20-8abf-c16ee4eb602f',
-    img: '/assets/catalog/washstands.webp',
-    alt: 'washstands',
-    name: 'Умывальники',
-    url: 'washstands',
-    categories: [
-      {
-          id:'e94fd86c-6f28-498d-a719-b0967c525739',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-        id:'0437b4c5-745d-4711-8580-12254a64fe40',
-        name: 'Нержавеющая сталь',
-        url: 'washstands-stainless-steel'
-      },
-      {
-        id:'2ef54586-9e08-4a76-8a7a-fae8924c2c43',
-        name: 'Окрашенные (Regi Color)',
-        url: 'washstands-porcelain'
-      },
-    ],
-  },
-  {
-    id: 'f751f8eb-94d4-4c37-a37c-62aba74cee42',
-    img: '/assets/catalog/accessories.webp',
-    alt: 'accessories',
-    name: 'Аксессуары',
-    url: 'accessories',
-    categories: [
-      {
-          id:'3b387eae-6410-4055-bae9-429fe5378569',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-        id:'eb17d85e-afb5-4f91-966f-f51fb919f48f',
-        name: 'Разделочные доски',
-        url: 'accessories-boards'
-      },
-      {
-        id:'5b315c5f-9968-4da9-878d-ad6726075d08',
-        name: 'Корзины',
-        url: 'accessories-baskets'
-      },
-      {
-        id:'a043950c-ed1d-4cba-9e3a-90bbd8b1f198',
-        name: 'Коландеры',
-        url: 'accessories-dishwasher-bins'
-      },
-      {
-        id:'50ae5416-4328-40e3-9c9c-287ecc529653',
-        name: 'Решетки на дно/поддоны',
-        url: 'accessories-pans'
-      },
-      {
-        id:'1e8e85f6-3537-4bd0-95fe-4cf6910efe74',
-        name: 'Адаптеры и комплектующие',
-        url: 'accessories-adapters'
-      },
-      {
-        id:'f32fb974-4452-420a-bd9b-f981e8ec2737',
-        name: 'Сифоны',
-        url: 'accessories-siphons'
-      },
-    ],
-  },
-  {
-    id: 'c5ce17f1-0488-487c-8200-6fec72cc4caa',
-    img: '/assets/catalog/countertops.webp',
-    alt: 'storage Manhattan',
-    name: 'Системы хранения Manhattan',
-    url: 'storage-manhattan',
-    categories: [
-      {
-          id:'ddf703e8-cfdc-4d14-93c3-46c2820f86d5',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-        id:'27a15135-eb8b-43fd-b7c6-2f48ca8a29ce',
-        name: 'Manhattan',
-        url: 'storage-Manhattan'
-      },
-      {
-        id:'818c9ecf-b01a-4bab-a05d-39efef92a940',
-        name: 'Manhattan Slim',
-        url: 'storage-manhattan-slim'
-      },
-      {
-        id:'f61a40ff-b1ec-422b-9dc7-298aa07ad142',
-        name: 'Комплекты Manhattan',
-        url: 'storage-manhattan-kits'
-      },
-    ],
-  },
-  {
-    id: '5c9bca2d-13a8-4df3-91a2-cb51b8f36268',
-    img: '/assets/catalog/muscellaneous.webp',
-    alt: 'muscellaneous',
-    name: 'Другая продукция',
-    url: 'muscellaneous',
-    categories: [
-      {
-          id:'250c81ac-8c93-432b-8de0-2bd79f4ada65',
-          name: 'Все',
-          url: 'all'
-      },
-      {
-        id:'1a73e2d3-9251-4802-a1ba-43b7736cfc40',
-        name: 'Мойки Rodi (Португалия)',
-        url: 'muscellaneous-rodi'
-      },
-      {
-        id:'5c9ddcc9-a8a4-4636-b3dc-d0dad836ac5c',
-        name: 'Мойки Whinstone (Россия)',
-        url: 'muscellaneous-whinstone'
-      },
-      {
-        id:'cb991988-a9c1-4868-8728-8cfe83e74c3f',
-        name: 'Мойки Rerih (Италия)',
-        url: 'muscellaneous-rerih'
-      },
-      {
-        id:'1d5eee99-411b-422c-8fc6-a0b0b3c68ffe',
-        name: 'Мойки Status (Италия)',
-        url: 'muscellaneous-status'
-      },
-      {
-        id:'eac17246-d98c-4039-bfbf-779b7f82d9ca',
-        name: 'Смесители Armando Vicario (Италия)',
-        url: 'muscellaneous-armando-vicario'
-      },
-      {
-        id:'d6e0c4b1-ee3f-43fd-a3af-a285e7d60c45',
-        name: 'Смесители Webert (Италия)',
-        url: 'muscellaneous-tap-webert'
-      },
-      {
-        id:'b9dd3887-bf69-479e-aefa-2dd7e23521a6',
-        name: 'Смесители Effepi (Италия)',
-        url: 'muscellaneous-effepi'
-      },
-      {
-        id:'a91bf15b-732a-444e-bce8-33a385da4f11',
-        name: 'Умывальники Webert (Италия)',
-        url: 'muscellaneous-washstands-webert'
-      },
-      {
-        id:'5aab6d2e-752d-4491-aaad-79afa1c4c5a9',
-        name: 'Аксессуары Webert (Италия)',
-        url: 'muscellaneous-accessories-webert'
-      },
-      {
-        id:'a042edd2-59b5-4224-9839-32c0cc6eb51a',
-        name: 'Аксессуары Glionna Bagno (Италия)',
-        url: 'muscellaneous-glionna-bagno'
-      },
-      {
-        id:'8465f857-3c4f-4991-96f8-ff4080610f6f',
-        name: 'Аквафор (Россия)',
-        url: 'muscellaneous-aquafor'
-      },
-    ],
-  },
-  {
-    id: '0f20d5f3-bcf7-447b-88af-97899e6815a7',
-    img: '/assets/catalog/garbagedisposers.webp',
-    alt: 'garbagedisposers',
-    name: 'Измельчители Bone Crusher',
-    url: 'garbage-disposers',
-    categories: false,
-  },
-  {
-    id: '2889d9d0-3a37-4593-9415-434ee08649d2',
-    img: '/assets/catalog/storage.webp',
-    alt: 'storage',
-    name: 'Дозаторы',
-    url: 'soap-dispensers',
-    categories: false,
-  },
-];
+    categories: {
+        '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: 'Нержавеющая сталь', categoryUrl: 'stainless-steel'},
+            {title: 'Гранит и керамика', categoryUrl: 'porcelain'},
+            {title: 'PVD покрытие', categoryUrl: 'coated'}
+        ],
+        '4e24f752-0707-4d03-9fb7-b736926e6220': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: 'Встроенные', categoryUrl: 'taps-insink'},
+            {title: 'Сенсорные', categoryUrl: 'taps-sensor'},
+            {title: 'Ванны и душевые кабины', categoryUrl: 'taps-shower'},
+            {title: 'Биде и гигиенический душ', categoryUrl: 'taps-sanitary'},
+        ],
+        'd70990e4-4854-4aee-85ff-77e966658bfd': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: '1 конфорка', categoryUrl: 'range-single'},
+            {title: '2 конфорки', categoryUrl: 'range-double'},
+            {title: '3 конфорки', categoryUrl: 'range-triple'},
+            {title: '4 конфорки', categoryUrl: 'range-4-way'},
+            {title: '5 конфорок', categoryUrl: 'range-5-way'},
+            {title: '6 конфорок', categoryUrl: 'range-6-way'},
+        ],
+        '732d59a1-5f70-4e20-8abf-c16ee4eb602f': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: 'Нержавеющая сталь', categoryUrl: 'washstands-stainless-steel'},
+            {title: 'Окрашенные (Regi Color)', categoryUrl: 'washstands-porcelain'},
+        ],
+        'f751f8eb-94d4-4c37-a37c-62aba74cee42': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: 'Разделочные доски', categoryUrl: 'accessories-boards'},
+            {title: 'Корзины', categoryUrl: 'accessories-baskets'},
+            {title: 'Коландеры', categoryUrl: 'accessories-dishwasher-bins'},
+            {title: 'Решетки на дно/поддоны', categoryUrl: 'accessories-pans'},
+            {title: 'Адаптеры и комплектующие', categoryUrl: 'accessories-adapters'},
+            {title: 'Сифоны', categoryUrl: 'accessories-siphons'},
+        ],
+        'c5ce17f1-0488-487c-8200-6fec72cc4caa': [
+            {title: 'Все', categoryUrl: 'all'            },
+            {title: 'Manhattan', categoryUrl: 'storage-Manhattan'},
+            {title: 'Manhattan Slim', categoryUrl: 'storage-manhattan-slim'},
+            {title: 'Комплекты Manhattan', categoryUrl: 'storage-manhattan-kits'},
+        ],
+        '5c9bca2d-13a8-4df3-91a2-cb51b8f36268': [
+            {title: 'Все', categoryUrl: 'all'},
+            {title: 'Мойки Rodi (Португалия)', categoryUrl: 'muscellaneous-rodi'},
+            {title: 'Мойки Whinstone (Россия)', categoryUrl: 'muscellaneous-whinstone'},
+            {title: 'Мойки Rerih (Италия)', categoryUrl: 'muscellaneous-rerih'},
+            {title: 'Мойки Status (Италия)', categoryUrl: 'muscellaneous-status'},
+            {title: 'Смесители Armando Vicario (Италия)', categoryUrl: 'muscellaneous-armando-vicario'},
+            {title: 'Смесители Webert (Италия)', categoryUrl: 'muscellaneous-tap-webert'},
+            {title: 'Смесители Effepi (Италия)', categoryUrl: 'muscellaneous-effepi'},
+            {title: 'Умывальники Webert (Италия)', categoryUrl: 'muscellaneous-washstands-webert'},
+            {title: 'Аксессуары Webert (Италия)', categoryUrl: 'muscellaneous-accessories-webert'},
+            {title: 'Аксессуары Glionna Bagno (Италия)', categoryUrl: 'muscellaneous-glionna-bagno'},
+            {title: 'Аквафор (Россия)', categoryUrl: 'muscellaneous-aquafor'},
+        ],
+    },
+};
 
 const normalizedHome = {
   slider: [

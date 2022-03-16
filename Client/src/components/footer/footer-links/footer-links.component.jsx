@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectCatalog } from '../../redux/selectors';
+import { catalogLinks } from '../../../redux/selectors';
 import styles from './footer-links.module.css';
 
 
-const FooterLinks = ({ catalog }) => (
+const FooterLinks = ({ catalogLinks }) => (
     <div className="container">
         <div className={styles.wrapper}>
 
@@ -23,14 +23,14 @@ const FooterLinks = ({ catalog }) => (
             <div className={styles.row}>
                 <p>Каталог</p>
                 {
-                    catalog.map(({ id, name, url }) => (
+                    catalogLinks.map(({ id, title, url }) => (
                         <NavLink
-                            to={`/products/${url}`}
+                            to={`/products/${url}/all`}
                             key={id}
                             className='link_secondary'
                             activeClassName='link_active'
                         >
-                            {name}
+                            {title}
                         </NavLink>
                     ))
                 }
@@ -55,7 +55,7 @@ const FooterLinks = ({ catalog }) => (
 );
 
 const mapStateToProps = (state) => ({
-    catalog: selectCatalog(state)
-})
+    catalogLinks: catalogLinks(state)
+});
 
 export default connect(mapStateToProps)(FooterLinks);

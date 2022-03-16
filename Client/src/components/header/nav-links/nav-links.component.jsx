@@ -1,25 +1,25 @@
 import { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectCatalog } from '../../../redux/selectors';
+import { catalogLinks } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import DropDown from '../drop-down/drop-down.component';
 import styles from './nav-links.module.css';
 
 
-const NavLinks = ({ catalog }) => {
+const NavLinks = ({ catalogLinks }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
 
     const navLinks = useMemo(
-        () => catalog.slice(0, 6)
-            .map(({ id, name, url }) => (
+        () => catalogLinks.slice(0, 6)
+            .map(({ id, title, url }) => (
                 {
                     id,
-                    name: name.split(' ').slice(-1).join(),
+                    title: title.split(' ').slice(-1).join(),
                     url
                 }
             ))
-        , [catalog]
+        , [catalogLinks]
     );
 
     if (!isDesktop) return null;
@@ -27,14 +27,14 @@ const NavLinks = ({ catalog }) => {
     return (
         <nav className={styles.nav}>
             {
-                navLinks.map(({ id, name, url }) => (
+                navLinks.map(({ id, title, url }) => (
                     <NavLink
-                        to={`/products/${url}`}
+                        to={`/products/${url}/all`}
                         key={id}
                         className={styles.link}
                         activeClassName='link_active'
                     >
-                        {name}
+                        {title}
                     </NavLink>
                 ))
             }
@@ -44,10 +44,7 @@ const NavLinks = ({ catalog }) => {
 };
 
 const mapStateToProps = (state) => ({
-    catalog: selectCatalog(state)
+    catalogLinks: catalogLinks(state)
 });
 
 export default connect(mapStateToProps)(NavLinks);
-
-
-

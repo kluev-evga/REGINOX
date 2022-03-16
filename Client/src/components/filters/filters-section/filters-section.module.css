@@ -1,33 +1,3 @@
 .container {
     margin-bottom: 40px;
 }
-
-.title {
-    margin-bottom: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    font-size: 24px;
-    line-height: 1.5;
-    font-weight: 600;
-}
-
-.button {
-    margin-bottom: 10px;
-    display: block;
-    text-align: left;
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.button:hover {
-    color: var(--gray-med);
-}
-
-.checkmark {
-    display: inline-block;
-    vertical-align: middle;
-    color: transparent;
-}

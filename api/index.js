@@ -51,9 +51,20 @@ router.get('/filters', (req, res, next) => {
   reply(res, filters[id]);
 });
 
+// router.get('/products/:kind/:category?', (req, res, next) => {
+//   console.log(req.params.kind);
+//   console.log(req.params.category);
+//   const {id} = req.query;
+//   reply(res, products[id]);
+// });
+
 router.get('/products', (req, res, next) => {
   const {id} = req.query;
-  reply(res, products[id]);
+  if (!products[id]) {
+    res.status(404).send();
+  } else {
+    reply(res, products[id]);
+  }
 });
 
 

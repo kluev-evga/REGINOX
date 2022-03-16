@@ -2,27 +2,52 @@ const normalizedFilters = {
     '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
         {
             'name': 'Материал',
-            'filters': ['нержавеющая сталь', 'гранит', 'PVD-покрытие (серия Miami)', 'окрашенные (серия Regi Color)', 'керамика']
+            'searchGroup': 'material',
+            'filters': [
+                {name: 'нержавеющая сталь', count: '20', search:'stainless-steel'},
+                {name: 'гранит', count: '20', search:'granite'},
+                {name: 'PVD-покрытие (серия Miami)', count: '20',  search:'pvd'},
+                {name: 'окрашенные (серия Regi Color)', count: '20', search: 'painted'},
+                {name: 'керамика', count: '20', search: 'porcelain'}
+                ]
         },
         {
             'name': 'Метод установки',
-            'filters': ['врезной', 'подстольный', 'вровень со столешницей']
-        },
-        {
-            'name': 'Размер шкафа',
-            'filters': ['300мм', '400мм', '450мм', '500мм', '600мм', '700мм', '800мм', '900мм', '900мм х 900мм', '1000мм']
+            'searchGroup': 'instalation',
+            'filters': [
+                {name: 'врезной', count: '20', search:'integrated'},
+                {name: 'подстольный', count: '20', search:'under'},
+                {name: 'вровень со столешницей', count: '20',  search:'flat'},
+                ]
         },
         {
             'name': 'Форма',
-            'filters': ['круглая', 'квадратная', 'прямоугольная', 'овальная', 'с крылом', 'двойная']
+            'searchGroup': 'shape',
+            'filters': [
+                {name: 'круглая', count: '20', search:'round'},
+                {name: 'квадратная', count: '20', search:'square'},
+                {name: 'прямоугольная', count: '20', search:'rectangular'},
+                {name: 'овальная', count: '20', search:'oval'},
+                {name: 'двойная', count: '20', search:'double'},
+            ]
         },
         {
             'name': 'Цвет',
-            'filters': ['полированная', 'матовая', 'брашированная', 'текстурированная', 'медь', 'золото', 'белый', 'бежевый', 'серый', 'черный', 'коричневый']
+            'searchGroup': 'color',
+            'filters': [
+                {name: 'полированная', count: '20', search:'poished'},
+                {name: 'матовая', count: '20', search:'matte'},
+                {name: 'текстурированная', count: '20', search:'textured'},
+                {name: 'медь', count: '20', search:'cupper'},
+                {name: 'золото', count: '20', search:'gold'},
+                {name: 'белый', count: '20', search:'white'},
+                {name: 'бежевый', count: '20', search:'beige'},
+                {name: 'серый', count: '20', search:'gray'},
+                {name: 'черный', count: '20', search:'black'},
+                {name: 'коричневый', count: '20', search:'brown'},
+            ]
         },
     ],
-
-
 };
 
 
@@ -38,6 +63,8 @@ const normalizedProducts = {
         url: 'amsterdam-25-dark-chocolate',
 
         category: 'stainless-steel',
+        'id....': 'размер 300',
+        'id': 'oвал',
         price: '9950',
         size: '300',
         shape: 'round',

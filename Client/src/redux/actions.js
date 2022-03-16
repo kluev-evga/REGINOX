@@ -37,6 +37,7 @@ import {
     filtersLoading,
     filtersLoaded,
     products,
+    productCategories,
 } from './selectors';
 
 
@@ -188,7 +189,11 @@ export const loadProducts = (id) => async (dispatch, getState) => {
     dispatch({ type: LOAD_PRODUCTS + REQUEST, id });
 
     try {
-        const req = await fetch(`/products?id=${id}`);
+        // const req = await fetch(`/products?id=${id}`);
+        const req = await fetch(`/products?id=${'asdfasdf'}`);
+        // console.log(req);
+        // response.status 404 - --- push...
+
         const data = await req.json();
         dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, id })
     } catch (error) {
@@ -207,15 +212,40 @@ export const loadFilters = (id) => async (dispatch, getState) => {
     try {
         const req = await fetch(`/filters?id=${id}`);
         const data = await req.json();
+
         dispatch({ type: LOAD_FILTERS + SUCCESS, data, id })
     } catch (error) {
         dispatch({ type: LOAD_FILTERS + FAILURE, error, id });
     }
 };
 
-export const filterByCategory = () => async (dispatch, getState) => {
-    const state = getState();
-    const productsList = products(state);
 
-    dispatch({ type: FILTER_BY_CATEGORY });
+export const filterProducts = () => {
+// здесь просортирую на категории?
+
+
+
+
 };
+
+// export const filterByCategory = () => async (dispatch, getState) => {
+//     const state = getState();
+//     const productsList = products(state);
+//     const categories = productCategories(state).categories
+//     .slice(1)
+//     .reduce((acc, {url}) => {
+//         acc[url] = [];
+//         return acc;
+//     }, {});
+//     console.log(categories);
+
+
+//     productsList.map(item => {
+//         categories[item.category].push(item.id)
+//         return '';
+//         }
+//     );
+//     console.log(categories);
+
+//     dispatch({ type: FILTER_BY_CATEGORY });
+// };

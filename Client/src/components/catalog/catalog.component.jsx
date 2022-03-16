@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { selectCatalog } from '../../redux/selectors';
+import { catalogLinks } from '../../redux/selectors';
 import { Link } from 'react-router-dom';
 import CardSlider from '../card-slider/card-slider.component';
 import { ReactComponent as ListIcon } from '../../assets/svg/list.svg';
 
 
-const Catalog = ({ catalog }) => (
+const Catalog = ({ catalogLinks }) => (
     <div className='container'>
         <h2 className='title'>каталог</h2>
         <div className='cards-wrapper'>
             {
-                catalog.map(({ id, url, ...rest }) => (
-                    <Link to={`products/${url}`} key={id}>
+                catalogLinks.map(({ id, url, ...rest }) => (
+                    <Link to={`products/${url}/all`} key={id}>
                         <CardSlider {...rest} width="550" height="640">
                             <ListIcon />
                             Перейти в каталог
@@ -24,7 +24,7 @@ const Catalog = ({ catalog }) => (
 );
 
 const mapStateToProps = (state) => ({
-    catalog: selectCatalog(state)
+    catalogLinks: catalogLinks(state)
 });
 
 export default connect(mapStateToProps)(Catalog);
