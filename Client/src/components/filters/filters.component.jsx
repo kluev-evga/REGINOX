@@ -1,34 +1,46 @@
-import { useRouteMatch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { filters, productsLoaded } from '../../redux/selectors';
+import { filters } from '../../redux/selectors';
+import { filterProducts } from '../../redux/actions';
 import FiltersSection from './filters-section/filters-section.component';
 import CategoriesSection from './categories-section/categories-section.component';
 import styles from './filters.module.css';
 
 
-const Filters = ({ productsfilters, productsloaded }) => {
-    const match = useRouteMatch('/products/:product?/:category?');
-    const url = match.params.product;
-    const loaded = productsloaded(url);
-    if (!loaded) return <div>loading</div>
-    const filters = productsfilters(url).slice(1);
-    const categories = productsfilters(url)[0];
+const Filters = ({ productsfilters, url, categoryUrl, filterProducts }) => {
+    const location = useLocation();
+    const filtersArr = productsfilters(url);
+    const filters = filtersArr.slice(1);
+    const categories = filtersArr[0];
+    const params = new URLSearchParams(location.search);
+
+    useEffect(() => {
+        const selected = filters.reduce((acc, { searchGroup, products }) => {
+            const group = params.get(searchGroup);
+            if (group) {
+                const groupItems = group.split('_').filter(item => item in products);
+                if (groupItems.length > 0) acc[searchGroup] = groupItems;
+            };
+            return acc;
+        }, {});
+        filterProducts(url, categoryUrl, selected);
+    }, [categoryUrl, location.search]);//eslint-disable-line
 
     return (
         <div className={styles.wrapper}>
             <CategoriesSection {...categories} />
-
-            {filters.map((item, i) => {
-                return <FiltersSection key={i} {...item} />
-            }
-            )}
+            {filters.map((item, i) => <FiltersSection key={i} {...item} />)}
         </div>
     );
 };
 
 const mapStateToProps = state => ({
-    productsloaded: productsLoaded(state),
     productsfilters: filters(state),
 });
 
-export default connect(mapStateToProps)(Filters);
+const mapDispatchToProps = ({
+    filterProducts
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

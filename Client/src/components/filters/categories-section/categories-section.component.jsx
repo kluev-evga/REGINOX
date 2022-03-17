@@ -7,9 +7,6 @@ const CategoriesSection = ({ title, filters }) => {
     const location = useLocation();
     const search = location.search;
 
-
-    console.log(location.search);
-
     return (
         <div className={styles.container}>
             <p className={styles.title}>{title}</p>
