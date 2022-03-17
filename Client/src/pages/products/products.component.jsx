@@ -1,33 +1,31 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catalogName, catalogId } from '../../redux/selectors';
+import { catalogTitleByUrl } from '../../redux/selectors';
+import { loadProducts } from '../../redux/actions';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters.component';
 import ProductsSection from './products-section/products-section.component';
 import styles from './products.module.css';
-import { useEffect } from 'react';
-import { selectProductsId, loadProducts, loadFilters } from '../../redux/actions';
 
 
-const Products = ({ name, id, selectProductsId, loadProducts, loadFilters }) => {
+const Products = ({ title, loadProducts, match }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
+    const url = match.params.product;
+    const categoryUrl = match.params.category;
 
-    useEffect(() => {
-        selectProductsId(id);
-        loadFilters(id);
-        loadProducts(id);
-    }, [id]);//eslint-disable-line
+    useEffect(() => { loadProducts(url) }, []);//eslint-disable-line
 
     return (
         <div className="container">
             <div className="breadcrumbs">
-                <Link to='/'>Главная</Link> / {name}
+                <Link to='/'>Главная</Link> / {title}
             </div>
-            <h1 className="title">{name}</h1>
+            <h1 className="title">{title}</h1>
 
             <div className={styles.wrapper}>
                 {isDesktop && <Filters />}
-                <ProductsSection />
+                <ProductsSection url={url} categoryUrl={categoryUrl} />
             </div>
 
         </div>
@@ -35,10 +33,9 @@ const Products = ({ name, id, selectProductsId, loadProducts, loadFilters }) => 
 };
 
 const mapStateToProps = (state, props) => ({
-    name: catalogName(state, props),
-    id: catalogId(state, props)
+    title: catalogTitleByUrl(state, props),
 });
 
-const mapDispatchToProps = { selectProductsId, loadProducts, loadFilters };
+const mapDispatchToProps = { loadProducts };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

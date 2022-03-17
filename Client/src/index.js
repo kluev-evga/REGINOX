@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './components/app/app.component';
+import { ConnectedRouter } from 'connected-react-router';
+import history from './history';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
@@ -13,9 +14,9 @@ window.store = store; // DEV ONLY
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+    <ConnectedRouter history={history}>
         <App />
-      </BrowserRouter>
+    </ConnectedRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

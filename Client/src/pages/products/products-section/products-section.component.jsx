@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { productsIsLoaded, products } from '../../../redux/selectors';
-import { openFiltersMenu } from '../../../redux/actions';
+import { productsLoaded, products } from '../../../redux/selectors';
+import { openFiltersMenu, filterProducts } from '../../../redux/actions';
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 
@@ -13,9 +13,10 @@ import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-l
 import styles from './products-section.module.css';
 
 
-const ProductsSection = ({ openFiltersMenu, loaded, products }) => {
+const ProductsSection = ({ openFiltersMenu, loaded, products, filterProducts, url, categoryUrl }) => {
     const [tiles, setTiles] = useState(true);
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
+    useEffect(() => { loaded && filterProducts(url, categoryUrl) }, [loaded, categoryUrl])// eslint-disable-line
 
     if (!loaded) return <div>LOADING</div>
 
@@ -47,11 +48,11 @@ const ProductsSection = ({ openFiltersMenu, loaded, products }) => {
     );
 };
 
-const mapStateToProps = state => ({
-    loaded: productsIsLoaded(state),
-    products: products(state)
+const mapStateToProps = (state, { url }) => ({
+    loaded: productsLoaded(state)(url),
+    products: products(state)(url)
 });
 
-const mapDispatchToProps = { openFiltersMenu };
+const mapDispatchToProps = { openFiltersMenu, filterProducts };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsSection);

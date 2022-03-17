@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { catalog, home, catalogs, sertificates, brands, articles, articlesItems } = require('./mock');
-const { filters, products } = require('./mock-products');
+const { filters, products, matchProducts } = require('./mock-products');
 const { reply, getById } = require('./utils');
 
 router.get('/catalog', (req, res, next) => {
@@ -58,12 +58,15 @@ router.get('/filters', (req, res, next) => {
 //   reply(res, products[id]);
 // });
 
-router.get('/products', (req, res, next) => {
+router.get('/products/:group?', (req, res, next) => {
   const {id} = req.query;
-  if (!products[id]) {
+  const productsGroup = req.params.group;
+  if (!productsGroup || !matchProducts[productsGroup]) {
     res.status(404).send();
   } else {
-    reply(res, products[id]);
+    const id = matchProducts[productsGroup];
+    const composedProducts = {products: products[id], filters: filters[id]};
+    reply(res, composedProducts);
   }
 });
 

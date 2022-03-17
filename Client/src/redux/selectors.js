@@ -5,26 +5,14 @@ export const catalogLoading = (state) => state.catalog.loading;
 export const catalogError = (state) => state.catalog.error;
 export const catalogLinks = (state) => state.catalog.links;
 export const catalogCategories = (state) => state.catalog.categories;
-
-//////////////////////////
-export const catalog = (state) => state.catalog.entities;
-export const selectCatalogUrlToId = createSelector(
-    catalog,
-    (catalog) => Object.values(catalog)
-        .reduce((prev, {id, url}) => {
-            prev[url] = id;
-            return prev;
-        } ,{})
+const catalogLiksByUrl = createSelector(
+    catalogLinks,
+    (links) => links.reduce((acc, item) => {
+        acc[item.url] = item
+        return acc;
+    },{})
 );
-export const catalogId = (state, props) => selectCatalogUrlToId(state)[props.match.params.product];
-export const catalogName = (state, props) => catalog(state)[catalogId(state, props)].name;
-export const selectCatalog = createSelector(
-    catalog,
-    Object.values
-);
-//////////////////////////
-
-
+export const catalogTitleByUrl = (state, props) => catalogLiksByUrl(state)[props.match.params.product].title;
 
 
 export const catalogs = (state) => state.catalogs.entities;
@@ -97,15 +85,7 @@ export const articleLoaded = (state, {match}) => !!state.article.loaded[match.pa
 export const articleError = (state, {match}) => state.article.error?.[match.params.article];
 
 
-
-
-export const productsId = (state) => state.products.productsId;
-export const filters = (state) => state.products.filters[productsId(state)];
-export const filtersIsLoaded = (state) => state.products.filtersLoaded[productsId(state)];
-export const productsLoading = (state, id) => state.products.productsLoading[id];
-export const productsLoaded = (state, id) => state.products.productsLoaded[id];
-export const productsIsLoaded = (state) => state.products.productsLoaded[productsId(state)];
-export const filtersLoading = (state, id) => state.products.filtersLoading[id];
-export const filtersLoaded = (state, id) => state.products.filtersLoaded[id];
-export const products = (state) => state.products.products[productsId(state)];
-export const productCategories = (state) => state.catalog.entities[productsId(state)].categories;
+export const products = (state) => (url) => state.products.products[url];
+export const productsLoading = (state) => (url) => state.products.loading?.[url];
+export const productsLoaded = (state) => (url) => state.products.loaded?.[url];
+export const filters = (state) => (url) => state.products.filters[url];

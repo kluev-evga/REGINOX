@@ -1,28 +1,34 @@
 import { useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { filters, filtersIsLoaded, productsIsLoaded } from '../../redux/selectors';
-import Categories from './categories/categories.component';
+import { filters, productsLoaded } from '../../redux/selectors';
 import FiltersSection from './filters-section/filters-section.component';
+import CategoriesSection from './categories-section/categories-section.component';
 import styles from './filters.module.css';
 
 
-const Filters = ({ filters, productsLoaded, filtersLoaded }) => {
+const Filters = ({ productsfilters, productsloaded }) => {
     const match = useRouteMatch('/products/:product?/:category?');
-    if (!filtersLoaded && !productsLoaded) return <div>loading</div>
+    const url = match.params.product;
+    const loaded = productsloaded(url);
+    if (!loaded) return <div>loading</div>
+    const filters = productsfilters(url).slice(1);
+    const categories = productsfilters(url)[0];
 
     return (
         <div className={styles.wrapper}>
-            {match.params.category && <Categories />}
+            <CategoriesSection {...categories} />
 
-            {filters.map((item, i) => <FiltersSection key={i} {...item} />)}
+            {filters.map((item, i) => {
+                return <FiltersSection key={i} {...item} />
+            }
+            )}
         </div>
     );
 };
 
 const mapStateToProps = state => ({
-    productsLoaded: productsIsLoaded(state),
-    filtersLoaded: filtersIsLoaded(state),
-    filters: filters(state),
+    productsloaded: productsLoaded(state),
+    productsfilters: filters(state),
 });
 
 export default connect(mapStateToProps)(Filters);
