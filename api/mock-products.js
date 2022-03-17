@@ -46,9 +46,9 @@ const normalizedFilters = {
                 {title: 'вровень со столешницей', count: '20',  search:'flat'},
             ],
             products: {
-                'integrated': ["xvwY637oeN", 'Q9aVTvnfpi', '4myksxFQiP'],
-                'under': ['4myksxFQiP' ,'ElVW4q4eHa', 'TkJgwqrxng'],
-                'flat': ['xvwY637oeN', '4myksxFQiP', 'TkJgwqrxng'],
+                'integrated': {'xvwY637oeN':true, 'Q9aVTvnfpi':true, '4myksxFQiP':true},
+                'under': {'4myksxFQiP':true, 'ElVW4q4eHa':true, 'TkJgwqrxng':true},
+                'flat': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
             }
         },
         {

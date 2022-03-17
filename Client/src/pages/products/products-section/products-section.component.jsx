@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { productsLoaded, products } from '../../../redux/selectors';
+import { productsLoaded, products, filtered, filteredProducts } from '../../../redux/selectors';
 import { openFiltersMenu } from '../../../redux/actions';
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
@@ -13,11 +13,11 @@ import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-l
 import styles from './products-section.module.css';
 
 
-const ProductsSection = ({ openFiltersMenu, loaded, products }) => {
+const ProductsSection = ({ openFiltersMenu, loaded, products, filtered, filteredProducts, url }) => {
     const [tiles, setTiles] = useState(true);
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
 
-    if (!loaded) return <div>LOADING</div>
+    if (!loaded || !filtered) return <div>LOADING</div>
 
     return (
         <div className={cn(styles.products, { [styles.tiles]: tiles })}>
@@ -39,7 +39,7 @@ const ProductsSection = ({ openFiltersMenu, loaded, products }) => {
                     )}
             </div>
 
-            {products.map(product => <ProductCard key={product.id} {...product} tiles={tiles} />)}
+            {filteredProducts.map(id => <ProductCard key={id} id={id} url={url} tiles={tiles} />)}
 
         </div>
     );
@@ -47,7 +47,9 @@ const ProductsSection = ({ openFiltersMenu, loaded, products }) => {
 
 const mapStateToProps = (state, { url }) => ({
     loaded: productsLoaded(state)(url),
-    products: products(state)(url)
+    products: products(state)(url),
+    filtered: filtered(state, url),
+    filteredProducts: filteredProducts(state, url),
 });
 
 const mapDispatchToProps = { openFiltersMenu };

@@ -5,6 +5,9 @@ import {
   LOAD_PRODUCTS,
 } from '../types';
 
+import { arrToMap } from '../utils';
+
+
 const INITIAL_STATE = {
   filters: {},
   products: {},
@@ -27,7 +30,7 @@ const productsReducer = function (state = INITIAL_STATE, action) {
     case LOAD_PRODUCTS + SUCCESS:
       return {
         ...state,
-        products: {...state.products, [url]:data.products},
+        products: {...state.products, [url]: arrToMap(data.products)},
         filters: {...state.products, [url]:data.filters},
         loading: {...state.loading, [url]: false},
         loaded: {...state.loaded, [url]: true},

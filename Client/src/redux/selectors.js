@@ -88,4 +88,24 @@ export const articleError = (state, {match}) => state.article.error?.[match.para
 export const products = (state) => (url) => state.products.products[url];
 export const productsLoading = (state) => (url) => state.products.loading?.[url];
 export const productsLoaded = (state) => (url) => state.products.loaded?.[url];
+
+
+
+// ----------------
+export const product = (state, url, id) => state.products.products[url][id];
+
+
 export const filters = (state) => (url) => state.products.filters[url];
+
+const fltr = (state, url) => state.products.filters[url];
+export const selectNormalizedFilters = createSelector(
+    fltr,
+    (filters) => filters.slice(1).reduce((acc, {searchGroup, products}) => {
+        acc[searchGroup] = {};
+        for (let [key, value] of Object.entries(products)) acc[searchGroup][key] = value;
+        return acc
+    }, {})
+);
+
+export const filtered = (state, url) => state.filters.isFiltered[url];
+export const filteredProducts = (state, url) => state.filters.products[url];

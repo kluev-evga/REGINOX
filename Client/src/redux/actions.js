@@ -16,6 +16,7 @@ import {
     SELECT_ARTICLES_PAGE,
     LOAD_ARTICLE,
     LOAD_PRODUCTS,
+    PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
 } from './types';
 
@@ -32,8 +33,7 @@ import {
     articleLoaded,
     productsLoading,
     productsLoaded,
-    products,
-    filters
+    selectNormalizedFilters,
 } from './selectors';
 
 
@@ -190,43 +190,34 @@ export const loadProducts = (url) => async (dispatch, getState) => {
 
 
 
-
-export const filterProducts = (url, categoryUrl, selected) => async (dispatch, getState) => {
-    const state = getState();
-    const filters = state.products.filters[url];
-    const categoryFilters = filters[0];
-    const otherFilters = filters.slice(1);
-    const productsbyCategory = categoryFilters.products[categoryUrl];
-
-
-    const productsFiltered = (!Object.keys(selected).length)
-        ? productsbyCategory
-        : 'filtered';
-
-////////////////////////////////////////////////////////////////
-    let fltr = otherFilters.reduce((acc, {searchGroup, products}) => {
-        acc[searchGroup] = {};
-        for (let [key, value] of Object.entries(products)) acc[searchGroup][key] = value;
-        return acc
-    }, {});
-////////////////////////////////////////////////////////////////
-    // console.log(fltr);
-    // console.log(otherFilters)
-    // console.log(selected);
-
+const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
     // массив для сортировки:
     const sortArr = Object.keys(selected).reduce((acc, key) => {
-        const arr = selected[key].map(item => fltr[key][item]);
+        const arr = selected[key].map(item => normalizedFilters[key][item]);
         const obj = Object.assign({}, ...arr);
         acc.push(obj);
         return acc;
     }, []);
 
     // сортировка:
-    const res = sortArr.reduce((acc, obj) => {
-        // console.log(acc, arr);
+    return sortArr.reduce((acc, obj) => {
         return acc.filter(item => item in obj);
     }, productsbyCategory);
-    console.log(res);
-    // dispatch({type: PRODUCTS_IS_FILTERED, data:filteredProducts, url});
+};
+
+export const filterProducts = (url, categoryUrl, selected) => async (dispatch, getState) => {
+    const state = getState();
+    const filters = state.products.filters[url];
+    const categoryFilters = filters[0];
+    const normalizedFilters = selectNormalizedFilters(state, url);
+
+    dispatch({type: PRODUCTS_IS_FILTERING, url});
+    ///////////////////////////////////////////////////////////////////
+    const productsbyCategory = categoryFilters.products[categoryUrl];
+
+    const productsFiltered = (!Object.keys(selected).length)
+        ? productsbyCategory
+        : filteredProducts(productsbyCategory, selected, normalizedFilters);
+
+    dispatch({type: PRODUCTS_IS_FILTERED, data:productsFiltered, url});
 };
