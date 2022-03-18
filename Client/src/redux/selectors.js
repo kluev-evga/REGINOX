@@ -85,19 +85,13 @@ export const articleLoaded = (state, {match}) => !!state.article.loaded[match.pa
 export const articleError = (state, {match}) => state.article.error?.[match.params.article];
 
 
-export const products = (state) => (url) => state.products.products[url];
 export const productsLoading = (state) => (url) => state.products.loading?.[url];
 export const productsLoaded = (state) => (url) => state.products.loaded?.[url];
-
-
-
-// ----------------
 export const product = (state, url, id) => state.products.products[url][id];
 
 
-export const filters = (state) => (url) => state.products.filters[url];
-
-const fltr = (state, url) => state.products.filters[url];
+export const filters = (state) => (url) => state.filters.filters[url];
+const fltr = (state, url) => state.filters.filters[url];
 export const selectNormalizedFilters = createSelector(
     fltr,
     (filters) => filters.slice(1).reduce((acc, {searchGroup, products}) => {
@@ -106,6 +100,5 @@ export const selectNormalizedFilters = createSelector(
         return acc
     }, {})
 );
-
-export const filtered = (state, url) => state.filters.isFiltered[url];
+export const isfiltered = (state, url) => state.filters.isFiltered[url];
 export const filteredProducts = (state, url) => state.filters.products[url];

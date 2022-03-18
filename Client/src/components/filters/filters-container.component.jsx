@@ -4,16 +4,16 @@ import { productsLoaded } from '../../redux/selectors';
 import Filters from './filters.component';
 
 
-const FiltersContainer = ({ productsloaded }) => {
+const FiltersContainer = ({ productsLoaded }) => {
     const match = useRouteMatch('/products/:url?/:categoryUrl?');
     const { url, categoryUrl } = match.params;
-    const loaded = productsloaded(url);
+    const loaded = productsLoaded(url);
 
     return loaded ? <Filters url={url} categoryUrl={categoryUrl} /> : <div>LOADING</div>
 };
 
 const mapStateToProps = state => ({
-    productsloaded: productsLoaded(state),
+    productsLoaded: productsLoaded(state),
 });
 
 export default connect(mapStateToProps)(FiltersContainer);

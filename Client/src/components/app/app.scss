@@ -190,39 +190,44 @@ textarea {
 .title-1 {
     padding-bottom: 10px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 24px;
 }
 
 @media (min-width: 576px) {
     .title {
-        padding-bottom: 30px;
-        font-size: 34px;
+        padding-bottom: 25px;
+        font-size: 32px;
     }
     
     .title-1 {
         padding-bottom: 15px;
-        font-size: 30px;
+        font-size: 26px;
     }
 }
 
 @media (min-width: 768px) {
     .title {
-        padding-bottom: 40px;
-        font-size: 42px;
+        padding-bottom: 30px;
+        font-size: 36px;
+    }
+    
+    .title-1 {
+        font-weight: 700;
     }
 }
 
 @media (min-width: 1200px) {
     .title {
-        padding-bottom: 50px;
-        font-size: 48px;
+        padding-bottom: 40px;
+        font-size: 40px;
     }
 }
 
 .breadcrumbs {
-    padding: 260px 0 70px;
+    padding: 220px 0 50px;
     color: var(--gray);
+    font-size: 14px;
 
     a {
         color: var(--red);
@@ -230,6 +235,11 @@ textarea {
         &:hover {
             color: var(--graphite);
         }
+    }
+
+    @media (min-width: 768px) {
+        padding: 240px 0 50px;
+        font-size: 16px;
     }
 }
 
@@ -312,27 +322,27 @@ li {
 
 .article {
     b {
-        padding-bottom: 40px;
+        padding-bottom: 20px;
         display: block;
         font-weight: 600;
     }
 
     b,p,ul {
         line-height: 1.5;
-        font-size: 16px;
+        font-size: 15px;
     }
-    
-    p,ul {
-        padding-bottom: 30px;
+
+    p {
+        padding-bottom: 10px;
     }
 
     ul {
-        padding-bottom: 15px;
+        padding-bottom: 10px;
         padding-left: 18px;
     }
 
     li {
-        padding-bottom: 15px;
+        padding-bottom: 10px;
         list-style-type: disc !important;
 
         &::marker{
@@ -353,10 +363,22 @@ li {
     }
 
     @media (min-width: 576px) {
-        b,p,ul {
-            font-size: 18px;
+        b {
+            padding-bottom: 40px;
         }
-    
+
+        p,ul {
+            padding-bottom: 30px;
+        }
+
+        li {
+            padding-bottom: 15px;
+        }
+
+        b,p,ul {
+            font-size: 17px;
+        }
+
         ul {
             padding-left:30px;
         }
@@ -364,7 +386,7 @@ li {
 
     @media (min-width: 992px) {
         b,p,ul {
-            font-size: 20px;
+            font-size: 19px;
         }
 
         ul {
@@ -375,6 +397,12 @@ li {
     @media (min-width: 1200px) {
         padding-left: 215px;
         max-width: 1030px;
+    }
+
+    @media (min-width: 1400px) {
+        b,p,ul {
+            font-size: 20px;
+        }
     }
 }
 

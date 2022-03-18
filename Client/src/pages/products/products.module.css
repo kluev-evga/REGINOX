@@ -1,7 +1,7 @@
 @media (min-width: 1200px) {
     .wrapper {
         display: grid;
-        grid-template-columns: 380px 1fr;
+        grid-template-columns: 320px 1fr;
         gap: 50px;
     }
 }

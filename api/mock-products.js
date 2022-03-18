@@ -25,8 +25,8 @@ const normalizedFilters = {
             filters: [
                 {title: 'нержавеющая сталь', count: '20', search:'stainless-steel'},
                 {title: 'гранит', count: '20', search:'granite'},
-                {title: 'PVD-покрытие (серия Miami)', count: '20',  search:'pvd'},
-                {title: 'окрашенные (серия Regi Color)', count: '20', search: 'painted'},
+                {title: 'PVD-покрытие', count: '20',  search:'pvd'},
+                {title: 'окрашенные (Regi Color)', count: '20', search: 'painted'},
                 {title: 'керамика', count: '20', search: 'porcelain'}
             ],
             products: {
@@ -103,24 +103,24 @@ const normalizedFilters = {
 const normalizedProducts = {
     '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
         {
-        id: 'xvwY637oeN',
-        promo: true,
-        new: true,
-        name: 'Amsterdam 25 Dark chocolate',
-        img: '/assets/products/product_1.webp',
-        alt: 'asdf',
-        url: 'amsterdam-25-dark-chocolate',
+            id: 'xvwY637oeN',
+            promo: true,
+            new: true,
+            title: 'Amsterdam 25 Dark chocolate',
+            img: '/assets/products/product_1.webp',
+            alt: 'asdf',
+            url: 'amsterdam-25-dark-chocolate',
 
-        category: 'stainless-steel',
-        price: '9950',
-        size: '300',
-        shape: 'round',
-        color: 'white',
-        rating: '5',
+            category: 'stainless-steel',
+            price: '9950',
+            size: '300',
+            shape: 'round',
+            color: 'white',
+            rating: '5',
         },
         {
             id: 'Q9aVTvnfpi',
-            name: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_2.webp',
             alt: 'asdf',
             url: 'amsterdam-25-dark-chocolate',
@@ -134,7 +134,7 @@ const normalizedProducts = {
         },
         {
             id: '4myksxFQiP',
-            name: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_3.webp',
             alt: 'asdf',
             price: '9950',
@@ -148,7 +148,7 @@ const normalizedProducts = {
         },
         {
             id: 'ElVW4q4eHa',
-            name: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_4.webp',
             alt: 'asdf',
             price: '9950',
@@ -162,7 +162,7 @@ const normalizedProducts = {
         },
         {
             id: 'U6TSDmFeiD',
-            name: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_5.webp',
             alt: 'asdf',
             price: '9950',
@@ -176,7 +176,7 @@ const normalizedProducts = {
         },
         {
             id: 'TkJgwqrxng',
-            name: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_6.webp',
             alt: 'asdf',
             url: 'amsterdam-25-dark-chocolate',

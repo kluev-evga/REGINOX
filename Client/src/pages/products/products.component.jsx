@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catalogTitleByUrl } from '../../redux/selectors';
 import { loadProducts } from '../../redux/actions';
+import { catalogTitleByUrl, productsLoaded } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters-container.component';
 import ProductsSection from './products-section/products-section.component';
 import styles from './products.module.css';
 
 
-const Products = ({ title, loadProducts, match }) => {
+const Products = ({ title, productsLoaded, loadProducts, match }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const url = match.params.product;
-    useEffect(() => { loadProducts(url) }, []);//eslint-disable-line
+    const loaded = productsLoaded(url);
+    useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
 
     return (
         <div className="container">
@@ -23,7 +24,7 @@ const Products = ({ title, loadProducts, match }) => {
 
             <div className={styles.wrapper}>
                 {isDesktop && <Filters />}
-                <ProductsSection url={url} />
+                {loaded && <ProductsSection url={url} />}
             </div>
 
         </div>
@@ -32,6 +33,7 @@ const Products = ({ title, loadProducts, match }) => {
 
 const mapStateToProps = (state, props) => ({
     title: catalogTitleByUrl(state, props),
+    productsLoaded: productsLoaded(state),
 });
 
 const mapDispatchToProps = { loadProducts };

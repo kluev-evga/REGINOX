@@ -9,23 +9,24 @@ import styles from './filters.module.css';
 
 
 const Filters = ({ productsfilters, url, categoryUrl, filterProducts }) => {
-    const location = useLocation();
     const filtersArr = productsfilters(url);
     const filters = filtersArr.slice(1);
     const categories = filtersArr[0];
-    const params = new URLSearchParams(location.search);
 
-    useEffect(() => {
-        const selected = filters.reduce((acc, { searchGroup, products }) => {
-            const group = params.get(searchGroup);
-            if (group) {
-                const groupItems = group.split('_').filter(item => item in products);
-                if (groupItems.length > 0) acc[searchGroup] = groupItems;
-            };
-            return acc;
-        }, {});
-        filterProducts(url, categoryUrl, selected);
-    }, [categoryUrl, location.search]);//eslint-disable-line
+    // const location = useLocation();
+    // const params = new URLSearchParams(location.search);
+
+    // useEffect(() => {
+    //     const selected = filters.reduce((acc, { searchGroup, products }) => {
+    //         const group = params.get(searchGroup);
+    //         if (group) {
+    //             const groupItems = group.split('_').filter(item => item in products);
+    //             if (groupItems.length > 0) acc[searchGroup] = groupItems;
+    //         };
+    //         return acc;
+    //     }, {});
+    //     filterProducts(url, categoryUrl, selected);
+    // }, [categoryUrl, location.search]);//eslint-disable-line
 
     return (
         <div className={styles.wrapper}>

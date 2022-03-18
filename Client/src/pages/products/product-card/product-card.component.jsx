@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { product } from '../../../redux/selectors';
@@ -7,19 +8,29 @@ import styles from './product-card.module.css';
 
 
 const ProductCard = ({ tiles, product }) => {
-    const { img, alt, name, price } = product;
+    const [hover, setHover] = useState(false);
+    const { img, alt, title, price, promo, sale } = product;
+
     return (
-        <div className={cn(styles.card, { [styles.tiles]: tiles })}>
-            <Link to='/' className={styles.link}>
-                <img src={process.env.PUBLIC_URL + img} alt={alt} className={styles.img} />
-                <div className={styles.card_text}>
-                    <p className={styles.name}>{name}</p>
-                    <p className={styles.price}>{price} руб</p>
-                </div>
+        <div className={cn(
+            styles.card,
+            { [styles.row]: !tiles },
+            { [styles.promo]: promo },
+            { [styles.sale]: sale },
+            { [styles.hover]: hover })}>
+            <p className={styles.title}>{title}</p>
+            <Link
+                to='/'
+                className={styles.link}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}>
+                <img
+                    src={process.env.PUBLIC_URL + img} alt={alt}
+                    className={styles.img} />
             </Link>
+            <p className={styles.price}>{price} руб</p>
             <button className={styles.button + ' button-block'}>
-                <Cart />
-                В корзину
+                <Cart /> В корзину
             </button>
         </div>
     );

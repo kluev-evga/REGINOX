@@ -29,12 +29,12 @@ const FiltersItem = ({ title, count, search, searchGroup }) => {
 
     return (
         <button
-            className={styles.button}
+            className={`${styles.button} ${styles.btn}`}
             onClick={() => handleClick(isActive, params)}
         >
             <CheckIcon className={cn(styles.checkmark, { [styles.active]: isActive })} />
             {title}
-            <span>{count}</span>
+            <span>({count})</span>
         </button>
     )
 };

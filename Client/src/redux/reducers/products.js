@@ -9,7 +9,6 @@ import { arrToMap } from '../utils';
 
 
 const INITIAL_STATE = {
-  filters: {},
   products: {},
   loading: {},
   loaded: {},
@@ -31,7 +30,6 @@ const productsReducer = function (state = INITIAL_STATE, action) {
       return {
         ...state,
         products: {...state.products, [url]: arrToMap(data.products)},
-        filters: {...state.products, [url]:data.filters},
         loading: {...state.loading, [url]: false},
         loaded: {...state.loaded, [url]: true},
       };

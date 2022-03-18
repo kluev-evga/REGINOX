@@ -5,14 +5,24 @@
 }
 
 @media (max-width: 340px) {
-    .title {
-        font-size: 14px;
+    .container .title {
+        font-size: 16px;
+    }
+    
+    .container .sub_title {
+        font-size: 16px;
+        font-weight: 600;
     }
 }
 
 @media (min-width: 340px) and (max-width: 420px) {
-    .title {
-        font-size: 22px;
+    .container .title {
+        font-size: 20px;
+    }
+
+    .container .sub_title {
+        font-size: 18px;
+        font-weight: 600;
     }
 }
 
@@ -22,7 +32,7 @@
     }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     .date {
         font-size: 20px;
     }

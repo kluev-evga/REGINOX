@@ -1,6 +1,6 @@
 .nav {
     grid-column: 1 / -1;
-    margin: 45px -8px 0 -8px;
+    margin: 45px -8px 3px -8px;
     display:flex;
     justify-content: space-between;
 }

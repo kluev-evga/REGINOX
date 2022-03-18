@@ -207,12 +207,12 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
 
 export const filterProducts = (url, categoryUrl, selected) => async (dispatch, getState) => {
     const state = getState();
-    const filters = state.products.filters[url];
+    const filters = state.filters.filters[url];
     const categoryFilters = filters[0];
     const normalizedFilters = selectNormalizedFilters(state, url);
 
     dispatch({type: PRODUCTS_IS_FILTERING, url});
-    ///////////////////////////////////////////////////////////////////
+
     const productsbyCategory = categoryFilters.products[categoryUrl];
 
     const productsFiltered = (!Object.keys(selected).length)
