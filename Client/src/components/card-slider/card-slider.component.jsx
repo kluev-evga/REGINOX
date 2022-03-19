@@ -3,7 +3,7 @@ import styles from './card-slider.module.css';
 
 
 const CardSlider = ({
-    name,
+    title,
     img,
     alt,
     children,
@@ -28,7 +28,7 @@ const CardSlider = ({
         />
         <div>
             <p className={cn({ [styles.sm]: sm, [styles.md]: md, [styles.with_date]: date })} >
-                {name}
+                {title}
                 {date && <time dateTime={dateTime} className={styles.date}>{date}</time>}
             </p>
         </div>

@@ -180,6 +180,14 @@ textarea {
     }
 }
 
+.section-container {
+    margin-top: 80px;
+
+    @media (min-width: 1200px) {
+            margin-top: 110px;
+    }
+}
+
 .title {
     padding-bottom: 15px;
     font-size: 28px;

@@ -6,7 +6,7 @@ import { ReactComponent as ListIcon } from '../../assets/svg/list.svg';
 
 
 const Catalog = ({ catalogLinks }) => (
-    <div className='container'>
+    <div className='container section-container'>
         <h2 className='title'>каталог</h2>
         <div className='cards-wrapper'>
             {

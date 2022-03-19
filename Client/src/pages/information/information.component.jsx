@@ -16,7 +16,7 @@ const Information = () => (
         <div className={styles.cards}>
             <Link to='information/buyers'>
                 <CardSlider
-                    name='Для розничных покупателей'
+                    title='Для розничных покупателей'
                     img={process.env.PUBLIC_URL + '/assets/information_buyers.webp'}
                     alt='Для розничных покупателей'
                     md
@@ -29,7 +29,7 @@ const Information = () => (
             </Link>
             <Link to='information/partners'>
                 <CardSlider
-                    name='Для партнеров'
+                    title='Для партнеров'
                     img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}
                     alt='Для партнеров'
                     md

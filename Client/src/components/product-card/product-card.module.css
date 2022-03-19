@@ -1,6 +1,7 @@
 .card {
     display: grid;
     background-color: #f0f0f0;
+    position: relative;
 }
 
 .title {
@@ -12,6 +13,29 @@
 
 .link {
     margin: 0 15vw;
+}
+
+.new_item::after,
+.promo::before {
+    position: absolute;
+    left: 0;
+    padding: 3.5px 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.promo::before {
+    content: 'Акция';
+    bottom: 115px;
+    background-color: #F2994A;
+}
+
+.new_item::after {
+    content: 'Новинка';
+    bottom: 90px;
+    background-color: #2D9CDB;
 }
 
 .link img {
@@ -52,6 +76,16 @@
         margin: 0 5vw;
         order: -1;
     }
+
+    .promo::before {
+        top: 40px;
+        bottom: unset;
+    }
+
+    .new_item::after {
+        top: 15px;
+        bottom: unset;
+    }
 }
 
 @media (min-width: 768px) {
@@ -67,6 +101,14 @@
     .title {
         font-size: 18px;
     }
+
+    .promo::before {
+        top: 45px;
+    }
+
+    .new_item::after {
+        top: 20px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -77,6 +119,14 @@
 
     .title {
         font-weight: 700;
+    }
+
+    .promo::before {
+        top: 50px;
+    }
+
+    .new_item::after {
+        top: 25px;
     }
 }
 
@@ -122,6 +172,21 @@
         height: 25px;
     }
 
+    .new_item::after,
+    .promo::before {
+        padding: 4px 12px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .promo::before {
+        top: 60px;
+    }
+
+    .new_item::after {
+        top: 30px;
+    }
+
     /* --------------------------------------------------- */
     .row.card {
         display: grid;
@@ -146,7 +211,7 @@
         padding: 30px 30px 0 0;
         font-size: 24px;
     }
-    
+
     .row .price {
         padding: 14px 30px 0 0;
         font-size: 26px;

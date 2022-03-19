@@ -1,6 +1,5 @@
 .address {
     background: var(--gray-light);
-    margin-bottom: 110px;
 }
 
 .title {
@@ -37,10 +36,6 @@
 }
 
 @media (min-width: 1200px) {
-    .address {
-        margin-bottom: 110px;
-    }
-
     .title {
         padding: 60px 0 50px 0;
     }

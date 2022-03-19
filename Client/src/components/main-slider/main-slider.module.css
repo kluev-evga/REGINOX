@@ -59,6 +59,7 @@
 .link img {
     margin-left: auto;
     width: 152px;
+    height: auto;
     grid-area: 1 / 2 / -1 / -1;
 }
 

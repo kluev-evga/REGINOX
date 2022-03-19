@@ -6,7 +6,7 @@ import { openFiltersMenu, filterProducts } from '../../../redux/actions';
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 
-import ProductCard from '../product-card/product-card.component';
+import ProductCardContainer from '../product-card-container/product-card-container.component';
 import ButtonsTiles from '../buttons-tiles/buttons-tiles.component';
 
 import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron.svg';
@@ -56,7 +56,7 @@ const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, produc
                     )}
             </div>
 
-            {filteredProducts.map(id => <ProductCard key={id} id={id} url={url} tiles={tiles} />)}
+            {filteredProducts.map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
 
         </div>
     );

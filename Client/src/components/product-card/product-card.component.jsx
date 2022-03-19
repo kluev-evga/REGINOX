@@ -1,26 +1,24 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { product } from '../../../redux/selectors';
 import cn from 'classnames';
-import { ReactComponent as Cart } from '../../../assets/svg/cart.svg';
+import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
 import styles from './product-card.module.css';
 
 
-const ProductCard = ({ tiles, product }) => {
+const ProductCard = ({ tiles, product, url }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, price, promo, sale } = product;
+    const { img, alt, title, price, productUrl, promo, newItem } = product;
 
     return (
         <div className={cn(
             styles.card,
             { [styles.row]: !tiles },
             { [styles.promo]: promo },
-            { [styles.sale]: sale },
+            { [styles.new_item]: newItem },
             { [styles.hover]: hover })}>
             <p className={styles.title}>{title}</p>
             <Link
-                to='/'
+                to={`/products/${url}/${productUrl}`}
                 className={styles.link}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}>
@@ -36,8 +34,4 @@ const ProductCard = ({ tiles, product }) => {
     );
 };
 
-const mapStateToProps = (state, { url, id }) => ({
-    product: product(state, url, id)
-});
-
-export default connect(mapStateToProps)(ProductCard);
+export default ProductCard;

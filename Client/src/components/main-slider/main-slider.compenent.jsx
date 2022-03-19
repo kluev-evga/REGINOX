@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectSlider } from '../../redux/selectors';
+import { homeSlider } from '../../redux/selectors';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -39,8 +39,8 @@ const MainSlider = ({ slider }) => {
                                 <p className={styles.sub_title}>{subtitle}</p>
 
                                 <div className={styles.link_container}>
-                                    <Link to={url} className={styles.link}>
-                                        <img src={imgLink} alt={altLink} />
+                                    <Link to={`/products/${url}/all`} className={styles.link} tabIndex={-1}>
+                                        <img src={imgLink} alt={altLink} width={304} height={228} />
                                         <span>{titleLink}</span>
                                     </Link>
                                 </div>
@@ -55,7 +55,7 @@ const MainSlider = ({ slider }) => {
 };
 
 const mapStateToProps = (state) => ({
-    slider: selectSlider(state)
+    slider: homeSlider(state)
 })
 
 export default connect(mapStateToProps)(MainSlider);

@@ -1,6 +1,6 @@
 const HomeAbout = () => (
     <div>
-        <div className="container">
+        <div className='container section-container'>
             <h2 className='title'>О компании</h2>
 
             <div className='article'>

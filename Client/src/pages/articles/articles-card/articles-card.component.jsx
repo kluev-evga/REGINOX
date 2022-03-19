@@ -8,7 +8,7 @@ import styles from './articles-card.module.css';
 
 
 const ArticlesCard = ({ article }) => {
-    const { url, name, img, alt, date, wide } = article;
+    const { url, title, img, alt, date, wide } = article;
     const { d, m, y } = date;
     const dateText = d + ' / ' + m + ' / ' + y;
     const dateTime = '20' + y + '-' + m + '-' + d;
@@ -16,7 +16,7 @@ const ArticlesCard = ({ article }) => {
     return (
         <Link to={`/articles/${url}`} className={cn({ [styles.wide]: wide })}>
             <CardSlider
-                name={name}
+                title={title}
                 img={img}
                 alt={alt}
                 date={dateText}

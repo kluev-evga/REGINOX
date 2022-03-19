@@ -1,5 +1,5 @@
 .sub_menu {
-    width: 260px;
+    width: 230px;
     position: relative;
 }
 
@@ -27,7 +27,7 @@
 .sub_menu_container >div {
     display: flex;
     flex-direction: column;
-    padding: 10px 90px 15px 10px;
+    padding: 10px 60px 15px 10px;
 
     box-shadow: -6px 6px 6px 0px #00000014;
     position: relative;

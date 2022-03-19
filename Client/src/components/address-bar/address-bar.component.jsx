@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { selectAddressBar } from '../../redux/selectors';
+import { homeAddressBar } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive'
 import Tab from './tab/tab.component';
 import { ReactComponent as Squares } from '../../assets/svg/squares.svg';
@@ -44,7 +44,7 @@ const AdressBar = ({ addressBar }) => {
 };
 
 const mapStateToProps = (state) => ({
-    addressBar: selectAddressBar(state)
+    addressBar: homeAddressBar(state)
 });
 
 export default connect(mapStateToProps)(AdressBar);
