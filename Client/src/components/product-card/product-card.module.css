@@ -13,6 +13,7 @@
 
 .link {
     margin: 0 15vw;
+    /* outline-color: transparent; */
 }
 
 .new_item::after,
@@ -132,7 +133,7 @@
 
 @media (min-width: 1200px) {
     .card {
-        background-color: #f7f6f4;
+        background-color: #f1f0ed;
         transition: all 0.2s ease-out;
     }
 

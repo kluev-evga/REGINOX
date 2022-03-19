@@ -14,7 +14,7 @@ const ArticlesCard = ({ article }) => {
     const dateTime = '20' + y + '-' + m + '-' + d;
 
     return (
-        <Link to={`/articles/${url}`} className={cn({ [styles.wide]: wide })}>
+        <Link to={`/articles/${url}`} className={cn('link-card', { [styles.wide]: wide })}>
             <CardSlider
                 title={title}
                 img={img}
@@ -37,4 +37,3 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default connect(mapStateToProps)(ArticlesCard);
-

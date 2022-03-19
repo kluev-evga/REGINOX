@@ -11,7 +11,7 @@ const Catalog = ({ catalogLinks }) => (
         <div className='cards-wrapper'>
             {
                 catalogLinks.map(({ id, url, ...rest }) => (
-                    <Link to={`products/${url}/all`} key={id}>
+                    <Link to={`products/${url}/all`} key={id} className='link-card'>
                         <CardSlider {...rest} width="550" height="640">
                             <ListIcon />
                             Перейти в каталог

@@ -1,23 +1,22 @@
-import { connect } from 'react-redux';
-import { selectArticlesPages, selectArticlesTotalPages, articlesCurrentPage, articlesTotal } from '../../../redux/selectors';
-import { selectArticlesPage } from '../../../redux/actions';
 import cn from 'classnames';
-import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg';
-import { ReactComponent as ChevronRightIcon } from '../../../assets/svg/chevron-right.svg';
+import { ReactComponent as ChevronLeftIcon } from '../../assets/svg/chevron-left.svg';
+import { ReactComponent as ChevronRightIcon } from '../../assets/svg/chevron-right.svg';
 import styles from './pagination.module.css';
 
 
-const Pagination = ({ pages, totalPages, currentPage, articlesTotal, selectArticlesPage }) => (
+const Pagination = ({ pages, totalPages, currentPage, totalItems, selectArticlesPage }) => (
     <div className={styles.container}>
         <p>
             <b>Всего</b>
-            <span>{articlesTotal}</span>
+            <span>{totalItems}</span>
         </p>
 
         <div className={styles.wrapper}>
             <button
                 onClick={() => selectArticlesPage(currentPage - 1)}
                 className={cn({ [styles.disabled]: currentPage === 1 })}
+                tabIndex={currentPage === 1 ? -1 : 0}
+                aria-label='предыдущая страница'
             >
                 <ChevronLeftIcon />
             </button>
@@ -30,6 +29,7 @@ const Pagination = ({ pages, totalPages, currentPage, articlesTotal, selectArtic
                                 key={index}
                                 onClick={() => selectArticlesPage(index)}
                                 className={cn(styles.page, { [styles.active]: currentPage === index })}
+                                tabindex={-1}
                             >
                                 {index}
                             </button>
@@ -41,6 +41,8 @@ const Pagination = ({ pages, totalPages, currentPage, articlesTotal, selectArtic
             <button
                 onClick={() => selectArticlesPage(currentPage + 1)}
                 className={cn({ [styles.disabled]: currentPage === totalPages })}
+                tabIndex={currentPage === totalPages ? -1 : 0}
+                aria-label='следующая страница'
             >
                 <ChevronRightIcon />
             </button>
@@ -48,13 +50,4 @@ const Pagination = ({ pages, totalPages, currentPage, articlesTotal, selectArtic
     </div>
 );
 
-const mapStateToProps = state => ({
-    pages: selectArticlesPages(state),
-    totalPages: selectArticlesTotalPages(state),
-    currentPage: articlesCurrentPage(state),
-    articlesTotal: articlesTotal(state)
-});
-
-const mapDispatchToProps = ({ selectArticlesPage });
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pagination);
+export default Pagination;

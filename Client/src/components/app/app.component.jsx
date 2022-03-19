@@ -3,7 +3,6 @@ import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadCatalog } from '../../redux/actions';
 import { catalogLoading, catalogError } from '../../redux/selectors';
-import cn from 'classnames';
 
 import MenuContainer from '../menu-container/menu-container.component';
 import Header from '../header/header.component';
@@ -62,7 +61,7 @@ function App({ loadCatalog, loading, error }) {
 
     return (
         < MenuContainer >
-            <main id='page-wrap' className={cn({ 'fullScreen': isNotFound || isError })}>
+            <main id='page-wrap'>
                 {!isPopUp?.params.slug && !isNotFound && !isError && <Header isHome={isHome} />}
 
                 <Switch>

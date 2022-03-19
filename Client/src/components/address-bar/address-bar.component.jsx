@@ -24,8 +24,7 @@ const AdressBar = ({ addressBar }) => {
 
         >
             <div className="container">
-                <p className={styles.title}>THE CROWN FOR YOUR KITCHEN</p>
-
+                <div className={styles.title} aria-hidden='true'>THE CROWN FOR YOUR KITCHEN</div>
                 <ul className={styles.tabs_wrapper}>
                     {addressBar.map((data) =>
                         <Tab
@@ -36,7 +35,6 @@ const AdressBar = ({ addressBar }) => {
                         />
                     )}
                 </ul>
-
                 <Squares className={styles.squares} />
             </div>
         </div >

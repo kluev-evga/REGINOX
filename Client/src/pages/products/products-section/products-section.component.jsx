@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import ProductCardContainer from '../product-card-container/product-card-container.component';
 import ButtonsTiles from '../buttons-tiles/buttons-tiles.component';
+import Pagination from '../../../components/pagination/pagination.component';
 
 import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron.svg';
 import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg';
@@ -38,26 +39,35 @@ const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, produc
     if (!isfiltered) return <div>LOADING</div>
 
     return (
-        <div className={cn(styles.products, { [styles.tiles]: tiles })}>
+        <div className={styles.wrapper}>
+            <div className={cn(styles.products, { [styles.tiles]: tiles })}>
+                <div className={styles.products_heading}>
+                    <button className={styles.button}>По популярности <ChevronIcon /></button>
 
-            <div className={styles.products_heading}>
-                <button className={styles.button}>По популярности <ChevronIcon /></button>
+                    {isDesktop
+                        ? <ButtonsTiles setTiles={setTiles} tiles={tiles} />
+                        : (
+                            <button
+                                className={styles.button}
+                                onClick={openFiltersMenu}
+                                aria-label='открыть меню фильтров'>
+                                фильтры
+                                <ChevronLeftIcon />
+                            </button>
+                        )}
+                </div>
 
-                {isDesktop
-                    ? <ButtonsTiles setTiles={setTiles} tiles={tiles} />
-                    : (
-                        <button
-                            className={styles.button}
-                            onClick={openFiltersMenu}
-                            aria-label='открыть меню фильтров'>
-                            фильтры
-                            <ChevronLeftIcon />
-                        </button>
-                    )}
+                {filteredProducts.map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
+
             </div>
 
-            {filteredProducts.map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
-
+            <Pagination
+                pages={['1']}
+                totalPages={3}
+                currentPage={1}
+                totalItems={12}
+                selectArticlesPage={() => console.log("selectArticlesPage")}
+            />
         </div>
     );
 };

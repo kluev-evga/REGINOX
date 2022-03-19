@@ -12,7 +12,7 @@ const Partners = () => (
         </div>
         <h1 className='title'>Наши партнеры</h1>
 
-        <Link to='/information/partners' className={styles.link} >
+        <Link to='/information/partners' className={`link-card ${styles.link}`} >
             <CardSlider
                 title='Станьте нашим партнером'
                 img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}

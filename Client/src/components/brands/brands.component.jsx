@@ -22,7 +22,7 @@ const Brands = ({ loadBrands, loaded, error, brands, withUrl }) => {
                         <figcaption>
                             {withUrl ? about : warranty}
                             {withUrl && (
-                                <a href={`https://${url}`} className='link_primary' target="_blank" rel='noreferrer'>{url}</a>
+                                <a href={`https://${url}`} className='link_primary' target="_blank" rel='noreferrer' tabIndex={-1}>{url}</a>
                             )}
                         </figcaption>
                     </figure>

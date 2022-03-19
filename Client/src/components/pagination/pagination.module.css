@@ -11,11 +11,12 @@
 
 .container b {
     margin-right: 15px;
+    font-weight: 600;
 }
 
 .container span {
-    font-weight: 600;
-    color: var(--gray-med);
+    font-weight: 500;
+    color: var(--gray);
 }
 
 .wrapper {

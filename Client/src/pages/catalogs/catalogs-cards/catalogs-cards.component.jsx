@@ -9,22 +9,20 @@ import styles from './catalogs-cards.module.css';
 
 const CatalogsCards = ({ catalogs, loading }) => (
     <div className='cards-wrapper'>
-        {
-            catalogs.map(({ url, id, ...rest }) => (
-                <a href={url} download key={id}>
-                    <CardSlider
-                        {...rest}
-                        sm
-                        width='380'
-                        height='550'
-                        fixed
-                    >
-                        <DownloadIcon />
-                        Скачать
-                    </CardSlider>
-                </a>
-            ))
-        }
+        {catalogs.map(({ url, id, ...rest }) => (
+            <a href={url} download key={id} className='link-card'>
+                <CardSlider
+                    {...rest}
+                    sm
+                    width='380'
+                    height='550'
+                    fixed
+                >
+                    <DownloadIcon />
+                    Скачать
+                </CardSlider>
+            </a>
+        ))}
         {loading && <div className={styles.spinner}><Spinner /></div>}
     </div>
 );

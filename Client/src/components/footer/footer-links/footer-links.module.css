@@ -38,10 +38,10 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .wrapper {
-        margin-top: 100px;
-        grid-template-columns: repeat(2, 1fr) 0.7fr;
+        margin-top: 80px;
+        grid-template-columns: repeat(2, 1fr) 238px;
     }
     
     .brands {
@@ -51,14 +51,5 @@
     
     .brands p {
         grid-column: unset;
-    }
-}
-
-@media (min-width: 992px) {
-    .wrapper {
-        margin-top: 150px;
-        padding-left: 40px;
-        grid-template-columns: repeat(2, 280px) 200px;
-        justify-content: center;
     }
 }

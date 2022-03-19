@@ -5,7 +5,7 @@ import styles from './error.module.css';
 
 
 const Error = () => (
-    <div className={styles.wrapper}>
+    <div>
         <Link to='/home' className={styles.link_logo}>
             <Logo />
         </Link>

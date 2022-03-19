@@ -4,7 +4,7 @@
 }
 
 .wrapper button {
-    padding: 10px 0;
+    padding: 10px 20px 10px 0;
     display: block;
     margin-left: auto;
     font-weight: 500;
@@ -17,5 +17,22 @@
 @media (min-width: 576px) {
     .wrapper {
         max-width: unset;
+    }
+
+    .wrapper button {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper button {
+        font-weight: 400;
+    }
+}
+
+@media (min-width: 1400px) {
+    .wrapper button {
+        padding-right: 0;
+        font-size: 20px;
     }
 }
