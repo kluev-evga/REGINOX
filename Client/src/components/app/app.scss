@@ -473,6 +473,7 @@ li {
     color: var(--white);
     background-color: var(--red);
     outline: none;
+    transition: 0.05s linear;
 
     svg {
         margin-right: 15px;

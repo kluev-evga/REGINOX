@@ -57,12 +57,12 @@
 .open.reversed button,
 .open.reversed .sub_menu_container {
     background-color: transparent;
-    backdrop-filter: blur(3px);
     animation: submenu 0.1s ease forwards;
 }
 
 @keyframes submenu {
     to {
-        background-color: #0009;
+        backdrop-filter: blur(1px);
+        background-color: #000b;
     }
 }

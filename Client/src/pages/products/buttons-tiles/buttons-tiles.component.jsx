@@ -1,22 +1,21 @@
 import cn from "classnames";
 import { ReactComponent as ListIcon } from '../../../assets/svg/list.svg';
 import { ReactComponent as TilesIcon } from '../../../assets/svg/tiles.svg';
+import styles from './button-tiles.module.css';
 
 
 const ButtonsTiles = ({ setTiles, tiles }) => (
-    <div>
+    <div className={styles.container}>
         <button
             className={cn({ 'button_active': !tiles })}
             aria-label='отобразить списком'
-            onClick={() => setTiles(false)}
-        >
+            onClick={() => setTiles(false)}>
             <ListIcon />
         </button>
         <button
             className={cn({ 'button_active': tiles })}
             aria-label='отобразить плиткой'
-            onClick={() => setTiles(true)}
-        >
+            onClick={() => setTiles(true)}>
             <TilesIcon />
         </button>
     </div>

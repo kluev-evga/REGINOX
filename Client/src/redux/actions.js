@@ -18,6 +18,7 @@ import {
     LOAD_PRODUCTS,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
+    SETLECT_PRODUCTS_SORT_BY
 } from './types';
 
 import {
@@ -187,9 +188,34 @@ export const loadProducts = (url) => async (dispatch, getState) => {
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+const sortProducts = (sortBy, arr, prd) => {
+    switch (sortBy.value) {
+        case 'from cheap': return sortFromCheap(arr, prd);
+        case 'from expensive': return sortFromExpensive(arr, prd);
+        default: return sortRating(arr, prd);
+    };
+};
 
+const sortFromCheap = (arr, prd) => arr.sort((a, b) => (prd[a]['p'] - prd[b]['p']));
+const sortFromExpensive = (arr, prd) => arr.sort((a, b) => (prd[b]['p'] - prd[a]['p']));
+const sortRating = (arr, prd) => arr.sort((a, b) => (prd[b]['r'] - prd[a]['r']));
 
+//////////////////////////////////////////////////////////////////////////////////////
+export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
+    const state = getState();
+    const arr = [...state.filters.products[url]];
+    const prd = state.products.products[url];
 
+    dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
+
+    const products = sortProducts(sortBy, arr, prd);
+
+    dispatch({type: PRODUCTS_IS_FILTERED, data:products, url});
+};
+
+//////////////////////////////////////////////////////////////////////////////////////
 const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
     // массив для сортировки:
     const sortArr = Object.keys(selected).reduce((acc, key) => {
@@ -219,5 +245,9 @@ export const filterProducts = (url, categoryUrl, selected) => async (dispatch, g
         ? productsbyCategory
         : filteredProducts(productsbyCategory, selected, normalizedFilters);
 
-    dispatch({type: PRODUCTS_IS_FILTERED, data:productsFiltered, url});
+    const sortBy = state.filters.sortBy;
+    const prd = state.products.products[url];
+    const sortedProducts = sortProducts(sortBy, productsFiltered, prd);
+
+    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts, url});
 };

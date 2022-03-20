@@ -8,9 +8,9 @@ import { useMediaQuery } from 'react-responsive';
 
 import ProductCardContainer from '../product-card-container/product-card-container.component';
 import ButtonsTiles from '../buttons-tiles/buttons-tiles.component';
+import SelectFilters from '../select-filters/select-filters.component';
 import Pagination from '../../../components/pagination/pagination.component';
 
-import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron.svg';
 import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg';
 import styles from './products-section.module.css';
 
@@ -42,19 +42,20 @@ const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, produc
         <div className={styles.wrapper}>
             <div className={cn(styles.products, { [styles.tiles]: tiles })}>
                 <div className={styles.products_heading}>
-                    <button className={styles.button}>По популярности <ChevronIcon /></button>
+
+                    <div className={styles.select}>
+                        <SelectFilters url={url} />
+                    </div>
 
                     {isDesktop
                         ? <ButtonsTiles setTiles={setTiles} tiles={tiles} />
-                        : (
-                            <button
-                                className={styles.button}
-                                onClick={openFiltersMenu}
-                                aria-label='открыть меню фильтров'>
-                                фильтры
-                                <ChevronLeftIcon />
-                            </button>
-                        )}
+                        : (<button
+                            className={styles.button}
+                            onClick={openFiltersMenu}
+                            aria-label='открыть меню фильтров'>
+                            фильтры
+                            <ChevronLeftIcon />
+                        </button>)}
                 </div>
 
                 {filteredProducts.map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}

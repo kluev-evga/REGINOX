@@ -29,7 +29,7 @@ const Pagination = ({ pages, totalPages, currentPage, totalItems, selectArticles
                                 key={index}
                                 onClick={() => selectArticlesPage(index)}
                                 className={cn(styles.page, { [styles.active]: currentPage === index })}
-                                tabindex={-1}
+                                tabIndex={-1}
                             >
                                 {index}
                             </button>

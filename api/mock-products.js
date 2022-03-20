@@ -110,13 +110,12 @@ const normalizedProducts = {
             img: '/assets/products/product_1.webp',
             alt: 'product',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'stainless-steel',
-            price: '9950',
-            size: '300',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '5950',
+
+            p: 5950,
+            r: 4.89,
+            rewiewers: 23
         },
         {
             id: 'Q9aVTvnfpi',
@@ -124,55 +123,52 @@ const normalizedProducts = {
             img: '/assets/products/product_2.webp',
             alt: 'product',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'stainless-steel',
-            price: '9950',
-            size: '300',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '4950',
+
+
+            p: 4950,
+            r: 1.29,
+            rewiewers: 6
         },
         {
             id: '4myksxFQiP',
             title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_3.webp',
             alt: 'product',
-            price: '9950',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'stainless-steel',
-            size: '300',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '3950',
+
+            p: 3950,
+            r: 3.14,
+            rewiewers: 19
         },
         {
             id: 'ElVW4q4eHa',
             title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_4.webp',
             alt: 'product',
-            price: '9950',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'stainless-steel',
-            size: '300',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '2950',
+
+            p: 2950,
+            r: 4.44,
+            rewiewers: 56
         },
         {
             id: 'U6TSDmFeiD',
             title: 'Amsterdam 25 Dark chocolate',
             img: '/assets/products/product_5.webp',
             alt: 'product',
-            price: '9950',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'coated',
-            size: '300',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '1950',
+
+            p: 1950,
+            r: 3.25,
+            rewiewers: 141
         },
         {
             id: 'TkJgwqrxng',
@@ -180,13 +176,12 @@ const normalizedProducts = {
             img: '/assets/products/product_6.webp',
             alt: 'product',
             productUrl: 'amsterdam-25-dark-chocolate',
-
             category: 'coated',
-            price: '9950',
-            size: '400',
-            shape: 'round',
-            color: 'white',
-            rating: '5',
+            price: '950',
+
+            p: 950,
+            r: 2.91,
+            rewiewers: 87
         },
     ],
 

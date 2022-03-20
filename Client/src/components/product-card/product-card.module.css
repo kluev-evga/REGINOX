@@ -4,8 +4,32 @@
     position: relative;
 }
 
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-top: -20px;
+    padding: 0 15px 8px;
+}
+
+.rating svg {
+    height: 15px;
+    width: auto;
+    color: #F2994A;
+}
+
+.rating span {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray-med);
+}
+
+.clear {
+    color: transparent !important;
+}
+
 .title {
-    padding: 10px 15px 0;
+    padding: 15px 15px 0;
     text-align: center;
     font-weight: 600;
     font-size: 14px;
@@ -13,7 +37,6 @@
 
 .link {
     margin: 0 15vw;
-    /* outline-color: transparent; */
 }
 
 .new_item::after,
@@ -29,13 +52,13 @@
 
 .promo::before {
     content: 'Акция';
-    bottom: 115px;
+    bottom: 135px;
     background-color: #F2994A;
 }
 
 .new_item::after {
     content: 'Новинка';
-    bottom: 90px;
+    bottom: 110px;
     background-color: #2D9CDB;
 }
 
@@ -46,6 +69,12 @@
 .price {
     padding: 0 15px 10px;
     font-size: 18px;
+}
+
+.price svg {
+    display: inline;
+    height: 13px;
+    width: auto;
 }
 
 .button {
@@ -62,11 +91,16 @@
 @media (min-width: 340px) {
     .title {
         padding: 20px 15px 0;
-        font-size: 16px;
+        font-weight: 500;
     }
 }
 
 @media (min-width: 360px) {
+    .rating {
+        margin-top: 0px;
+        padding: 0 10px 5px;
+    }
+
     .title,
     .price {
         padding: 0 10px 5px;
@@ -90,9 +124,13 @@
 }
 
 @media (min-width: 768px) {
+    .rating {
+        padding: 0 15px 5px;
+    }
+
     .title,
     .price {
-        padding: 0 15px 8px;
+        padding: 0 15px 5px;
     }
 
     .price {
@@ -113,13 +151,17 @@
 }
 
 @media (min-width: 992px) {
+    .rating {
+        padding: 0 20px 6px;
+    }
+
     .title,
     .price {
-        padding: 0 20px 12px;
+        padding: 0 20px 6px;
     }
 
     .title {
-        font-weight: 700;
+        font-weight: 600;
     }
 
     .promo::before {
@@ -154,12 +196,32 @@
         margin: 0 70px;
     }
 
+    .rating {
+        margin-top: -15px;
+        padding: 0 23px 10px;
+        gap: 2px;
+        order: -1;
+    }
+
+    .rating svg {
+        height: 20px;
+    }
+
+    .rating span {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+
     .title {
         padding: 0 25px 8px;
     }
 
     .price {
         padding: 0 25px 14px;
+    }
+
+    .price svg {
+        height: 15px;
     }
 
     .button {
@@ -191,7 +253,7 @@
     /* --------------------------------------------------- */
     .row.card {
         display: grid;
-        grid-template: minmax(auto, 100px) auto 1fr / 1fr 0.857fr;
+        grid-template: minmax(auto, 100px) auto auto 1fr / 1fr 0.857fr;
     }
 
     .row.card.hover {
@@ -203,6 +265,21 @@
         grid-row: 1 / -1;
     }
 
+    .row .rating {
+        margin-top: 0;
+        padding: 19px 0 0;
+        gap: 3px;
+        order: unset;
+    }
+
+    .row .rating svg {
+        height: 25px;
+    }
+
+    .row .rating span {
+        font-size: 19px;
+    }
+
     .row .button {
         align-self: end;
     }
@@ -211,10 +288,15 @@
         align-self: end;
         padding: 30px 30px 0 0;
         font-size: 24px;
+        font-weight: 500;
     }
 
     .row .price {
-        padding: 14px 30px 0 0;
+        padding: 18px 30px 0 0;
         font-size: 26px;
+    }
+
+    .row .price svg {
+        height: 19px;
     }
 }
