@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import CardSlider from '../../components/card-slider/card-slider.component';
 import { ReactComponent as EyeIcon } from '../../assets/svg/eye.svg';
 import Brands from '../../components/brands/brands.component';
+import withBrands from '../../hoc/with-brands';
 import styles from './partners.module.css';
 
 
-const Partners = () => (
+const Partners = ({ brands }) => (
     <div className="container">
         <div className="breadcrumbs">
             <Link to='/home'>Главная</Link> / Наши партнеры
@@ -27,9 +28,9 @@ const Partners = () => (
             </CardSlider>
         </Link>
 
-        <Brands withUrl />
+        <Brands withUrl brands={brands} />
 
     </div>
 );
 
-export default Partners;
+export default withBrands(Partners);

@@ -15,7 +15,6 @@
     font-weight: 500;
 }
 
-.cards svg,
 .cards img {
     margin: 0 auto;
     width: 220px;
@@ -26,10 +25,6 @@
     display: block;
     margin-top: 10px;
     font-weight: 700;
-}
-
-.spinner {
-    margin: 0 auto;
 }
 
 @media (min-width: 576px) {

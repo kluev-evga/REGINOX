@@ -48,4 +48,3 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = ({ setSertificatesSlide });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SertificatesSlider);
-

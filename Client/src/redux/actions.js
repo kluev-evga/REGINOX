@@ -2,10 +2,13 @@ import {
     REQUEST,
     SUCCESS,
     FAILURE,
+    SET_APP_STATUS,
+    SET_APP_HOME_PAGE,
+    SET_APP_IS_POP_UP,
     OPEN_MAIN_MENU,
     OPEN_FILTERS_MENU,
     CLOSE_MENU,
-    LOAD_CATALOG,
+    LOAD_MENU,
     LOAD_HOME,
     LOAD_CATALOGS,
     LOAD_SERTIFICATES,
@@ -18,7 +21,7 @@ import {
     LOAD_PRODUCTS,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
-    SETLECT_PRODUCTS_SORT_BY
+    SETLECT_PRODUCTS_SORT_BY,
 } from './types';
 
 import {
@@ -26,8 +29,6 @@ import {
     sertificatesLoaded,
     brandsLoading,
     brandsLoaded,
-    catalogsLoading,
-    selectCatalogsSize,
     articlesItemLoading,
     articlesItemLoaded,
     articleLoading,
@@ -38,43 +39,146 @@ import {
 } from './selectors';
 
 
-export const loadHome = () => async (dispatch) => {
-    dispatch({ type: LOAD_HOME + REQUEST });
+const scrollUp = () => window.scrollTo({top: 0, behavior:'smooth'});
 
-    try {
-        const req = await fetch('/home');
-        const data = await req.json();
-
-        dispatch({ type: LOAD_HOME + SUCCESS, data });
-    } catch (error) {
-        dispatch({ type: LOAD_HOME + FAILURE, error });
-    }
-};
-
-export const loadCatalog = () => async (dispatch) => {
-    dispatch({ type: LOAD_CATALOG + REQUEST });
-
-    try {
-        const req = await fetch('/catalog');
-        const data = await req.json();
-
-        dispatch({ type: LOAD_CATALOG + SUCCESS, data });
-    } catch (error) {
-        dispatch({ type: LOAD_CATALOG + FAILURE, error });
-    }
-};
-
+export const setAppStatus = (status) => ({type: SET_APP_STATUS, status});
+export const setAppIsHomePage = (status) => ({type: SET_APP_HOME_PAGE, status});
+export const setAppIsPopUp = (status) => ({type: SET_APP_IS_POP_UP, status});
 export const openMainMenu = () => ({type: OPEN_MAIN_MENU});
 export const openFiltersMenu = () => ({type: OPEN_FILTERS_MENU});
 export const closeMenu = () => ({type: CLOSE_MENU});
-
 export const setSertificatesSlide = (slide) => ({type: SET_SERTIFICATES_SLIDER_SLIDE, data: slide});
 export const setSertificatesScroll = (value) => ({type: SET_SERTIFICATES_SCROLL, data: value});
+export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
+
+
+
+export const loadMainMenu = () => (dispatch, getState) => {
+    scrollUp();
+    const state = getState();
+    loadMenu(state, dispatch);
+};
+
+
+export const loadMenu = async (dispatch, getState) => {
+    const state = getState();
+    const loaded = state.menu.loaded;
+    const loading = state.menu.loading;
+    if (loading || loaded) return null;
+
+    dispatch({ type: LOAD_MENU + REQUEST });
+
+    try {
+        const req = await fetch('/menu');
+        const data = await req.json();
+        dispatch({ type: LOAD_MENU + SUCCESS, data });
+    } catch (error) {
+        dispatch({ type: LOAD_MENU + FAILURE, error });
+        return Promise.reject(error);
+    }
+};
+
+
+export const loadBrands = () => async (dispatch, getState) => {
+    const state = getState();
+    const loading = brandsLoading(state);
+    const loaded = brandsLoaded(state);
+    if (loading || loaded) return null;
+    
+    dispatch({ type: LOAD_BRANDS + REQUEST });
+
+    Promise.all([fetch('/brands'), loadMenu(dispatch, getState)])
+    .then(([res]) => res.json())
+    .then((data) => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
+    .catch(error => {
+        dispatch({ type: LOAD_BRANDS + FAILURE, error });
+        return Promise.reject(error);
+    });
+};
+
+
+export const loadSertificates = () => async (dispatch, getState) => {
+    const state = getState();
+    const loading = sertificatesLoading(state);
+    const loaded = sertificatesLoaded(state);
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_SERTIFICATES + REQUEST });
+
+    Promise.all([fetch('/sertificates'), loadBrands()(dispatch, getState)])
+    .then(([res]) => res.json())
+    .then((data) => dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data }))
+    .catch(error => dispatch({ type: LOAD_SERTIFICATES + FAILURE, error }));
+};
+
+
+
+
+
+
+
+
+
+export const loadArticles = (page) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = articlesItemLoading(state, page);
+    const loaded = articlesItemLoaded(state, page);
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_ARTICLES + REQUEST, page });
+
+    Promise.all([fetch(`/articles?page=${page}`), loadMenu(dispatch, getState)])
+    .then(([res]) => res.json())
+    .then((data) => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
+    .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }));
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const loadHome = () => (dispatch, getState) => {
+    scrollUp();
+    const state = getState();
+    const loading = state.home.loading;
+    const loaded = state.home.loaded;
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_HOME + REQUEST });
+
+    Promise.all([fetch('/home'), loadMenu(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_HOME + SUCCESS, data }))
+        .catch(error => dispatch({ type: LOAD_HOME + FAILURE, error }));
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const loadCatalogs = (pageSize) => async (dispatch, getState) => {
     const state = getState();
-    const loading = catalogsLoading(state);
-    const current = selectCatalogsSize(state);
+    const loading = state.catalogs.loading;
+    const current = state.catalogs.entities.length;
     if (loading || pageSize <= current) return;
 
     dispatch({ type: LOAD_CATALOGS + REQUEST });
@@ -89,78 +193,29 @@ export const loadCatalogs = (pageSize) => async (dispatch, getState) => {
     }
 };
 
-export const loadSertificates = () => async (dispatch, getState) => {
-    const state = getState();
-    const loading = sertificatesLoading(state);
-    const loaded = sertificatesLoaded(state);
-    if (loading || loaded) return;
 
-    dispatch({ type: LOAD_SERTIFICATES + REQUEST });
 
-    try {
-        const req = await fetch('/sertificates');
-        const data = await req.json();
-        dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data });
-    } catch (error) {
-        dispatch({ type: LOAD_SERTIFICATES + FAILURE, error });
-    }
-};
 
-export const loadBrands = () => async (dispatch, getState) => {
-    const state = getState();
-    const loading = brandsLoading(state);
-    const loaded = brandsLoaded(state);
-    if (loading || loaded) return;
 
-    dispatch({ type: LOAD_BRANDS + REQUEST });
 
-    try {
-        const req = await fetch('/brands');
-        const data = await req.json();
-        dispatch({ type: LOAD_BRANDS + SUCCESS, data });
-    } catch (error) {
-        dispatch({ type: LOAD_BRANDS + FAILURE, error });
-    }
-};
 
-export const loadArticles = (page) => async (dispatch, getState) => {
-    const state = getState();
-    const loading = articlesItemLoading(state, page);
-    const loaded = articlesItemLoaded(state, page);
-    if (loading || loaded) return;
-
-    dispatch({ type: LOAD_ARTICLES + REQUEST, page });
-
-    try {
-        const req = await fetch(`/articles?page=${page}`);
-        const data = await req.json();
-        dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page });
-    } catch (error) {
-        dispatch({ type: LOAD_ARTICLES + FAILURE, error });
-    }
-};
-
-export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
-
-export const loadArticle = (match) => async (dispatch, getState) => {
+export const loadArticle = (match, history) => async (dispatch, getState) => {
     const state = getState();
     const loading = articleLoading(state, {match});
     const loaded = articleLoaded(state, {match});
     if (loading || loaded) return;
 
     const article = match.params.article;
-
     dispatch({ type: LOAD_ARTICLE + REQUEST, article });
-
-    try {
-        const req = await fetch(`/article?article=${article}`);
-        const data = await req.json();
-        (data.valid)
-            ? dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article })
-            : dispatch({ type: LOAD_ARTICLE + FAILURE, error: 'invalidURL', article });
-    } catch (error) {
-        dispatch({ type: LOAD_ARTICLE + FAILURE, error });
-    }
+    Promise.all([fetch(`/articles/${article}aa`), loadMenu(dispatch, getState)])
+        .then(([res], reject ) => {
+            if (res.status === 404) {
+                history.replace(`/articles/${article}/not-found`);
+                reject();
+            } else {res.json()}
+        })
+        .then((data) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data }))
+        .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }));
 };
 
 
@@ -217,7 +272,7 @@ export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
 
 //////////////////////////////////////////////////////////////////////////////////////
 const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
-    // массив для сортировки:
+    // массив массивов для сортировки:
     const sortArr = Object.keys(selected).reduce((acc, key) => {
         const arr = selected[key].map(item => normalizedFilters[key][item]);
         const obj = Object.assign({}, ...arr);

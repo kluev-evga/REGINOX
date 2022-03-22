@@ -1,4 +1,5 @@
 .wrapper {
+    flex-shrink:0;
     min-height: 100vh;
     height: 100vh;
     min-height: 400px;
@@ -17,7 +18,7 @@
     position: relative;
 }
 
-.wrapper a {
+.wrapper button {
     padding:5px;
 
     position: absolute;
@@ -36,6 +37,7 @@
 .wrapper img {
     height: 100%;
     width: auto;
+    object-fit: contain;
 }
 
 @media (min-width: 768px) {
@@ -43,7 +45,7 @@
         padding: 40px 20px;
     }
 
-    .wrapper a {
+    .wrapper button {
         top: 0px;
         right: 0px;
         border-width: 2px;
@@ -57,17 +59,24 @@
 
 @media (min-width: 1200px) {
     .wrapper {
-        padding: 50px;
-        transition: height 0.2s linear;
+        height: auto;
+        /* min-height: 100vh; */
+        padding: 0px;
         overflow-y: scroll;
     }
 
     .wrapper::-webkit-scrollbar {
         opacity: 0;
     }
+
+    .container {
+        height: 100vh;
+        padding: 50px;
+    }
     
-    .wrapper.zoom {
+    .wrapper.zoom .container {
         height: 180vh;
+        transition: height 0.1s linear;
     }
 
     .wrapper.zoom::-webkit-scrollbar {
@@ -75,22 +84,17 @@
     }
 
     .wrapper img:hover {
-        cursor: url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M15.9 16.6a9.5 9.5 0 1 1 .7-.7l7.4 7.4-.7.7-7.4-7.4zM9.5 1a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zM5 9h4V5h1v4h4v1h-4v4H9v-4H5V9z'/%3E%3C/svg%3E"), zoom-in;
+        cursor: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M15.9 16.6a9.5 9.5 0 1 1 .7-.7l7.4 7.4-.7.7-7.4-7.4zM9.5 1a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zM5 9h4V5h1v4h4v1h-4v4H9v-4H5V9z'/%3E%3C/svg%3E"), zoom-in;
     }
 
     .wrapper.zoom img:hover {
-        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M15.9 16.6a9.5 9.5 0 1 1 .7-.7l7.4 7.4-.7.7-7.4-7.4zM9.5 1a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zM5 9h9v1H5V9z' /%3E%3C/svg%3E"), zoom-out;
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M15.9 16.6a9.5 9.5 0 1 1 .7-.7l7.4 7.4-.7.7-7.4-7.4zM9.5 1a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zM5 9h9v1H5V9z' /%3E%3C/svg%3E"), zoom-out;
     }
 
-    .container {
-        padding-top: 0;
-    }
-
-    .wrapper a {
+    .wrapper button {
         padding: 17px;
-        top: -25px;
-        right: -25px;
-        
+        top: 25px;
+        right: 25px;
         border:none;
         border-radius: 50%;
         outline: 2px solid var(--white);

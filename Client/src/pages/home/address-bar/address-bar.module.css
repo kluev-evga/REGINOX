@@ -38,7 +38,7 @@
 @media (min-width: 1200px) {
     .title {
         padding: 60px 0 50px 0;
-        font-size: min(5.27vw, 70px);
+        font-size: min(5.1vw, 70px);
     }
 
     .tabs_wrapper {

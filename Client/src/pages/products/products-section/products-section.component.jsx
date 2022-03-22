@@ -15,8 +15,27 @@ import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-l
 import styles from './products-section.module.css';
 
 
-const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, productsfilters, filterProducts }) => {
+const sliceProducts = (filteredProducts) => {
+    const totalItems = filteredProducts.length;
+    const totalPages = Math.ceil(totalItems / 4);
+    const pages = [...Array(totalPages)].map((_, i) => i + 1);
+
+    const products = pages.reduce((acc, _, i) => {
+        acc.push(filteredProducts.slice(i * 4, i * 4 + 4));
+        return acc;
+    }, []);
+
+    return { products, paginationData: { totalItems, totalPages, pages } }
+}
+
+const ProductsSection = ({
+    openFiltersMenu,
+    isfiltered,
+    filteredProducts,
+    productsfilters,
+    filterProducts }) => {
     const [tiles, setTiles] = useState(true);
+    const [currentPage, selectPage] = useState(1);
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const location = useLocation();
     const match = useRouteMatch('/products/:url?/:categoryUrl?');
@@ -38,6 +57,8 @@ const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, produc
 
     if (!isfiltered) return <div>LOADING</div>
 
+    const { products, paginationData } = sliceProducts(filteredProducts);
+
     return (
         <div className={styles.wrapper}>
             <div className={cn(styles.products, { [styles.tiles]: tiles })}>
@@ -58,17 +79,12 @@ const ProductsSection = ({ openFiltersMenu, isfiltered, filteredProducts, produc
                         </button>)}
                 </div>
 
-                {filteredProducts.map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
+                {products[currentPage - 1].map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
 
             </div>
 
-            <Pagination
-                pages={['1']}
-                totalPages={3}
-                currentPage={1}
-                totalItems={12}
-                selectArticlesPage={() => console.log("selectArticlesPage")}
-            />
+            <Pagination {...paginationData} currentPage={currentPage} selectPage={selectPage} />
+
         </div>
     );
 };

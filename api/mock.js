@@ -1,4 +1,4 @@
-const normalizedCatalog = {
+const menu = {
     links: [
         {
             title: 'Мойки',
@@ -37,6 +37,7 @@ const normalizedCatalog = {
         },
         {
             title: 'Системы хранения Manhattan',
+            titleShort: 'Manhattan',
             img: '/assets/catalog/countertops.webp',
             alt: 'storage Manhattan',
             url: 'storage-manhattan',
@@ -51,6 +52,7 @@ const normalizedCatalog = {
         },
         {
             title: 'Измельчители Bone Crusher',
+            titleShort: 'Bone Crusher',
             img: '/assets/catalog/garbagedisposers.webp',
             alt: 'garbagedisposers',
             url: 'garbage-disposers',
@@ -61,7 +63,6 @@ const normalizedCatalog = {
             img: '/assets/catalog/storage.webp',
             alt: 'storage',
             url: 'soap-dispensers',
-            categories: false,
             id: '2889d9d0-3a37-4593-9415-434ee08649d2',
         },
     ],
@@ -125,7 +126,7 @@ const normalizedCatalog = {
     },
 };
 
-const normalizedHome = {
+const home = {
   slider: [
     {
       id: 'a70a9dec-aa45-46ea-9823-c5fc8ba651c3',
@@ -134,7 +135,7 @@ const normalizedHome = {
       img: '/assets/slider/slide-sinks.webp',
       alt: 'slide sinks',
       url: 'sinks',
-      titleLink: 'Встраиваемые газовые плиты',
+      titleLink: 'Стальные мойки Reg-color',
       imgLink: '/assets/slider/link-sinks.webp',
       altLink: 'раковины',
     },
@@ -1164,8 +1165,8 @@ const articlesItems = {
 };
 
 module.exports = {
-  catalog: normalizedCatalog,
-  home: normalizedHome,
+  menu,
+  home,
   catalogs: normalizedCatalogs,
   sertificates: normalizedSertificates,
   brands: normalizedBrands,

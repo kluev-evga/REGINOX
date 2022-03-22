@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import withMenuLoader from '../../hoc/with-menu-loader.js';
 import styles from './contacts.module.css';
 
 
@@ -95,4 +96,4 @@ const Contacts = () => (
     </div>
 );
 
-export default Contacts;
+export default withMenuLoader(Contacts);

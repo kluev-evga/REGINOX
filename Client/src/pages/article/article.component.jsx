@@ -8,8 +8,11 @@ import { ReactComponent as SpinnerIcon } from '../../assets/svg/spinner.svg';
 import styles from './article.module.css';
 
 
-const Article = ({ match, loadArticle, article, loaded, error }) => {
-    useEffect(() => { loadArticle(match) }, [loadArticle, match]);
+const Article = (props) => {
+    const { match, history, loadArticle, article, loaded, error } = props
+    useEffect(() => { loadArticle(match, history) }, [match]);//eslint-disable-line
+
+    console.log(props);
 
     if (error === 'invalidURL') return <Redirect replace to='/not-found' />
     if (!loaded) return <div className={styles.spinner}><SpinnerIcon /></div>;
@@ -38,8 +41,4 @@ const mapStateToProps = (state, props) => ({
     error: articleError(state, props),
 })
 
-const mapDispatchToProps = ({
-    loadArticle
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Article);
+export default connect(mapStateToProps, { loadArticle })(Article);

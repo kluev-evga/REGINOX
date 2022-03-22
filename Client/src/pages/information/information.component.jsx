@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import CardSlider from '../../components/card-slider/card-slider.component';
+import withMenuLoader from '../../hoc/with-menu-loader';
 import { ReactComponent as EyeIcon } from '../../assets/svg/eye.svg';
 import styles from './information.module.css';
 
@@ -44,4 +45,4 @@ const Information = () => (
     </div>
 );
 
-export default Information;
+export default withMenuLoader(Information);

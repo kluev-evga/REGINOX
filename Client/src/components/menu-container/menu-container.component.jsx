@@ -11,8 +11,9 @@ import './menu-container.css';
 
 
 const MenuContainer = ({ children, isOpen, isMainMenu, closeMenu }) => {
-    const isPhone = useMediaQuery({ query: '(max-width: 767.99px)' });
-    useEffect(() => { isOpen && closeMenu() }, [isPhone]);//eslint-disable-line
+    const isPhone = useMediaQuery({ query: '(max-width: 767.98px)' });
+    const isDesktop = useMediaQuery({ query: '(max-width: 1199.98px)' });
+    useEffect(() => { isOpen && closeMenu() }, [isPhone, isDesktop]);//eslint-disable-line
     const handleMenuStateChange = useCallback((state) => !state.isOpen && isOpen && closeMenu(), [isOpen]);//eslint-disable-line
 
     return (
@@ -35,8 +36,6 @@ const MenuContainer = ({ children, isOpen, isMainMenu, closeMenu }) => {
         </div>
     );
 };
-
-
 
 const mapStateToProps = (state) => ({
     isMainMenu: isMainMenu(state),

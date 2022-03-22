@@ -72,6 +72,7 @@
 }
 
 .price svg {
+    margin-left: 5px;
     display: inline;
     height: 13px;
     width: auto;

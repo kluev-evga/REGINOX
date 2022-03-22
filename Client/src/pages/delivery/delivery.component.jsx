@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import withMenuLoader from '../../hoc/with-menu-loader';
 import styles from './delivery.module.css';
 
 
@@ -67,4 +68,4 @@ const Delivery = () => (
     </div>
 );
 
-export default Delivery;
+export default withMenuLoader(Delivery);

@@ -1,50 +1,39 @@
 import { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catalogLinks } from '../../../redux/selectors';
+import { menuLinks } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import DropDown from '../drop-down/drop-down.component';
 import styles from './nav-links.module.css';
 
 
-const NavLinks = ({ catalogLinks }) => {
+const NavLinks = ({ menuLinks, isHome }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
 
-    const navLinks = useMemo(
-        () => catalogLinks.slice(0, 6)
-            .map(({ id, title, url }) => (
-                {
-                    id,
-                    title: title.split(' ').slice(-1).join(),
-                    url
-                }
-            ))
-        , [catalogLinks]
-    );
+    const { navLinks, dropDownLinks } = useMemo(() => {
+        return { navLinks: menuLinks.slice(0, 6), dropDownLinks: menuLinks.slice(6) };
+    }, []);//eslint-disable-line
 
     if (!isDesktop) return null;
 
     return (
         <nav className={styles.nav}>
-            {
-                navLinks.map(({ id, title, url }) => (
-                    <NavLink
-                        to={`/products/${url}/all`}
-                        key={id}
-                        className={styles.link}
-                        activeClassName='link_active'
-                    >
-                        {title}
-                    </NavLink>
-                ))
-            }
-            <DropDown />
+            {navLinks.map(({ id, title, titleShort, url }) => (
+                <NavLink
+                    to={`/products/${url}/all`}
+                    key={id}
+                    className={styles.link}
+                    activeClassName='link_active'>
+                    {titleShort || title}
+                </NavLink>
+            ))}
+            <DropDown isHome={isHome} links={dropDownLinks} />
         </nav>
     );
 };
 
 const mapStateToProps = (state) => ({
-    catalogLinks: catalogLinks(state)
+    menuLinks: menuLinks(state)
 });
 
 export default connect(mapStateToProps)(NavLinks);

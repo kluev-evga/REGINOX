@@ -11,7 +11,7 @@
 }
 
 .wrapper button:disabled {
-    display:none;
+    color: var(--gray-med)
 }
 
 @media (min-width: 576px) {

@@ -1,15 +1,13 @@
 const router = require('express').Router();
-const { catalog, home, catalogs, sertificates, brands, articles, articlesItems } = require('./mock');
+const { menu, home, catalogs, sertificates, brands, articles, articlesItems } = require('./mock');
 const { filters, products, matchProducts } = require('./mock-products');
 const { reply, getById } = require('./utils');
 
-router.get('/catalog', (req, res, next) => {
-  reply(res, catalog);
-});
+router.get('/menu', (req, res, next) => {reply(res, menu)});
+router.get('/home', (req, res, next) => {reply(res, home)});
+router.get('/sertificates', (req, res, next) => {reply(res, sertificates)});
+router.get('/brands', (req, res, next) => {reply(res, brands)});
 
-router.get('/home', (req, res, next) => {
-  reply(res, home);
-});
 
 router.get('/catalogs', (req, res, next) => {
   const {size, current} = req.query;
@@ -19,31 +17,32 @@ router.get('/catalogs', (req, res, next) => {
   reply(res, composedCatalogs);
 });
 
-router.get('/sertificates', (req, res, next) => {
-  reply(res, sertificates);
-});
-
-router.get('/brands', (req, res, next) => {
-  reply(res, brands);
-});
 
 router.get('/articles', (req, res, next) => {
   const {page} = req.query;
-
   const start = 5 * Number(page) - 5;
   const end = 5 * Number(page);
   const arr = articles.slice(start, end);
   const total = articles.length;
   composedArticles = {entities:arr, total};
-
+  
   reply(res, composedArticles);
 });
 
-router.get('/article', (req, res, next) => {
-  const {article} = req.query;
-  const valid = (articlesItems[article]) ? true : false;
-  const response = {...articlesItems[article], valid}
-  reply(res, response);
+router.get('/articles/:article', (req, res, next) => {
+  const article = req.params.article;
+
+  console.log(article);
+
+  console.log(articlesItems[article]);
+  
+  if (!articlesItems[article]) {
+    res.status(404).send();
+  } else {
+    const valid = (articlesItems[article]) ? true : false;
+    const response = {...articlesItems[article], valid}
+    reply(res, response);
+  }
 });
 
 router.get('/filters', (req, res, next) => {
@@ -69,52 +68,5 @@ router.get('/products/:group?', (req, res, next) => {
     reply(res, composedProducts);
   }
 });
-
-
-
-// router.get('/products', (req, res, next) => {
-//   const { id } = req.query;
-//   let result = products;
-//   if (id) {
-//     const restaurant = getById(restaurants)(id);
-//     if (restaurant) {
-//       result = restaurant.menu.map(getById(result));
-//     }
-//   }
-//   reply(res, result);
-// });
-
-// router.get('/reviews', (req, res, next) => {
-//   const { id } = req.query;
-//   let result = reviews;
-//   if (id) {
-//     const restaurant = getById(restaurants)(id);
-//     if (restaurant) {
-//       result = restaurant.reviews.map(getById(result));
-//     }
-//   }
-//   reply(res, result);
-// });
-
-// router.get('/users', (req, res, next) => {
-//   reply(res, users);
-// });
-
-// const min = (m) => `you ordered for $${m}, but the min order amount is $50`;
-// const max = (m) => `you ordered for $${m}, but the max order amount is $200`;
-
-// router.post('/order', function (req, res, next) {
-//   try {
-//     const total = req.body
-//       .map((it) => products.find((p) => p.id === it.id).price * it.amount)
-//       .reduce((acc, next) => acc + next, 0);
-
-//     if (total < 50) return reply(res, min(total), 3000, 400);
-//     if (total > 200) return reply(res, max(total), 3000, 400);
-//     return reply(res, 'ok', 3000);
-//   } catch {
-//     return reply(res, 'wrong data', 1000, 400);
-//   }
-// });
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import withMenuLoader from '../../hoc/with-menu-loader';
 import styles from './policy.module.css';
 
 
@@ -142,4 +143,4 @@ const Policy = () => (
     </div>
 );
 
-export default Policy;
+export default withMenuLoader(Policy);

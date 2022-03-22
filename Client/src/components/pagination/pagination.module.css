@@ -38,11 +38,6 @@
 .wrapper svg {
     width: 18px;
     height: auto;
-    transition: all 0.1s linear;
-}
-
-.wrapper >button svg path{
-    transition: all 0.1s linear;
 }
 
 .wrapper >button:hover svg path{

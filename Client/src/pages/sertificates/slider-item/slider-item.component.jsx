@@ -14,8 +14,7 @@ const SliderItem = ({ sertificate, setSertificatesScroll }) => {
                 src={process.env.PUBLIC_URL + '/assets/sertificates/preview/' + img}
                 alt={alt}
                 width={360}
-                height={540}
-            />
+                height={540} />
             <p>{name}</p>
             <ZoomIcon />
         </Link>
@@ -26,6 +25,4 @@ const mapStateToProps = (state, props) => ({
     sertificate: sertificatesItem(state, props)
 });
 
-const mapDispatchToProps = ({ setSertificatesScroll });
-
-export default connect(mapStateToProps, mapDispatchToProps)(SliderItem);
+export default connect(mapStateToProps, { setSertificatesScroll })(SliderItem);

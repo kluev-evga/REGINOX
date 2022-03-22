@@ -1,5 +1,6 @@
 import styles from './why-us.module.css';
 import { Link } from 'react-router-dom';
+import withMenuLoader from '../../hoc/with-menu-loader';
 import { ReactComponent as ValuableIcon } from '../../assets/svg/valuable.svg';
 import { ReactComponent as CasualIcon } from '../../assets/svg/casual.svg';
 import { ReactComponent as ProfessionalyIcon } from '../../assets/svg/professionaly.svg';
@@ -117,4 +118,4 @@ const WhyUs = () => (
     </div >
 );
 
-export default WhyUs;
+export default withMenuLoader(WhyUs);

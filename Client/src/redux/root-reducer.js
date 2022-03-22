@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import history from '../history';
 import { connectRouter } from 'connected-react-router';
 
-import catalogReducer from './reducers/catalog';
+import appReducer from './reducers/app';
 import homeReducer from './reducers/home';
 import menuReducer from './reducers/menu';
 import catalogsReducer from './reducers/catalogs';
@@ -17,7 +17,7 @@ import filtersReducer from './reducers/filters';
 
 export default combineReducers({
   router: connectRouter(history),
-  catalog: catalogReducer,
+  app: appReducer,
   home: homeReducer,
   menu: menuReducer,
   catalogs: catalogsReducer,
@@ -26,5 +26,5 @@ export default combineReducers({
   articles: articlesReducer,
   article: articleReducer,
   products: productsReducer,
-  filters: filtersReducer
+  filters: filtersReducer,
 });

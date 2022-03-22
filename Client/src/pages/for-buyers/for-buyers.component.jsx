@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
+import withMenuLoader from '../../hoc/with-menu-loader';
 
 
-const Buyers = () => (
+const ForBuyers = () => (
     <div className='container'>
         <div className="breadcrumbs">
             <Link to='/home'>Главная</Link> / <Link to='/information'>Информация</Link> / Для розничных покупателей
@@ -67,4 +68,4 @@ const Buyers = () => (
     </div>
 );
 
-export default Buyers;
+export default withMenuLoader(ForBuyers, true);

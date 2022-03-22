@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadProducts } from '../../redux/actions';
-import { catalogTitleByUrl, productsLoaded } from '../../redux/selectors';
+import { menuTitleByUrl, productsLoaded } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters-container.component';
 import ProductsSection from './products-section/products-section.component';
@@ -13,6 +13,7 @@ const Products = ({ title, productsLoaded, loadProducts, match }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const url = match.params.product;
     const loaded = productsLoaded(url);
+
     useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
 
     return (
@@ -32,7 +33,7 @@ const Products = ({ title, productsLoaded, loadProducts, match }) => {
 };
 
 const mapStateToProps = (state, props) => ({
-    title: catalogTitleByUrl(state, props),
+    title: menuTitleByUrl(state, props),
     productsLoaded: productsLoaded(state),
 });
 

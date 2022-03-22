@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { sertificatesScroll } from '../../../redux/selectors';
+import { sertificatesScroll, brands } from '../../../redux/selectors';
 import { Link } from 'react-router-dom';
 import Brands from '../../../components/brands/brands.component';
 import SertificatesSlider from '../sertificates-slider/sertificates-slider.component';
 
 
-const SertificatesPage = ({ scroll }) => {
+const SertificatesPage = ({ scroll, brands }) => {
     useEffect(() => { if (scroll) window.scrollTo(0, scroll) }, [scroll]);
 
     return (
@@ -30,15 +30,18 @@ const SertificatesPage = ({ scroll }) => {
                     <p>Наши партнеры-производители из Европы имеют крупные производства, используют только качественное и экологически чистое сырье, гарантируют качество продукции и поддерживают гарантийные обязательства.</p>
                 </div>
 
-                <Brands />
+                <Brands brands={brands} />
 
             </div>
         </div>
     );
 };
 
+
+
 const mapStateToProps = (state) => ({
     scroll: sertificatesScroll(state),
+    brands: brands(state),
 });
 
 export default connect(mapStateToProps)(SertificatesPage);

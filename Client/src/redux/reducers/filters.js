@@ -3,7 +3,7 @@ import {
     SUCCESS,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
-    SETLECT_PRODUCTS_SORT_BY
+    SETLECT_PRODUCTS_SORT_BY,
 } from '../types';
 
 
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     isFiltering: {},
     isFiltered: {},
     products: {},
-    sortBy: { value: 'rating', label: 'Сначала популярные' }
+    sortBy: { value: 'rating', label: 'Сначала популярные' },
 }
 
 const filtersReducer = function (state = INITIAL_STATE, action) {
@@ -36,7 +36,7 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
             ...state,
             isFiltering: {...state.isFiltering, [url]: false},
             isFiltered: {...state.isFiltered, [url]: true},
-            products: {...state.products, [url]: data}
+            products: {...state.products, [url]: data},
         };
     case SETLECT_PRODUCTS_SORT_BY:
         return {

@@ -1,39 +1,45 @@
 import { createSelector } from 'reselect';
 
 
-export const catalogLoading = state => state.catalog.loading;
-export const catalogError = state => state.catalog.error;
-export const catalogLinks = state => state.catalog.links;
-export const catalogCategories = state => state.catalog.categories;
+export const appStatus = state => state.app.status;
+export const appIsHomePage = state => state.app.isHomePage;
+export const appIsPopUp = state => state.app.isPopUp;
+
+
+export const menuLoaded = state => state.menu.loaded;
+export const menuError = state => state.menu.error;
+export const menuLinks = state => state.menu.links;
+export const menuCategories = state => state.menu.categories;
 const catalogLiksByUrl = createSelector(
-    catalogLinks,
+    menuLinks,
     (links) => links.reduce((acc, item) => {
-        acc[item.url] = item
+        acc[item.url] = item;
         return acc;
     },{})
 );
-export const catalogTitleByUrl = (state, props) => catalogLiksByUrl(state)[props.match.params.product].title;
-
-
-export const catalogs = state => state.catalogs.entities;
-export const catalogsLoading = state => state.catalogs.loading;
-export const catalogsError = state => state.catalogs.error;
-export const catalogsTotal = state => state.catalogs.total;
-export const selectCatalogsSize = createSelector(
-    catalogs,
-    (catalogsObj) => Object.keys(catalogsObj).length
-);
-export const selectCatalogs = createSelector(
-    catalogs,
-    Object.values
-);
+export const menuTitleByUrl = (state, props) => catalogLiksByUrl(state)[props.match.params.product].title;
 
 
 export const homeLoading = state => state.home.loading;
+export const homeLoaded = state => state.home.loaded;
 export const homeError = state => state.home.error;
-export const homeSlider = state => state.home.entities.slider;
-export const homeAddressBar = state => state.home.entities.addressBar;
-export const popularProducts = state => state.home.entities.popularProducts;
+export const homeSlider = state => state.home.slider;
+export const homeAddressBar = state => state.home.addressBar;
+export const homePopularProducts = state => state.home.popularProducts;
+
+
+export const catalogsLoading = state => state.catalogs.loading;
+export const catalogsLoaded = state => state.catalogs.loaded;
+export const catalogsError = state => state.catalogs.error;
+export const catalogs = state => state.catalogs.entities;
+export const catalogsTotal = state => state.catalogs.total;
+
+
+
+
+
+
+
 
 
 export const isMainMenu = state => state.menu.isMainMenu;
@@ -45,7 +51,6 @@ export const sertificatesLoading = state => state.sertificates.loading;
 export const sertificatesLoaded = state => state.sertificates.loaded;
 export const sertificatesError = state => state.sertificates.error;
 export const sertificatesItem = (state, {id}) => sertificates(state)[id];
-export const sertificatesItemMatched = (state, props) => sertificates(state)[props.match.params.sertificateId];
 export const selectSertificatesList = createSelector(
     sertificates,
     Object.keys

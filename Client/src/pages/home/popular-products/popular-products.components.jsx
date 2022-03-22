@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { popularProducts } from '../../redux/selectors';
+import { homePopularProducts } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive'
-import ProductCard from '../product-card/product-card.component';
+import ProductCard from '../../../components/product-card/product-card.component';
 import styles from './popular-products.module.css';
 
 
-const PopularProducts = ({ popularProducts }) => {
+const PopularProducts = ({ products }) => {
     const isPhone = useMediaQuery({ query: '(max-width: 767.98px)' });
     if (isPhone) return null;
 
@@ -14,14 +14,13 @@ const PopularProducts = ({ popularProducts }) => {
             <h2 className='title'>Популярные товары</h2>
 
             <div className={styles.container}>
-                {popularProducts.map(({ id, url, ...rest }) => <ProductCard key={id} tiles={true} url={url} product={rest} />)}
+                {products.map(({ id, url, ...rest }) =>
+                    <ProductCard key={id} tiles={true} url={url} product={rest} />)}
             </div>
         </div>
     );
 };
 
-const mapStateToProps = state => ({
-    popularProducts: popularProducts(state)
-})
+const mapStateToProps = state => ({ products: homePopularProducts(state) });
 
 export default connect(mapStateToProps)(PopularProducts);

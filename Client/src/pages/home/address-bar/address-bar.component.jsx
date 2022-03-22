@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { homeAddressBar } from '../../redux/selectors';
+import { homeAddressBar } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive'
 import Tab from './tab/tab.component';
-import { ReactComponent as Squares } from '../../assets/svg/squares.svg';
+import { ReactComponent as Squares } from '../../../assets/svg/squares.svg';
 import styles from './address-bar.module.css';
 
 
@@ -37,7 +37,7 @@ const AdressBar = ({ addressBar }) => {
                 </ul>
                 <Squares className={styles.squares} />
             </div>
-        </div >
+        </div>
     )
 };
 

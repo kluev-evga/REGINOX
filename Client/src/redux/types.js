@@ -2,7 +2,11 @@ export const REQUEST = 'REQUEST';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 
-export const LOAD_CATALOG = 'LOAD_CATALOG';
+export const SET_APP_STATUS = 'SET_APP_STATUS';
+export const SET_APP_HOME_PAGE = 'SET_APP_HOME_PAGE';
+export const SET_APP_IS_POP_UP = 'SET_APP_IS_POP_UP';
+
+export const LOAD_MENU = 'LOAD_MENU';
 export const LOAD_HOME = 'LOAD_HOME';
 export const LOAD_CATALOGS = 'LOAD_CATALOGS';
 export const LOAD_SERTIFICATES = 'LOAD_SERTIFICATES';

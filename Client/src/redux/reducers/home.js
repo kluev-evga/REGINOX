@@ -2,11 +2,10 @@ import {REQUEST, SUCCESS, FAILURE, LOAD_HOME} from '../types';
 
 
 const INITIAL_STATE = {
-  entities: null,
-  loading: true,
+  loading: false,
   loaded: false,
   error: null,
-}
+};
 
 const homeReducer = function (state = INITIAL_STATE, action) {
   const { type, data, error } = action;
@@ -21,7 +20,9 @@ const homeReducer = function (state = INITIAL_STATE, action) {
     case LOAD_HOME + SUCCESS:
       return {
         ...state,
-        entities: data,
+        slider: data.slider,
+        addressBar: data.addressBar,
+        popularProducts: data.popularProducts,
         loading: false,
         loaded: true,
       };

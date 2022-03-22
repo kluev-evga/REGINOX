@@ -1,41 +1,41 @@
-import { useState, useCallback } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { useState, useCallback, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { sertificatesItemMatched, sertificatesLoaded } from '../../../redux/selectors';
+import { sertificates } from '../../../redux/selectors';
+import { setAppIsPopUp } from '../../../redux/actions';
 import cn from 'classnames'
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
-import { ReactComponent as Spinner } from '../../../assets/svg/spinner-loading.svg';
 import styles from './sertificate-pop-up.module.css';
 
 
-const SertificatePopUp = ({ sertificate, loaded }) => {
+const SertificatePopUp = ({ setAppIsPopUp, sertificates, match, history }) => {
     const [zoom, setZoom] = useState(false);
-    const toggleZoom = useCallback(() => setZoom(!zoom), [zoom])
+    const toggleZoom = useCallback(() => setZoom(!zoom), [zoom]);
+    useEffect(() => {
+        setAppIsPopUp(true);
+        return () => setAppIsPopUp(false);
+    });//eslint-disable-line
 
-    if (loaded && !sertificate) return <Redirect to='/not-found' />
-    if (!loaded) return <div className={styles.wrapper}><Spinner width='300' /></div>
+    const sertificate = sertificates[match.params.sertificateId]
+    if (!sertificate) return <Redirect to='/sertificates/not-found' />
 
     const { img, alt, width, height } = sertificate;
 
     return (
         <div className={cn(styles.wrapper, { [styles.zoom]: zoom })}>
             <div className={styles.container}>
-                <Link to='/sertificates'><CrossIcon /></Link>
+                <button onClick={() => history.push('/sertificates')}><CrossIcon /></button>
                 <img
                     src={process.env.PUBLIC_URL + '/assets/sertificates/' + img}
                     alt={alt}
                     onClick={toggleZoom}
                     width={width}
-                    height={height}
-                />
+                    height={height} />
             </div>
         </div>
     );
 };
 
-const mapStateToProps = (state, props) => ({
-    sertificate: sertificatesItemMatched(state, props),
-    loaded: sertificatesLoaded(state)
-})
+const mapStateToProps = (state) => ({ sertificates: sertificates(state) });
 
-export default connect(mapStateToProps)(SertificatePopUp);
+export default connect(mapStateToProps, { setAppIsPopUp })(SertificatePopUp);

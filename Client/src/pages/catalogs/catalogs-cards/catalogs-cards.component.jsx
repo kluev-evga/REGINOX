@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import { selectCatalogs, catalogsLoading } from '../../../redux/selectors';
+import { catalogs, catalogsLoading } from '../../../redux/selectors';
 import CardSlider from '../../../components/card-slider/card-slider.component';
 import { ReactComponent as DownloadIcon } from '../../../assets/svg/download.svg';
 import { ReactComponent as Spinner } from '../../../assets/svg/spinner.svg';
@@ -16,8 +16,7 @@ const CatalogsCards = ({ catalogs, loading }) => (
                     sm
                     width='380'
                     height='550'
-                    fixed
-                >
+                    fixed>
                     <DownloadIcon />
                     Скачать
                 </CardSlider>
@@ -28,8 +27,8 @@ const CatalogsCards = ({ catalogs, loading }) => (
 );
 
 const mapStateToProps = (state) => ({
-    catalogs: selectCatalogs(state),
     loading: catalogsLoading(state),
+    catalogs: catalogs(state),
 });
 
 export default connect(mapStateToProps)(CatalogsCards);

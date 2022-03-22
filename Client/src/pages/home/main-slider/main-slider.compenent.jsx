@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { homeSlider } from '../../redux/selectors';
+import { homeSlider } from '../../../redux/selectors';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Swiper, SwiperSlide } from 'swiper/react';

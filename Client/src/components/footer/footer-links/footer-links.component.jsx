@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { catalogLinks } from '../../../redux/selectors';
+import { menuLinks } from '../../../redux/selectors';
 import styles from './footer-links.module.css';
 
 
-const FooterLinks = ({ catalogLinks }) => (
+const FooterLinks = ({ menuLinks }) => (
     <div className="container">
         <div className={styles.wrapper}>
 
@@ -15,25 +15,23 @@ const FooterLinks = ({ catalogLinks }) => (
                 <NavLink to='/sertificates' className='link_secondary' activeClassName='link_active'>Сертификаты и гарантии</NavLink>
                 <NavLink to='/articles' className='link_secondary' activeClassName='link_active'>Статьи</NavLink>
                 <NavLink to='/information' className='link_secondary' activeClassName='link_active'>Информация</NavLink>
-                <NavLink to='/catalogs' className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
+                <NavLink to='/catalogs?size=6' className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
                 <NavLink to='/delivery' className='link_secondary' activeClassName='link_active'>Доставка и оплата</NavLink>
                 <NavLink to='/contacts' className='link_secondary' activeClassName='link_active'>Контакты</NavLink>
             </div>
 
             <div className={styles.row}>
                 <p>Каталог</p>
-                {
-                    catalogLinks.map(({ id, title, url }) => (
-                        <NavLink
-                            to={`/products/${url}/all`}
-                            key={id}
-                            className='link_secondary'
-                            activeClassName='link_active'
-                        >
-                            {title}
-                        </NavLink>
-                    ))
-                }
+                {menuLinks.map(({ id, title, url }) => (
+                    <NavLink
+                        to={`/products/${url}/all`}
+                        key={id}
+                        className='link_secondary'
+                        activeClassName='link_active'
+                    >
+                        {title}
+                    </NavLink>
+                ))}
             </div>
 
             <div className={styles.row + ' ' + styles.brands}>
@@ -54,8 +52,6 @@ const FooterLinks = ({ catalogLinks }) => (
     </div>
 );
 
-const mapStateToProps = (state) => ({
-    catalogLinks: catalogLinks(state)
-});
+const mapStateToProps = (state) => ({ menuLinks: menuLinks(state) });
 
 export default connect(mapStateToProps)(FooterLinks);

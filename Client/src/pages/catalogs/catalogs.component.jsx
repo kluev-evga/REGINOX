@@ -1,44 +1,45 @@
-import { useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCatalogs } from '../../redux/actions';
-import { catalogsError, catalogsTotal, selectCatalogsSize } from '../../redux/selectors';
+import { loadCatalogs, loadMainMenu } from '../../redux/actions';
+import { catalogsLoading, catalogsError, catalogsTotal, menuLoaded, menuError } from '../../redux/selectors';
 import CatalogsCards from './catalogs-cards/catalogs-cards.component';
+import Loader from '../../components/loader/loader.coponent';
 import styles from './catalogs.module.css';
 
 
-const Catalogs = ({ location, history, loadCatalogs, error, total, loadedSize }) => {
-    const searchParams = useMemo(() => new URLSearchParams(location.search), [location]);
-    const sizeParam = useMemo(() => searchParams.get('size'), [searchParams]);
-    const pageSize = useMemo(() => parseInt(sizeParam), [sizeParam]);
+const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsError, loading, location, history, total }) => {
+    useEffect(() => { loadMainMenu() }, []);//eslint-disable-line
+
+    const searchParams = new URLSearchParams(location.search);
+    const sizeParam = searchParams.get('size');
+    const pageSize = parseInt(sizeParam);
+    const isLegit = isFinite(Number(sizeParam));
 
     useEffect(() => {
-        if (!pageSize) {
-            const newSize = loadedSize ? loadedSize : 6;
-            history.replace(`/catalogs?size=${newSize}`);
-            loadCatalogs(newSize);
+        if (!isLegit) {
+            const size = pageSize ? pageSize : 6;
+            history.replace(`/catalogs?size=${size}`);
+            loadCatalogs(size);
         } else {
-            const isLegit = isFinite(parseInt(sizeParam.slice(-1)));
             let paramsCount = 0;
             searchParams.forEach((_) => paramsCount++);
-            if (paramsCount > 1 || !isLegit) history.replace(`/catalogs?size=${pageSize}`);
+            if (paramsCount > 1) history.replace(`/catalogs?size=${pageSize}`);
             loadCatalogs(pageSize);
         }
-    }, [history, loadCatalogs, loadedSize, searchParams, sizeParam, pageSize]);
+    }, [history, loadCatalogs, searchParams, pageSize, isLegit]);
 
-    useEffect(() => {
-        if (total && pageSize > total) history.replace(`/catalogs?size=${total}`);
-    }, [total, pageSize, history]);
-
-    if (error) <Redirect to='/error' />
+    useEffect(() => { total && pageSize > total && history.replace(`/catalogs?size=${total}`) }, [total]);//eslint-disable-line
 
     const handleClick = useCallback(() => {
-        if (pageSize < total) {
-            const newSize = (pageSize + 3 < total) ? pageSize + 3 : total;
-            history.replace(`/catalogs?size=${newSize}`);
-            loadCatalogs(newSize);
-        };
+        const size = (pageSize + 3 < total) ? pageSize + 3 : total;
+        history.replace(`/catalogs?size=${size}`);
+        loadCatalogs(size);
     }, [pageSize, total, loadCatalogs, history]);
+
+
+    if (catalogsError || menuError) <Redirect to='/error' />
+    if (!menuLoaded) return <Loader />
 
     return (
         <div className='container'>
@@ -51,10 +52,10 @@ const Catalogs = ({ location, history, loadCatalogs, error, total, loadedSize })
 
             <div className={styles.wrapper}>
                 <button
+                    style={pageSize === total ? { display: 'none' } : {}}
                     onClick={handleClick}
-                    disabled={(pageSize === total) ? true : false}
-                    className='button_secondary'
-                >
+                    disabled={loading ? true : false}
+                    className='button_secondary'>
                     Загрузить еще
                 </button>
             </div>
@@ -63,13 +64,11 @@ const Catalogs = ({ location, history, loadCatalogs, error, total, loadedSize })
 };
 
 const mapStateToProps = (state) => ({
-    error: catalogsError(state),
     total: catalogsTotal(state),
-    loadedSize: selectCatalogsSize(state),
+    loading: catalogsLoading(state),
+    catalogsError: catalogsError(state),
+    menuError: menuError(state),
+    menuLoaded: menuLoaded(state),
 });
 
-const mapDispatchToProps = ({
-    loadCatalogs
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Catalogs);
+export default connect(mapStateToProps, { loadCatalogs, loadMainMenu })(Catalogs);

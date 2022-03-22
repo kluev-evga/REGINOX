@@ -26,6 +26,7 @@ const SelectFilters = ({ setSortBy, sortBy, url }) => (
         options={options}
         value={sortBy}
         styles={customStyles}
+        isSearchable={false}
         theme={(theme) => ({
             ...theme,
             borderRadius: 1,
