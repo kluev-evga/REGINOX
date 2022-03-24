@@ -69,9 +69,10 @@ const menu = {
     categories: {
         '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
             {title: 'Все', categoryUrl: 'all'},
-            {title: 'Нержавеющая сталь', categoryUrl: 'stainless-steel'},
-            {title: 'Гранит и керамика', categoryUrl: 'porcelain'},
-            {title: 'PVD покрытие', categoryUrl: 'coated'}
+            {title: 'Фарфор', categoryUrl: 'porcelain'},
+            {title: 'Керамика', categoryUrl: 'ceramics'},
+            {title: 'Акрил', categoryUrl: 'acrylic'},
+            {title: 'Искуственный камень', categoryUrl: 'stone'},
         ],
         '4e24f752-0707-4d03-9fb7-b736926e6220': [
             {title: 'Все', categoryUrl: 'all'},
@@ -222,7 +223,6 @@ const home = {
         alt: 'product',
         url: 'sinks',
         productUrl: 'amsterdam-25-dark-chocolate',
-
     },
     {
         newItem: true,
@@ -262,6 +262,23 @@ const home = {
         id: 'TkJgwqrxng',
         title: 'Diplomat R 20 lux',
         img: '/assets/products/product_6.webp',
+        alt: 'product',
+        url: 'sinks',
+        productUrl: 'amsterdam-25-dark-chocolate',
+    },
+    {
+        promo: true,
+        id: '4myksxFQiP',
+        title: 'Diplomat R 20 lux',
+        img: '/assets/products/product_3.webp',
+        alt: 'product',
+        url: 'sinks',
+        productUrl: 'amsterdam-25-dark-chocolate',
+    },
+    {
+        id: 'U6TSDmFeiD',
+        title: 'Diplomat R 20 lux',
+        img: '/assets/products/product_5.webp',
         alt: 'product',
         url: 'sinks',
         productUrl: 'amsterdam-25-dark-chocolate',
@@ -440,9 +457,9 @@ const normalizedCatalogs = [
   },
 ];
 
-const normalizedSertificates = [
+const sertificates = [
     {
-        id: '53d57263-d565-4d2b-997f-7698594fc85c',
+        id: 'NrJkXB',
         name: 'Авторизованный диллер webert',
         img: 'authorized.webert.webp',
         alt: 'sertificate',
@@ -450,7 +467,7 @@ const normalizedSertificates = [
         height: '1028',
     },
     {
-        id: '0a6403a6-abd3-419c-bdd3-2324ef0d3c14',
+        id: 'OblGmY',
         name: 'Официальный дистрибьютер Проминтех',
         img: 'certificate-of-authorisation-fraisa_rus.webp',
         alt: 'sertificate',
@@ -458,7 +475,7 @@ const normalizedSertificates = [
         height: '1500',
     },
     {
-        id: '0beaf1a0-a7e2-44b5-a643-f11986797c3f',
+        id: 'fNlzsu',
         name: 'Kordi GmbH дистрибьютер',
         img: 'sert2014_2.webp',
         alt: 'sertificate',
@@ -466,7 +483,7 @@ const normalizedSertificates = [
         height: '2362',
     },
     {
-        id: 'e34618b7-1791-4215-b345-0aa935cbc3a3',
+        id: 'qdjEsI',
         name: 'ITE Group PLc',
         img: 'mbnew10.webp',
         alt: 'sertificate',
@@ -474,7 +491,7 @@ const normalizedSertificates = [
         height: '1044',
     },
     {
-        id: 'fd842681-0d69-42e1-8bb6-09f11049eff1',
+        id: 'RISsYr',
         name: 'Санитарно техническая экспертиза',
         img: 'e3_2.webp',
         alt: 'sertificate',
@@ -482,7 +499,7 @@ const normalizedSertificates = [
         height: '1307',
     },
     {
-        id: '1cde65bd-edb7-4048-84a0-05bf7d09909e',
+        id: 'TWQFqP',
         name: 'Корди MosBuild',
         img: 'MosBuild.webp',
         alt: 'sertificate',
@@ -490,7 +507,7 @@ const normalizedSertificates = [
         height: '872',
     },
     {
-        id: '37eb3316-a388-424a-84f6-ab997839505a',
+        id: 'nncOII',
         name: 'The ITE Group Евросант',
         img: 'mbnew11.webp',
         alt: 'sertificate',
@@ -498,7 +515,7 @@ const normalizedSertificates = [
         height: '1044',
     },
     {
-        id: 'fb9ebf7b-c182-41ab-82b8-d13d0dd295ba',
+        id: 'BPYuBd',
         name: 'Mitutoyo',
         img: 'MITUTOYO-2018.webp',
         alt: 'sertificate',
@@ -506,7 +523,7 @@ const normalizedSertificates = [
         height: '849',
     },
     {
-        id: '0d588ce9-5c94-444f-ab09-37a484c595ed',
+        id: 'cMrGKu',
         name: 'Mos Build выставка',
         img: 'di-BI77AW.webp',
         alt: 'sertificate',
@@ -514,7 +531,7 @@ const normalizedSertificates = [
         height: '1409',
     },
     {
-        id: 'ba9ac4d8-c384-4c47-90db-feb2927d2867',
+        id: 'TCqLDV',
         name: 'e3 Awwards',
         img: 'e3_1.webp',
         alt: 'sertificate',
@@ -522,7 +539,7 @@ const normalizedSertificates = [
         height: '1317',
     },
     {
-        id: '02e7b372-8f99-4b8e-9a11-19c1ce8697e6',
+        id: 'FmCpby',
         name: 'Mos Build 2014',
         img: 'di-FWFUGM.webp',
         alt: 'sertificate',
@@ -530,7 +547,7 @@ const normalizedSertificates = [
         height: '1413',
     },
     {
-        id: '5fe95c85-a14b-4c17-9e79-87972e15c9e7',
+        id: 'odHldb',
         name: 'ГОСТ ISO 9001-2008',
         img: '7232438.webp',
         alt: 'sertificate',
@@ -538,7 +555,7 @@ const normalizedSertificates = [
         height: '768',
     },
     {
-        id: '2b7b2392-92be-4815-ae14-bcc7adebeec9',
+        id: 'yrXjQI',
         name: 'ARTIS Srl',
         img: 'certificate-artis-2018-2021.webp',
         alt: 'sertificate',
@@ -546,7 +563,7 @@ const normalizedSertificates = [
         height: '988',
     },
     {
-        id: 'f1432052-e6a8-4195-8776-50429e0ea7b3',
+        id: 'JAJHFp',
         name: 'Душевая сантехника',
         img: 'byonsert.webp',
         alt: 'sertificate',
@@ -554,7 +571,7 @@ const normalizedSertificates = [
         height: '899',
     },
     {
-        id: '69272455-bc50-4a17-b07c-28eca4df0e1b',
+        id: 'kFyONj',
         name: 'Арматура и сантехника',
         img: 'sertif_12_b.webp',
         alt: 'sertificate',
@@ -562,7 +579,7 @@ const normalizedSertificates = [
         height: '845',
     },
     {
-        id: 'd01ad9ca-dd2d-4a9d-b890-89ee1a75a2eb',
+        id: 'pNvNlQ',
         name: 'Forbs & Company',
         img: 'totem_iso-9001_2008.webp',
         alt: 'sertificate',
@@ -570,7 +587,7 @@ const normalizedSertificates = [
         height: '991',
     },
     {
-        id: 'a0a5cdcb-5c23-4fee-9de7-ba80476bf271',
+        id: '',
         name: 'Краны и смесители для кухонных моек',
         img: 'sertificate_2017.webp',
         alt: 'sertificate',
@@ -578,7 +595,7 @@ const normalizedSertificates = [
         height: '829',
     },
     {
-        id: '71b03119-6edb-466e-bb30-badc77163da0',
+        id: 'aEknnx',
         name: 'Reginox approval',
         img: 'Certificaat_ISO_9001_2015.webp',
         alt: 'sertificate',
@@ -586,7 +603,7 @@ const normalizedSertificates = [
         height: '1689',
     },
     {
-        id: 'cb6531ea-e714-47c3-b5ff-f0c0680bd313',
+        id: 'NKVYMG',
         name: 'Сертификат соответствия H08858',
         img: 'sertif_14_b.webp',
         alt: 'sertificate',
@@ -1167,8 +1184,8 @@ const articlesItems = {
 module.exports = {
   menu,
   home,
+  sertificates,
   catalogs: normalizedCatalogs,
-  sertificates: normalizedSertificates,
   brands: normalizedBrands,
   articles: normalizedArticles,
   articlesItems: articlesItems

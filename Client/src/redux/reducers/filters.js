@@ -9,8 +9,8 @@ import {
 
 const INITIAL_STATE = {
     filters: {},
-    isFiltering: {},
-    isFiltered: {},
+    isFiltering: false,
+    isFiltered: false,
     products: {},
     sortBy: { value: 'rating', label: 'Сначала популярные' },
 }
@@ -27,16 +27,15 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
     case PRODUCTS_IS_FILTERING:
       return {
           ...state,
-          isFiltering: {...state.isFiltering, [url]: true},
-          isFiltered: {...state.isFiltered, [url]: false},
-          products: {...state.products, [url]: data}
+          isFiltering: true,
+          isFiltered: false,
       };
     case PRODUCTS_IS_FILTERED:
         return {
             ...state,
-            isFiltering: {...state.isFiltering, [url]: false},
-            isFiltered: {...state.isFiltered, [url]: true},
-            products: {...state.products, [url]: data},
+            isFiltering: false,
+            isFiltered: true,
+            products: data
         };
     case SETLECT_PRODUCTS_SORT_BY:
         return {

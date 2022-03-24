@@ -1,15 +1,15 @@
 import { useEffect, useCallback } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCatalogs, loadMainMenu } from '../../redux/actions';
-import { catalogsLoading, catalogsError, catalogsTotal, menuLoaded, menuError } from '../../redux/selectors';
+import { loadCatalogs, loadMenu } from '../../redux/actions';
+import { catalogsLoading, catalogsTotal, menuLoaded } from '../../redux/selectors';
 import CatalogsCards from './catalogs-cards/catalogs-cards.component';
 import Loader from '../../components/loader/loader.coponent';
 import styles from './catalogs.module.css';
 
 
-const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsError, loading, location, history, total }) => {
-    useEffect(() => { loadMainMenu() }, []);//eslint-disable-line
+const Catalogs = ({ loadMenu, loadCatalogs, menuLoaded, loading, total, location, history }) => {
+    useEffect(() => { loadMenu() }, []);//eslint-disable-line
 
     const searchParams = new URLSearchParams(location.search);
     const sizeParam = searchParams.get('size');
@@ -18,7 +18,7 @@ const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsE
 
     useEffect(() => {
         if (!isLegit) {
-            const size = pageSize ? pageSize : 6;
+            const size = pageSize ? pageSize : 3;
             history.replace(`/catalogs?size=${size}`);
             loadCatalogs(size);
         } else {
@@ -27,18 +27,18 @@ const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsE
             if (paramsCount > 1) history.replace(`/catalogs?size=${pageSize}`);
             loadCatalogs(pageSize);
         }
-    }, [history, loadCatalogs, searchParams, pageSize, isLegit]);
+    }, [pageSize, isLegit]);//eslint-disable-line
 
-    useEffect(() => { total && pageSize > total && history.replace(`/catalogs?size=${total}`) }, [total]);//eslint-disable-line
+    useEffect(() => {
+        total && pageSize > total && history.replace(`/catalogs?size=${total}`)
+    }, [total, pageSize]);//eslint-disable-line
 
     const handleClick = useCallback(() => {
         const size = (pageSize + 3 < total) ? pageSize + 3 : total;
         history.replace(`/catalogs?size=${size}`);
         loadCatalogs(size);
-    }, [pageSize, total, loadCatalogs, history]);
+    }, [pageSize, total]);// eslint-disable-line
 
-
-    if (catalogsError || menuError) <Redirect to='/error' />
     if (!menuLoaded) return <Loader />
 
     return (
@@ -48,7 +48,7 @@ const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsE
             </div>
             <h1 className="title">Каталоги</h1>
 
-            <CatalogsCards />
+            <CatalogsCards pageSize={pageSize} />
 
             <div className={styles.wrapper}>
                 <button
@@ -66,9 +66,7 @@ const Catalogs = ({ loadMainMenu, loadCatalogs, menuLoaded, menuError, catalogsE
 const mapStateToProps = (state) => ({
     total: catalogsTotal(state),
     loading: catalogsLoading(state),
-    catalogsError: catalogsError(state),
-    menuError: menuError(state),
     menuLoaded: menuLoaded(state),
 });
 
-export default connect(mapStateToProps, { loadCatalogs, loadMainMenu })(Catalogs);
+export default connect(mapStateToProps, { loadCatalogs, loadMenu })(Catalogs);

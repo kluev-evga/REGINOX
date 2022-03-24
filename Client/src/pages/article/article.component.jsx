@@ -2,20 +2,15 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadArticle } from '../../redux/actions';
 import { article, articleLoaded, articleError } from '../../redux/selectors';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ArticleContent from './article-content/article-content.component';
-import { ReactComponent as SpinnerIcon } from '../../assets/svg/spinner.svg';
-import styles from './article.module.css';
+import Loader from '../../components/loader/loader.coponent';
 
 
-const Article = (props) => {
-    const { match, history, loadArticle, article, loaded, error } = props
-    useEffect(() => { loadArticle(match, history) }, [match]);//eslint-disable-line
+const Article = ({ match, history, loadArticle, article, loaded }) => {
+    useEffect(() => { loadArticle(match, history) }, []);//eslint-disable-line
 
-    console.log(props);
-
-    if (error === 'invalidURL') return <Redirect replace to='/not-found' />
-    if (!loaded) return <div className={styles.spinner}><SpinnerIcon /></div>;
+    if (!loaded) return <Loader />;
 
     const { date, title } = article;
     const { d, m, y } = date;

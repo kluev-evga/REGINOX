@@ -9,7 +9,7 @@ import styles from './articles-cards.module.css';
 
 
 const ArticlesCards = ({ loadArticles, currentPage, loaded, articlesList, error }) => {
-    useEffect(() => { loadArticles(currentPage) }, [loadArticles, currentPage]);
+    useEffect(() => { loadArticles(currentPage) }, [currentPage]);//eslint-disable-line
     const placeholder = useMemo(() => [...Array(5)].map((_, i) => i), []);
     const list = (loaded) ? articlesList : placeholder;
 
@@ -35,8 +35,4 @@ const mapStateToProps = state => ({
     error: articlesError(state)
 });
 
-const mapDispatchToProps = ({
-    loadArticles
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArticlesCards);
+export default connect(mapStateToProps, { loadArticles })(ArticlesCards);

@@ -7,6 +7,7 @@ import styles from './popular-products.module.css';
 
 const PopularProducts = ({ products }) => {
     const isPhone = useMediaQuery({ query: '(max-width: 767.98px)' });
+    const isDesktopLG = useMediaQuery({ query: '(min-width: 1399.98px)' });
     if (isPhone) return null;
 
     return (
@@ -14,7 +15,7 @@ const PopularProducts = ({ products }) => {
             <h2 className='title'>Популярные товары</h2>
 
             <div className={styles.container}>
-                {products.map(({ id, url, ...rest }) =>
+                {(isDesktopLG ? products : products.slice(0, 6)).map(({ id, url, ...rest }) =>
                     <ProductCard key={id} tiles={true} url={url} product={rest} />)}
             </div>
         </div>

@@ -2,19 +2,25 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadProducts } from '../../redux/actions';
-import { menuTitleByUrl, productsLoaded } from '../../redux/selectors';
+import { menuTitleByUrl, productsLoaded, menuLoaded } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters-container.component';
 import ProductsSection from './products-section/products-section.component';
+import Loader from '../../components/loader/loader.coponent';
 import styles from './products.module.css';
 
 
-const Products = ({ title, productsLoaded, loadProducts, match }) => {
+
+const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const url = match.params.product;
     const loaded = productsLoaded(url);
 
     useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
+
+    if (!menuLoaded) return <Loader />
+
+    const title = getTitle(match);
 
     return (
         <div className="container">
@@ -32,11 +38,10 @@ const Products = ({ title, productsLoaded, loadProducts, match }) => {
     );
 };
 
-const mapStateToProps = (state, props) => ({
-    title: menuTitleByUrl(state, props),
+const mapStateToProps = state => ({
+    getTitle: menuTitleByUrl(state),
     productsLoaded: productsLoaded(state),
+    menuLoaded: menuLoaded(state)
 });
 
-const mapDispatchToProps = { loadProducts };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps, { loadProducts })(Products);

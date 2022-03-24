@@ -1,7 +1,21 @@
 @media (min-width: 1200px) {
     .wrapper {
         display: grid;
+        grid-template-columns: 320px 740px;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1400px) {
+    .wrapper {
         grid-template-columns: 320px 1fr;
-        gap: 50px;
+        gap: 30px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .wrapper {
+        grid-template-columns: 340px 1fr;
+        gap: 40px;
     }
 }

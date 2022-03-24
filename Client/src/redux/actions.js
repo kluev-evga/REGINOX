@@ -39,7 +39,6 @@ import {
 } from './selectors';
 
 
-const scrollUp = () => window.scrollTo({top: 0, behavior:'smooth'});
 
 export const setAppStatus = (status) => ({type: SET_APP_STATUS, status});
 export const setAppIsHomePage = (status) => ({type: SET_APP_HOME_PAGE, status});
@@ -52,15 +51,8 @@ export const setSertificatesScroll = (value) => ({type: SET_SERTIFICATES_SCROLL,
 export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
 
 
-
-export const loadMainMenu = () => (dispatch, getState) => {
-    scrollUp();
-    const state = getState();
-    loadMenu(state, dispatch);
-};
-
-
-export const loadMenu = async (dispatch, getState) => {
+export const loadMenu = (noScroll) => async (dispatch, getState) => {
+    window.scrollTo({top: 0, behavior: noScroll ? 'auto':'smooth'});
     const state = getState();
     const loaded = state.menu.loaded;
     const loading = state.menu.loading;
@@ -87,7 +79,7 @@ export const loadBrands = () => async (dispatch, getState) => {
     
     dispatch({ type: LOAD_BRANDS + REQUEST });
 
-    Promise.all([fetch('/brands'), loadMenu(dispatch, getState)])
+    Promise.all([fetch('/brands'), loadMenu()(dispatch, getState)])
     .then(([res]) => res.json())
     .then((data) => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
     .catch(error => {
@@ -112,67 +104,36 @@ export const loadSertificates = () => async (dispatch, getState) => {
 };
 
 
-
-
-
-
-
-
-
 export const loadArticles = (page) => async (dispatch, getState) => {
     const state = getState();
     const loading = articlesItemLoading(state, page);
     const loaded = articlesItemLoaded(state, page);
     if (loading || loaded) return;
+    const menu =  state.menu.loaded;
 
     dispatch({ type: LOAD_ARTICLES + REQUEST, page });
 
-    Promise.all([fetch(`/articles?page=${page}`), loadMenu(dispatch, getState)])
+    Promise.all([fetch(`/articles?page=${page}`), !menu && loadMenu()(dispatch, getState)])
     .then(([res]) => res.json())
     .then((data) => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
     .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }));
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const loadHome = () => (dispatch, getState) => {
-    scrollUp();
+    window.scrollTo({top: 0, behavior: 'auto'});
     const state = getState();
     const loading = state.home.loading;
     const loaded = state.home.loaded;
     if (loading || loaded) return;
-
+    
     dispatch({ type: LOAD_HOME + REQUEST });
 
-    Promise.all([fetch('/home'), loadMenu(dispatch, getState)])
+    Promise.all([fetch('/home'), loadMenu()(dispatch, getState)])
         .then(([res]) => res.json())
         .then((data) => dispatch({ type: LOAD_HOME + SUCCESS, data }))
         .catch(error => dispatch({ type: LOAD_HOME + FAILURE, error }));
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export const loadCatalogs = (pageSize) => async (dispatch, getState) => {
@@ -186,17 +147,11 @@ export const loadCatalogs = (pageSize) => async (dispatch, getState) => {
     try {
         const req = await fetch(`/catalogs?size=${pageSize}&current=${current}`);
         const data = await req.json();
-
         dispatch({ type: LOAD_CATALOGS + SUCCESS, data });
     } catch (error) {
         dispatch({ type: LOAD_CATALOGS + FAILURE, error });
     }
 };
-
-
-
-
-
 
 
 export const loadArticle = (match, history) => async (dispatch, getState) => {
@@ -206,15 +161,16 @@ export const loadArticle = (match, history) => async (dispatch, getState) => {
     if (loading || loaded) return;
 
     const article = match.params.article;
+
     dispatch({ type: LOAD_ARTICLE + REQUEST, article });
-    Promise.all([fetch(`/articles/${article}aa`), loadMenu(dispatch, getState)])
+    Promise.all([fetch(`/articles/${article}`), loadMenu()(dispatch, getState)])
         .then(([res], reject ) => {
             if (res.status === 404) {
                 history.replace(`/articles/${article}/not-found`);
                 reject();
-            } else {res.json()}
+            } else {return res.json()}
         })
-        .then((data) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data }))
+        .then((data) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
         .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }));
 };
 
@@ -225,21 +181,37 @@ export const loadProducts = (url) => async (dispatch, getState) => {
     const loaded = productsLoaded(state)(url);
     if (loading || loaded) return;
 
-
+    const menu =  state.menu.loaded;
     dispatch({ type: LOAD_PRODUCTS + REQUEST, url });
 
-    try {
-        // const req = await fetch(`/products?id=${id}`);
-        const req = await fetch(`/products/${url}`);
-        // console.log(req);
-        // response.status 404 - --- push...
-
-        const data = await req.json();
-        dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url })
-    } catch (error) {
-        dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url });
-    }
+    Promise.all([fetch(`/products/${url}`), !menu && loadMenu()(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
+        .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }));
 };
+
+
+// export const loadProducts1 = (url) => async (dispatch, getState) => {
+//     const state = getState();
+//     const loading = productsLoading(state)(url);
+//     const loaded = productsLoaded(state)(url);
+//     if (loading || loaded) return;
+
+
+//     dispatch({ type: LOAD_PRODUCTS + REQUEST, url });
+
+//     try {
+//         // const req = await fetch(`/products?id=${id}`);////////////////////????????????????????????????????????????????
+//         const req = await fetch(`/products/${url}`);
+//         // console.log(req);
+//         // response.status 404 - --- push...
+
+//         const data = await req.json();
+//         dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url })
+//     } catch (error) {
+//         dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url });
+//     }
+// };
 
 
 
@@ -264,10 +236,11 @@ export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const prd = state.products.products[url];
 
     dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
+    dispatch({type: PRODUCTS_IS_FILTERING});
 
     const products = sortProducts(sortBy, arr, prd);
 
-    dispatch({type: PRODUCTS_IS_FILTERED, data:products, url});
+    dispatch({type: PRODUCTS_IS_FILTERED, data:products});
 };
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -292,17 +265,29 @@ export const filterProducts = (url, categoryUrl, selected) => async (dispatch, g
     const categoryFilters = filters[0];
     const normalizedFilters = selectNormalizedFilters(state, url);
 
-    dispatch({type: PRODUCTS_IS_FILTERING, url});
 
-    const productsbyCategory = categoryFilters.products[categoryUrl];
 
-    const productsFiltered = (!Object.keys(selected).length)
+
+    dispatch({type: PRODUCTS_IS_FILTERING});
+
+    const productsbyCategory = await categoryFilters.products[categoryUrl];
+
+    const productsFiltered = await (!Object.keys(selected).length)
         ? productsbyCategory
         : filteredProducts(productsbyCategory, selected, normalizedFilters);
 
     const sortBy = state.filters.sortBy;
     const prd = state.products.products[url];
-    const sortedProducts = sortProducts(sortBy, productsFiltered, prd);
+    const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
 
-    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts, url});
+    // let arr = [];//                       замедлитель
+    // for (let i=0; i<3500000; i++) {
+    //     // console.log(i);
+    //     const a = Math.random();
+    //     arr.push(a);
+    // }
+    // arr.reverse();
+    // console.log(arr);
+
+    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
 };

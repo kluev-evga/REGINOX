@@ -15,18 +15,24 @@ import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-l
 import styles from './products-section.module.css';
 
 
-const sliceProducts = (filteredProducts) => {
-    const totalItems = filteredProducts.length;
-    const totalPages = Math.ceil(totalItems / 4);
-    const pages = [...Array(totalPages)].map((_, i) => i + 1);
+import ProductsBlock from '../products-block/products-block.component';
 
-    const products = pages.reduce((acc, _, i) => {
-        acc.push(filteredProducts.slice(i * 4, i * 4 + 4));
-        return acc;
-    }, []);
 
-    return { products, paginationData: { totalItems, totalPages, pages } }
-}
+
+
+
+// const sliceProducts = (filteredProducts) => {
+//     const totalItems = filteredProducts.length;
+//     const totalPages = Math.ceil(totalItems / 4);
+//     const pages = [...Array(totalPages)].map((_, i) => i + 1);
+
+//     const products = pages.reduce((acc, _, i) => {
+//         acc.push(filteredProducts.slice(i * 4, i * 4 + 4));
+//         return acc;
+//     }, []);
+
+//     return { products, paginationData: { totalItems, totalPages, pages } }
+// }
 
 const ProductsSection = ({
     openFiltersMenu,
@@ -55,19 +61,19 @@ const ProductsSection = ({
         filterProducts(url, categoryUrl, selected);
     }, [categoryUrl, location.search]);//eslint-disable-line
 
+    console.log(isfiltered);
     if (!isfiltered) return <div>LOADING</div>
 
-    const { products, paginationData } = sliceProducts(filteredProducts);
+
+    // const { products, paginationData } = sliceProducts(filteredProducts);
 
     return (
         <div className={styles.wrapper}>
             <div className={cn(styles.products, { [styles.tiles]: tiles })}>
                 <div className={styles.products_heading}>
-
                     <div className={styles.select}>
                         <SelectFilters url={url} />
                     </div>
-
                     {isDesktop
                         ? <ButtonsTiles setTiles={setTiles} tiles={tiles} />
                         : (<button
@@ -79,20 +85,29 @@ const ProductsSection = ({
                         </button>)}
                 </div>
 
-                {products[currentPage - 1].map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
+                <ProductsBlock tiles={tiles} url={url} />
 
             </div>
-
-            <Pagination {...paginationData} currentPage={currentPage} selectPage={selectPage} />
 
         </div>
     );
 };
 
-const mapStateToProps = (state, { url }) => ({
+
+// {
+//     products[currentPage - 1].map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)
+// }
+
+// <div className={styles.pagination}>
+//     <Pagination {...paginationData} currentPage={currentPage} selectPage={selectPage} />
+// </div>
+
+
+
+const mapStateToProps = (state) => ({
     productsfilters: filters(state),
-    isfiltered: isfiltered(state, url),
-    filteredProducts: filteredProducts(state, url),
+    isfiltered: isfiltered(state),
+    filteredProducts: filteredProducts(state),
 });
 
 const mapDispatchToProps = { openFiltersMenu, filterProducts };

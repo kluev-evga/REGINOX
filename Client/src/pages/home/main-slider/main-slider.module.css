@@ -167,3 +167,9 @@ span.bullet_active::before {
         padding-bottom: 70px;
     }
 }
+
+@media (min-width: 1400px) {
+    .backgroundImage {
+        height: 780px;
+    }
+}

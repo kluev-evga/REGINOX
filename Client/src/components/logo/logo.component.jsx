@@ -5,7 +5,7 @@ import styles from './logo.module.css';
 
 const Logo = () => (
     <div className={styles.logo}>
-        <LogoIcon />
+        <LogoIcon className={styles.crown} />
         <PRholding className={styles.svg} />
     </div>
 );

@@ -9,7 +9,7 @@
     padding-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
 }
 
 .socials {
@@ -60,9 +60,9 @@
     .row {
         margin-top: 55px;
         padding: 105px 20px 0;
-        background: var(--gray-light);
-        grid-template-columns: 300px minmax(auto, 712px) 238px;
+        grid-template-columns: 300px minmax(auto, 880px) 238px;
         justify-content: center;
+        background: var(--gray-light);
     }
 
     .logo {
@@ -77,13 +77,13 @@
 
 @media (min-width: 1200px) {
     .row {
-        width:100%;
+        width: 100%;
         margin: 55px auto 0;
         padding: 105px 50px 0;
     }
 
     .policy {
-        width:100%;
+        width: 100%;
         margin: 0 auto;
         max-width: 1350px;
         padding: 30px 50px;

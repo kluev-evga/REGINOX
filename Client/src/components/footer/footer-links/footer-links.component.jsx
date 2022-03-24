@@ -15,7 +15,7 @@ const FooterLinks = ({ menuLinks }) => (
                 <NavLink to='/sertificates' className='link_secondary' activeClassName='link_active'>Сертификаты и гарантии</NavLink>
                 <NavLink to='/articles' className='link_secondary' activeClassName='link_active'>Статьи</NavLink>
                 <NavLink to='/information' className='link_secondary' activeClassName='link_active'>Информация</NavLink>
-                <NavLink to='/catalogs?size=6' className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
+                <NavLink to='/catalogs?size=3' className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
                 <NavLink to='/delivery' className='link_secondary' activeClassName='link_active'>Доставка и оплата</NavLink>
                 <NavLink to='/contacts' className='link_secondary' activeClassName='link_active'>Контакты</NavLink>
             </div>
@@ -27,8 +27,7 @@ const FooterLinks = ({ menuLinks }) => (
                         to={`/products/${url}/all`}
                         key={id}
                         className='link_secondary'
-                        activeClassName='link_active'
-                    >
+                        activeClassName='link_active'>
                         {title}
                     </NavLink>
                 ))}

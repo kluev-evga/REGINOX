@@ -172,7 +172,6 @@ textarea {
     width:100%;
     margin: 0 auto;
     padding: 0 10px;
-    max-width: 1350px;
 
     @media (min-width: 768px) {
         padding: 0 20px;
@@ -180,6 +179,16 @@ textarea {
 
     @media (min-width: 1200px) {
         padding: 0 50px;
+        max-width: 1300px;
+    }
+
+    @media (min-width: 1400px) {
+        max-width: 1400px;
+    }
+
+    @media (min-width: 1600px) {
+        padding: 0 110px;
+        max-width: 1920px;
     }
 }
 
@@ -187,7 +196,7 @@ textarea {
     margin-top: 80px;
 
     @media (min-width: 1200px) {
-            margin-top: 110px;
+        margin-top: 110px;
     }
 }
 
@@ -253,55 +262,39 @@ textarea {
         padding: 240px 0 50px;
         font-size: 16px;
     }
+
+    @media (min-width: 1400px) {
+        padding: 250px 0 50px;
+        font-size: 17px;
+    }
 }
 
 .react-tabs__tab-list {
     display: flex;
     flex-wrap: wrap;
+    column-gap: 30px;
     border-bottom: 1px solid var(--gray-light);
 }
 
 .react-tabs__tab{
-    padding: 15px 0;
-    font-weight: 600;
-    font-size: 20px;
+    padding: 10px 0;
+    font-weight: 500;
     color: var(--gray);
+    cursor: pointer;
 
     &:not(.react-tabs__tab--selected):hover {
-        cursor: pointer;
         color: var(--graphite);
     }
 }
 
-.react-tabs__tab--selected{
+.react-tabs__tab--selected {
     color: var(--red);
 }
 
-@media (max-width: 575.99px) {
-    .react-tabs__tab-list {
-        flex-wrap: wrap;
-    }
-
-    .react-tabs__tab{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    
-        &::after {
-            content: url(../../assets/svg/circle-outline.svg);
-        }
-    }
-
-    .react-tabs__tab--selected{
-        &::after {
-            content: url(../../assets/svg/circle-red.svg);
-        }
-    }
-}
-
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     .react-tabs__tab-list {
         gap: 60px;
+        font-size: 18px;
     }
 }
 
@@ -322,13 +315,21 @@ li {
     grid-gap: 20px;
 
     @media (min-width: 576px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         grid-gap: 30px;
     }
 
     @media (min-width: 992px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 50px;
+    }
+
+    @media (min-width: 1400px) {
+        grid-gap: 70px;
+    }
+
+    @media (min-width: 1600px) {
+        grid-gap: 90px;
     }
 }
 
@@ -410,12 +411,29 @@ li {
         padding-left: 200px;
         max-width: 1050px;
     }
-    
+
     @media (min-width: 1400px) {
-        max-width: 1150px;
+        max-width: 1200px;
+
         b,p,ul {
             font-size: 20px;
         }
+
+        ul {
+            max-width: 900px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        max-width: 1300px;
+
+        ul {
+            max-width: 1000px;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        max-width: 1450px;
     }
 }
 

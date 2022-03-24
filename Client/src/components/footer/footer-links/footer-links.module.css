@@ -41,7 +41,8 @@
 @media (min-width: 992px) {
     .wrapper {
         margin-top: 80px;
-        grid-template-columns: repeat(2, 1fr) 238px;
+        grid-template-columns: repeat(2, minmax(auto, 550px)) 238px;
+        justify-content: center;
     }
     
     .brands {

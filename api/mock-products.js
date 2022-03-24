@@ -8,15 +8,17 @@ const normalizedFilters = {
             title: 'Категории',
             filters: [
                 {title: 'Все', count: '20', url: 'all'},
-                {title: 'Нержавеющая сталь', count: '20',  url: 'stainless-steel'},
-                {title: 'Гранит и керамика', count: '20',  url: 'porcelain'},
-                {title: 'PVD покрытие', count: '20',  url: 'coated'},
+                {title: 'Фарфор', count: '20',  url: 'porcelain'},
+                {title: 'Керамика', count: '20',  url: 'ceramics'},
+                {title: 'Акрил', count: '20',  url: 'acrylic'},
+                {title: 'Искуственный камень', count: '20',  url: 'stone'},
             ],
             products: {
                 'all': ['xvwY637oeN','Q9aVTvnfpi','4myksxFQiP','ElVW4q4eHa','U6TSDmFeiD','TkJgwqrxng'],
-                'stainless-steel': ['xvwY637oeN', 'Q9aVTvnfpi', '4myksxFQiP'],
-                'porcelain': ['4myksxFQiP' ,'ElVW4q4eHa', 'TkJgwqrxng'],
-                'coated': ['xvwY637oeN', '4myksxFQiP', 'TkJgwqrxng'],
+                'porcelain': ['xvwY637oeN', 'Q9aVTvnfpi', '4myksxFQiP'],
+                'ceramics': ['4myksxFQiP' ,'ElVW4q4eHa', 'TkJgwqrxng'],
+                'acrylic': ['xvwY637oeN', '4myksxFQiP', 'TkJgwqrxng'],
+                'stone': ['xvwY637oeN', '4myksxFQiP', 'TkJgwqrxng'],
             }
         },
         {
@@ -106,7 +108,7 @@ const normalizedProducts = {
             id: 'xvwY637oeN',
             promo: true,
             newItem: true,
-            title: 'Amsterdam 25 Dark chocolate',
+            title: 'Amsterdam 25 Dark chocolate vanilla pyasd ',
             img: '/assets/products/product_1.webp',
             alt: 'product',
             productUrl: 'amsterdam-25-dark-chocolate',

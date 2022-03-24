@@ -13,3 +13,9 @@
 .link:hover {
     color: var(--gray-med);
 }
+
+@media (min-width: 1400px) {
+    .nav {
+        margin: 40px -8px 3px -8px;
+    }
+}

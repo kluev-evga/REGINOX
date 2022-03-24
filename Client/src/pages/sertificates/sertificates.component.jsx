@@ -12,6 +12,7 @@ import Loader from '../../components/loader/loader.coponent';
 const Sertificates = ({ loaded, loadSertificates, setSertificatesScroll, setSertificatesSlide }) => {
     useEffect(() => {
         loadSertificates();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return () => {
             setSertificatesScroll(0);
             setSertificatesSlide(0);

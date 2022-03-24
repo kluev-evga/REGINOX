@@ -1,7 +1,5 @@
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
-import cn from 'classnames';
 import { ReactComponent as CheckIcon } from '../../../assets/svg/checked.svg';
-import styles from './categories-section.module.css';
 
 
 const CategoriesSection = ({ title, filters }) => {
@@ -12,20 +10,19 @@ const CategoriesSection = ({ title, filters }) => {
     const isActive = match.params.category;
 
     return (
-        <div className={styles.container}>
-            <p className={styles.title}>{title}</p>
+        <section>
+            <p>{title}</p>
             {filters.map(({ title, url, count }, i) =>
                 <button
-                    className={cn(styles.button, { [styles.active]: isActive === url })}
                     key={i}
-                    onClick={() => history.push({ pathname: url, search: search })}
-                >
-                    <CheckIcon className={styles.checkmark} />
+                    onClick={() => history.push({ pathname: url, search: search })}>
+
+                    <CheckIcon style={isActive === url ? { color: 'var(--red)' } : {}} />
                     {title}
-                    <span>{count}</span>
+                    <span>({count})</span>
                 </button>
             )}
-        </div>
+        </section>
     );
 };
 

@@ -7,9 +7,9 @@ import { ReactComponent as Spinner } from '../../../assets/svg/spinner.svg';
 import styles from './catalogs-cards.module.css';
 
 
-const CatalogsCards = ({ catalogs, loading }) => (
+const CatalogsCards = ({ catalogs, loading, pageSize }) => (
     <div className='cards-wrapper'>
-        {catalogs.map(({ url, id, ...rest }) => (
+        {catalogs.slice(0, pageSize).map(({ url, id, ...rest }) => (
             <a href={url} download key={id} className='link-card'>
                 <CardSlider
                     {...rest}

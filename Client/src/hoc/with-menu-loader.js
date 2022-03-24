@@ -9,8 +9,7 @@ const withMenuLoader =  (WrappedComponent, noScroll) => (props) => {
     const loaded = useSelector(menuLoaded);
     const dispatch = useDispatch();
     useEffect( () => {
-        window.scrollTo({top: 0, behavior: noScroll ? 'auto':'smooth'})
-        dispatch(loadMenu)
+        dispatch(loadMenu(noScroll))
     }, []);//eslint-disable-line
     return loaded ? <WrappedComponent {...props} /> : <Loader/>
 };

@@ -25,37 +25,26 @@ router.get('/articles', (req, res, next) => {
   const arr = articles.slice(start, end);
   const total = articles.length;
   composedArticles = {entities:arr, total};
-  
   reply(res, composedArticles);
 });
 
+
 router.get('/articles/:article', (req, res, next) => {
   const article = req.params.article;
-
-  console.log(article);
-
-  console.log(articlesItems[article]);
-  
   if (!articlesItems[article]) {
     res.status(404).send();
   } else {
-    const valid = (articlesItems[article]) ? true : false;
-    const response = {...articlesItems[article], valid}
+    const response = articlesItems[article]
     reply(res, response);
   }
 });
+
 
 router.get('/filters', (req, res, next) => {
   const {id} = req.query;
   reply(res, filters[id]);
 });
 
-// router.get('/products/:kind/:category?', (req, res, next) => {
-//   console.log(req.params.kind);
-//   console.log(req.params.category);
-//   const {id} = req.query;
-//   reply(res, products[id]);
-// });
 
 router.get('/products/:group?', (req, res, next) => {
   const {id} = req.query;
@@ -70,3 +59,9 @@ router.get('/products/:group?', (req, res, next) => {
 });
 
 module.exports = router;
+// router.get('/products/:kind/:category?', (req, res, next) => {
+//   console.log(req.params.kind);
+//   console.log(req.params.category);
+//   const {id} = req.query;
+//   reply(res, products[id]);
+// });

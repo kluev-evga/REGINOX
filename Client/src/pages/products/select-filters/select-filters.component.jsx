@@ -32,14 +32,9 @@ const SelectFilters = ({ setSortBy, sortBy, url }) => (
             borderRadius: 1,
             colors: { ...theme.colors, primary25: 'var(--gray-light)', primary: 'var(--gray-med)' },
             spacing: { baseUnit: 4, controlHeight: 30, menuGutter: 1 }
-        })}
-    />
+        })} />
 );
 
-const mapStateToProps = (state) => ({
-    sortBy: sortBy(state)
-});
+const mapStateToProps = (state) => ({ sortBy: sortBy(state) });
 
-const mapDispatchToProps = ({ setSortBy });
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectFilters);
+export default connect(mapStateToProps, { setSortBy })(SelectFilters);

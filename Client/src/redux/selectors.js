@@ -10,14 +10,16 @@ export const menuLoaded = state => state.menu.loaded;
 export const menuError = state => state.menu.error;
 export const menuLinks = state => state.menu.links;
 export const menuCategories = state => state.menu.categories;
-const catalogLiksByUrl = createSelector(
+const menuLiksByUrl = createSelector(
     menuLinks,
     (links) => links.reduce((acc, item) => {
         acc[item.url] = item;
         return acc;
     },{})
 );
-export const menuTitleByUrl = (state, props) => catalogLiksByUrl(state)[props.match.params.product].title;
+export const menuTitleByUrl = (state) => (match) => menuLiksByUrl(state)[match.params.product].title;
+export const isMainMenu = state => state.menu.isMainMenu;
+export const menuIsOpen = state => state.menu.isOpen;
 
 
 export const homeLoading = state => state.home.loading;
@@ -35,26 +37,12 @@ export const catalogs = state => state.catalogs.entities;
 export const catalogsTotal = state => state.catalogs.total;
 
 
-
-
-
-
-
-
-
-export const isMainMenu = state => state.menu.isMainMenu;
-export const menuIsOpen = state => state.menu.isOpen;
-
-
 export const sertificates = state => state.sertificates.entities;
 export const sertificatesLoading = state => state.sertificates.loading;
 export const sertificatesLoaded = state => state.sertificates.loaded;
 export const sertificatesError = state => state.sertificates.error;
 export const sertificatesItem = (state, {id}) => sertificates(state)[id];
-export const selectSertificatesList = createSelector(
-    sertificates,
-    Object.keys
-);
+export const selectSertificatesList = createSelector(sertificates, Object.keys);
 export const sertificatesSlide = state => state.sertificates.sliderSlide;
 export const sertificatesScroll = state => state.sertificates.scroll;
 
@@ -65,6 +53,17 @@ export const brandsLoaded = state => state.brands.loaded;
 export const brandsError = state => state.brands.error;
 
 
+
+
+
+
+
+
+
+
+
+
+/////////---------------????????????????????????????????????
 export const articlesItem = (state, {id}) => state.articles.entities[id];
 export const articlesItemLoading = (state, page) => state.articles.loading[page];
 export const articlesItemLoaded = (state, page) => state.articles.loaded[page];
@@ -105,6 +104,6 @@ export const selectNormalizedFilters = createSelector(
         return acc
     }, {})
 );
-export const isfiltered = (state, url) => state.filters.isFiltered[url];
-export const filteredProducts = (state, url) => state.filters.products[url];
+export const isfiltered = state => state.filters.isFiltered;
+export const filteredProducts = state => state.filters.products;
 export const sortBy = state => state.filters.sortBy;
