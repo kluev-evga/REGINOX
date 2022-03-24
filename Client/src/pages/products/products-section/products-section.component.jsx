@@ -1,47 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isfiltered, filteredProducts, filters } from '../../../redux/selectors';
+import { filters } from '../../../redux/selectors';
 import { openFiltersMenu, filterProducts } from '../../../redux/actions';
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 
-import ProductCardContainer from '../product-card-container/product-card-container.component';
+import ProductsBlock from '../products-block/products-block.component';////////////////// rename...
 import ButtonsTiles from '../buttons-tiles/buttons-tiles.component';
 import SelectFilters from '../select-filters/select-filters.component';
-import Pagination from '../../../components/pagination/pagination.component';
 
 import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg';
 import styles from './products-section.module.css';
 
 
-import ProductsBlock from '../products-block/products-block.component';
-
-
-
-
-
-// const sliceProducts = (filteredProducts) => {
-//     const totalItems = filteredProducts.length;
-//     const totalPages = Math.ceil(totalItems / 4);
-//     const pages = [...Array(totalPages)].map((_, i) => i + 1);
-
-//     const products = pages.reduce((acc, _, i) => {
-//         acc.push(filteredProducts.slice(i * 4, i * 4 + 4));
-//         return acc;
-//     }, []);
-
-//     return { products, paginationData: { totalItems, totalPages, pages } }
-// }
-
-const ProductsSection = ({
-    openFiltersMenu,
-    isfiltered,
-    filteredProducts,
-    productsfilters,
-    filterProducts }) => {
+const ProductsSection = ({ openFiltersMenu, productsfilters, filterProducts }) => {
     const [tiles, setTiles] = useState(true);
-    const [currentPage, selectPage] = useState(1);
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const location = useLocation();
     const match = useRouteMatch('/products/:url?/:categoryUrl?');
@@ -60,12 +34,6 @@ const ProductsSection = ({
         }, {});
         filterProducts(url, categoryUrl, selected);
     }, [categoryUrl, location.search]);//eslint-disable-line
-
-    console.log(isfiltered);
-    if (!isfiltered) return <div>LOADING</div>
-
-
-    // const { products, paginationData } = sliceProducts(filteredProducts);
 
     return (
         <div className={styles.wrapper}>
@@ -88,27 +56,11 @@ const ProductsSection = ({
                 <ProductsBlock tiles={tiles} url={url} />
 
             </div>
-
         </div>
     );
 };
 
-
-// {
-//     products[currentPage - 1].map(id => <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)
-// }
-
-// <div className={styles.pagination}>
-//     <Pagination {...paginationData} currentPage={currentPage} selectPage={selectPage} />
-// </div>
-
-
-
-const mapStateToProps = (state) => ({
-    productsfilters: filters(state),
-    isfiltered: isfiltered(state),
-    filteredProducts: filteredProducts(state),
-});
+const mapStateToProps = (state) => ({ productsfilters: filters(state), });
 
 const mapDispatchToProps = { openFiltersMenu, filterProducts };
 

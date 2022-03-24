@@ -190,14 +190,6 @@ export const loadProducts = (url) => async (dispatch, getState) => {
         .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }));
 };
 
-
-// export const loadProducts1 = (url) => async (dispatch, getState) => {
-//     const state = getState();
-//     const loading = productsLoading(state)(url);
-//     const loaded = productsLoaded(state)(url);
-//     if (loading || loaded) return;
-
-
 //     dispatch({ type: LOAD_PRODUCTS + REQUEST, url });
 
 //     try {
@@ -232,13 +224,13 @@ const sortRating = (arr, prd) => arr.sort((a, b) => (prd[b]['r'] - prd[a]['r']))
 //////////////////////////////////////////////////////////////////////////////////////
 export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const state = getState();
-    const arr = [...state.filters.products[url]];
+    const arr = [...state.filters.products];
     const prd = state.products.products[url];
 
     dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
     dispatch({type: PRODUCTS_IS_FILTERING});
 
-    const products = sortProducts(sortBy, arr, prd);
+    const products = await sortProducts(sortBy, arr, prd);
 
     dispatch({type: PRODUCTS_IS_FILTERED, data:products});
 };
@@ -265,29 +257,30 @@ export const filterProducts = (url, categoryUrl, selected) => async (dispatch, g
     const categoryFilters = filters[0];
     const normalizedFilters = selectNormalizedFilters(state, url);
 
-
-
-
     dispatch({type: PRODUCTS_IS_FILTERING});
 
-    const productsbyCategory = await categoryFilters.products[categoryUrl];
+    setTimeout( async () => {
+        const productsbyCategory = await categoryFilters.products[categoryUrl];
 
-    const productsFiltered = await (!Object.keys(selected).length)
-        ? productsbyCategory
-        : filteredProducts(productsbyCategory, selected, normalizedFilters);
+        const productsFiltered = await (!Object.keys(selected).length)
+            ? productsbyCategory
+            : filteredProducts(productsbyCategory, selected, normalizedFilters);
 
-    const sortBy = state.filters.sortBy;
-    const prd = state.products.products[url];
-    const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
+        const sortBy = state.filters.sortBy;
+        const prd = state.products.products[url];
+        const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
 
-    // let arr = [];//                       замедлитель
-    // for (let i=0; i<3500000; i++) {
-    //     // console.log(i);
-    //     const a = Math.random();
-    //     arr.push(a);
-    // }
-    // arr.reverse();
-    // console.log(arr);
-
-    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
+        // let arr = [];//                       замедлитель
+        // for (let i=0; i<3500000; i++) {
+        //     // console.log(i);
+        //     const a = Math.random();
+        //     arr.push(a);
+        // }
+        // const aaa = await arr.reverse();
+        // console.log(aaa);
+    
+        dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
+    }, 50);
 };
+
+

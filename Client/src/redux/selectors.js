@@ -104,6 +104,6 @@ export const selectNormalizedFilters = createSelector(
         return acc
     }, {})
 );
-export const isfiltered = state => state.filters.isFiltered;
+export const isFiltering = state => state.filters.isFiltering;
 export const filteredProducts = state => state.filters.products;
 export const sortBy = state => state.filters.sortBy;
