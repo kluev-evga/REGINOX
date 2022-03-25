@@ -1,0 +1,123 @@
+const categories = {
+    'sinks': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Фарфор', categoryUrl: 'porcelain'},
+        {title: 'Керамика', categoryUrl: 'ceramics'},
+        {title: 'Акрил', categoryUrl: 'acrylic'},
+        {title: 'Искуственный камень', categoryUrl: 'stone'},
+    ],
+    'taps': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Встроенные', categoryUrl: 'taps-insink'},
+        {title: 'Сенсорные', categoryUrl: 'taps-sensor'},
+        {title: 'Ванны и душевые кабины', categoryUrl: 'taps-shower'},
+        {title: 'Биде и гигиенический душ', categoryUrl: 'taps-sanitary'},
+    ],
+    'ranges': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: '1 конфорка', categoryUrl: 'range-single'},
+        {title: '2 конфорки', categoryUrl: 'range-double'},
+        {title: '3 конфорки', categoryUrl: 'range-triple'},
+        {title: '4 конфорки', categoryUrl: 'range-4-way'},
+        {title: '5 конфорок', categoryUrl: 'range-5-way'},
+        {title: '6 конфорок', categoryUrl: 'range-6-way'},
+    ],
+    'washstands': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Нержавеющая сталь', categoryUrl: 'washstands-stainless-steel'},
+        {title: 'Окрашенные (Regi Color)', categoryUrl: 'washstands-porcelain'},
+    ],
+    'accessories': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Разделочные доски', categoryUrl: 'accessories-boards'},
+        {title: 'Корзины', categoryUrl: 'accessories-baskets'},
+        {title: 'Коландеры', categoryUrl: 'accessories-dishwasher-bins'},
+        {title: 'Решетки на дно/поддоны', categoryUrl: 'accessories-pans'},
+        {title: 'Адаптеры и комплектующие', categoryUrl: 'accessories-adapters'},
+        {title: 'Сифоны', categoryUrl: 'accessories-siphons'},
+    ],
+    'storage-manhattan': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Manhattan', categoryUrl: 'storage-Manhattan'},
+        {title: 'Manhattan Slim', categoryUrl: 'storage-manhattan-slim'},
+        {title: 'Комплекты Manhattan', categoryUrl: 'storage-manhattan-kits'},
+    ],
+    'muscellaneous': [
+        {title: 'Все', categoryUrl: 'all'},
+        {title: 'Мойки Rodi (Португалия)', categoryUrl: 'muscellaneous-rodi'},
+        {title: 'Мойки Whinstone (Россия)', categoryUrl: 'muscellaneous-whinstone'},
+        {title: 'Мойки Rerih (Италия)', categoryUrl: 'muscellaneous-rerih'},
+        {title: 'Мойки Status (Италия)', categoryUrl: 'muscellaneous-status'},
+        {title: 'Смесители Armando Vicario (Италия)', categoryUrl: 'muscellaneous-armando-vicario'},
+        {title: 'Смесители Webert (Италия)', categoryUrl: 'muscellaneous-tap-webert'},
+        {title: 'Смесители Effepi (Италия)', categoryUrl: 'muscellaneous-effepi'},
+        {title: 'Умывальники Webert (Италия)', categoryUrl: 'muscellaneous-washstands-webert'},
+        {title: 'Аксессуары Webert (Италия)', categoryUrl: 'muscellaneous-accessories-webert'},
+        {title: 'Аксессуары Glionna Bagno (Италия)', categoryUrl: 'muscellaneous-glionna-bagno'},
+        {title: 'Аквафор (Россия)', categoryUrl: 'muscellaneous-aquafor'},
+    ],
+};
+
+module.exports = categories;
+
+
+
+// const categories = {
+//     '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Фарфор', categoryUrl: 'porcelain'},
+//         {title: 'Керамика', categoryUrl: 'ceramics'},
+//         {title: 'Акрил', categoryUrl: 'acrylic'},
+//         {title: 'Искуственный камень', categoryUrl: 'stone'},
+//     ],
+//     '4e24f752-0707-4d03-9fb7-b736926e6220': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Встроенные', categoryUrl: 'taps-insink'},
+//         {title: 'Сенсорные', categoryUrl: 'taps-sensor'},
+//         {title: 'Ванны и душевые кабины', categoryUrl: 'taps-shower'},
+//         {title: 'Биде и гигиенический душ', categoryUrl: 'taps-sanitary'},
+//     ],
+//     'd70990e4-4854-4aee-85ff-77e966658bfd': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: '1 конфорка', categoryUrl: 'range-single'},
+//         {title: '2 конфорки', categoryUrl: 'range-double'},
+//         {title: '3 конфорки', categoryUrl: 'range-triple'},
+//         {title: '4 конфорки', categoryUrl: 'range-4-way'},
+//         {title: '5 конфорок', categoryUrl: 'range-5-way'},
+//         {title: '6 конфорок', categoryUrl: 'range-6-way'},
+//     ],
+//     '732d59a1-5f70-4e20-8abf-c16ee4eb602f': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Нержавеющая сталь', categoryUrl: 'washstands-stainless-steel'},
+//         {title: 'Окрашенные (Regi Color)', categoryUrl: 'washstands-porcelain'},
+//     ],
+//     'f751f8eb-94d4-4c37-a37c-62aba74cee42': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Разделочные доски', categoryUrl: 'accessories-boards'},
+//         {title: 'Корзины', categoryUrl: 'accessories-baskets'},
+//         {title: 'Коландеры', categoryUrl: 'accessories-dishwasher-bins'},
+//         {title: 'Решетки на дно/поддоны', categoryUrl: 'accessories-pans'},
+//         {title: 'Адаптеры и комплектующие', categoryUrl: 'accessories-adapters'},
+//         {title: 'Сифоны', categoryUrl: 'accessories-siphons'},
+//     ],
+//     'c5ce17f1-0488-487c-8200-6fec72cc4caa': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Manhattan', categoryUrl: 'storage-Manhattan'},
+//         {title: 'Manhattan Slim', categoryUrl: 'storage-manhattan-slim'},
+//         {title: 'Комплекты Manhattan', categoryUrl: 'storage-manhattan-kits'},
+//     ],
+//     '5c9bca2d-13a8-4df3-91a2-cb51b8f36268': [
+//         {title: 'Все', categoryUrl: 'all'},
+//         {title: 'Мойки Rodi (Португалия)', categoryUrl: 'muscellaneous-rodi'},
+//         {title: 'Мойки Whinstone (Россия)', categoryUrl: 'muscellaneous-whinstone'},
+//         {title: 'Мойки Rerih (Италия)', categoryUrl: 'muscellaneous-rerih'},
+//         {title: 'Мойки Status (Италия)', categoryUrl: 'muscellaneous-status'},
+//         {title: 'Смесители Armando Vicario (Италия)', categoryUrl: 'muscellaneous-armando-vicario'},
+//         {title: 'Смесители Webert (Италия)', categoryUrl: 'muscellaneous-tap-webert'},
+//         {title: 'Смесители Effepi (Италия)', categoryUrl: 'muscellaneous-effepi'},
+//         {title: 'Умывальники Webert (Италия)', categoryUrl: 'muscellaneous-washstands-webert'},
+//         {title: 'Аксессуары Webert (Италия)', categoryUrl: 'muscellaneous-accessories-webert'},
+//         {title: 'Аксессуары Glionna Bagno (Италия)', categoryUrl: 'muscellaneous-glionna-bagno'},
+//         {title: 'Аквафор (Россия)', categoryUrl: 'muscellaneous-aquafor'},
+//     ],
+// };

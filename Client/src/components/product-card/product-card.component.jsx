@@ -19,7 +19,7 @@ const RatingBlock = ({ r, rewiewers }) => {
 
 const ProductCard = ({ tiles, product, url }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, price, productUrl, rewiewers, r, promo, newItem, } = product;
+    const { img, alt, title, productUrl, rewiewers, p, r, promo, newItem, } = product;
 
     return (
         <div className={cn(
@@ -42,8 +42,8 @@ const ProductCard = ({ tiles, product, url }) => {
             {r && <RatingBlock r={r} rewiewers={rewiewers} />}
 
             <p className={styles.price}>
-                {price && price}
-                {price && <RublIcon />}
+                {p}
+                <RublIcon />
             </p>
 
             <button className={styles.button + ' button-block'}>
