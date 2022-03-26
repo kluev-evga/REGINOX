@@ -19,8 +19,7 @@ const Pagination = ({ pages, totalPages, currentPage, totalItems, selectPage }) 
                     onClick={() => selectPage(currentPage - 1)}
                     className={cn({ [styles.disabled]: currentPage === 1 })}
                     tabIndex={currentPage === 1 ? -1 : 0}
-                    aria-label='предыдущая страница'
-                >
+                    aria-label='предыдущая страница'>
                     <ChevronLeftIcon />
                 </button>
 
@@ -33,8 +32,7 @@ const Pagination = ({ pages, totalPages, currentPage, totalItems, selectPage }) 
                                 key={index}
                                 onClick={() => selectPage(index)}
                                 className={cn(styles.page, { [styles.active]: currentPage === index })}
-                                tabIndex={-1}
-                            >
+                                tabIndex={-1}>
                                 {index}
                             </button>
                         ))}
@@ -45,8 +43,7 @@ const Pagination = ({ pages, totalPages, currentPage, totalItems, selectPage }) 
                     onClick={() => selectPage(currentPage + 1)}
                     className={cn({ [styles.disabled]: currentPage === totalPages })}
                     tabIndex={currentPage === totalPages ? -1 : 0}
-                    aria-label='следующая страница'
-                >
+                    aria-label='следующая страница'>
                     <ChevronRightIcon />
                 </button>
             </div>

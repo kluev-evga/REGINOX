@@ -17,7 +17,7 @@ const menuLiksByUrl = createSelector(
         return acc;
     },{})
 );
-export const menuTitleByUrl = (state) => (match) => menuLiksByUrl(state)[match.params.product].title;
+export const menuTitleByUrl = (state) => (match) => menuLiksByUrl(state)[match.params.product]?.title;
 export const isMainMenu = state => state.menu.isMainMenu;
 export const menuIsOpen = state => state.menu.isOpen;
 

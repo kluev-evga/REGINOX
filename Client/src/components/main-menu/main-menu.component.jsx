@@ -11,10 +11,10 @@ const MainMenu = ({ loaded, links, categories }) => {
     return (
         <div className={styles.menu}>
 
-            {links.map(({ title, url, id }) => (
-                categories[id]
-                    ? <MenuGroup key={id} categories={categories[id]} url={url} title={title} />
-                    : <NavLink key={id} to={`/products/${url}`} className={styles.link} activeClassName='menu-active-link'>{title}</NavLink>
+            {links.map(({ title, url }) => (
+                categories[url]
+                    ? <MenuGroup key={url} categories={categories[url]} url={url} title={title} />
+                    : <NavLink key={url} to={`/products/${url}`} className={styles.link} activeClassName='menu-active-link'>{title}</NavLink>
             ))}
 
             <div className={styles.links_container}>

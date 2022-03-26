@@ -9,8 +9,8 @@ const Catalog = ({ links }) => (
     <div className='container section-container'>
         <h2 className='title'>каталог</h2>
         <div className='cards-wrapper'>
-            {links.map(({ id, url, ...rest }) => (
-                <Link to={`products/${url}/all`} key={id} className='link-card'>
+            {links.map(({ url, ...rest }) => (
+                <Link to={`products/${url}/all`} key={url} className='link-card'>
                     <CardSlider {...rest} width="550" height="640">
                         <ListIcon />
                         Перейти в каталог

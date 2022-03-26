@@ -22,10 +22,10 @@ const FooterLinks = ({ menuLinks }) => (
 
             <div className={styles.row}>
                 <p>Каталог</p>
-                {menuLinks.map(({ id, title, url }) => (
+                {menuLinks.map(({ title, url }) => (
                     <NavLink
                         to={`/products/${url}/all`}
-                        key={id}
+                        key={url}
                         className='link_secondary'
                         activeClassName='link_active'>
                         {title}

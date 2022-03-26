@@ -24,10 +24,10 @@ const DropDown = ({ links, isHome }) => {
 
             <div className={styles.sub_menu_container}>
                 <div>
-                    {links.map(({ id, title, titleShort, url }) => (
+                    {links.map(({ title, titleShort, url }) => (
                         <NavLink
                             to={`/products/${url}/all`}
-                            key={id}
+                            key={url}
                             onClick={() => setIsOpen(false)}
                             activeClassName='link_active'
                         >

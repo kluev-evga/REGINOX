@@ -53,7 +53,7 @@ const popularProducts = [
     },
     {
         promo: true,
-        id: '4myksxFQiP',
+        id: '4myksxFtiP',
         title: 'Diplomat R 20 lux',
         img: '/assets/products/product_3.webp',
         alt: 'product',
@@ -61,7 +61,7 @@ const popularProducts = [
         productUrl: 'amsterdam-25-dark-chocolate',
     },
     {
-        id: 'U6TSDmFeiD',
+        id: 'U6TSDmFeia',
         title: 'Diplomat R 20 lux',
         img: '/assets/products/product_5.webp',
         alt: 'product',

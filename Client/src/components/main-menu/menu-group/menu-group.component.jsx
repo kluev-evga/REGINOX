@@ -19,7 +19,10 @@ const MenuGroup = ({ categories, url, title }) => {
             {isOpen &&
                 <div className={styles.categories}>
                     {categories.map(({ title, categoryUrl }) => (
-                        <NavLink key={categoryUrl} to={`/products/${url}/${categoryUrl}`} activeClassName='menu-active-link'>
+                        <NavLink
+                            key={categoryUrl}
+                            to={`/products/${url}/${categoryUrl}`}
+                            activeClassName='menu-active-link'>
                             {title}
                         </NavLink>
                     ))}

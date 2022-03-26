@@ -39,7 +39,6 @@ import {
 } from './selectors';
 
 
-
 export const setAppStatus = (status) => ({type: SET_APP_STATUS, status});
 export const setAppIsHomePage = (status) => ({type: SET_APP_HOME_PAGE, status});
 export const setAppIsPopUp = (status) => ({type: SET_APP_IS_POP_UP, status});

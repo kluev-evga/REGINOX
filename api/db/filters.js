@@ -1,5 +1,5 @@
 const filters = {
-    '0015bfc8-c63a-45f7-ad67-4d16dc608bf9': [
+    'sinks': [
         {
             title: 'Тип продукта',
             filters: [
@@ -25,37 +25,20 @@ const filters = {
                 {title: 'Прямоугольник', search: 'rectangle'},
                 {title: 'Угловой', search: 'corner'},
                 {title: 'Фигурная', search: 'patterned'},
-            ],
-            products: {
-                'square': {'Q9aVTvnfpi':true, '4myksxFQiP':true},
-                'circle': {'ElVW4q4eHa':true, 'TkJgwqrxng':true},
-                'oval': {'Q9aVTvnfpi':true, 'U6TSDmFeiD':true},
-                'rectangle': {'xvwY637oeN':true, 'TkJgwqrxng':true},
-                'corner': {'xvwY637oeN':true, '4myksxFQiP':true},
-                'patterned': {'xvwY637oeN':true, '4myksxFQiP':true},
-            }
+            ]
         },
         {
             title: 'Основной материал',
             searchGroup: 'material',
             filters: [
                 {title: 'Гранит', search:'granite'},
-                {title: 'Искуственный камень', search:'artificial-stone'},
+                {title: 'Искусственный камень', search:'artificial-stone'},
                 {title: 'Кварц', search:'quartz'},
                 {title: 'Композитный', search:'composite'},
                 {title: 'Мрамор', search:'marble'},
                 {title: 'Нержавеющая сталь', search:'stainless-steel'},
                 {title: 'Пластик', search:'polimer'},
-            ],
-            products: {
-                'granite': {'xvwY637oeN':true, 'Q9aVTvnfpi':true, '4myksxFQiP':true},
-                'artificial-stone': {'4myksxFQiP':true, 'ElVW4q4eHa':true, 'TkJgwqrxng':true},
-                'quartz': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
-                'composite': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
-                'marble': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
-                'stainless-steel': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
-                'polimer': {'xvwY637oeN':true, '4myksxFQiP':true, 'TkJgwqrxng':true},
-            }
+            ]
         },
         {
             title: 'Покрытие',
@@ -72,10 +55,7 @@ const filters = {
                 {title: 'Нержавеющая сталь', search:'stainless-steel'},
                 {title: 'Фактурный', search:'textured'},
                 {title: 'Шлифованный', search:'polished'},
-            ],
-            products: {
-
-            }
+            ]
         },
         {
             title: 'Цвет',
@@ -106,10 +86,7 @@ const filters = {
                 {title: 'Темно-Коричневый', search:'dark-brown'},
                 {title: 'Хром', search:'crome'},
                 {title: 'Черный', search:'black'},
-            ],
-            products: {
-
-            }
+            ]
         },
         {
             title: 'Страна производства',
@@ -124,12 +101,74 @@ const filters = {
                 {title: 'Чехия', search:'czech'},
                 {title: 'Швейцария', search:'swizerland'},
                 {title: 'Швеция', search:'sweeden'},
-            ],
-            products: {
-
-            }
+            ]
         },
     ],
 };
 
 module.exports = filters;
+
+
+// [
+//    {
+//      id: '91275498',
+//      specs: {
+//        'Тип продукта': 'Накладная мойка',
+//        'Марка': 'LEDEME',
+//        'Основной материал': 'Нержавеющая сталь',
+//        'Внешняя форма': 'Квадрат',
+//        'Количество чаш': '1',
+//        'Глубина чаши (см)': '18',
+//        'Цвет': 'Хром',
+//        'Вес, кг': '2.3',
+//        'Страна производства': 'Китай',
+//        'Гарантия (лет)': '1.00'
+//      }
+//    },
+//    {
+//      id: '93875816',
+//      specs: {
+//        'Тип продукта': 'Врезная мойка',
+//        'Марка': 'GRANFEST',
+//        'Ширина (см)': '41.7',
+//        'Длина (см)': '41.7',
+//        'Основной материал': 'Искусственный камень',
+//        'Внешняя форма': 'Квадрат',
+//        'Количество чаш': '1',
+//        'Глубина чаши (см)': '19',
+//        'Цвет': 'Желтый',
+//        'Покрытие': 'Гладкий',
+//        'Диаметр сливного отверстия (мм)': '88.9',
+//        'Крепеж в комплекте': 'Нет',
+//        'Уплотнитель в комплекте': 'Нет',
+//        'Сифон': 'В комплекте',
+//        'Слив-перелив': 'Перелив в комплекте',
+//        'Вес, кг': '15.2',
+//        'Страна производства': 'Россия',
+//        'Гарантия (лет)': '2.00'
+//      }
+//    },
+//    {
+//      id: '98291919',
+//      specs: {
+//        'Тип продукта': 'Врезная мойка',
+//        'Марка': 'MIXLINE',
+//        'Ширина (см)': '49',
+//        'Длина (см)': '55',
+//        'Основной материал': 'Искусственный камень',
+//        'Внешняя форма': 'Квадрат',
+//        'Количество чаш': '1',
+//        'Глубина чаши (см)': '20',
+//        'Цвет': 'Разноцветный',
+//        'Покрытие': 'Искусственный мрамор',
+//        'Диаметр сливного отверстия (мм)': '90',
+//        'Крепеж в комплекте': 'Да',
+//        'Уплотнитель в комплекте': 'Нет',
+//        'Сифон': 'В комплекте',
+//        'Слив-перелив': 'Перелив в комплекте',
+//        'Вес, кг': '18.3',
+//        'Страна производства': 'Россия',
+//        'Гарантия (лет)': '2.00'
+//      }
+//    }
+// ]

@@ -10,7 +10,6 @@ import Loader from '../../components/loader/loader.coponent';
 import styles from './products.module.css';
 
 
-
 const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const url = match.params.product;

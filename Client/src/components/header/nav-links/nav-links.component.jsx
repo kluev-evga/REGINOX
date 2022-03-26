@@ -12,17 +12,17 @@ const NavLinks = ({ menuLinks, isHome }) => {
     const isLarge = useMediaQuery({ query: '(min-width: 1600px)' })
 
     const { navLinks, dropDownLinks } = useMemo(() => {
-        return { navLinks: menuLinks.slice(0, 6), dropDownLinks: menuLinks.slice(6).reverse() };
+        return { navLinks: menuLinks.slice(0, 6), dropDownLinks: menuLinks.slice(6) };
     }, []);//eslint-disable-line
 
     if (!isDesktop) return null;
 
     return (
         <nav className={styles.nav}>
-            {(isLarge ? [...navLinks, ...dropDownLinks] : navLinks).map(({ id, title, titleShort, url }) => (
+            {(isLarge ? menuLinks : navLinks).map(({ title, titleShort, url }) => (
                 <NavLink
                     to={`/products/${url}/all`}
-                    key={id}
+                    key={url}
                     className={styles.link}
                     activeClassName='link_active'>
                     {titleShort || title}

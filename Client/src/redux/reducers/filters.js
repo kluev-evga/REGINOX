@@ -21,7 +21,7 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
     case LOAD_PRODUCTS + SUCCESS:
       return {
         ...state,
-        filters: {...state.products, [url]:data.filters},
+        filters: {...state.filters, [url]:data.filters},
       };
     case PRODUCTS_IS_FILTERING:
       return {

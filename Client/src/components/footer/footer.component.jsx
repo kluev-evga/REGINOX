@@ -12,13 +12,13 @@ const Footer = ({ loaded, status, isPopUp }) => {
             {!status && <FooterLinks />}
             <FooterBar />
         </footer>
-    );
+    )
 }
 
 const mapStateToProps = state => ({
     loaded: menuLoaded(state),
     status: appStatus(state),
     isPopUp: appIsPopUp(state),
-});
+})
 
-export default connect(mapStateToProps)(Footer);
+export default connect(mapStateToProps)(Footer)
