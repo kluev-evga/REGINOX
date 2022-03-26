@@ -16,7 +16,7 @@ const PopularProducts = ({ products }) => {
 
             <div className={styles.container}>
                 {(isDesktopLG ? products : products.slice(0, 6)).map(({ id, url, ...rest }) =>
-                    <ProductCard key={id} tiles={true} url={url} product={rest} />)}
+                    <ProductCard key={id} tiles={true} url={url} product={rest} withRating={false} />)}
             </div>
         </div>
     );

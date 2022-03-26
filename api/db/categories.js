@@ -1,10 +1,9 @@
 const categories = {
     'sinks': [
         {title: 'Все', categoryUrl: 'all'},
-        {title: 'Фарфор', categoryUrl: 'porcelain'},
-        {title: 'Керамика', categoryUrl: 'ceramics'},
-        {title: 'Акрил', categoryUrl: 'acrylic'},
-        {title: 'Искуственный камень', categoryUrl: 'stone'},
+        {title: 'Врезная мойка', categoryUrl: 'integrated'},
+        {title: 'Накладная мойка', categoryUrl: 'overhead'},
+        {title: 'Мойка под столешницу', categoryUrl: 'underlining'},
     ],
     'taps': [
         {title: 'Все', categoryUrl: 'all'},

@@ -7,19 +7,16 @@ import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg';
 import { ReactComponent as StarIcon } from '../../assets/svg/star.svg';
 
 
-const RatingBlock = ({ r, rewiewers }) => {
-    const rtg = Math.round(r);
-    return (
-        <div className={styles.rating}>
-            {[...Array(5)].map((_, i) => <StarIcon key={i} className={rtg > i ? '' : styles.clear} />)}
-            <span>({rewiewers})</span>
-        </div>
-    );
-};
+const RatingBlock = ({ r, reviewers }) => (
+    <div className={styles.rating}>
+        {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i ? '' : styles.clear} />)}
+        <span>({reviewers})</span>
+    </div>
+);
 
-const ProductCard = ({ tiles, product, url }) => {
+const ProductCard = ({ tiles, product, url, withRating = true }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, productUrl, rewiewers, p, r, promo, newItem, } = product;
+    const { img, alt, title, productUrl, reviewers, price, r, promo, newItem, } = product;
 
     return (
         <div className={cn(
@@ -36,13 +33,15 @@ const ProductCard = ({ tiles, product, url }) => {
                 onMouseLeave={() => setHover(false)}>
                 <img
                     src={process.env.PUBLIC_URL + img} alt={alt}
-                    className={styles.img} />
+                    className={styles.img}
+                    width='600'
+                    height='600' />
             </Link>
 
-            {r && <RatingBlock r={r} rewiewers={rewiewers} />}
+            {withRating && <RatingBlock r={r} reviewers={reviewers} />}
 
             <p className={styles.price}>
-                {p}
+                {price}
                 <RublIcon />
             </p>
 

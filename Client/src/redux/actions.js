@@ -208,6 +208,10 @@ export const loadProducts = (url) => async (dispatch, getState) => {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
+const sortFromCheap = (arr, prd) => arr.sort((a, b) => (prd[a]['p'] - prd[b]['p']));
+const sortFromExpensive = (arr, prd) => arr.sort((a, b) => (prd[b]['p'] - prd[a]['p']));
+const sortRating = (arr, prd) => arr.sort((a, b) => (prd[b]['r'] - prd[a]['r']));
+
 const sortProducts = (sortBy, arr, prd) => {
     switch (sortBy.value) {
         case 'from cheap': return sortFromCheap(arr, prd);
@@ -216,10 +220,6 @@ const sortProducts = (sortBy, arr, prd) => {
     };
 };
 
-const sortFromCheap = (arr, prd) => arr.sort((a, b) => (prd[a]['p'] - prd[b]['p']));
-const sortFromExpensive = (arr, prd) => arr.sort((a, b) => (prd[b]['p'] - prd[a]['p']));
-const sortRating = (arr, prd) => arr.sort((a, b) => (prd[b]['r'] - prd[a]['r']));
-
 //////////////////////////////////////////////////////////////////////////////////////
 export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const state = getState();
@@ -227,7 +227,7 @@ export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const prd = state.products.products[url];
 
     dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
-    dispatch({type: PRODUCTS_IS_FILTERING});
+    dispatch({type: PRODUCTS_IS_FILTERING});// -----------------------------наверное нет необходимости делать .... ?????????????????
 
     const products = await sortProducts(sortBy, arr, prd);
 

@@ -8,12 +8,6 @@ const filters = {
                 {title: 'Накладная мойка', url: 'overhead'},
                 {title: 'Мойка под столешницу', url: 'underlining'},
             ],
-            products: {
-                'all': ['xvwY637oeN','Q9aVTvnfpi','4myksxFQiP','ElVW4q4eHa','U6TSDmFeiD','TkJgwqrxng'],
-                'integrated': ['xvwY637oeN', 'Q9aVTvnfpi', '4myksxFQiP'],
-                'overhead': ['4myksxFQiP' ,'ElVW4q4eHa', 'TkJgwqrxng'],
-                'underlining': ['xvwY637oeN', '4myksxFQiP', 'TkJgwqrxng'],
-            }
         },
         {
             title: 'Внешняя форма',
@@ -32,11 +26,11 @@ const filters = {
             searchGroup: 'material',
             filters: [
                 {title: 'Гранит', search:'granite'},
-                {title: 'Искусственный камень', search:'artificial-stone'},
+                {title: 'Искусственный камень', search:'artificialstone'},
                 {title: 'Кварц', search:'quartz'},
                 {title: 'Композитный', search:'composite'},
                 {title: 'Мрамор', search:'marble'},
-                {title: 'Нержавеющая сталь', search:'stainless-steel'},
+                {title: 'Нержавеющая сталь', search:'stainlesssteel'},
                 {title: 'Пластик', search:'polimer'},
             ]
         },
@@ -49,10 +43,10 @@ const filters = {
                 {title: 'Без покрытия', search:'uncoated'},
                 {title: 'Гладкий', search:'smooth'},
                 {title: 'Зачищенный', search:'stripped'},
-                {title: 'Искусственный гранит', search:'artificial-granite'},
-                {title: 'Искусственный мрамор', search:'artificial-marble'},
+                {title: 'Искусственный гранит', search:'artificialgranite'},
+                {title: 'Искусственный мрамор', search:'artificialmarble'},
                 {title: 'Матовый', search:'matte'},
-                {title: 'Нержавеющая сталь', search:'stainless-steel'},
+                {title: 'Нержавеющая сталь', search:'stainlesssteel'},
                 {title: 'Фактурный', search:'textured'},
                 {title: 'Шлифованный', search:'polished'},
             ]
@@ -61,29 +55,27 @@ const filters = {
             title: 'Цвет',
             searchGroup: 'color',
             filters: [
-                {title: 'Светло-бежевый', search:'light-beige'},
                 {title: 'Алюминий', search:'aluminium'},
                 {title: 'Бежевый', search:'beige'},
                 {title: 'Белый', search:'white'},
                 {title: 'Бронза', search:'bronze'},
-                {title: 'Ванильный', search:'vanilla'},
                 {title: 'Графит', search:'graphite'},
                 {title: 'Желтый', search:'yellow'},
                 {title: 'Зеленый', search:'green'},
-                {title: 'Золото', search:'gold'},
+                {title: 'Золотой', search:'gold'},
                 {title: 'Коричневый', search:'brown'},
                 {title: 'Красный', search:'red'},
                 {title: 'Медный', search:'cupper'},
-                {title: 'Нержавеющая сталь', search:'stainles-steel'},
+                {title: 'Нержавеющая сталь', search:'stainlessteel'},
                 {title: 'Песок', search:'sand'},
-                {title: 'Разноцветный', search:'multi-color'},
+                {title: 'Разноцветный', search:'multicolor'},
                 {title: 'Розовый', search:'rose'},
-                {title: 'Светло-серый', search:'light-gray'},
+                {title: 'Светло-серый', search:'lightgray'},
                 {title: 'Серебристый', search:'silver'},
                 {title: 'Серый', search:'gray'},
-                {title: 'Серый металик', search:'gray-metal'},
+                {title: 'Серый металик', search:'graymetal'},
                 {title: 'Синий', search:'blue'},
-                {title: 'Темно-Коричневый', search:'dark-brown'},
+                {title: 'Темно-коричневый', search:'darkbrown'},
                 {title: 'Хром', search:'crome'},
                 {title: 'Черный', search:'black'},
             ]
@@ -101,74 +93,10 @@ const filters = {
                 {title: 'Чехия', search:'czech'},
                 {title: 'Швейцария', search:'swizerland'},
                 {title: 'Швеция', search:'sweeden'},
+                {title: 'Беларусь', search:'belarus'},
             ]
         },
     ],
 };
 
 module.exports = filters;
-
-
-// [
-//    {
-//      id: '91275498',
-//      specs: {
-//        'Тип продукта': 'Накладная мойка',
-//        'Марка': 'LEDEME',
-//        'Основной материал': 'Нержавеющая сталь',
-//        'Внешняя форма': 'Квадрат',
-//        'Количество чаш': '1',
-//        'Глубина чаши (см)': '18',
-//        'Цвет': 'Хром',
-//        'Вес, кг': '2.3',
-//        'Страна производства': 'Китай',
-//        'Гарантия (лет)': '1.00'
-//      }
-//    },
-//    {
-//      id: '93875816',
-//      specs: {
-//        'Тип продукта': 'Врезная мойка',
-//        'Марка': 'GRANFEST',
-//        'Ширина (см)': '41.7',
-//        'Длина (см)': '41.7',
-//        'Основной материал': 'Искусственный камень',
-//        'Внешняя форма': 'Квадрат',
-//        'Количество чаш': '1',
-//        'Глубина чаши (см)': '19',
-//        'Цвет': 'Желтый',
-//        'Покрытие': 'Гладкий',
-//        'Диаметр сливного отверстия (мм)': '88.9',
-//        'Крепеж в комплекте': 'Нет',
-//        'Уплотнитель в комплекте': 'Нет',
-//        'Сифон': 'В комплекте',
-//        'Слив-перелив': 'Перелив в комплекте',
-//        'Вес, кг': '15.2',
-//        'Страна производства': 'Россия',
-//        'Гарантия (лет)': '2.00'
-//      }
-//    },
-//    {
-//      id: '98291919',
-//      specs: {
-//        'Тип продукта': 'Врезная мойка',
-//        'Марка': 'MIXLINE',
-//        'Ширина (см)': '49',
-//        'Длина (см)': '55',
-//        'Основной материал': 'Искусственный камень',
-//        'Внешняя форма': 'Квадрат',
-//        'Количество чаш': '1',
-//        'Глубина чаши (см)': '20',
-//        'Цвет': 'Разноцветный',
-//        'Покрытие': 'Искусственный мрамор',
-//        'Диаметр сливного отверстия (мм)': '90',
-//        'Крепеж в комплекте': 'Да',
-//        'Уплотнитель в комплекте': 'Нет',
-//        'Сифон': 'В комплекте',
-//        'Слив-перелив': 'Перелив в комплекте',
-//        'Вес, кг': '18.3',
-//        'Страна производства': 'Россия',
-//        'Гарантия (лет)': '2.00'
-//      }
-//    }
-// ]

@@ -10,7 +10,7 @@ const randomInteger = (min, max) => {
 };
 
 const translit = (word) => {
-	var converter = {
+	const converter = {
 		'а': 'a',    'б': 'b',    'в': 'v',    'г': 'g',    'д': 'd',
 		'е': 'e',    'ё': 'e',    'ж': 'zh',   'з': 'z',    'и': 'i',
 		'й': 'y',    'к': 'k',    'л': 'l',    'м': 'm',    'н': 'n',
@@ -22,8 +22,8 @@ const translit = (word) => {
  
 	word = word.toLowerCase();
   
-	var answer = '';
-	for (var i = 0; i < word.length; ++i ) {
+	let answer = '';
+	for (let i = 0; i < word.length; ++i ) {
 		if (converter[word[i]] == undefined){
 			answer += word[i];
 		} else {
@@ -39,23 +39,23 @@ const translit = (word) => {
 
 const createProductItem = (item) => {
     const id = item.id;
-    const promo = randomInteger(0, 10) > 8 ? true : false;
-    const newItem = randomInteger(0, 10) > 8 ? true : false;
+    const promo = randomInteger(0, 10) > 9 ? true : false;
+    const newItem = randomInteger(0, 10) > 9 ? true : false;
     const title = item.title;
     const img = item.images[0];
     const alt = item.title;
     const productUrl = translit(item.title.split(',').slice(0,1).join(' '));
-    const category = 'integrated';//////////////////////////////////////////////////  нужно получать категории
-    const p = item.price;
+    const price = item.price;
+    const p = Number(item.price.replace(/\s/g, ''));
     const r = randomInteger(0, 5);
     const reviewers = Math.round(randomInteger(0, 125));
-    return { id, promo, newItem, title, img, alt, productUrl, category, p, r, reviewers };
+    return { id, promo, newItem, title, img, alt, productUrl, price, p, r, reviewers };
 };
 
 const getProducts = (productItems) => {
     const productsdata = {};
-    for (let key in productItems) {
-      productsdata[key] = productItems[key].map(item => createProductItem(item));
+    for (let url in productItems) {
+      productsdata[url] = productItems[url].map(item => createProductItem(item));
     };
     return productsdata;
     // Тест на уникальность id:
@@ -70,8 +70,9 @@ const getProducts = (productItems) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
-const getHome = (home, popularProducts) => {
-  home.popularProducts = popularProducts;
+const getHome = (home, productsdata) => {
+  const rnd = Math.floor(randomInteger(8, productsdata['sinks'].length));
+  home.popularProducts = productsdata['sinks'].slice(rnd - 8, rnd);
   return home;
 };
 ////////////////////////////////////////////////////////////////////////
@@ -89,51 +90,51 @@ const getProductsData = data =>
 const getFilters = (filtersObj, productItems) => {
     const filters = {...filtersObj};
 
-    for (let key in filters) {
-        const products = getProductsData(productItems[key]);
-        const filter = filters[key];
+    for (let url in filters) {
+        const products = getProductsData(productItems[url]);// выбираем группу продуктов по url и трансформируем продукты в нужный формат(used for filters only)
+        const filter = filters[url];// выбираем нужную группу фильтров с которой работаем
 
         // --------------------------------------- categories:
         const categories = filter[0];
-        categories.products = categories.filters.reduce( (acc, item) => {
+        categories.products = categories.filters.reduce( (acc, item) => {// cоздаем ветку  products : { all: [], anycategory: []}
           acc[item.url] = [];
           return acc;
         }, {});
 
         const title = categories.title;
-        const match = categories.filters.reduce( (acc, item) => {
+        const match = categories.filters.reduce( (acc, item) => {// объект для перебора по продуктам ниже (только для категорий)
           acc[item.title] = item.url;
           return acc;
         }, {});
 
-        products.forEach( ({id, specs}) => {
+        products.forEach( ({id, specs}) => {// наполняем ветку products массивам id-шников продуктов
             categories.products.all.push(id);
             categories.products[match[specs[title]]].push(id);
         });
 
-        categories.filters.forEach(item => item.count = categories.products[item.url].length);
+        categories.filters.forEach(item => item.count = categories.products[item.url].length);// считаем количество в массивах и фигачим count в фильтры
 
-        // --------------------------------------- other:
-        filter.slice(1).forEach(item => {
+        // --------------------------------------- все остальные ветки фильтров(помимо категорий, т.к. со всторого айтема фильтров):
+        filter.slice(1).forEach( item => {
             const {title, filters} = item;
-            const match = filters.reduce( (acc, item) => {
+            const match = filters.reduce( (acc, item) => {// создаем нужный объект match для перебора по продуктам(отдельно для каждого фильтра)
               acc[item.title] = item.search;
               return acc;
             }, {});
 
-            item.products = filters.reduce((acc, {search}) => {
+            item.products = filters.reduce((acc, {search}) => {// создаем ветку products в фильтре  products : { smthg: {}, smthgElse: {}}
               acc[search] = {};
               return acc;
             }, {});
 
-            products.forEach( ({id, specs}) => {
+            products.forEach( ({id, specs}) => {// перебираем продукты и добавляем id-шник в нужную ветку  products : { smthg: {id: true, id: true}, smthgElse: {id: true}}
               const res = match[specs[title]];
               if (!item.products[res]) console.log('У продукта, id: ', id, 'Не найдено значение для', title);
               else item.products[res][id] = true;
             });
 
             // добавляет count для фильтров:
-            filters.forEach( fltr => fltr.count = Object.keys(item.products[fltr.search]).length);
+            filters.forEach( fltr => fltr.count = Object.keys(item.products[fltr.search]).length);// считаем все и пишем в counts
         });
     };
     return filters;

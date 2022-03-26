@@ -12,20 +12,25 @@ const categories = require('./db/categories');
 const productItems = require('./db/PRODUCTS');
 const sertificates = require('./db/sertificates');
 const articlesItems = require('./db/articlesItems');
-const popularProducts = require('./db/pupular-products');
+
 
 
 const menudata = getMenu(links, categories);
-const homedata = getHome(home, popularProducts);
 const productsdata = getProducts(productItems);
 const filtersdata = getFilters(filters, productItems);
 
 
-////////////////////////////////////////////////////////////////////////
+
+
 router.get('/menu', (req, res, next) => {reply(res, menudata)});
-router.get('/home', (req, res, next) => {reply(res, homedata)});
 router.get('/sertificates', (req, res, next) => {reply(res, sertificates)});
 router.get('/brands', (req, res, next) => {reply(res, brands)});
+
+
+router.get('/home', (req, res, next) => {
+  const homedata = getHome(home, productsdata);
+  reply(res, homedata);
+});
 
 
 router.get('/catalogs', (req, res, next) => {
@@ -58,4 +63,3 @@ router.get('/products/:url', (req, res, next) => {
 });
 
 module.exports = router;
-  

@@ -14,10 +14,11 @@ import styles from './products-block.module.css';
 
 
 const sliceProducts = (filteredProducts) => {
+    const j = 18;// айтемов на страницу
     const totalItems = filteredProducts.length;
-    const totalPages = Math.ceil(totalItems / 4);
+    const totalPages = Math.ceil(totalItems / j);
     const pages = [...Array(totalPages)].map((_, i) => i + 1);
-    const products = pages.map((_, i) => filteredProducts.slice(i * 4, i * 4 + 4));
+    const products = pages.map((_, i) => filteredProducts.slice(i * j, i * j + j));
     return { products, totalItems, totalPages, pages };
 };
 
