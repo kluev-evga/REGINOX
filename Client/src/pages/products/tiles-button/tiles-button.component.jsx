@@ -1,10 +1,10 @@
 import cn from "classnames";
 import { ReactComponent as ListIcon } from '../../../assets/svg/list.svg';
 import { ReactComponent as TilesIcon } from '../../../assets/svg/tiles.svg';
-import styles from './button-tiles.module.css';
+import styles from './tiles-button.module.css';
 
 
-const ButtonsTiles = ({ setTiles, tiles }) => (
+const TilesButton = ({ setTiles, tiles }) => (
     <div className={styles.container}>
         <button
             className={cn({ 'button_active': !tiles })}
@@ -21,4 +21,4 @@ const ButtonsTiles = ({ setTiles, tiles }) => (
     </div>
 );
 
-export default ButtonsTiles;
+export default TilesButton;

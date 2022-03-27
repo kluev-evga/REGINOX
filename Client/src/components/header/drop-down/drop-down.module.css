@@ -1,5 +1,5 @@
 .sub_menu {
-    width: 230px;
+    width: 220px;
     position: relative;
 }
 
@@ -12,6 +12,10 @@
 
     position: relative;
     z-index: 1;
+}
+
+.sub_menu svg {
+    width: 21px;
 }
 
 .sub_menu_container {
@@ -27,14 +31,13 @@
 .sub_menu_container >div {
     display: flex;
     flex-direction: column;
-    padding: 10px 60px 15px 10px;
-
-    box-shadow: -6px 6px 6px 0px #00000014;
+    padding: 10px;
+    box-shadow: -4px 4px 6px 0 #00000014;
     position: relative;
 }
 
 .sub_menu_container >div::before {
-    box-shadow: 6px 0px 6px 0px #00000014;
+    box-shadow: 4px 2px 6px 0 #00000014;
     position: absolute;
     content: '';
     top:0;

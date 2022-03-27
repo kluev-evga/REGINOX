@@ -7,20 +7,20 @@ import Select from 'react-select';
 const customStyles = {
     indicatorSeparator: () => null,
     container: (provided) => ({ ...provided, width: '100%' }),
-    control: (provided) => ({ ...provided, cursor: 'pointer' }),
-    valueContainer: (provided) => ({ ...provided, padding: '10px', fontSize: 18, margin: '0 0 0 -3px' }),
+    control: (provided) => ({ ...provided, cursor: 'pointer', boxShadow: 'none' }),
+    valueContainer: (provided) => ({ ...provided, padding: '10px', margin: '0 0 0 -3px' }),
     input: (provided) => ({ ...provided, padding: 0, margin: 0 }),
     menuList: (provided) => ({ ...provided, padding: 0 }),
-    option: (provided) => ({ ...provided, cursor: 'pointer', padding: '10px', fontSize: 18 }),
+    option: (provided) => ({ ...provided, cursor: 'pointer', padding: '10px' }),
 };
 
 const options = [
-    { value: 'rating', label: 'Сначала популярные' },
-    { value: 'from cheap', label: 'Сначала недорогие' },
-    { value: 'from expensive', label: 'Сначала дорогие' },
+    { value: 'rating', label: 'cначала популярные' },
+    { value: 'from cheap', label: 'cначала недорогие' },
+    { value: 'from expensive', label: 'cначала дорогие' },
 ];
 
-const SelectFilters = ({ setSortBy, sortBy, url }) => (
+const SelectButton = ({ setSortBy, sortBy, url }) => (
     <Select
         onChange={(sortBy) => setSortBy(sortBy, url)}
         options={options}
@@ -31,10 +31,10 @@ const SelectFilters = ({ setSortBy, sortBy, url }) => (
             ...theme,
             borderRadius: 1,
             colors: { ...theme.colors, primary25: 'var(--gray-light)', primary: 'var(--gray-med)' },
-            spacing: { baseUnit: 4, controlHeight: 30, menuGutter: 1 }
+            spacing: { baseUnit: 4, controlHeight: 28, menuGutter: 0 }
         })} />
 );
 
 const mapStateToProps = (state) => ({ sortBy: sortBy(state) });
 
-export default connect(mapStateToProps, { setSortBy })(SelectFilters);
+export default connect(mapStateToProps, { setSortBy })(SelectButton);

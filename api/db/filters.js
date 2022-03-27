@@ -72,10 +72,10 @@ const filters = {
                 {title: 'Розовый', search:'rose'},
                 {title: 'Светло-серый', search:'lightgray'},
                 {title: 'Серебристый', search:'silver'},
-                {title: 'Серый', search:'gray'},
-                {title: 'Серый металик', search:'graymetal'},
+                {title: 'Серый', search:'darkgray'},
+                {title: 'Серый металик', search:'metal'},
                 {title: 'Синий', search:'blue'},
-                {title: 'Темно-коричневый', search:'darkbrown'},
+                {title: 'Темно-коричневый', search:'dbrwn'},
                 {title: 'Хром', search:'crome'},
                 {title: 'Черный', search:'black'},
             ]

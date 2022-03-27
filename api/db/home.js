@@ -57,7 +57,7 @@ const home = {
       },
       {
           id: 'Russia',
-          name: 'Reginox Holding, Russia',
+          name: 'Reginox Ltd., Russia',
           address: 'Верхняя Красносельская улица #3А Москва, 107113',
           phone: '86222451115',
           phoneText: '+7 622 245-11-15',
@@ -66,7 +66,7 @@ const home = {
       },
       {
           id: 'UK',
-          name: 'Reginox, UK Ltd',
+          name: 'Reginox Holding, UK',
           address: '1 Loyang Lane #03-03 London 259233',
           phone: '25092159211',
           phoneText: '+ 25 (0) 92 15 92 11',

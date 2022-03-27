@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
 
     background: linear-gradient(0deg, #000b 10%, #0005 50%, transparent);
     transition: transform 0.3s ease-in;
@@ -59,11 +60,10 @@
 }
 
 .wrapper p {
-    padding: 40px 20px;
-
+    max-width: 200px;
+    padding: 30px 15px;
     text-align: center;
     color: var(--white);
-    font-size: 18px;
 }
 
 .wrapper time {
@@ -95,12 +95,28 @@
 
 @media (min-width: 340px) {
     .wrapper p {
-        font-size: 22px;
+        padding: 40px 15px;
+        max-width: 260px;
+        font-size: 20px;
     }
 
     .wrapper .md {
         padding: 30px 20px;
         font-size: 18px;
+    }
+}
+
+@media (min-width: 480px) {
+    .wrapper p {
+        padding: 30px 15px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 576px) {
+    .wrapper p {
+        padding: 40px 15px;
+        font-size: 20px;
     }
 }
 
@@ -113,7 +129,8 @@
 
 @media (min-width: 768px) {
     .wrapper p {
-        padding: 40px;
+        padding: 40px 15px;
+        font-size: 18px;
     }
 
     .wrapper span {
@@ -130,6 +147,10 @@
 }
 
 @media (min-width: 992px) {
+    .wrapper p {
+        font-size: 20px;
+    }
+
     .wrapper time {
         font-size: 16px;
     }
@@ -168,6 +189,12 @@
         transform: translateY(-59px);
     }
 
+    .wrapper p {
+        padding: 40px 20px;
+        max-width: unset;
+        font-size: 22px;
+    }
+
     .wrapper time {
         font-size: 18px;
         line-height: 1.5;
@@ -191,6 +218,14 @@
     }
 
     .wrapper .with_date {
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .wrapper p {
+        max-width: 320px;
+        padding: 50px 20px;
         font-size: 26px;
     }
 }

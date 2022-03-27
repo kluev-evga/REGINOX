@@ -18,22 +18,19 @@ const AdressBar = ({ addressBar }) => {
 
     return (
         <div
-            className={styles.address}
+            className={styles.container}
             onMouseLeave={isDesktop ? onLeave : null}
-            onMouseEnter={isDesktop ? onEnter : null}
+            onMouseEnter={isDesktop ? onEnter : null}>
 
-        >
             <div className="container">
                 <div className={styles.title} aria-hidden='true'>THE CROWN FOR YOUR KITCHEN</div>
-                <ul className={styles.tabs_wrapper}>
+                <ul className={styles.wrapper}>
                     {addressBar.map((data) =>
                         <Tab
                             key={data.id}
                             {...data}
                             toggleTab={toggleTab}
-                            activeId={activeId}
-                        />
-                    )}
+                            activeId={activeId} />)}
                 </ul>
                 <Squares className={styles.squares} />
             </div>

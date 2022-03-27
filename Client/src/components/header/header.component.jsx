@@ -35,9 +35,9 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp }) => {
                         <MenuIcon />
                     </button>
                     <div className={styles.logo}>
-
-                        {isHome ? <Logo reversed /> : <Link to='/home' aria-label='домашняя страница' ><Logo /></Link>}
-
+                        {isHome
+                            ? <Logo reversed />
+                            : <Link to='/home' aria-label='домашняя страница' ><Logo /></Link>}
                     </div>
                     <div className={styles.buttons_container}>
                         <button aria-label='сравнить'><Compare /></button>

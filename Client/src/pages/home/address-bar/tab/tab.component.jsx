@@ -10,12 +10,12 @@ const Tab = ({ id, name, address, phone, phoneText, mail, site, activeId, toggle
     <li className={styles.tab_item}>
         <button
             onClick={() => toggleTab(id)}
-            className={cn('button_primary', styles.button, { [styles.button_active]: id === activeId })}>
+            className={cn('button_primary', styles.button, { [styles.active]: id === activeId })}>
             {name}
             <Chevron />
         </button>
 
-        <div className={cn(styles.tab, { [styles.tab_open]: id === activeId })}>
+        <div className={cn(styles.tab, { [styles.open]: id === activeId })}>
             <address>{address}</address>
             <a href={'tel:' + phone} className={styles.link + ' link_secondary'}>
                 <Phone />

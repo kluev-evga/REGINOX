@@ -6,15 +6,8 @@ import Pagination from '../../../components/pagination/pagination.component';
 import styles from './products-block.module.css';
 
 
-/////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////
-// стили дублируются... доделтать
-/////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////
-
-
 const sliceProducts = (filteredProducts) => {
-    const j = 18;// айтемов на страницу
+    const j = 18;
     const totalItems = filteredProducts.length;
     const totalPages = Math.ceil(totalItems / j);
     const pages = [...Array(totalPages)].map((_, i) => i + 1);

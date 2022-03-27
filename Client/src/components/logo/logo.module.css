@@ -3,38 +3,31 @@
 }
 
 .svg {
+    display: none;
     width: 52px;
     height: 33px;
-    display: none;
     position: absolute;
     top: 26px;
     right: -40px;
 }
 
-@media (min-width: 280px) {
+@media (min-width: 340px) {
     .svg {
         display: block;
         pointer-events: none;
     }
 }
 
-@media (min-width: 768px) {
-    .svg {
-        top: 30px;
-        right: -50px;
-    }
-}
-
 @media (min-width: 1400px) {
     .svg {
-        height: 43px;
+        height: 40px;
         width: auto;
-        top: 38px;
-        right: -60px;
+        top: 36px;
+        right: -50px;
     }
 
     .crown {
-        height: 55px;
+        height: 48px;
         width: auto;
     }
 }

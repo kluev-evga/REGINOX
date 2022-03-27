@@ -54,8 +54,13 @@
         url('/assets/fonts/Montserrat-ExtraBold.woff') format('woff');
 }
 
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
 :root {
-    height: 100%;
     --black: #000000;
     --white: #ffffff;
     --red: #AD2131;
@@ -64,12 +69,7 @@
     --gray: #666565;
     --graphite: #333333;
     --shadow: 0 4px 6px 0 #00000014;
-}
-
-*,
-::before,
-::after {
-    box-sizing: border-box;
+    height: 100%;
 }
 
 body {
@@ -93,18 +93,18 @@ body {
 }
 
 main {
-    width:100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
+    // width:100%;// ---------------------- не нужен для меню
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    background: var(--white);// перекрывает меню
 }
 
-.footer {
-    flex-grow: 1;
-    display: grid;
-    align-content: end;
-}
+// .footer {
+//     flex-grow: 1;
+//     display: grid;
+//     align-content: end;
+// }
 
 address {
     font-style: normal;
@@ -177,23 +177,34 @@ textarea {
         padding: 0 20px;
     }
 
+    @media (min-width: 992px) {
+        padding: 0 35px;
+    }
+    
     @media (min-width: 1200px) {
-        padding: 0 50px;
-        max-width: 1300px;
+        padding: 0 20px;
+        max-width: 1160px;
     }
 
     @media (min-width: 1400px) {
-        max-width: 1400px;
+        max-width: 1320px;
     }
 
     @media (min-width: 1600px) {
-        padding: 0 110px;
-        max-width: 1920px;
+        max-width: 1480px;
+    }
+
+    @media (min-width: 1920px) {
+        max-width: 1640px;
     }
 }
 
 .section-container {
-    margin-top: 80px;
+    margin-top: 60px;
+
+    @media (min-width: 768px) {
+        margin-top: 80px;
+    }
 
     @media (min-width: 1200px) {
         margin-top: 110px;
@@ -259,12 +270,12 @@ textarea {
     }
 
     @media (min-width: 768px) {
-        padding: 240px 0 50px;
+        padding-top: 215px;
         font-size: 16px;
     }
-
+    
     @media (min-width: 1400px) {
-        padding: 250px 0 50px;
+        padding-top: 230px;
         font-size: 17px;
     }
 }
@@ -310,26 +321,45 @@ li {
 .cards-wrapper {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: minmax(auto, 400px);
-    justify-content: center;
     grid-gap: 20px;
 
-    @media (min-width: 576px) {
-        grid-template-columns: 1fr;
-        grid-gap: 30px;
+    @media (min-width: 480px) {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+
+        a:last-of-type {
+            grid-column: 1 / -1;
+        }
+        
+        a:last-of-type img {
+            height: 54vw;
+            object-fit: cover;
+        }
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 50px;
+
+        a:last-of-type {
+            grid-column: unset;
+        }
+        
+        a:last-of-type img {
+            height: unset;
+            object-fit: unset;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        grid-gap: 45px;
     }
 
     @media (min-width: 1400px) {
-        grid-gap: 70px;
+        grid-gap: 55px;
     }
 
     @media (min-width: 1600px) {
-        grid-gap: 90px;
+        grid-gap: 70px;
     }
 }
 

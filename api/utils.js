@@ -55,18 +55,16 @@ const createProductItem = (item) => {
 const getProducts = (productItems) => {
     const productsdata = {};
     for (let url in productItems) {
-      productsdata[url] = productItems[url].map(item => createProductItem(item));
+        productsdata[url] = productItems[url].map(item => createProductItem(item));
+
+        // Тест на уникальность id:
+        const summary = {};
+        productsdata[url].forEach( ({id}) => {
+          if (summary[id]) console.log('Елемент с id:', id, ' повторяется');
+          summary[id] = true;
+        });
     };
     return productsdata;
-    // Тест на уникальность id:
-    // const uniquinessTest = (data) => {
-    //   const resObj = {};
-    //   data.forEach(item => {
-    //     if (resObj[item.id]) return console.log('item repited found: ', item.id);
-    //     resObj[item.id] = true;
-    //   });
-    // };
-    // console.log(uniquinessTest(data));
 };
 ////////////////////////////////////////////////////////////////////////
 

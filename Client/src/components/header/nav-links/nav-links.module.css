@@ -1,6 +1,6 @@
 .nav {
     grid-column: 1 / -1;
-    margin: 45px -8px 3px -8px;
+    margin: 38px -8px 0;
     display:flex;
     justify-content: space-between;
 }
@@ -16,6 +16,6 @@
 
 @media (min-width: 1400px) {
     .nav {
-        margin: 40px -8px 3px -8px;
+        margin: 45px -8px 0;
     }
 }

@@ -25,7 +25,7 @@ const ProductCard = ({ tiles, product, url, withRating = true }) => {
             { [styles.promo]: promo },
             { [styles.new_item]: newItem },
             { [styles.hover]: hover })}>
-            <p className={styles.title}>{title}</p>
+
             <Link
                 to={`/products/${url}/${productUrl}`}
                 className={styles.link}
@@ -39,6 +39,7 @@ const ProductCard = ({ tiles, product, url, withRating = true }) => {
             </Link>
 
             {withRating && <RatingBlock r={r} reviewers={reviewers} />}
+            <p className={styles.title}>{title}</p>
 
             <p className={styles.price}>
                 {price}

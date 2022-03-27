@@ -10,7 +10,7 @@
     text-align: left;
 }
 
-.button_active {
+.active {
     margin-top: 10px;
     background-color: var(--white);
 }
@@ -21,7 +21,7 @@
     align-self: start;
 }
 
-.button_active svg {
+.active svg {
     transform: rotate(180deg);
 }
 
@@ -33,7 +33,7 @@
     background-color: var(--white);
 }
 
-.tab_open {
+.open {
     display:block;
 }
 
@@ -72,30 +72,28 @@
 
     .button {
         margin-top: 0;
-        padding: 20px 30px 20px;
-
+        padding: 25px 10px;
         position: relative;
         z-index: 1;
-        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        transition: background-color 0.6s ease-out;
     }
 
-    .button_active {
-        margin-top: 0px;
-    }
-
-    .tab_open {
-        margin: 0 -10px 0px;
+    .tab {
         padding: 74px 30px 25px;
         position: absolute;
         top: 10px;
-        background-color: transparent;
-        animation: tabContent 0.2s ease-out forwards;
+        opacity: 0;
+    }
+
+    .open {
+        animation: tabContent 0.1s ease-out forwards;
     }
 
     @keyframes tabContent {
-        to {
+        100% {
             top: 0px;
-            background-color: var(--white);
             opacity: 1;
         }
     }

@@ -7,6 +7,25 @@
     padding-left: 20px;
     font-size: 18px;
     font-weight: 500;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper p svg {
+    cursor: pointer;
+    margin: -3px 20px 0;
+    /* border-radius: 4px; */
+    /* padding: 4px 4px 4px 6px; */
+    /* height: 22px; */
+    /* width: auto; */
+    color: var(--gray-med);
+    /* outline: 1px solid var(--gray-med); */
+}
+
+.wrapper p svg:hover {
+    color: var(--gray);
+    outline-color: var(--gray);
 }
 
 .wrapper:first-of-type button {
@@ -54,8 +73,7 @@
     }
 
     .wrapper:first-of-type button {
-        width: 100%;
-        padding: 6px 0;
+        padding: 5px 5px 5px 0;
         margin-bottom: 2px;
         text-align: left;
         font-size: 17px;
@@ -82,7 +100,6 @@
     }
 
     .wrapper:first-of-type button {
-        padding: 5px 0;
         font-size: 18px;
     }
 }
@@ -93,7 +110,6 @@
     }
 
     .wrapper:first-of-type button {
-        padding: 5px 0;
         font-size: 19px;
     }
 }

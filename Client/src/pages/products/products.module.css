@@ -1,15 +1,15 @@
 @media (min-width: 1200px) {
     .wrapper {
         display: grid;
-        grid-template-columns: 320px 740px;
+        grid-template-columns: 300px 750px;
         justify-content: space-between;
     }
 }
 
 @media (min-width: 1400px) {
     .wrapper {
-        grid-template-columns: 320px 1fr;
-        gap: 30px;
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
     }
 }
 

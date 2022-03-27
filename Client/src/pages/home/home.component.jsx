@@ -33,6 +33,7 @@ const Home = ({ loadHome, loaded, error, setAppIsHomePage }) => {
     );
 };
 
+
 const mapStateToProps = (state) => ({
     loaded: homeLoaded(state),
     error: homeError(state)

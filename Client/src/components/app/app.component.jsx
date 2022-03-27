@@ -35,8 +35,6 @@ import './app.scss';
 
 SwiperCore.use([Pagination, Navigation, A11y, Autoplay]);
 
-// import srollRestoration from '../../hoc/scroll-restoration'; ?????
-
 const App = () => (
     <MenuContainer>
         <main id='page-wrap'>

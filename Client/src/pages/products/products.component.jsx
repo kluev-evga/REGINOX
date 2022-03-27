@@ -5,7 +5,7 @@ import { loadProducts } from '../../redux/actions';
 import { menuTitleByUrl, productsLoaded, menuLoaded } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters-container.component';
-import ProductsSection from './products-section/products-section.component';
+import ProductsContainer from './products-container/products-container.component';
 import Loader from '../../components/loader/loader.coponent';
 import styles from './products.module.css';
 
@@ -30,7 +30,7 @@ const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded })
 
             <div className={styles.wrapper}>
                 {isDesktop && <Filters />}
-                {loaded && <ProductsSection url={url} />}
+                {loaded && <ProductsContainer />}
             </div>
 
         </div>
