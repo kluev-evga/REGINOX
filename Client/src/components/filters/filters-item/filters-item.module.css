@@ -1,0 +1,17 @@
+.active svg:first-of-type{
+    color: var(--red);
+}
+
+.disabled {
+    color: var(--gray-light);
+    pointer-events: none;
+}
+
+.disabled svg {
+    opacity: 0.4;
+    color: transparent;
+}
+
+.disabled span:first-of-type {
+    color: var(--gray-light);
+}

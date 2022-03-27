@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
+import cn from 'classnames';
 import { ReactComponent as CheckIcon } from '../../../assets/svg/check-mark.svg';
+import styles from './filters-item.module.css';
 
 
 const FiltersItem = ({ title, count, search, searchGroup }) => {
@@ -25,9 +27,13 @@ const FiltersItem = ({ title, count, search, searchGroup }) => {
         history.push({ search: params.toString() });
     }, [])// eslint-disable-line
 
+
     return (
-        <button onClick={() => handleClick(isActive, params)}>
-            <CheckIcon style={isActive ? { color: 'var(--red)' } : {}} />
+        <button
+            onClick={() => handleClick(isActive, params)}
+            tabIndex={count === 0 ? -1 : 0}
+            className={cn({ [styles.disabled]: count === 0, [styles.active]: isActive })}>
+            <CheckIcon />
             {title}
             <span>({count})</span>
         </button>

@@ -1,0 +1,55 @@
+.collapsible {
+    position: relative;
+    
+    /* background: linear-gradient(0deg, transparent, blue 20px); */
+    /* -webkit-mask-image: linear-gradient(0deg, transparent, blue 30px); */
+    /* mask-image: linear-gradient(0deg, transparent 12px, blue 35px); */
+    
+}
+
+.collapsible_open {
+    position: relative;
+
+}
+
+.trigger,
+.trigger_open {
+    margin: 0 !important;
+    padding: 2px 5px !important;
+
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+
+    border: none !important;
+    color: var(--gray-med);
+    /* outline: 1px solid red; */
+}
+
+.trigger:first-of-type:hover {
+    color: var(--graphite);
+}
+
+.trigger::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 18px;
+    background: linear-gradient(0deg, #fffc 16px, transparent);
+    z-index: 0;
+    /* outline: 1px solid red; */
+    
+    bottom: 16px;
+    left: 0;
+
+
+    pointer-events: none;
+
+}
+
+
+.folded {
+
+
+    /* outline: 1px solid red; */
+}
