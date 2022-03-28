@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron.svg';
+import cn from 'classnames';
+import { ReactComponent as ChevronIcon } from '../../../assets/svg/chevron-down.svg';
 import styles from './menu-group.module.css';
+import '../main-menu.css';
 
 
 const MenuGroup = ({ categories, url, title }) => {
@@ -11,7 +13,7 @@ const MenuGroup = ({ categories, url, title }) => {
         <div>
             <button
                 onClick={() => setOpen(!isOpen)}
-                className={styles.button}>
+                className={cn('menu-button', styles.button)}>
                 {title}
                 <ChevronIcon />
             </button>
@@ -22,14 +24,13 @@ const MenuGroup = ({ categories, url, title }) => {
                         <NavLink
                             key={categoryUrl}
                             to={`/products/${url}/${categoryUrl}`}
+                            className='menu-link'
                             activeClassName='menu-active-link'>
                             {title}
-                        </NavLink>
-                    ))}
-                </div>
-            }
+                        </NavLink>))}
+                </div>}
         </div>
-    );
-};
+    )
+}
 
 export default MenuGroup;

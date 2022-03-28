@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import cn from 'classnames';
-import { ReactComponent as CheckIcon } from '../../../assets/svg/check-mark.svg';
-import styles from './filters-item.module.css';
+import { ReactComponent as CheckboxIcon } from '../../../assets/svg/checkbox.svg';
+import styles from '../button.module.css';
 
 
 const FiltersItem = ({ title, count, search, searchGroup }) => {
@@ -32,8 +32,8 @@ const FiltersItem = ({ title, count, search, searchGroup }) => {
         <button
             onClick={() => handleClick(isActive, params)}
             tabIndex={count === 0 ? -1 : 0}
-            className={cn({ [styles.disabled]: count === 0, [styles.active]: isActive })}>
-            <CheckIcon />
+            className={cn(styles.button, { [styles.disabled]: count === 0, [styles.active]: isActive })}>
+            <CheckboxIcon />
             {title}
             <span>({count})</span>
         </button>

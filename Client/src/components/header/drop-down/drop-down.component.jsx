@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { ReactComponent as Chevron } from '../../../assets/svg/chevron.svg';
+import { ReactComponent as Chevron } from '../../../assets/svg/chevron-down.svg';
 import styles from './drop-down.module.css';
 
 

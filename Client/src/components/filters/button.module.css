@@ -1,0 +1,150 @@
+.button {
+    width: 100%;
+    padding: 9px 10px;
+    margin-bottom: 5px;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: capitalize;
+    background-color: #111;
+}
+
+.button span {
+    margin-left: 10px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray);
+}
+
+.button svg {
+    margin-right: 10px;
+    color: transparent;
+}
+
+.clean_btn {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 9px 10px;
+    display: flex;
+    justify-content: space-between;
+
+    text-align: left;
+    background-color: #111;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.clean_btn svg {
+    height: 20px;
+    width: auto;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.clean_btn_active {
+    pointer-events: all;
+}
+
+.clean_btn_active svg {
+    opacity: 1;
+}
+
+.active svg {
+    color: var(--red);
+}
+
+.disabled {
+    color: var(--gray);
+    pointer-events: none;
+}
+
+.disabled svg {
+    opacity: 0.4;
+    color: transparent;
+}
+
+.disabled span:first-of-type {
+    color: var(--gray);
+}
+
+@media (min-width: 340px) {
+    .button {
+        padding: 9px 20px;
+        font-size: 16px;
+    }
+    
+    .clean_btn {
+        padding: 8px 20px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 1200px) {
+    .button {
+        width: auto;
+        margin-bottom: 0;
+        padding: 5px 5px 5px 0;
+    
+        font-size: 17px;
+        font-weight: 400;
+        background: none;
+    }
+
+    .button:hover svg path:nth-of-type(2) {
+        animation: checkbox 0.15s ease forwards;
+        stroke:#ad2131bb;
+        stroke-dasharray: 0 12;
+    }
+
+    @keyframes checkbox {
+        to {
+            stroke-dasharray: 12 12;
+        }
+    }
+
+    .button span {
+        letter-spacing: 0.5px;
+        font-size: 15px;
+        color: var(--gray-med);
+    }
+
+    .clean_btn {
+        padding: 5px 5px 5px 0;
+        background: none;
+        justify-content: flex-start;
+        font-size: 17px;
+    }
+
+    .clean_btn svg {
+        transition: margin 0.2s ease-out;
+        color: var(--gray-med);
+    }
+
+    .clean_btn_active:hover svg {
+        color: var(--red)
+    }
+
+    .clean_btn_active svg {
+        opacity: 1;
+        margin-left: 15px;
+    }
+
+    .disabled {
+        color: var(--gray-light);
+    }
+
+    .disabled span:first-of-type {
+        color: var(--gray-light);
+    }
+}
+
+@media (min-width: 1600px) {
+    .clean_btn {
+        font-size: 18px;
+    }
+}

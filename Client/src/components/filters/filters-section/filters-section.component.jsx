@@ -1,7 +1,9 @@
 import { useHistory } from 'react-router-dom';
 import FiltersItem from '../filters-item/filters-item.component';
 import CollapsibleBlock from '../collapsible-block/collapsible-block.component';
-import { ReactComponent as CleanIcon } from '../../../assets/svg/sweep.svg';
+import { ReactComponent as TrashIcon } from '../../../assets/svg/trash.svg';
+import styles from '../button.module.css';
+import cn from 'classnames';
 
 
 const FiltersSection = ({ title, filters, searchGroup }) => {
@@ -15,12 +17,14 @@ const FiltersSection = ({ title, filters, searchGroup }) => {
 
     return (
         <section>
-            <p>
+            <button
+                onClick={handleClick}
+                className={cn(styles.clean_btn, { [styles.clean_btn_active]: search.has(searchGroup) })}
+                tabIndex={-1}
+                aria-hidden='true'>
                 {title}
-                <CleanIcon
-                    onClick={handleClick}
-                    style={search.has(searchGroup) ? { opacity: 1, pointerEvents: 'all' } : {}} />
-            </p>
+                <TrashIcon />
+            </button>
             {filters.length > 6
                 ? <CollapsibleBlock filters={filters} searchGroup={searchGroup} />
                 : filters.map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} />)}

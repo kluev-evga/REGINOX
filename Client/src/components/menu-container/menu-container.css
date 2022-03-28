@@ -1,5 +1,6 @@
 .bm-overlay {
-    background: hsla(0, 0%, 0%, 0.3)!important;
+    background: rgb(0, 0, 0, 0.5)!important;
+    backdrop-filter: contrast(80%);
 }
 
 .bm-menu{
@@ -87,64 +88,6 @@
     }
 }
 
-/* ------------------------------------------------ */
-
 .bm-item-list {
     color: var(--white);
-}
-
-.bm-item-list button {
-    margin-top: 5px;
-    width: 100%;
-    padding: 14px 5px 14px 10px ;
-    text-align: left;
-    background-color: #111;
-}
-
-.bm-item-list a {
-    padding: 10px;
-    display: block;
-    margin-bottom: 8px;
-    line-height: 1.5;
-    font-weight: 300;
-}
-
-.bm-item-list a.menu-active-link {
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
-}
-
-@media (min-width: 340px) {
-    .bm-item-list button {
-        padding: 14px 10px 14px 25px;
-        font-weight: 700;
-        font-size: 17px;
-    }
-
-    .bm-item-list a {
-        padding: 10px 25px;
-    }
-}
-
-@media (min-width: 360px) {
-    .bm-item-list button {
-        padding: 14px 20px 14px 25px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .bm-item-list button {
-        font-weight: 500;
-    }
-
-    .bm-item-list button,
-    .bm-item-list a {
-        transition: background-color 0.1s linear;
-    }
-
-    .bm-item-list button:hover,
-    .bm-item-list a:hover {
-        background-color: #222;
-        transition: none;
-    }
 }

@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { ReactComponent as Chevron } from '../../../../assets/svg/chevron.svg';
+import { ReactComponent as Chevron } from '../../../../assets/svg/chevron-down.svg';
 import { ReactComponent as Phone } from '../../../../assets/svg/phone.svg';
 import { ReactComponent as Mail } from '../../../../assets/svg/mail.svg';
 import { ReactComponent as Globe } from '../../../../assets/svg/globe.svg';
