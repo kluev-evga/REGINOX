@@ -1,49 +1,44 @@
 import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadMenu, loadProducts } from '../../redux/actions';
-import { menuLinksList, productsLoaded, menuLoaded } from '../../redux/selectors';
+import { loadProducts, loadProductItem } from '../../redux/actions';
+import { menuLinksList, productsLoaded, productItemLoaded } from '../../redux/selectors';
 import Products from '../../pages/products/products.component';
+import Product from '../../pages/product/product.component';
 import Loader from '../loader/loader.coponent';
 
 
 
+const ProductsRoutes = ({ match, history, loadProducts, loadProductItem, productsLoaded, productItemLoaded, menuLinksList }) => {
+    const { url, categoryUrl, productUrl } = match.params
 
+    useEffect(() => { !categoryUrl && history.push(`/products/${url}/all`) }, [])// eslint-disable-line
+    useEffect(() => { categoryUrl && productUrl ? loadProductItem(url, productUrl) : loadProducts(url) });
 
-const ProductsRoutes = ({ match, history, loadProducts, loadMenu, productsLoaded, menuLoaded, menuLinksList }) => {
-    const { url, categoryUrl } = match.params;
+    // нужно тупо обрабатывать error здесь... не нужно проверять url - только категории...
 
-    useEffect(() => { (categoryUrl) ? loadProducts(url) : loadMenu() }, [url, categoryUrl]);//eslint-disable-line
+    if ((!productUrl && !productsLoaded(url)) || (productUrl && !productItemLoaded(productUrl))) return <Loader />
+    // if (!menuLinksList[url]) return <Redirect to='not-found' />
+    // if (!menuLinksList[url][categoryUrl]) {
+    //     history.push(`/products/${url}/all`);// вынести в useEffect...
+    //     return <Loader />
+    // }
 
-    useEffect(() => {
-        if (menuLoaded) {
-            if (menuLinksList[url] && !categoryUrl) history.push(`/products/${url}/all`);// можно записать просто all???
-            else return null//  'loadProduct()' - загружаем продукт.
-        }
-    });
-
-    const loaded = productsLoaded(url);
-    if (!menuLoaded || !loaded) return <Loader />// product not loaded...
-
+    // По идее все not-found делать по error...
 
     return (
         <Switch>
-            <Route exact path='/products/:product' component={<div>Product</div>} />
             <Route exact path='/products/:url/:categoryUrl' component={Products} />
+            <Route exact path='/products/:url/:categoryUrl/:productUrl' component={Product} />
             <Redirect to='/not-found' />
         </Switch>
     )
-};
+}
 
 const mapStateToProps = state => ({
     productsLoaded: productsLoaded(state),
-    menuLoaded: menuLoaded(state),
+    productItemLoaded: productItemLoaded(state),
     menuLinksList: menuLinksList(state)
-});
+})
 
-const mapDispatchToProps = ({
-    loadProducts,
-    loadMenu,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsRoutes);
+export default connect(mapStateToProps, { loadProducts, loadProductItem })(ProductsRoutes)

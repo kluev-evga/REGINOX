@@ -14,7 +14,7 @@ const RatingBlock = ({ r, reviewers }) => (
     </div>
 );
 
-const ProductCard = ({ tiles, product, url, withRating = true }) => {
+const ProductCard = ({ tiles, product, url, withRating = true, categoryUrl = 'all' }) => {
     const [hover, setHover] = useState(false);
     const { img, alt, title, productUrl, reviewers, price, r, promo, newItem, } = product;
 
@@ -27,7 +27,7 @@ const ProductCard = ({ tiles, product, url, withRating = true }) => {
             { [styles.hover]: hover })}>
 
             <Link
-                to={`/products/${url}/${productUrl}`}
+                to={`/products/${url}/${categoryUrl}/${productUrl}`}
                 className={styles.link}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}>

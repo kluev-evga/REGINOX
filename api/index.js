@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { reply, getProducts, getHome, getMenu, getFilters } = require('./utils');
+const { reply, getProducts, getProductData, getHome, getMenu, getFilters } = require('./utils');
 
 
 const home = require('./db/home');
@@ -14,10 +14,10 @@ const sertificates = require('./db/sertificates');
 const articlesItems = require('./db/articlesItems');
 
 
-
 const menudata = getMenu(links, categories);
 const productsdata = getProducts(productItems);
 const filtersdata = getFilters(filters, productItems);
+const productdata = getProductData(productItems);
 
 
 
@@ -60,6 +60,13 @@ router.get('/products/:url', (req, res, next) => {
     const url = req.params.url;
     if (!productsdata[url]) return res.status(404).send();
     reply(res, {products: productsdata[url], filters: filtersdata[url]});
+});
+
+
+router.get('/product/:url/:productUrl', (req, res, next) => {
+    const {url, productUrl} = req.params;
+    if (!productdata[url][productUrl]) return res.status(404).send();
+    reply(res, productdata[url][productUrl]);
 });
 
 module.exports = router;

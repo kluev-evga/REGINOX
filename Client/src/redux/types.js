@@ -14,6 +14,7 @@ export const LOAD_BRANDS = 'LOAD_BRANDS';
 export const LOAD_ARTICLES = 'LOAD_ARTICLES';
 export const LOAD_ARTICLE = 'LOAD_ARTICLE';
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+export const LOAD_PRODUCT = 'LOAD_PRODUCT';
 
 export const SELECT_ARTICLES_PAGE = 'SELECT_ARTICLES_PAGE';
 

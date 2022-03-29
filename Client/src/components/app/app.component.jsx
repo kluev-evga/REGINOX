@@ -5,7 +5,7 @@ import Header from '../header/header.component';
 import Footer from '../footer/footer.component';
 
 import Home from '../../pages/home/home.component';
-import Products from '../../pages/products/products.component';
+import ProductsRoutes from '../products-routes/products-routes.component';
 
 import WhyUs from '../../pages/why-us/why-us.component';
 import Partners from '../../pages/partners/partners.component';
@@ -34,17 +34,6 @@ import './app.scss';
 
 
 
-
-
-import ProductsRoutes from '../products-routes/products-routes.component';
-
-
-
-
-
-
-
-
 SwiperCore.use([Pagination, Navigation, A11y, Autoplay]);
 
 const App = () => (
@@ -58,7 +47,7 @@ const App = () => (
 
                 <Route exact path='/home' component={Home} />
 
-                <Route exact path='/products/:url/:categoryUrl?' component={ProductsRoutes} />
+                <Route exact path='/products/:url/:categoryUrl?/:productUrl?' component={ProductsRoutes} />
 
                 <Route exact path='/why-us' component={WhyUs} />
                 <Route exact path='/partners' component={Partners} />

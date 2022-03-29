@@ -1,27 +1,15 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadProducts } from '../../redux/actions';
-import { menuTitleByUrl, productsLoaded, menuLoaded } from '../../redux/selectors';
+import { menuTitleByUrl } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Filters from '../../components/filters/filters-container.component';
 import ProductsContainer from './products-container/products-container.component';
-import Loader from '../../components/loader/loader.coponent';
 import styles from './products.module.css';
 
 
-const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded }) => {
+const Products = ({ getTitle, match }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
-    const { url, categoryUrl } = match.params;
-
-    // const loaded = productsLoaded(url);
-
-    // useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
-
-    // if (!menuLoaded) return <Loader />
-
-
-    const title = getTitle(url);
+    const title = getTitle(match.params.url);
 
     return (
         <div className="container">
@@ -34,15 +22,10 @@ const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded })
                 {isDesktop && <Filters />}
                 <ProductsContainer />
             </div>
-
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = state => ({
-    getTitle: menuTitleByUrl(state),
-    productsLoaded: productsLoaded(state),
-    menuLoaded: menuLoaded(state),
-});
+const mapStateToProps = state => ({ getTitle: menuTitleByUrl(state) });
 
-export default connect(mapStateToProps, { loadProducts })(Products);
+export default connect(mapStateToProps)(Products);

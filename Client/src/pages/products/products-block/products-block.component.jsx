@@ -15,7 +15,7 @@ const sliceProducts = (filteredProducts) => {
     return { products, totalItems, totalPages, pages };
 };
 
-const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering }) => {
+const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl }) => {
     const [currentPage, selectPage] = useState(1);
 
     const { products, totalItems, totalPages, pages } = useMemo(() => {
@@ -34,7 +34,7 @@ const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering }) => {
         <>
             {currentPage <= totalPages && !!totalItems &&
                 products[currentPage - 1].map(id =>
-                    <ProductCardContainer key={id} id={id} url={url} tiles={tiles} />)}
+                    <ProductCardContainer key={id} id={id} url={url} categoryUrl={categoryUrl} tiles={tiles} />)}
 
             <div className={styles.pagination}>
                 <Pagination

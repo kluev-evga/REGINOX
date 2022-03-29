@@ -63,7 +63,7 @@ const ProductsContainer = ({ openFiltersMenu, productsfilters, filterProducts })
                         </button>)}
                 </div>
 
-                <ProductsBlock tiles={tiles} url={url} />
+                <ProductsBlock tiles={tiles} url={url} categoryUrl={categoryUrl} />
 
             </div>
         </div>

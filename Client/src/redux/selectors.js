@@ -21,14 +21,18 @@ const menuTitlesByUrl = createSelector(
 );
 export const menuTitleByUrl = (state) => (url) => menuTitlesByUrl(state)[url];
 export const menuLinksList = createSelector(
-    menuLinks,
-    (links) => links.reduce((acc, item) => {
-        acc[item.url] = true;
-        return acc;
-    }, {})
+    menuCategories,
+    (categories) => {
+        const result = {}
+        for(let key in categories) {
+            result[key] = categories[key].reduce((acc, item) => {
+                acc[item.categoryUrl] = true
+                return acc
+            }, {})
+        }
+        return result
+    }
 );
-
-
 
 
 export const homeLoading = state => state.home.loading;
@@ -116,3 +120,19 @@ export const selectNormalizedFilters = createSelector(
 export const isFiltering = state => state.filters.isFiltering;
 export const filteredProducts = state => state.filters.products;
 export const sortBy = state => state.filters.sortBy;
+
+
+
+
+
+
+
+
+
+
+
+
+export const productItem = (state) => (productUrl) => state.productItems.entities[productUrl];
+export const productItemLoading = (state) => (productUrl) => state.productItems.loading[productUrl];
+export const productItemLoaded = (state) => (productUrl) => state.productItems.loaded[productUrl];
+export const productItemError = (state, productUrl) => state.productItems.error[productUrl];

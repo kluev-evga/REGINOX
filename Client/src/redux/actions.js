@@ -19,6 +19,7 @@ import {
     SELECT_ARTICLES_PAGE,
     LOAD_ARTICLE,
     LOAD_PRODUCTS,
+    LOAD_PRODUCT,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
     SETLECT_PRODUCTS_SORT_BY,
@@ -36,6 +37,8 @@ import {
     productsLoading,
     productsLoaded,
     selectNormalizedFilters,
+    productItemLoading,
+    productItemLoaded
 } from './selectors';
 
 
@@ -203,6 +206,22 @@ export const loadProducts = (url) => async (dispatch, getState) => {
 //         dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url });
 //     }
 // };
+
+
+export const loadProductItem = (url, productUrl) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = productItemLoading(state)(productUrl);
+    const loaded = productItemLoaded(state)(productUrl);
+    if (loading || loaded) return;
+
+    const menu =  state.menu.loaded;
+    dispatch({ type: LOAD_PRODUCT + REQUEST, productUrl });
+
+    Promise.all([fetch(`/product/${url}/${productUrl}`), !menu && loadMenu()(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
+        .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }));
+};
 
 
 

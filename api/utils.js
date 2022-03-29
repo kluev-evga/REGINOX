@@ -68,6 +68,19 @@ const getProducts = (productItems) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
+const getProductData = (productItems) => {
+  const productdata = {};
+  for (let url in productItems) {
+      productdata[url] = productItems[url].reduce( (acc, item) => {
+          const productUrl = translit(item.title.split(',').slice(0,1).join(' '));
+          acc[productUrl] = item;
+          return acc;
+      }, {});
+  };
+  return productdata;
+}
+////////////////////////////////////////////////////////////////////////
+
 const getHome = (home, productsdata) => {
   const rnd = Math.floor(randomInteger(8, productsdata['sinks'].length));
   home.popularProducts = productsdata['sinks'].slice(rnd - 8, rnd);
@@ -141,6 +154,7 @@ const getFilters = (filtersObj, productItems) => {
 module.exports = {
     reply,
     getProducts,
+    getProductData,
     getHome,
     getMenu,
     getFilters
