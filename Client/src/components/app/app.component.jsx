@@ -33,6 +33,18 @@ import 'swiper/scss/a11y';
 import './app.scss';
 
 
+
+
+
+import ProductsRoutes from '../products-routes/products-routes.component';
+
+
+
+
+
+
+
+
 SwiperCore.use([Pagination, Navigation, A11y, Autoplay]);
 
 const App = () => (
@@ -46,7 +58,7 @@ const App = () => (
 
                 <Route exact path='/home' component={Home} />
 
-                <Route exact path='/products/:product/:category?' component={Products} />
+                <Route exact path='/products/:url/:categoryUrl?' component={ProductsRoutes} />
 
                 <Route exact path='/why-us' component={WhyUs} />
                 <Route exact path='/partners' component={Partners} />

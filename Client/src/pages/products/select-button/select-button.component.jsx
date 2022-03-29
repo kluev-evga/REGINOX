@@ -7,7 +7,7 @@ import Select from 'react-select';
 const customStyles = {
     indicatorSeparator: () => null,
     container: (provided) => ({ ...provided, width: '100%' }),
-    control: (provided) => ({ ...provided, cursor: 'pointer', boxShadow: 'none' }),
+    control: (provided) => ({ ...provided, cursor: 'pointer', boxShadow: 'unset' }),
     valueContainer: (provided) => ({ ...provided, padding: '10px', margin: '0 0 0 -3px' }),
     input: (provided) => ({ ...provided, padding: 0, margin: 0 }),
     menuList: (provided) => ({ ...provided, padding: 0 }),

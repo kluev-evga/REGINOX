@@ -10,16 +10,25 @@ export const menuLoaded = state => state.menu.loaded;
 export const menuError = state => state.menu.error;
 export const menuLinks = state => state.menu.links;
 export const menuCategories = state => state.menu.categories;
-const menuLiksByUrl = createSelector(
+export const isMainMenu = state => state.menu.isMainMenu;
+export const menuIsOpen = state => state.menu.isOpen;
+const menuTitlesByUrl = createSelector(
     menuLinks,
     (links) => links.reduce((acc, item) => {
-        acc[item.url] = item;
+        acc[item.url] = item.title;
         return acc;
     },{})
 );
-export const menuTitleByUrl = (state) => (match) => menuLiksByUrl(state)[match.params.product]?.title;
-export const isMainMenu = state => state.menu.isMainMenu;
-export const menuIsOpen = state => state.menu.isOpen;
+export const menuTitleByUrl = (state) => (url) => menuTitlesByUrl(state)[url];
+export const menuLinksList = createSelector(
+    menuLinks,
+    (links) => links.reduce((acc, item) => {
+        acc[item.url] = true;
+        return acc;
+    }, {})
+);
+
+
 
 
 export const homeLoading = state => state.home.loading;

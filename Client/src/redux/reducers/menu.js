@@ -10,6 +10,8 @@ import {
 
 
 const INITIAL_STATE = {
+    links: [],
+    categories: [],
     loading: false,
     loaded: false,
     error: null,

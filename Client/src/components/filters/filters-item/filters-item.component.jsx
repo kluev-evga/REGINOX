@@ -5,7 +5,7 @@ import { ReactComponent as CheckboxIcon } from '../../../assets/svg/checkbox.svg
 import styles from '../button.module.css';
 
 
-const FiltersItem = ({ title, count, search, searchGroup }) => {
+const FiltersItem = ({ title, count, search, searchGroup, isOpen = true }) => {
     const history = useHistory();
     const params = new URLSearchParams(history.location.search);
     const isActive = params.get(searchGroup)?.includes(search);
@@ -27,11 +27,10 @@ const FiltersItem = ({ title, count, search, searchGroup }) => {
         history.push({ search: params.toString() });
     }, [])// eslint-disable-line
 
-
     return (
         <button
+            tabIndex={(count === 0 || !isOpen) ? -1 : null}
             onClick={() => handleClick(isActive, params)}
-            tabIndex={count === 0 ? -1 : 0}
             className={cn(styles.button, { [styles.disabled]: count === 0, [styles.active]: isActive })}>
             <CheckboxIcon />
             {title}

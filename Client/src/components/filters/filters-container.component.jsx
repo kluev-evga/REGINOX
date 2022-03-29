@@ -9,7 +9,7 @@ const FiltersContainer = ({ productsLoaded }) => {
     const { url, categoryUrl } = match.params;
     const loaded = productsLoaded(url);
 
-    return loaded ? <Filters url={url} categoryUrl={categoryUrl} /> : <div>LOADING</div>
+    return loaded ? <Filters url={url} categoryUrl={categoryUrl} /> : null
 };
 
 const mapStateToProps = state => ({

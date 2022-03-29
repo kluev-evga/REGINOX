@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import Collapsible from 'react-collapsible';
 import FiltersItem from '../filters-item/filters-item.component';
 import styles from './collapsible.module.css';
@@ -7,6 +7,7 @@ import { ReactComponent as ChevronUpIcon } from '../../../assets/svg/chevron-up.
 
 
 const CollapsibleBlock = ({ filters, searchGroup }) => {
+    const [isOpen, setOpen] = useState(false);
     const [Outside, inside, time, count] = useMemo(() => ([
         () => filters.slice(0, 3).map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} />),
         filters.slice(3),
@@ -26,8 +27,11 @@ const CollapsibleBlock = ({ filters, searchGroup }) => {
                 openedClassName={styles.collapsible}
                 triggerClassName={styles.trigger}
                 triggerOpenedClassName={styles.trigger_open}
-                contentOuterClassName={styles.folded}>
-                {inside.map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} />)}
+                contentOuterClassName={styles.folded}
+                onOpen={() => setOpen(true)}
+                onClose={() => setOpen(false)}>
+
+                {inside.map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} isOpen={isOpen} />)}
             </Collapsible>
         </div>
     )

@@ -12,14 +12,16 @@ import styles from './products.module.css';
 
 const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded }) => {
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
-    const url = match.params.product;
-    const loaded = productsLoaded(url);
+    const { url, categoryUrl } = match.params;
 
-    useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
+    // const loaded = productsLoaded(url);
 
-    if (!menuLoaded) return <Loader />
+    // useEffect(() => { loadProducts(url) }, [url]);//eslint-disable-line
 
-    const title = getTitle(match);
+    // if (!menuLoaded) return <Loader />
+
+
+    const title = getTitle(url);
 
     return (
         <div className="container">
@@ -30,7 +32,7 @@ const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded })
 
             <div className={styles.wrapper}>
                 {isDesktop && <Filters />}
-                {loaded && <ProductsContainer />}
+                <ProductsContainer />
             </div>
 
         </div>
@@ -40,7 +42,7 @@ const Products = ({ getTitle, productsLoaded, loadProducts, match, menuLoaded })
 const mapStateToProps = state => ({
     getTitle: menuTitleByUrl(state),
     productsLoaded: productsLoaded(state),
-    menuLoaded: menuLoaded(state)
+    menuLoaded: menuLoaded(state),
 });
 
 export default connect(mapStateToProps, { loadProducts })(Products);

@@ -48,7 +48,7 @@ const Pagination = ({ pages, totalPages, currentPage, totalItems, selectPage }) 
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Pagination;
