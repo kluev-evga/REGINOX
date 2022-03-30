@@ -26,22 +26,21 @@ const MenuContainer = ({ children, isOpen, isMainMenu, closeMenu }) => {
                 customBurgerIcon={false}
                 customCrossIcon={<div><CrossIcon />Закрыть</div>}
                 width={isPhone ? '100%' : '400px'}
-                right={isMainMenu ? false : true}
-            >
+                right={isMainMenu ? false : true}>
+
                 {isMainMenu ? <MainMenu /> : <Filters />}
+
             </Menu>
 
             {children}
 
         </div>
-    );
-};
+    )
+}
 
 const mapStateToProps = (state) => ({
     isMainMenu: isMainMenu(state),
     isOpen: menuIsOpen(state)
-});
+})
 
-const mapDispatchToProps = { closeMenu };
-
-export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
+export default connect(mapStateToProps, { closeMenu })(MenuContainer)

@@ -24,17 +24,18 @@ import Policy from '../../pages/policy/policy.component';
 import NotFound from '../../pages/not-found/not-found.component';
 import Error from '../../pages/error/error.component';
 
-import SwiperCore, { Pagination, Navigation, A11y, Autoplay } from 'swiper';
+import SwiperCore, { Pagination, Navigation, A11y, Autoplay, Thumbs } from 'swiper';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
+import 'swiper/scss/thumbs';
 import 'swiper/scss/a11y';
 
 import './app.scss';
 
 
 
-SwiperCore.use([Pagination, Navigation, A11y, Autoplay]);
+SwiperCore.use([Pagination, Navigation, A11y, Autoplay, Thumbs]);
 
 const App = () => (
     <MenuContainer>

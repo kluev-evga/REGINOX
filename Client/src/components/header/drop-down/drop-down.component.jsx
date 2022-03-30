@@ -29,15 +29,14 @@ const DropDown = ({ links, isHome }) => {
                             to={`/products/${url}/all`}
                             key={url}
                             onClick={() => setIsOpen(false)}
-                            activeClassName='link_active'
-                        >
+                            activeClassName='link_active'>
                             {titleShort || title}
                         </NavLink>
                     ))}
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default DropDown;
+export default DropDown

@@ -33,8 +33,8 @@ const MainMenu = ({ loaded, links, categories }) => {
             </div>
 
         </div>
-    );
-};
+    )
+}
 
 const mapStateToProps = (state) => ({
     loaded: menuLoaded(state),
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => ({
     categories: menuCategories(state)
 })
 
-export default connect(mapStateToProps)(MainMenu);
+export default connect(mapStateToProps)(MainMenu)

@@ -7,6 +7,10 @@
     margin: 10px 0;
 }
 
+.container {
+    order: 1;
+}
+
 .specs_item dt,
 .specs_item dd {
     flex-basis: 50%;

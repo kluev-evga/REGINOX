@@ -1,5 +1,35 @@
-.slider {
-    margin-bottom: 30px;
-    height: 350px;
-    background: var(--gray-light);
+.thumbs {
+    margin-top: -10px;
+}
+
+.thumbs >div {
+    padding: 5px;
+}
+
+.thumb {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 var(--gray-med);
+    background: var(--white);
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.thumb:hover {
+    box-shadow: 0 0 3px 0 var(--gray);
+}
+
+.thumb img {
+    opacity:0.15;
+    border-radius: 5px;
+}
+
+.thumb::before {
+    border-radius: 5px;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #DCDCDCaa;
 }

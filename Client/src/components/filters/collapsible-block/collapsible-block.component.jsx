@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import Collapsible from 'react-collapsible';
 import FiltersItem from '../filters-item/filters-item.component';
-import styles from './collapsible.module.css';
 import { ReactComponent as ChevronDownIcon } from '../../../assets/svg/chevron-down.svg';
 import { ReactComponent as ChevronUpIcon } from '../../../assets/svg/chevron-up.svg';
+import styles from './collapsible-block.module.css';
 
 
 const CollapsibleBlock = ({ filters, searchGroup }) => {

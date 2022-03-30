@@ -622,3 +622,11 @@ li {
     filter: brightness(130%);
     transform: scale(1.006);
 }
+
+.swiper-slide-thumb-active::before {
+    display: none;
+}
+
+.swiper-slide-thumb-active img {
+    opacity: 1;
+}
