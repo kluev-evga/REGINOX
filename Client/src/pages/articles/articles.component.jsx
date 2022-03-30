@@ -27,14 +27,14 @@ const Articles = ({ pages, totalPages, currentPage, totalItems, selectArticlesPa
                 selectPage={selectArticlesPage} />
 
         </div>
-    );
-};
+    )
+}
 
 const mapStateToProps = state => ({
     pages: selectArticlesPages(state),
     totalPages: selectArticlesTotalPages(state),
     currentPage: articlesCurrentPage(state),
     totalItems: articlesTotal(state)
-});
+})
 
-export default connect(mapStateToProps, { selectArticlesPage })(Articles);
+export default connect(mapStateToProps, { selectArticlesPage })(Articles)

@@ -12,17 +12,18 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide }) =
     const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
     const isTabletLg = useMediaQuery({ query: '(min-width: 992px)' });
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
+    const isXL = useMediaQuery({ query: '(min-width: 1400px)' });
 
     return (
         <div className={styles.slider_container}>
             <Swiper
                 className={styles.swiper}
                 speed={400}
-                slidesPerView={isTabletLg ? 3 : isTablet ? 2.2 : isPhone ? 1.7 : 1}
-                spaceBetween={isDesktop ? 50 : isTablet ? 20 : 0}
+                slidesPerView={isXL ? 4 : isTabletLg ? 3.5 : isTablet ? 2.5 : isPhone ? 1.9 : 1}
+                spaceBetween={isDesktop ? 30 : isTablet ? 20 : 0}
                 navigation
-                slidesOffsetAfter={isDesktop ? 0 : isTablet ? 20 : 0}
-                slidesOffsetBefore={isDesktop ? 0 : isTablet ? 20 : 0}
+                slidesOffsetAfter={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
+                slidesOffsetBefore={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
                 initialSlide={slide}
                 onSlideChange={(swiper) => setSertificatesSlide(swiper.activeIndex)}>
 
@@ -40,8 +41,6 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide }) =
 const mapStateToProps = (state) => ({
     sertificatesList: selectSertificatesList(state),
     slide: sertificatesSlide(state),
-});
+})
 
-const mapDispatchToProps = ({ setSertificatesSlide });
-
-export default connect(mapStateToProps, mapDispatchToProps)(SertificatesSlider);
+export default connect(mapStateToProps, { setSertificatesSlide })(SertificatesSlider)

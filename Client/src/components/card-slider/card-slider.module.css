@@ -72,6 +72,10 @@
     font-size: 14px;
 }
 
+.fixed p {
+    max-width: unset;
+}
+
 /* -------------------------------------------------- */
 .wrapper .sm {
     padding: 30px 20px;
@@ -81,7 +85,9 @@
 .wrapper .md {
     padding: 20px;
     font-size: 16px;
+    max-width: unset;
 }
+
 
 .wrapper .with_date {
     display: flex;
@@ -103,6 +109,10 @@
     .wrapper .md {
         padding: 30px 20px;
         font-size: 18px;
+    }
+
+    .fixed p {
+        max-width: unset;
     }
 }
 
@@ -161,7 +171,7 @@
     }
 
     .wrapper .md {
-        font-size: 28px;
+        font-size: 24px;
     }
 }
 
@@ -227,5 +237,9 @@
         max-width: 320px;
         padding: 50px 20px;
         font-size: 26px;
+    }
+
+    .fixed p {
+        max-width: unset;
     }
 }

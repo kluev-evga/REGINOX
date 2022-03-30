@@ -1,11 +1,12 @@
 .wrapper {
-    margin-top: 80px;
+    margin-top: 60px;
     display: grid;
-    grid-gap: 40px;
+    row-gap: 35px;
 }
 
 .row {
     display: grid;
+    justify-items: start;
     grid-gap: 8px;
 }
 
@@ -15,8 +16,8 @@
 }
 
 .row p {
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 10px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -24,12 +25,12 @@
     .wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 40px;
+        column-gap: 20px;
     }
 
     .brands {
         grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 40px;
+        column-gap: 20px;
         grid-column: 1 / span 2;
     }
 
@@ -41,16 +42,35 @@
 @media (min-width: 992px) {
     .wrapper {
         margin-top: 80px;
-        grid-template-columns: repeat(2, minmax(auto, 550px)) 238px;
-        justify-content: center;
+        grid-template-columns: 1fr 1fr 238px;
+        align-items: start;
     }
-    
+
     .brands {
         grid-template-columns: unset;
         grid-column: unset;
     }
-    
+
+    .row {
+        justify-items: start;
+    }
+
+    .row a {
+        padding: 7px 0;
+    }
+
     .brands p {
         grid-column: unset;
+    }
+}
+
+@media (min-width: 1400px) {
+    .row p {
+        font-size: 22px;
+    }
+
+    .row a {
+        padding: 8px 0;
+        font-size: 18px;
     }
 }

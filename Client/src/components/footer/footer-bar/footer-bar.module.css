@@ -1,11 +1,13 @@
-.row {
-    padding: 35px 10px 0;
+.background {
+    background: linear-gradient(0deg, var(--gray-light) 135px, transparent 135px);
+}
+
+.wrapper {
+    padding-top: 35px;
     display: grid;
-    background: linear-gradient(0deg, var(--gray-light) 210px, transparent 210px);
 }
 
 .logo {
-    padding-top: 80px;
     padding-bottom: 20px;
     display: flex;
     align-items: center;
@@ -14,6 +16,7 @@
 
 .socials {
     order: -1;
+    padding-bottom: 80px;
     display: flex;
     gap: 25px;
 }
@@ -30,11 +33,11 @@
 }
 
 .squares {
-    margin-left: auto;
+    display: none;
 }
 
 .policy {
-    padding: 30px 10px;
+    padding:30px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -46,46 +49,49 @@
     text-decoration-skip-ink: none;
 }
 
-@media (min-width: 768px) {
-    .row {
-        padding: 35px 20px 0;
+@media (min-width: 576px) {
+    .background {
+        background: linear-gradient(0deg, var(--gray-light) 160px, transparent 160px);
     }
 
-    .policy {
-        padding: 30px 20px;
+    .wrapper {
+        grid-template-columns: auto auto;
     }
-}
 
-@media (min-width: 992px) {
-    .row {
-        margin-top: 55px;
-        padding: 105px 20px 0;
-        grid-template-columns: 300px minmax(auto, 880px) 238px;
-        justify-content: center;
-        background: var(--gray-light);
+    .socials {
+        grid-column: 1 / -1;
+        padding-bottom: 100px;
     }
 
     .logo {
         padding: 0;
     }
 
-    .socials {
-        order: unset;
-        place-self: center;
+    .squares {
+        display: block;
+        margin-left: auto;
     }
 }
 
-@media (min-width: 1200px) {
-    .row {
-        width: 100%;
-        margin: 55px auto 0;
-        padding: 105px 50px 0;
+@media (min-width: 992px) {
+    .background {
+        background: linear-gradient(0deg, var(--gray-light) 180px, transparent 180px);
+    }
+
+    .wrapper {
+        padding-top: 160px;
+        grid-template-columns: 1fr 1fr 255px;
+        align-items: center;
+    }
+
+    .socials {
+        padding-bottom: 0;
+        margin-left: -6px;
+        grid-column: unset;
+        order: unset;
     }
 
     .policy {
-        width: 100%;
-        margin: 0 auto;
-        max-width: 1350px;
-        padding: 30px 50px;
+        padding:20px 0 30px;
     }
 }

@@ -10,29 +10,32 @@ import styles from './footer-bar.module.css';
 
 const FooterBar = () => (
     <div>
-        <div className={styles.row}>
-            <div className={styles.logo}>
-                <img src={process.env.PUBLIC_URL + '/assets/barcode.webp'} alt="barcode" width='160' height='60' />
-                <PRHolding />
+        <div className={styles.background}>
+            <div className='container'>
+                <div className={styles.wrapper}>
+                    <div className={styles.logo}>
+                        <img src={process.env.PUBLIC_URL + '/assets/barcode.webp'} alt="barcode" width='160' height='60' />
+                        <PRHolding />
+                    </div>
+                    <div className={styles.socials}>
+                        <a href="https://facebook.com" className='link_primary' aria-label='фейсбук' target="_blank" rel='noreferrer'><Facebook /></a>
+                        <a href="https://twitter.com" className='link_primary' aria-label='твиттер' target="_blank" rel='noreferrer'><Twitter /></a>
+                        <a href="https://vkontakte.com" className='link_primary' aria-label='вконтакте' target="_blank" rel='noreferrer'><Vkontakte /></a>
+                        <a href="https://instagram.com" className='link_primary' aria-label='инстаграм' target="_blank" rel='noreferrer'><Instagram /></a>
+                    </div>
+                    <Squares className={styles.squares} />
+                </div>
             </div>
-
-            <div className={styles.socials}>
-                <a href="https://facebook.com" className='link_primary' aria-label='фейсбук' target="_blank" rel='noreferrer'><Facebook /></a>
-                <a href="https://twitter.com" className='link_primary' aria-label='твиттер' target="_blank" rel='noreferrer'><Twitter /></a>
-                <a href="https://vkontakte.com" className='link_primary' aria-label='вконтакте' target="_blank" rel='noreferrer'><Vkontakte /></a>
-                <a href="https://instagram.com" className='link_primary' aria-label='инстаграм' target="_blank" rel='noreferrer'><Instagram /></a>
-            </div>
-
-            <Squares className={styles.squares} />
         </div>
 
-        <div className={styles.policy}>
-            <NavLink to='/policy' className='link_secondary' activeClassName='link_active'>
-                Политика конфеденциальности
-            </NavLink>
-            <span>2020 © Reginox-shop</span>
+        <div className='container'>
+            <div className={styles.policy}>
+                <NavLink to='/policy' className='link_secondary' activeClassName='link_active'>
+                    Политика конфеденциальности
+                </NavLink>
+                <span>2020 © Reginox-shop</span>
+            </div>
         </div>
-
     </div>
 );
 

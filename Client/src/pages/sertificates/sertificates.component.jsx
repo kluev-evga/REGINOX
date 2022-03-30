@@ -28,17 +28,15 @@ const Sertificates = ({ loaded, loadSertificates, setSertificatesScroll, setSert
             <Route exact path='/sertificates/:sertificateId?' component={SertificatePopUp} />
             <Route component={NotFound} />
         </Switch>
-    );
-};
+    )
+}
 
-const mapStateToProps = (state) => ({
-    loaded: sertificatesLoaded(state),
-});
+const mapStateToProps = (state) => ({ loaded: sertificatesLoaded(state) })
 
 const mapDispatchToProps = ({
     loadSertificates,
     setSertificatesScroll,
     setSertificatesSlide
-});
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sertificates);

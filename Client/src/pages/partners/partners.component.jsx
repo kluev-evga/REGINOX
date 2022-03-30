@@ -42,8 +42,8 @@ const Partners = ({ loaded, brands, loadBrands }) => {
             <Brands withUrl brands={brands} />
 
         </div>
-    );
-};
+    )
+}
 
 const mapStateToProps = state => ({
     loaded: brandsLoaded(state),

@@ -1,6 +1,6 @@
 .link {
     display: block;
-    margin: 20px 0 50px;
+    margin-bottom: 30px;
 }
 
 .link span {
@@ -21,16 +21,29 @@
 
 @media (min-width: 768px) {
     .link {
-        margin: 20px 0 80px;
+        margin-bottom: 40px;
     }
 
     .link img {
-        max-height: 300px;
+        max-height: 280px;
+    }
+}
+
+@media (min-width: 992px) {
+    .link {
+        margin: 20px auto 60px;
+        max-width: 960px;
     }
 }
 
 @media (min-width: 1200px) {
     .link img {
-        max-height: 440px;
+        max-height: 340px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .link img {
+        max-height: 360px;
     }
 }

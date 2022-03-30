@@ -9,15 +9,15 @@
 }
 
 .cards figcaption {
-    margin-top: 5px;
+    max-width: 300px;
+    margin: 0 auto;
     text-align: center;
-    font-size: 18px;
     font-weight: 500;
 }
 
 .cards img {
     margin: 0 auto;
-    width: 220px;
+    width: 180px;
     height: auto;
 }
 
@@ -40,6 +40,10 @@
         grid-template-columns: repeat(2, 280px);
         column-gap: 80px;
     }
+
+    .cards figcaption {
+        max-width: 240px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -49,7 +53,8 @@
     }
 
     .cards figcaption {
-        font-size: 20px;
+        margin-top: 10px;
+        font-size: 18px;
     }
 }
 
@@ -65,6 +70,7 @@
     }
 
     .cards figcaption {
+        max-width: unset;
         margin-top: 0;
         padding: 20px;
 
