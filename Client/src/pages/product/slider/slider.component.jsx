@@ -7,7 +7,7 @@ const Slider = ({ images }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     return (
-        <div>
+        <div className={styles.slider}>
             <Swiper
                 thumbs={{ swiper: thumbsSwiper }}
                 allowTouchMove={false}
@@ -22,11 +22,10 @@ const Slider = ({ images }) => {
             <Swiper
                 slideActiveClass='swiper-thumbs-active'
                 watchSlidesProgress={true}
-
                 onSwiper={setThumbsSwiper}
                 className={styles.thumbs}
                 spaceBetween={10}
-                slidesPerView={4}>
+                slidesPerView={5}>
                 {images.map((img, i) => (
                     <SwiperSlide key={i} className={styles.thumb}>
                         <img src={process.env.PUBLIC_URL + img} alt="poductimage" width='600' h='600' />

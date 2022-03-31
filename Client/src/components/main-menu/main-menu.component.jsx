@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { closeMenu } from '../../redux/actions';
 import { menuLinks, menuCategories, menuLoaded } from '../../redux/selectors';
 import cn from 'classnames'
 import MenuGroup from './menu-group/menu-group.component';
@@ -7,7 +8,7 @@ import styles from './main-menu.module.css';
 import './main-menu.css';
 
 
-const MainMenu = ({ loaded, links, categories }) => {
+const MainMenu = ({ loaded, links, categories, closeMenu }) => {
     if (!loaded) return null;
 
     return (
@@ -26,10 +27,10 @@ const MainMenu = ({ loaded, links, categories }) => {
             ))}
 
             <div className={styles.links_container}>
-                <NavLink to='/promo' className='menu-link' activeClassName='menu-active-link'>Акции</NavLink>
-                <NavLink to='/latest' className='menu-link' activeClassName='menu-active-link'>Новинки</NavLink>
-                <NavLink to='/delivery' className='menu-link' activeClassName='menu-active-link'>Доставка и оплата</NavLink>
-                <NavLink to='/contacts' className='menu-link' activeClassName='menu-active-link'>Контакты</NavLink>
+                <NavLink to='/promo' onClick={closeMenu} className='menu-link' activeClassName='menu-active-link'>Акции</NavLink>
+                <NavLink to='/latest' onClick={closeMenu} className='menu-link' activeClassName='menu-active-link'>Новинки</NavLink>
+                <NavLink to='/delivery' onClick={closeMenu} className='menu-link' activeClassName='menu-active-link'>Доставка и оплата</NavLink>
+                <NavLink to='/contacts' onClick={closeMenu} className='menu-link' activeClassName='menu-active-link'>Контакты</NavLink>
             </div>
 
         </div>
@@ -42,4 +43,4 @@ const mapStateToProps = (state) => ({
     categories: menuCategories(state)
 })
 
-export default connect(mapStateToProps)(MainMenu)
+export default connect(mapStateToProps, { closeMenu })(MainMenu)

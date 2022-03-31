@@ -309,7 +309,6 @@ const productItems = {
                 "/assets/products/98262189.webp",
                 "/assets/products/98262189_01.webp",
                 "/assets/products/98262189_02.webp",
-                "/assets/products/98262189_03.webp"
             ]
         },
         {

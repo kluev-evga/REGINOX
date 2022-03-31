@@ -9,13 +9,15 @@ import styles from './controls.module.css';
 
 const Controls = ({ id, price }) => (
     <div className={styles.container}>
-        <p>Артикул: {id}</p>
+        <div className={styles.articul}>Артикул:<span>{id}</span></div>
+
         <div className={styles.price}>
             <span>{price} <RublIcon /></span>
             <button className={styles.compare}>
-                <CompareIcon /> Сравнить
+                <CompareIcon />Сравнить
             </button>
         </div>
+
         <div className={styles.count}>
             <span>Количество</span>
             <div>
@@ -24,10 +26,11 @@ const Controls = ({ id, price }) => (
                 <button><MinusIcon /></button>
             </div>
         </div>
-        <button className={styles.buy}>
-            <span>Купить в один клик</span>
-            <div><CartIcon /></div>
-        </button>
+
+        <div className={styles.buy}>
+            <button>Купить в один клик</button>
+            <button><CartIcon /></button>
+        </div>
     </div>
 )
 

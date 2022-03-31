@@ -9,7 +9,7 @@ import '../main-menu.css';
 
 
 const MenuGroup = ({ categories, url, title, closeMenu }) => {
-    const time = Math.sqrt(categories.length) * 90;
+    const time = Math.sqrt(categories.length) * 40;
 
     return (
         <div>

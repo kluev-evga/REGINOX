@@ -1,19 +1,25 @@
 .container {
-    padding: 30px 0 10px;
-    order: 1;
+    padding: 30px 0 50px;
     display: grid;
     row-gap: 10px;
 }
 
-.container p {
+.articul {
+    padding-left: 10px;
     font-weight: 500;
     color: var(--gray);
 }
 
+.articul span {
+    margin-left: 10px;
+}
+
 .price {
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--gray);
 }
 
 .price span {
@@ -33,35 +39,32 @@
 }
 
 .compare svg {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .count {
     height: 70px;
     display: flex;
+    column-gap: 20px;
     background-color: var(--gray-light);
     font-weight: 500;
     color: var(--gray);
 }
 
-.count >span {
+.count>span {
     flex-grow: 1;
-    padding: 20px;
+    padding-left: 10px;
     display: flex;
     align-items: center;
     width: 110px;
 }
 
 .count div {
-    padding: 8px;
-    width: 110px;
+    padding-right: 10px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.count div button {
-    font-size: 30px;
 }
 
 .buy {
@@ -71,20 +74,158 @@
     color: var(--white);
 }
 
-.buy span {
-    flex-grow: 1;
-    height: 100%;
-    padding: 20px;
-    display: flex;
+.buy button {
+    display: inline-flex;
     align-items: center;
+}
+
+.buy button:first-of-type {
+    flex-grow: 1;
+    padding-left: 10px;
     background-color: var(--graphite);
 }
 
-.buy div {
-    width: 110px;
-    height: 100%;
-    display: flex;
-    align-items: center;
+.buy button:last-of-type {
+    width: 70px;
     justify-content: center;
     background-color: var(--red);
+}
+
+@media (min-width: 370px) {
+    .container {
+        row-gap: 15px;
+    }
+
+    .articul {
+        padding-left: 20px;
+    }
+
+    .price {
+        padding-left: 20px;
+        padding-right: 0;
+    }
+
+    .compare {
+        width: 150px;
+        justify-content: center;
+    }
+
+    .count>span {
+        padding-left: 20px;
+    }
+
+    .count div {
+        width: 150px;
+        padding: 0 20px;
+    }
+
+    .buy button:first-of-type {
+        padding-left: 20px;
+    }
+
+    .buy button:last-of-type {
+        width: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-area: 2 / 2 / 3 / -1;
+        align-content: start;
+    }
+
+    .articul,
+    .price {
+        padding-left: 0;
+    }
+
+    .compare {
+        width: 140px;
+        justify-content: center;
+    }
+
+    .count>span {
+        padding-left: 20px;
+    }
+
+    .count div {
+        width: 140px;
+        padding: 0 15px;
+    }
+
+    .count button {
+        padding: 5px;
+    }
+
+    .buy button:first-of-type {
+        padding: 20px;
+    }
+
+    .buy button:last-of-type {
+        width: 140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        row-gap: 20px;
+    }
+
+    .articul,
+    .compare,
+    .count,
+    .buy {
+        font-size: 18px;
+    }
+
+    .articul span {
+        letter-spacing: 1.2px;
+    }
+
+    .price span {
+        font-size: 20px;
+    }
+
+    .price span svg {
+        height: 15px;
+    }
+
+    .count button {
+        padding: 10px;
+    }
+
+    .compare,
+    .count div,
+    .buy button:last-of-type {
+        width: 170px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        row-gap: 25px;
+    }
+
+    .articul {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        row-gap: 30px;
+    }
+
+    .articul {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .price span {
+        font-size: 24px;
+    }
+
+    .price span svg {
+        height: 17px;
+    }
 }

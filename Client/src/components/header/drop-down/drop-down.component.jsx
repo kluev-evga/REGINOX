@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { ReactComponent as Chevron } from '../../../assets/svg/chevron-down.svg';
+import { ReactComponent as ChevronDown } from '../../../assets/svg/chevron-down.svg';
+import { ReactComponent as ChevronUp } from '../../../assets/svg/chevron-up.svg';
 import styles from './drop-down.module.css';
 
 
@@ -18,8 +19,8 @@ const DropDown = ({ links, isHome }) => {
             className={cn(styles.sub_menu, { [styles.open]: isOpen, [styles.reversed]: isHome })}>
 
             <button onClick={() => setIsOpen(!isOpen)} >
-                Другая продукция
-                <Chevron />
+                Другие товары
+                {isOpen ? <ChevronUp /> : <ChevronDown />}
             </button>
 
             <div className={styles.sub_menu_container}>
