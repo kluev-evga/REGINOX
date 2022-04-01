@@ -36,21 +36,34 @@ const translit = (word) => {
 	answer = answer.replace(/^\-|-$/g, '');
 	return answer;
 };
+////////////////////////////////////////////////////////////////////////
 
-const createProductItem = (item) => {
-    const id = item.id;
-    const promo = randomInteger(0, 10) > 9 ? true : false;
-    const newItem = randomInteger(0, 10) > 9 ? true : false;
-    const title = item.title;
-    const img = item.images[0];
-    const alt = item.title;
-    const productUrl = translit(item.title.split(',').slice(0,1).join(' '));
-    const price = item.price;
-    const p = Number(item.price.replace(/\s/g, ''));
-    const r = randomInteger(0, 5);
-    const reviewers = Math.round(randomInteger(0, 125));
-    return { id, promo, newItem, title, img, alt, productUrl, price, p, r, reviewers };
+const createProductPromoIformation = (productItems) => {
+  const products = {};
+    for (let url in productItems) {
+        products[url] = productItems[url].map( item => ({
+            ...item,
+            promo: randomInteger(0, 10) > 5 ? true : false,
+            newItem: randomInteger(0, 10) > 5 ? true : false,
+        }));
+    };
+    return products;
 };
+////////////////////////////////////////////////////////////////////////
+
+const createProductItem = ({id, promo, newItem, title, images, price}) => ({
+    id,
+    promo,
+    newItem,
+    title,
+    img: images[0],
+    alt: title,
+    productUrl: translit(title.split(',').slice(0,1).join(' ')),
+    price,
+    p: Number(price.replace(/\s/g, '')),
+    r: randomInteger(0, 5),
+    reviewers: Math.round(randomInteger(0, 125)),
+});
 
 const getProducts = (productItems) => {
     const productsdata = {};
@@ -153,6 +166,7 @@ const getFilters = (filtersObj, productItems) => {
 
 module.exports = {
     reply,
+    createProductPromoIformation,
     getProducts,
     getProductData,
     getHome,

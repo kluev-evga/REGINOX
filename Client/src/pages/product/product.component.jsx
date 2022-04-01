@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { menuTitleByUrl, productItem } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive'
+import cn from 'classnames';
 import Slider from './slider/slider.component';
 import Controls from './controls/controls.component';
 import InformationContainer from './information-container/information-container.component';
@@ -12,7 +13,7 @@ import styles from './product.module.css';
 const Product = ({ match, getTitle, productItem }) => {
     const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
     const { url, categoryUrl, productUrl } = match.params;
-    const { id, title, price, specs, images } = productItem(productUrl);
+    const { id, title, price, specs, images, promo, newItem } = productItem(productUrl);
     const linkTitle = getTitle(url);
 
     return (
@@ -23,7 +24,12 @@ const Product = ({ match, getTitle, productItem }) => {
 
             <div className={styles.wrapper}>
                 <Slider images={images} />
-                <h1 className={styles.title}>{title}</h1>
+                <h1 className={styles.title}>
+                    {title}
+                    <i> </i>
+                    <span className={cn({ [styles.promo]: promo })}></span>
+                    <span className={cn({ [styles.new_item]: newItem })}></span>
+                </h1>
                 <Controls id={id} price={price} />
                 {isTablet ? <TabsContainer specs={specs} /> : <InformationContainer specs={specs} />}
             </div>

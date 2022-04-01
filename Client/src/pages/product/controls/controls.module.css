@@ -171,11 +171,14 @@
         row-gap: 20px;
     }
 
-    .articul,
-    .compare,
-    .count,
-    .buy {
+    .articul {
         font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .price,
+    .count {
+        width: 410px;
     }
 
     .articul span {
@@ -194,10 +197,73 @@
         padding: 10px;
     }
 
-    .compare,
-    .count div,
+    /* buttons hover-------------------------------------- */
+    .count div span {
+        transition: all 0.1s linear;
+    }
+
+    .count button:hover {
+        color: var(--red);
+    }
+
+    .buy {
+        width: 542px;
+        position: relative;
+    }
+
+    .buy button:first-of-type {
+        flex-grow: unset;
+        width: 270px;
+        height: 70px;
+
+        position: absolute;
+        transition: width 0.1s ease-out 0.08s
+    }
+
+    .buy button:first-of-type:hover {
+        width: 410px;
+    }
+
     .buy button:last-of-type {
-        width: 170px;
+        margin-left: 270px;
+        transition: flex-grow 0.1s ease-out 0.08s;
+    }
+
+    .buy button:last-of-type svg {
+        transition: color 0.15s linear;
+    }
+
+    .buy button:last-of-type svg {
+        z-index: 1;
+        height: 100%;
+        padding: 0 55px;
+        width: 140px;
+        transition: all 0.15s linear 0.1s;
+    }
+
+    .buy button:last-of-type:hover {
+        flex-grow: 1;
+    }
+
+    .buy button:last-of-type:hover svg {
+        width: 50px;
+        padding: 0 10px;
+        transition: all 0.15s linear;
+    }
+
+    .buy button:last-of-type::after {
+        content: 'Добавить в корзину';
+        overflow: hidden;
+        white-space: nowrap;
+        color: transparent;
+
+        width: 0;
+        transition: all 0.1s ease-out 0.08s, color 0.1s ease-in 0.1s;
+    }
+
+    .buy button:last-of-type:hover::after {
+        width: 168px;
+        color: var(--white)
     }
 }
 

@@ -11,6 +11,29 @@
     white-space: normal;
 }
 
+.new_item::before,
+.promo::before {
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: -4px;
+    vertical-align: middle;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.promo::before {
+    content: 'Акция';
+    background-color: #F2994A;
+}
+
+.new_item::before {
+    content: 'Новинка';
+    background-color: #2D9CDB;
+}
+
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -27,6 +50,14 @@
     .title {
         font-size: 22px;
     }
+
+    .new_item::before,
+    .promo::before {
+        margin-right: 8px;
+        margin-top: -3px;
+        padding: 5px 9px;
+        font-size: 11px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -40,22 +71,36 @@
         order: unset;
         font-size: 20px;
     }
+
+    .new_item::before,
+    .promo::before {
+        margin-right: 7px;
+        padding: 4px 9px;
+    }
 }
 
 @media (min-width: 992px) {
+    .wrapper {
+        column-gap: 40px;
+    }
+
     .title {
         margin-top: 70px;
         font-size: 24px;
     }
 
-    .wrapper {
-        column-gap: 40px;
+    .new_item::before,
+    .promo::before {
+        margin-right: 8px;
+        margin-top: -5px;
+        padding: 5px 11px;
+        font-size: 13px;
     }
 }
 
 @media (min-width: 1200px) {
     .title {
-        margin-top: 85px;
+        margin-top: 0;
         font-size: 24px;
     }
 }
@@ -68,6 +113,22 @@
 
 @media (min-width: 1600px) {
     .title {
-        font-size: 32px;
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .new_item::before,
+    .promo::before {
+        margin-right: 11px;
+        margin-top: -7px;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .wrapper {
+        grid-template-columns: 46% 1fr;
+        column-gap: 60px;
     }
 }

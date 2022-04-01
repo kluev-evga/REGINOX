@@ -21,9 +21,9 @@ const Controls = ({ id, price }) => (
         <div className={styles.count}>
             <span>Количество</span>
             <div>
-                <button><PlusIcon /></button>
-                <span>1</span>
                 <button><MinusIcon /></button>
+                <span>10</span>
+                <button><PlusIcon /></button>
             </div>
         </div>
 

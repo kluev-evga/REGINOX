@@ -1,14 +1,17 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './slider.module.css';
 
 
 const Slider = ({ images }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
 
     return (
-        <div className={styles.slider}>
+        <div className={styles.slider + ' product-slider'}>
             <Swiper
+                className={styles.slider_view}
                 thumbs={{ swiper: thumbsSwiper }}
                 allowTouchMove={false}
                 slidesPerView={1}
@@ -20,7 +23,8 @@ const Slider = ({ images }) => {
                 ))}
             </Swiper>
             <Swiper
-                slideActiveClass='swiper-thumbs-active'
+                direction={isDesktop ? 'vertical' : 'horizontal'}
+                navigation
                 watchSlidesProgress={true}
                 onSwiper={setThumbsSwiper}
                 className={styles.thumbs}

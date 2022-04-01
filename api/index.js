@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { reply, getProducts, getProductData, getHome, getMenu, getFilters } = require('./utils');
+const { reply, createProductPromoIformation, getProducts, getProductData, getHome, getMenu, getFilters } = require('./utils');
 
 
 const home = require('./db/home');
@@ -15,9 +15,11 @@ const articlesItems = require('./db/articlesItems');
 
 
 const menudata = getMenu(links, categories);
-const productsdata = getProducts(productItems);
 const filtersdata = getFilters(filters, productItems);
-const productdata = getProductData(productItems);
+const productsWithPromo = createProductPromoIformation(productItems);
+const productsdata = getProducts(productsWithPromo);
+const productdata = getProductData(productsWithPromo);
+
 
 
 

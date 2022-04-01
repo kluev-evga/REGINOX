@@ -1212,7 +1212,7 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/93875804.webp",
-                "/assets/products/93875804_01.webp"
+                "/assets/products/93875804_01.webp",
             ]
         },
         {

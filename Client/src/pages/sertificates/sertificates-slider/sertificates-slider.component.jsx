@@ -15,17 +15,17 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide }) =
     const isXL = useMediaQuery({ query: '(min-width: 1400px)' });
 
     return (
-        <div className={styles.slider_container}>
+        <div className={styles.slider_container + ' sertificates'}>
             <Swiper
                 className={styles.swiper}
                 speed={400}
                 slidesPerView={isXL ? 4 : isTabletLg ? 3.5 : isTablet ? 2.5 : isPhone ? 1.9 : 1}
                 spaceBetween={isDesktop ? 30 : isTablet ? 20 : 0}
-                navigation
                 slidesOffsetAfter={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
                 slidesOffsetBefore={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
                 initialSlide={slide}
-                onSlideChange={(swiper) => setSertificatesSlide(swiper.activeIndex)}>
+                onSlideChange={(swiper) => setSertificatesSlide(swiper.activeIndex)}
+                navigation>
 
                 {sertificatesList.map(id => (
                     <SwiperSlide key={id} className={styles.swiper_slide}>
