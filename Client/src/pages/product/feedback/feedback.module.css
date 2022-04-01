@@ -1,0 +1,70 @@
+.container {
+    color: var(--gray);
+}
+
+.average {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.total {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.stars {
+    margin: 5px 0 10px;
+    width: 154px;
+    display: flex;
+    gap: 7px;
+    color: transparent;
+}
+
+.stars svg {
+    flex-grow: 1;
+    height: auto;
+}
+
+.bars {
+    font-size: 18px;
+}
+
+.bars div {
+    margin: 4px 0 10px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--gray-light);
+}
+
+.bars div span {
+    display: block;
+    border-radius: 3px;
+    height: 100%;
+    width: 50%;
+    background: #F2994A;
+}
+
+.btn_write_feedback {
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: white;
+    background-color: var(--graphite);
+}
+
+.btn_load {
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: white;
+    background-color: var(--graphite);
+}
+
+.wrapper {
+    margin-top: 30px;
+    display: grid;
+    gap: 10px;
+}

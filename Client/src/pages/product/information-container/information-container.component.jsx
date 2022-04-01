@@ -1,4 +1,6 @@
-import Specifications from "../specifications/specifications.component"
+import Specifications from "../specifications/specifications.component";
+import Feedback from '../feedback/feedback.component';
+import Ask from '../ask/ask.component';
 import styles from './information-container.module.css';
 
 
@@ -10,11 +12,11 @@ const InformationContainer = ({ specs }) => (
         </div>
         <div>
             <h2 className={styles.title}>Отзывы</h2>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores aperiam dicta aliquid mollitia qui praesentium ipsam voluptatem debitis, perferendis cumque, perspiciatis, obcaecati rerum quia aliquam quae minus quisquam sapiente cupiditate?
+            <Feedback />
         </div>
         <div>
             <h2 className={styles.title}>Задать вопрос</h2>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores aperiam dicta aliquid mollitia qui praesentium ipsam voluptatem debitis, perferendis cumque, perspiciatis, obcaecati rerum quia aliquam quae minus quisquam sapiente cupiditate?
+            <Ask />
         </div>
     </div>
 )
