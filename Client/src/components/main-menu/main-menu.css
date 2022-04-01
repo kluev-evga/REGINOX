@@ -1,7 +1,7 @@
 .menu-button {
     margin-top: 5px;
     width: 100%;
-    padding: 14px 5px 14px 10px ;
+    padding: 14px 5px 14px 10px;
     text-align: left;
     background-color: #111;
 }
@@ -16,11 +16,10 @@
 
 .menu-active-link {
     text-decoration: underline;
-    text-decoration-skip-ink: none;
 }
 
 .menu-button,
-.menu-link  {
+.menu-link {
     transition: background-color 0.1s linear;
 }
 

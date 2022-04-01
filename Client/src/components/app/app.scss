@@ -84,10 +84,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-    height: 100%;
-}
-
+#root,
 #outer-container {
     height: 100%;
 }
@@ -135,6 +132,7 @@ select {
 a {
     text-decoration: none;
     color: inherit;
+    text-decoration-skip-ink: none;
 }
 
 button {
@@ -150,16 +148,31 @@ button {
 
 input,
 textarea {
-    padding: 14px;
+    font-family: Montserrat;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--graphite);
     border: none;
+    outline-color: var(--gray);
 
-    &:placeholder {
-        color: var(--gray);
+    &::placeholder {
+        color: var(--gray-med);
+        font-family: Montserrat;
+        font-size: inherit;
+        font-weight: 400;
     }
 
-    @media (min-width: 340px) {
-        padding: 24px;
+    @media (min-width: 768px) {
+        font-size: 17px;
     }
+}
+
+input {
+    padding: 13px;
+}
+
+textarea {
+    padding: 8px 13px 20px;
 }
 
 .container {
@@ -719,5 +732,7 @@ li {
 }
 
 .swiper-slide-thumb-active {
-    box-shadow: inset 0 0 4px 0 var(--gray);
+    box-shadow: inset 0 0 4px 1px #00000040;
+    outline: 2px solid #e2e2e2;
+    outline-offset: -2px;
 }

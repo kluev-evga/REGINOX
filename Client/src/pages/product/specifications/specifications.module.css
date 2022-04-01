@@ -42,7 +42,7 @@
 
 @media (min-width: 768px) {
     .item dt {
-        flex-basis: 354px;
+        flex-basis: 330px;
     }
 }
 
@@ -52,12 +52,12 @@
     }
 
     .item dt {
-        flex-basis: 420px;
+        flex-basis: 357px;
     }
 }
 
 @media (min-width: 1200px) {
     .item dt {
-        flex-basis: 500px;
+        flex-basis: 357px;
     }
 }

@@ -13,13 +13,13 @@ const FeedbackItem = () => {
     const [withButton, text, textSample] = useMemo(() => ([
         string.length > 200 ? true : false,
         string,
-        string.slice(0, 100).split(' ').slice(0, -1).join(' ') + "..."
+        string.slice(0, 100).split(' ').slice(0, -1).join(' ') + '...'
     ]), []);
 
     return (
         <div className={styles.container}>
             <div className={styles.row}>
-                <h3><span>Анастастия asdf</span><span className={styles.prooved}>Подтвержденная покупка</span></h3>
+                <h3><span>Анастастия Задова</span><span className={styles.prooved}>Подтвержденная покупка</span></h3>
                 <time dateTime={dateTime}>{date}</time>
             </div>
             <p>

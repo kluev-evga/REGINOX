@@ -1,0 +1,38 @@
+.form {
+    margin: 0 -10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--gray-light);
+}
+
+.form textarea {
+    height: 180px;
+    resize: none;
+    flex-grow: 1;
+}
+
+.form button {
+    height: 50px;
+    width: 100%;
+    color: var(--white);
+    background-color: var(--red);
+}
+
+.gprd {
+    margin-top: 15px;
+    display: block;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .form {
+        margin: 0;
+    }
+
+    .form textarea {
+        height: 100px;
+    }
+}

@@ -1,166 +1,25 @@
-.row {
-    display: grid;
-    row-gap: 30px;
+.title {
     margin-bottom: 40px;
 }
 
-.contacts {
-    display: grid;
-    grid-gap: 20px;
-}
-
-.tab_list {
-    margin-bottom: 35px;
-}
-
-.contacts b {
-    margin-bottom: 20px;
-    display: block;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.contacts p {
-    margin-bottom: 5px;
-    font-size: 18px;
-    line-height: 1.4;
-}
-
-.contacts span {
-    margin-bottom: 15px;
-    display: block;
-    font-size: 14px;
-    color: var(--gray-med);
-    line-height: 1.6;
-}
-
-.contacts a {
-    margin-bottom: 5px;
-    display: block;
-}
-
-.form {
-    width: 100%;
-    height: 500px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--gray-light);
-}
-
-.form h2 {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.form input {
-    height: 50px;
-}
-
-.form textarea {
-    resize: none;
-    flex-grow: 1;
-}
-
-.form button {
-    height: 50px;
-    width: 100%;
-    color: var(--white);
-    background-color: var(--red);
-}
-
-.form span{
-    margin-top: 15px;
-    display: block;
-    color: var(--gray);
-    font-size: 14px;
-}
-
-@media (min-width: 340px) {
-    .form {
-        padding: 20px;
-        gap: 20px;
-    }
-}
-
-@media (min-width: 576px) {
-    .contacts b {
-        margin-bottom: 24px;
-    }
-
-    .form {
-        height: 450px;
-    }
+.iframe {
+    margin-top: 60px;
 }
 
 @media (min-width: 768px) {
-    .form {
-        height: 660px;
-    }
-
-    .row {
-        grid-template-columns: 360px 340px;
-        gap: 25px;
-    }
-}
-
-@media (min-width: 992px) {
-    .row {
-        grid-template-columns: 500px 380px;
-        justify-content: start;
-        column-gap: 40px;
-        margin-bottom: 60px;
-    }
-
-    .contacts {
-        grid-template-columns: 0.6fr 1fr;
-    }
-
-    .contacts span {
-        font-size: 16px;
-    }
-    
-    .contacts a {
-        margin-bottom: 8px;
-        font-size: 18px;
-    }
-
-    .form {
-        height: 650px;
-        padding: 30px 25px;
-        gap: 25px;
-    }
-
-    .form h2 {
-        font-size: 20px;
-        font-weight: 600;
+    .title {
+        margin-bottom: 0;
     }
 }
 
 @media (min-width: 1200px) {
-    .row {
-        grid-template-columns: 650px auto;
-        column-gap: 60px;
-        margin-bottom: 100px;
-    }
-
-    .form {
-        max-width: 380px;
+    .iframe {
+        margin-top: 80px;
     }
 }
 
-@media (min-width: 1400px) {
-    .row {
-        grid-template-columns: 700px auto;
-        column-gap: 80px;
-    }
-
-    .form {
-        max-width: 400px;
-    }
-
-    .form h2 {
-        font-size: 22px;
+@media (min-width: 1600px) {
+    .iframe {
+        margin-top: 100px;
     }
 }

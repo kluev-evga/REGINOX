@@ -7,15 +7,15 @@ import styles from './information-container.module.css';
 const InformationContainer = ({ specs }) => (
     <div className={styles.container}>
         <div>
-            <h2 className={styles.title}>Характеристики</h2>
+            <h2 className={styles.title1}>Характеристики</h2>
             <Specifications specs={specs} />
         </div>
         <div>
-            <h2 className={styles.title}>Отзывы</h2>
+            <h2 className={styles.title2}>Отзывы</h2>
             <Feedback />
         </div>
         <div>
-            <h2 className={styles.title}>Задать вопрос</h2>
+            <h2 className={styles.title3}>Задать вопрос</h2>
             <Ask />
         </div>
     </div>
