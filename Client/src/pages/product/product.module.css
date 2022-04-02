@@ -46,6 +46,12 @@
     text-overflow: ellipsis;
 }
 
+@media (min-width: 340px) {
+    .title {
+        font-size: 18px;
+    }
+}
+
 @media (min-width: 576px) {
     .title {
         font-size: 22px;

@@ -9,7 +9,6 @@
 
 .form textarea {
     height: 180px;
-    resize: none;
     flex-grow: 1;
 }
 

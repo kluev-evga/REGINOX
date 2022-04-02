@@ -52,12 +52,6 @@
     }
 
     .item dt {
-        flex-basis: 357px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .item dt {
-        flex-basis: 357px;
+        flex-basis: 366px;
     }
 }

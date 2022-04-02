@@ -1,8 +1,8 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Specifications from '../specifications/specifications.component';
-import Feedback from '../feedback/feedback.component';
-import Ask from '../ask/ask.component';
-import styles from './tabs.module.css';
+import FeedbackContainer from '../feedback-container/feedback-container.component';
+import AskPanel from '../ask-panel/ask-panel.component';
+import styles from './tabs-container.module.css';
 
 
 const TabsContainer = ({ specs }) => (
@@ -19,12 +19,12 @@ const TabsContainer = ({ specs }) => (
         </TabPanel>
         <TabPanel>
             <div className={styles.tab_content}>
-                <Feedback />
+                <FeedbackContainer />
             </div>
         </TabPanel>
         <TabPanel>
             <div className={styles.tab_content}>
-                <Ask />
+                <AskPanel />
             </div>
         </TabPanel>
     </Tabs>

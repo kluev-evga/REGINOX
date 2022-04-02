@@ -1,0 +1,24 @@
+.container {
+    margin-bottom: 10px;
+    display: grid;
+    gap: 10px;
+    max-height: 700px;
+    overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: var(--graphite);
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-med);
+}
+
+.container::-webkit-scrollbar-thumb:hover:active {
+    background: var(--gray);
+}

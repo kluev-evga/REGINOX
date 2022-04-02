@@ -4,9 +4,9 @@ import { menuTitleByUrl, productItem } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames';
 import Slider from './slider/slider.component';
-import Controls from './controls/controls.component';
-import InformationContainer from './information-container/information-container.component';
-import TabsContainer from './tabs/tabs.component';
+import SliderPanel from './slider-panel/slider-panel.component';
+import PhoneView from './phone-view/phone-view.component';
+import TabsContainer from './tabs-container/tabs-container.component';
 import styles from './product.module.css';
 
 
@@ -30,8 +30,8 @@ const Product = ({ match, getTitle, productItem }) => {
                     <span className={cn({ [styles.promo]: promo })}></span>
                     <span className={cn({ [styles.new_item]: newItem })}></span>
                 </h1>
-                <Controls id={id} price={price} />
-                {isTablet ? <TabsContainer specs={specs} /> : <InformationContainer specs={specs} />}
+                <SliderPanel id={id} price={price} />
+                {isTablet ? <TabsContainer specs={specs} /> : <PhoneView specs={specs} />}
             </div>
         </div>
     )

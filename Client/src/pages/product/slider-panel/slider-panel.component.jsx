@@ -4,10 +4,10 @@ import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg';
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg';
 import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg';
 import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
-import styles from './controls.module.css';
+import styles from './slider-panel.module.css';
 
 
-const Controls = ({ id, price }) => (
+const SliderPanel = ({ id, price }) => (
     <div className={styles.container}>
         <div className={styles.articul}>Артикул:<span>{id}</span></div>
 
@@ -34,4 +34,4 @@ const Controls = ({ id, price }) => (
     </div>
 )
 
-export default Controls
+export default SliderPanel
