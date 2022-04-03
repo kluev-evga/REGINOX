@@ -111,10 +111,29 @@ export const filteredProducts = state => state.filters.products;
 export const sortBy = state => state.filters.sortBy;
 
 
-export const productItem = (state) => (productUrl) => state.productItems.entities[productUrl];
+export const productItems = (state) => state.productItems.entities;
+export const productItem = (state) => (productUrl) => productItems(state)[productUrl];
 export const productItemLoading = (state) => (productUrl) => state.productItems.loading[productUrl];
 export const productItemLoaded = (state) => (productUrl) => state.productItems.loaded[productUrl];
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
+export const productItemsById = createSelector(
+    productItems,
+    items => {
+        return Object.keys(items).reduce((acc, url) => {
+            const {price, discount, discountedPrice, title, images} = items[url];
+            const img = images[0];
+            acc[items[url].id] = { price, discount, discountedPrice, title, img }
+            return acc;
+        },{})
+    }
+);
+export const productItemById = (state, id) => productItemsById(state)[id];
 
 
+
+export const cartItems = state => state.cart.entities;
 export const cartItemCount = (state, id) => state.cart.entities?.[id];
+export const cartItemsArray = createSelector(
+    cartItems,
+    (items) => Object.keys(items)
+);

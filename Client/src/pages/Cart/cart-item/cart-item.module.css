@@ -1,0 +1,159 @@
+.container {
+    padding: 10px;
+    background-color: var(--light);
+    border-bottom: 1px solid var(--gray-med);
+}
+
+.container img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 220px;
+}
+
+.container h2 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.price {
+    margin-top: 18px;
+    font-size: 17px;
+}
+
+.price svg {
+    margin-left: 5px;
+    display: inline;
+    height: 11px;
+    width: auto;
+}
+
+.promo {
+    margin-left: 14px;
+    color: #F2994A;
+    font-weight: 500;
+}
+
+.count {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.count div {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    background: var(--gray-light);
+}
+
+.count span {
+    margin: 0 5px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.clear svg {
+    padding: 6px;
+}
+
+.container button:hover {
+    color: var(--red);
+}
+
+@media (min-width: 340px) {
+    .container h2 {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .price svg {
+        height: 14px;
+    }
+
+    .promo {
+        margin-left: 20px;
+    }
+
+    .count {
+        margin-top: 16px;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        display: grid;
+        grid-template: auto 1fr / 150px 1fr;
+        column-gap: 15px;
+    }
+
+    .container h2 {
+        margin-top: 30px;
+    }
+
+    .container img {
+        grid-row: 1 / -1;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        display: grid;
+        grid-template: auto / 100px 1fr 100px;
+        column-gap: 15px;
+    }
+
+    .container h2 {
+        margin-top: 10px;
+    }
+
+    .count {
+        height: 100%;
+        margin-top: 0;
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .count div {
+        order: 1;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding: 10px 20px;
+        grid-template: auto / 120px 1fr 100px;
+        column-gap: 20px;
+    }
+
+    .container h2 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        padding: 10px 30px;
+        grid-template: auto / 130px 1fr 100px;
+        column-gap: 25px;
+    }
+
+    .container h2 {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        padding: 10px 40px;
+        column-gap: 35px;
+    }
+}

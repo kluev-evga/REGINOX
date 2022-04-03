@@ -53,6 +53,23 @@
     color: var(--gray-med);
 }
 
+.buttons_container button:last-of-type {
+    position: relative;
+}
+
+.buttons_container button:last-of-type span {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.active {
+    color: var(--red);
+}
+
 @media (min-width: 340px) {
     .buttons_container {
         gap: 30px;

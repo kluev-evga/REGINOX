@@ -41,11 +41,13 @@ const translit = (word) => {
 const createProductPromoIformation = (productItems) => {
   const products = {};
     for (let url in productItems) {
-        products[url] = productItems[url].map( item => ({
-            ...item,
-            promo: randomInteger(0, 10) > 5 ? true : false,
-            newItem: randomInteger(0, 10) > 5 ? true : false,
-        }));
+        products[url] = productItems[url].map( item => {
+          const promo = randomInteger(0, 10) > 5 ? true : false;
+          const newItem = randomInteger(0, 10) > 5 ? true : false;
+          const discount = promo ? Math.round(randomInteger(1, 15)) : 0;
+          const discountedPrice = Math.round(Number(item.price.replace(/\s/g, '')) * (100 - discount) / 100);
+          return {...item, promo, discount, discountedPrice, newItem}
+        });
     };
     return products;
 };
@@ -54,7 +56,6 @@ const createProductPromoIformation = (productItems) => {
 const createProductItem = ({id, promo, newItem, title, images, price}, url) => ({
     id,
     promo,
-    discount: promo ? Math.round(randomInteger(1, 15)) : 0,
     newItem,
     title,
     img: images[0],

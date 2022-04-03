@@ -13,7 +13,7 @@ import styles from './product.module.css';
 const Product = ({ match, getTitle, productItem }) => {
     const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
     const { url, categoryUrl, productUrl } = match.params;
-    const { id, title, price, specs, images, promo, newItem } = productItem(productUrl);
+    const { id, title, price, discount, specs, images, promo, newItem } = productItem(productUrl);
     const linkTitle = getTitle(url);
 
     return (
@@ -30,7 +30,7 @@ const Product = ({ match, getTitle, productItem }) => {
                     <span className={cn({ [styles.promo]: promo })}></span>
                     <span className={cn({ [styles.new_item]: newItem })}></span>
                 </h1>
-                <SliderPanel id={id} price={price} />
+                <SliderPanel id={id} price={price} discount={discount} />
                 {isTablet ? <TabsContainer specs={specs} /> : <PhoneView specs={specs} />}
             </div>
         </div>

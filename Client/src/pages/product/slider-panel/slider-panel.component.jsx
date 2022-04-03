@@ -11,11 +11,10 @@ import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
 import styles from './slider-panel.module.css';
 
 
-const SliderPanel = ({ id, price, changeCartItemCount, removeItemFromCart, cartItemCount }) => {
-    const incart = isFinite(cartItemCount);
+const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount }) => {
     const history = useHistory();
-
-    const increase = () => incart ? changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1);
+    const incart = isFinite(cartItemCount);
+    const increase = () => incart ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1);
     const decrease = () => incart && cartItemCount > 0 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
     const addItem = () => !incart && increase();
     const openCart = () => history.push('/home/cart');
@@ -25,7 +24,10 @@ const SliderPanel = ({ id, price, changeCartItemCount, removeItemFromCart, cartI
             <div className={styles.articul}>Артикул:<span>{id}</span></div>
 
             <div className={styles.price}>
-                <span>{price} <RublIcon /></span>
+                <span>
+                    {price} <RublIcon />
+                    {!!discount && <b> -{discount}%</b>}
+                </span>
                 <button className={styles.compare}>
                     <CompareIcon />Сравнить
                 </button>
@@ -39,6 +41,8 @@ const SliderPanel = ({ id, price, changeCartItemCount, removeItemFromCart, cartI
                     <button onClick={increase}><PlusIcon /></button>
                 </div>
             </div>
+
+            {cartItemCount === 99 && <span>Телефон для оптовых клиентов: <a className='link_secondary' href="tel:84952298559">8 (495) 229 85 59</a></span>}
 
             <div className={styles.buy}>
                 <button>Купить в один клик</button>

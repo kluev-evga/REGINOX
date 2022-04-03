@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openMainMenu } from '../../redux/actions';
-import { menuLoaded, appStatus, appIsHomePage, appIsPopUp } from '../../redux/selectors';
+import { menuLoaded, appStatus, appIsHomePage, appIsPopUp, cartItemsArray } from '../../redux/selectors';
 import cn from 'classnames';
 
 import NavLinks from './nav-links/nav-links.component';
@@ -15,8 +15,12 @@ import { ReactComponent as Search } from '../../assets/svg/search.svg';
 import styles from './header.module.css';
 
 
-const Header = ({ openMainMenu, isHome, loaded, status, isPopUp }) => {
+const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems }) => {
+    const history = useHistory();
     if (status || isPopUp || !loaded) return null;
+
+    const cartItemsCount = cartItems.length;
+    const onCartClick = () => cartItemsCount && history.push('/home/cart');
 
     return (
         <header className={cn(styles.header, { [styles.reversed]: isHome })}>
@@ -43,7 +47,13 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp }) => {
                         <button aria-label='сравнить'><Compare /></button>
                         <button aria-label='аккаунт'><Account /></button>
                         <button aria-label='поиск по каталогу'><Search /></button>
-                        <button aria-label='корзина'><Cart /></button>
+                        <button
+                            className={cn({ [styles.active]: cartItemsCount })}
+                            onClick={onCartClick}
+                            aria-label='корзина'>
+                            <span>{!!cartItemsCount && cartItemsCount}</span>
+                            <Cart />
+                        </button>
                     </div>
 
                     <NavLinks key={isHome} isHome={isHome} />
@@ -51,14 +61,15 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp }) => {
                 </div>
             </div>
         </header>
-    );
-};
+    )
+}
 
 const mapStateToProps = state => ({
     loaded: menuLoaded(state),
     status: appStatus(state),
     isHome: appIsHomePage(state),
     isPopUp: appIsPopUp(state),
+    cartItems: cartItemsArray(state)
 });
 
 export default connect(mapStateToProps, { openMainMenu })(Header);
