@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
-import styles from './product-card.module.css';
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg';
 import { ReactComponent as StarIcon } from '../../assets/svg/star.svg';
+import styles from './product-card.module.css';
 
 
 const RatingBlock = ({ r, reviewers }) => (
@@ -12,11 +12,11 @@ const RatingBlock = ({ r, reviewers }) => (
         {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i ? '' : styles.clear} />)}
         <span>({reviewers})</span>
     </div>
-);
+)
 
-const ProductCard = ({ tiles, product, url, withRating = true, categoryUrl = 'all' }) => {
+const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, productUrl, reviewers, price, r, promo, newItem, } = product;
+    const { img, alt, title, url, productUrl, reviewers, price, r, promo, newItem, } = product;
 
     return (
         <div className={cn(
@@ -50,7 +50,7 @@ const ProductCard = ({ tiles, product, url, withRating = true, categoryUrl = 'al
                 <Cart /> В корзину
             </button>
         </div>
-    );
-};
+    )
+}
 
-export default ProductCard;
+export default ProductCard

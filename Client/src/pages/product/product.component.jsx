@@ -17,7 +17,7 @@ const Product = ({ match, getTitle, productItem }) => {
     const linkTitle = getTitle(url);
 
     return (
-        <div className={"container"}>
+        <div className="container">
             <div className={"breadcrumbs " + styles.breadcrumbs}>
                 <Link to='/'>Главная</Link> / <Link to={`/products/${url}/${categoryUrl}`}>{linkTitle}</Link> / <div>{title}</div>
             </div>

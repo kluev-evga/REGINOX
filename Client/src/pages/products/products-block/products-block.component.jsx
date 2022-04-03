@@ -45,12 +45,12 @@ const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl 
                     selectPage={selectPage} />
             </div>
         </>
-    );
-};
+    )
+}
 
 const mapStateToProps = (state) => ({
     filteredProducts: filteredProducts(state),
     isFiltering: isFiltering(state)
-});
+})
 
-export default connect(mapStateToProps)(ProductsBlock);
+export default connect(mapStateToProps)(ProductsBlock)

@@ -1,0 +1,48 @@
+.summary {
+    margin: 0 -10px;
+    padding: 10px;
+    background-color: var(--gray-light);
+}
+
+.summary h2 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.price {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-bottom: 1px solid var(--gray-med);
+}
+
+.price span {
+    justify-self: end;
+    font-weight: 500;
+}
+
+.price span:last-of-type {
+    color: var(--red);
+}
+
+.price p:first-of-type span {
+    margin-left: 5px;
+    color: var(--gray);
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.summary button {
+    justify-content: center;
+    margin-top: 15px;
+    padding: 15px 5px;
+}

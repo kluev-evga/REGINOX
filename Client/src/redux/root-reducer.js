@@ -14,6 +14,7 @@ import articleReducer from './reducers/article';
 import productsReducer from './reducers/products';
 import filtersReducer from './reducers/filters';
 import productItemsReducer from './reducers/product-items';
+import cartReducer from './reducers/cart';
 
 
 export default combineReducers({
@@ -28,5 +29,6 @@ export default combineReducers({
   article: articleReducer,
   products: productsReducer,
   filters: filtersReducer,
-  productItems: productItemsReducer
+  productItems: productItemsReducer,
+  cart: cartReducer
 });

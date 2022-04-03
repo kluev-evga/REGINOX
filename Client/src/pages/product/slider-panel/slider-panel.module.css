@@ -91,6 +91,16 @@
     background-color: var(--red);
 }
 
+.buy button.active {
+    background: none;
+    outline: 4px solid var(--red);
+    outline-offset: -4px;
+}
+
+.buy button.active svg {
+    color: var(--red);
+}
+
 @media (min-width: 370px) {
     .container {
         row-gap: 15px;
@@ -132,6 +142,7 @@
     .container {
         grid-area: 2 / 2 / 3 / -1;
         align-content: start;
+        padding-bottom: 10px;
     }
 
     .articul,
@@ -265,6 +276,37 @@
         width: 168px;
         color: var(--white)
     }
+
+    .buy button.active:last-of-type::after {
+        content: 'Товар в корзине';
+        color: var(--gray);
+        font-weight: 500;
+    }
+
+    .buy button.active:last-of-type:hover::after {
+        animation: aaa 1s linear forwards;
+    }
+
+    @keyframes aaa {
+        40% {
+            color: var(--gray);
+            content: 'Товар в корзине';
+        }
+
+        45% {
+            color: transparent;
+        }
+
+        55% {
+            color: transparent;
+            content: 'Перейти в корзину'
+        }
+
+        to {
+            color: var(--gray);
+            content: 'Перейти в корзину'
+        }
+    }
 }
 
 @media (min-width: 1400px) {
@@ -287,11 +329,32 @@
         font-size: 22px;
     }
 
+    .price,
+    .count {
+        width: 510px;
+    }
+
     .price span {
         font-size: 24px;
     }
 
     .price span svg {
         height: 17px;
+    }
+
+    .buy {
+        width: 642px;
+    }
+
+    .buy button:last-of-type {
+        margin-left: 370px;
+    }
+
+    .buy button:first-of-type:hover {
+        width: 510px;
+    }
+
+    .buy button:first-of-type {
+        width: 370px;
     }
 }

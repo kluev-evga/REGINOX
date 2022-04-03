@@ -66,17 +66,6 @@ export const brandsLoaded = state => state.brands.loaded;
 export const brandsError = state => state.brands.error;
 
 
-
-
-
-
-
-
-
-
-
-
-/////////---------------????????????????????????????????????
 export const articlesItem = (state, {id}) => state.articles.entities[id];
 export const articlesItemLoading = (state, page) => state.articles.loading[page];
 export const articlesItemLoaded = (state, page) => state.articles.loaded[page];
@@ -122,17 +111,10 @@ export const filteredProducts = state => state.filters.products;
 export const sortBy = state => state.filters.sortBy;
 
 
-
-
-
-
-
-
-
-
-
-
 export const productItem = (state) => (productUrl) => state.productItems.entities[productUrl];
 export const productItemLoading = (state) => (productUrl) => state.productItems.loading[productUrl];
 export const productItemLoaded = (state) => (productUrl) => state.productItems.loaded[productUrl];
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
+
+
+export const cartItemCount = (state, id) => state.cart.entities?.[id];

@@ -23,6 +23,8 @@ import {
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
     SETLECT_PRODUCTS_SORT_BY,
+    ADD_ITEM_TO_CART,
+    REMOVE_ITEM_FROM_CART,
 } from './types';
 
 import {
@@ -51,6 +53,9 @@ export const closeMenu = () => ({type: CLOSE_MENU});
 export const setSertificatesSlide = (slide) => ({type: SET_SERTIFICATES_SLIDER_SLIDE, data: slide});
 export const setSertificatesScroll = (value) => ({type: SET_SERTIFICATES_SCROLL, data: value});
 export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
+export const changeCartItemCount = (id, count) => ({type: ADD_ITEM_TO_CART, id, count});
+export const removeItemFromCart = (id) => ({type: REMOVE_ITEM_FROM_CART, id});
+
 
 
 export const loadMenu = (noScroll) => async (dispatch, getState) => {

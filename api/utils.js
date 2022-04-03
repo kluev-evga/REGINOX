@@ -51,13 +51,15 @@ const createProductPromoIformation = (productItems) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
-const createProductItem = ({id, promo, newItem, title, images, price}) => ({
+const createProductItem = ({id, promo, newItem, title, images, price}, url) => ({
     id,
     promo,
+    discount: promo ? Math.round(randomInteger(1, 15)) : 0,
     newItem,
     title,
     img: images[0],
     alt: title,
+    url,
     productUrl: translit(title.split(',').slice(0,1).join(' ')),
     price,
     p: Number(price.replace(/\s/g, '')),
@@ -68,7 +70,7 @@ const createProductItem = ({id, promo, newItem, title, images, price}) => ({
 const getProducts = (productItems) => {
     const productsdata = {};
     for (let url in productItems) {
-        productsdata[url] = productItems[url].map(item => createProductItem(item));
+        productsdata[url] = productItems[url].map(item => createProductItem(item, url));
 
         // Тест на уникальность id:
         const summary = {};

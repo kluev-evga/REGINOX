@@ -15,13 +15,13 @@ const PopularProducts = ({ products }) => {
             <h2 className='title'>Популярные товары</h2>
 
             <div className={styles.container}>
-                {(isDesktopLG ? products : products.slice(0, 6)).map(({ id, url, ...rest }) =>
-                    <ProductCard key={id} tiles={true} url={url} product={rest} withRating={false} />)}
+                {(isDesktopLG ? products : products.slice(0, 6)).map(({ id, ...rest }) =>
+                    <ProductCard key={id} tiles={true} product={rest} withRating={false} />)}
             </div>
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = state => ({ products: homePopularProducts(state) });
+const mapStateToProps = state => ({ products: homePopularProducts(state) })
 
-export default connect(mapStateToProps)(PopularProducts);
+export default connect(mapStateToProps)(PopularProducts)
