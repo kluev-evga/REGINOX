@@ -6,12 +6,11 @@ import styles from './cart-summary.module.css';
 const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
     const { total, count, grossTotal } = cartItemsArray.reduce((acc, id) => {
         const { price, discountedPrice } = productItems[id];
-        const priceNum = Number(price.replace(/\s/g, ''))
-        const itemPrice = discountedPrice ? discountedPrice : priceNum;
+        const itemPrice = discountedPrice ? discountedPrice : price;
         const count = cartItems[id];
         acc.total = acc.total + itemPrice * count;;
         acc.count = acc.count + count;
-        acc.grossTotal = acc.grossTotal + priceNum * count;
+        acc.grossTotal = acc.grossTotal + price * count;
         return acc
     }, { total: 0, count: 0, grossTotal: 0 });
 
@@ -35,7 +34,8 @@ const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
                 <span>{totalPrice} руб</span>
             </div>
 
-            <button className='button-block'>Перейти к оплате</button>
+            {!!total && <button className='button-block'>Перейти к оплате</button>}
+
         </div>
     )
 }

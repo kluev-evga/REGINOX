@@ -4,17 +4,16 @@ import { ReactComponent as ChevronRight } from '../../../assets/svg/chevron-righ
 import { ReactComponent as ChevronUp } from '../../../assets/svg/chevron-up.svg';
 
 
-const string = 'Умный, проворный, с лестницы не падает, с разгона становится на базу Умный, проворный, с лестницы не падает, с разгона...';
 const [date, dateTime] = ['22 / 01 / 21', '22 / 01 / 21'];
 
-const FeedbackItem = () => {
+const FeedbackItem = ({ reviewText }) => {
     const [hidden, setHidden] = useState(true);
 
     const [withButton, text, textSample] = useMemo(() => ([
-        string.length > 200 ? true : false,
-        string,
-        string.slice(0, 100).split(' ').slice(0, -1).join(' ') + '...'
-    ]), []);
+        reviewText.length > 250 ? true : false,
+        reviewText,
+        reviewText.slice(0, 150).split(' ').slice(0, -1).join(' ') + '...'
+    ]), []);//eslint-disable-line
 
     return (
         <div className={styles.container}>

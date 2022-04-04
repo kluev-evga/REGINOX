@@ -8,6 +8,7 @@ import {
 
 const INITIAL_STATE = {
     entities: {},
+    reviews: {},
     loading: {},
     loaded: {},
     error: {},
@@ -27,7 +28,8 @@ switch (type) {
     case LOAD_PRODUCT + SUCCESS:
     return {
         ...state,
-        entities: {...state.entities, [productUrl]: data},
+        entities: {...state.entities, [productUrl]: data.item},
+        reviews: {...state.reviews, [productUrl]: data.reviews},
         loading: {...state.loading, [productUrl]: false},
         loaded: {...state.loaded, [productUrl]: true},
     };

@@ -1,13 +1,40 @@
+const { firstNameMale, firstNameFemale, lastName } = require('./db/names');
+const reviews = require('./db/reviews');
+
+
+
+
 const reply = (res, body, status = 200) => res.status(status).json(body);
 ////////////////////////////////////////////////////////////////////////
 
-const getMenu = (links, categories) => ({links, categories});
-////////////////////////////////////////////////////////////////////////
+const randomInteger = (min, max) => Number((min + Math.random() * (max - min)).toFixed(2));
+const shuffle = (arr) => [...arr].sort(() => Math.round(Math.random()) - 0.5);
+const randomDate = (start = new Date(2015, 0, 1), end = new Date()) => new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+const randomBoolean = (trueProbability = 0.5) => Math.random() < trueProbability;//0.9 === 90% probability of true
 
-const randomInteger = (min, max) => {
-  let rand = min + Math.random() * (max - min);
-  return Number(rand.toFixed(2));
+const reviewsSlice = (url, arr = reviews) => {// random reviews slice
+    const data = shuffle(arr[url]);
+    const count = Math.round(randomInteger(0, 30));
+    const start = Math.round(randomInteger(0, arr.length - count));
+    const end = start + count;
+    return data.slice(start, end);
 };
+
+const getDate = () => {// random date --- {date, dateTime}
+    const d = randomDate();
+    const date = d.toLocaleDateString('ru-RU').replace(/\./g, '/');
+    const dateTime = d.toLocaleDateString('ru-RU').split('.').reverse().join('-');
+    return { date, dateTime };
+}
+
+const getName = () => {// random name
+  const male = randomBoolean();
+  const firstName = male ? firstNameMale[Math.round(randomInteger(0, 99))] : firstNameFemale[Math.round(randomInteger(0, 99))];
+  const withLast = randomBoolean();
+  const last = withLast ? lastName[Math.round(randomInteger(0, 99))] : '';
+  const name = firstName + ' ' + last + (!withLast || male ? '': 'a');
+  return name;
+}
 
 const translit = (word) => {
 	const converter = {
@@ -38,22 +65,31 @@ const translit = (word) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
-const createProductPromoIformation = (productItems) => {
+// ПРОДУКТ:
+const getProduct = (productItems) => {
   const products = {};
     for (let url in productItems) {
         products[url] = productItems[url].map( item => {
-          const promo = randomInteger(0, 10) > 5 ? true : false;
-          const newItem = randomInteger(0, 10) > 5 ? true : false;
+          const promo = randomBoolean(0.9);
+          const newItem = randomBoolean(0.9);
           const discount = promo ? Math.round(randomInteger(1, 15)) : 0;
-          const discountedPrice = Math.round(Number(item.price.replace(/\s/g, '')) * (100 - discount) / 100);
-          return {...item, promo, discount, discountedPrice, newItem}
+          const discountedPrice = Math.round(item.price * (100 - discount) / 100);
+
+          const priceR = parseInt(randomInteger(0, 100));
+          const qualityR = parseInt(randomInteger(0, 100));
+          const appearanceR = parseInt(randomInteger(0, 100));
+          const ratings = [priceR, qualityR, appearanceR];
+          const r = Number(((priceR + qualityR + appearanceR) / 60).toFixed(2));
+
+          return {...item, promo, discount, discountedPrice, newItem, r, ratings}
         });
     };
     return products;
 };
 ////////////////////////////////////////////////////////////////////////
 
-const createProductItem = ({id, promo, newItem, title, images, price}, url) => ({
+// карточки товара:
+const createProductItem = ({id, promo, newItem, title, images, price, r}, url) => ({
     id,
     promo,
     newItem,
@@ -62,13 +98,12 @@ const createProductItem = ({id, promo, newItem, title, images, price}, url) => (
     alt: title,
     url,
     productUrl: translit(title.split(',').slice(0,1).join(' ')),
-    price,
-    p: Number(price.replace(/\s/g, '')),
-    r: randomInteger(0, 5),
+    p: price,
+    r,
     reviewers: Math.round(randomInteger(0, 125)),
 });
 
-const getProducts = (productItems) => {
+const getProductsData = (productItems) => {
     const productsdata = {};
     for (let url in productItems) {
         productsdata[url] = productItems[url].map(item => createProductItem(item, url));
@@ -86,14 +121,21 @@ const getProducts = (productItems) => {
 
 const getProductData = (productItems) => {
   const productdata = {};
+  const reviewsdata = {};
+
   for (let url in productItems) {
       productdata[url] = productItems[url].reduce( (acc, item) => {
           const productUrl = translit(item.title.split(',').slice(0,1).join(' '));
           acc[productUrl] = item;
           return acc;
       }, {});
+
+      reviewsdata[url] = Object.keys(productdata[url]).reduce( (acc, productUrl) => {
+        acc[productUrl] = reviewsSlice(url).map(text => ({name: getName(), ...getDate(), text}));
+        return acc;
+      }, {})
   };
-  return productdata;
+  return {productdata, reviewsdata};
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -104,7 +146,7 @@ const getHome = (home, productsdata) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
-const getProductsData = data =>
+const getProductsItemData = data =>
     data.map( item =>
         ({  id: item.id,
             specs : item.specs.reduce((acc, item) =>
@@ -118,7 +160,7 @@ const getFilters = (filtersObj, productItems) => {
     const filters = {...filtersObj};
 
     for (let url in filters) {
-        const products = getProductsData(productItems[url]);// выбираем группу продуктов по url и трансформируем продукты в нужный формат(used for filters only)
+        const products = getProductsItemData(productItems[url]);// выбираем группу продуктов по url и трансформируем продукты в нужный формат(used for filters only)
         const filter = filters[url];// выбираем нужную группу фильтров с которой работаем
 
         // --------------------------------------- categories:
@@ -169,10 +211,9 @@ const getFilters = (filtersObj, productItems) => {
 
 module.exports = {
     reply,
-    createProductPromoIformation,
-    getProducts,
+    getProduct,
+    getProductsData,
     getProductData,
     getHome,
-    getMenu,
     getFilters
 };

@@ -1,10 +1,9 @@
-const productItems = {
-    sinks:
-    [
+const product = {
+    sinks:[
         {
             "id": "93875816",
             "title": "Кухонная мойка GranFest P-420 PRACTIKP-420 пес",
-            "price": "4 540",
+            "price": 4540,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -87,7 +86,7 @@ const productItems = {
         {
             "id": "98291919",
             "title": "Мойкa кухонная MIXLINEML-GM15 темно-серая (309), 490*550*200мм",
-            "price": "6 768",
+            "price": 6768,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -170,7 +169,7 @@ const productItems = {
         {
             "id": "90174230",
             "title": "Мойка прямоугольная 46х20х51 см TOLERO искусственный камень цвет белый",
-            "price": "8 900",
+            "price": 8900,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -242,7 +241,7 @@ const productItems = {
         {
             "id": "98262189",
             "title": "Мойка прямоугольная 97х20х50 см KUPPERSBERG MODENA 1,5B2D BLACK METALLIC искусственный камень цвет черный",
-            "price": "21 390",
+            "price": 21390,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -308,13 +307,13 @@ const productItems = {
             "images": [
                 "/assets/products/98262189.webp",
                 "/assets/products/98262189_01.webp",
-                "/assets/products/98262189_02.webp",
+                "/assets/products/98262189_02.webp"
             ]
         },
         {
             "id": "98273181",
             "title": "Мойка круглая 48х18х48 см REFLECTION Arena кварц цвет белый",
-            "price": "3 909",
+            "price": 3909,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -398,7 +397,7 @@ const productItems = {
         {
             "id": "98273179",
             "title": "Мойка прямоугольная 43х18х48 см REFLECTION Quadra кварц цвет бежевый",
-            "price": "4 369",
+            "price": 4369,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -482,7 +481,7 @@ const productItems = {
         {
             "id": "81963771",
             "title": "Мойка врезная Dr. Gans Дуэт 76х50 см, глубина 20 см, нержавеющая сталь, цвет чёрный",
-            "price": "8 330",
+            "price": 8330,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -555,13 +554,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/81963771.webp",
-                "/assets/products/81963771_01.webp",
+                "/assets/products/81963771_01.webp"
             ]
         },
         {
             "id": "91275496",
             "title": "Кухонная мойка LEDEME 869642",
-            "price": "6 966",
+            "price": 6966,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -615,7 +614,7 @@ const productItems = {
         {
             "id": "91275540",
             "title": "Кухонная мойка LEDEME 869440",
-            "price": "6 351",
+            "price": 6351,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -669,7 +668,7 @@ const productItems = {
         {
             "id": "90005286",
             "title": "Кухонная мойка Florentina Липси 780_К, жасмин",
-            "price": "19 439",
+            "price": 19439,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -742,13 +741,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90005286.webp",
-                "/assets/products/90005286_01.webp",
+                "/assets/products/90005286_01.webp"
             ]
         },
         {
             "id": "90005267",
             "title": "Кухонная мойка Florentina Липси 600, капучино",
-            "price": "15 445",
+            "price": 15445,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -821,13 +820,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90005267.webp",
-                "/assets/products/90005267_01.webp",
+                "/assets/products/90005267_01.webp"
             ]
         },
         {
             "id": "90005309",
             "title": "Кухонная мойка Florentina Липси 860, мокко",
-            "price": "19 517",
+            "price": 19517,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -900,13 +899,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90005309.webp",
-                "/assets/products/90005309_01.webp",
+                "/assets/products/90005309_01.webp"
             ]
         },
         {
             "id": "90005270",
             "title": "Кухонная мойка Florentina Липси 600, песочный",
-            "price": "15 445",
+            "price": 15445,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -979,13 +978,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90005270.webp",
-                "/assets/products/90005270_01.webp",
+                "/assets/products/90005270_01.webp"
             ]
         },
         {
             "id": "90250330",
             "title": "Мойка для кухни Seaman Eco Marino SMB-6351LS два отверстия с вентиль-автоматом цвет серебристый",
-            "price": "30 290",
+            "price": 30290,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1060,7 +1059,7 @@ const productItems = {
         {
             "id": "90250417",
             "title": "Мойка для кухни Seaman Natural Genova SMC-510V Antique Patina цвет золотистый",
-            "price": "77 490",
+            "price": 77490,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1135,7 +1134,7 @@ const productItems = {
         {
             "id": "93875804",
             "title": "Кухонная мойка GranFest C-1040 E CORNERC-1040 E пес",
-            "price": "9 742",
+            "price": 9742,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1212,13 +1211,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/93875804.webp",
-                "/assets/products/93875804_01.webp",
+                "/assets/products/93875804_01.webp"
             ]
         },
         {
             "id": "83589880",
             "title": "Мойка кухонная КМ 59-48 Г19, цвет белый",
-            "price": "2 802",
+            "price": 2802,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1305,7 +1304,7 @@ const productItems = {
         {
             "id": "82564675",
             "title": "Мойка Эко-М М-03 60.5x51 см глубина 20 см, мрамор, цвет чёрный металлик",
-            "price": "5 560",
+            "price": 5560,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1386,13 +1385,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/82564675.webp",
-                "/assets/products/82564675_01.webp",
+                "/assets/products/82564675_01.webp"
             ]
         },
         {
             "id": "93877983",
             "title": "Кухонная мойка MIXLINE 528188",
-            "price": "4 496",
+            "price": 4496,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1475,7 +1474,7 @@ const productItems = {
         {
             "id": "90164742",
             "title": "Мойка квадратная 47.7х17.8х47.7 см FORMASTONE Fosto КМ 48-49 мрамор цвет розовый",
-            "price": "4 974",
+            "price": 4974,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1555,7 +1554,7 @@ const productItems = {
         {
             "id": "98258137",
             "title": "Мойка врезная прямоугольная 40х20х50 см WISENT нержавеющая сталь цвет графит, WWS34050B/GER010",
-            "price": "14 361",
+            "price": 14361,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1632,13 +1631,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/98258137.webp",
-                "/assets/products/98258137_01.webp",
+                "/assets/products/98258137_01.webp"
             ]
         },
         {
             "id": "90012952",
             "title": "Кухонная мойка 6545 MELANA ProfLine 3,0/220 САТИН ЗОЛОТО",
-            "price": "50 440",
+            "price": 50440,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1711,13 +1710,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90012952.webp",
-                "/assets/products/90012952_01.webp",
+                "/assets/products/90012952_01.webp"
             ]
         },
         {
             "id": "85192939",
             "title": "Мойка врезная Urbatec со смесителем Monterosa, 50x56 см, композитный, цвет черный",
-            "price": "9 990",
+            "price": 9990,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1803,7 +1802,7 @@ const productItems = {
         {
             "id": "91263054",
             "title": "Мойка врезная Grohe 31650AT0 цвет серый",
-            "price": "46 451",
+            "price": 46451,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1858,7 +1857,7 @@ const productItems = {
         {
             "id": "93705536",
             "title": "Мойка врезная прямоугольная 78х20х50 см FRANKE гранит цвет серый",
-            "price": "40 690",
+            "price": 40690,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1936,13 +1935,13 @@ const productItems = {
             "images": [
                 "/assets/products/93705536.webp",
                 "/assets/products/93705536_01.webp",
-                "/assets/products/93705536_02.webp",
+                "/assets/products/93705536_02.webp"
             ]
         },
         {
             "id": "90192922",
             "title": "Мойка врезная прямоугольная 68х20х49.8 см GRANFEST мрамор цвет синий",
-            "price": "7 574",
+            "price": 7574,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -1992,7 +1991,7 @@ const productItems = {
         {
             "id": "90230675",
             "title": "Мойка врезная квадратная 48х20х44 см ZorG RX-4844 нержавеющая сталь цвет серый металлик",
-            "price": "27 650",
+            "price": 27650,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2078,7 +2077,7 @@ const productItems = {
         {
             "id": "93717475",
             "title": "Мойка врезная квадратная 82х52х20 см Florentina кварц цвет темно-коричневый",
-            "price": "16 491",
+            "price": 16491,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2148,13 +2147,13 @@ const productItems = {
             "images": [
                 "/assets/products/93717475.webp",
                 "/assets/products/93717475_01.webp",
-                "/assets/products/93717475_02.webp",
+                "/assets/products/93717475_02.webp"
             ]
         },
         {
             "id": "98291904",
             "title": "Мойкa кухонная MIXLINE ML-GM10 круглая, темно-серая (309), 440мм (глуб. чаши 180)",
-            "price": "4 571",
+            "price": 4571,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2237,7 +2236,7 @@ const productItems = {
         {
             "id": "93710798",
             "title": "Мойка врезная угловая 57.5х21х105 см LAVA кварц цвет светло-серый",
-            "price": "18 755",
+            "price": 18755,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2321,7 +2320,7 @@ const productItems = {
         {
             "id": "93710857",
             "title": "Мойка врезная овальная 49.5х19х77 см LAVA кварц цвет светло-серый",
-            "price": "11 979",
+            "price": 11979,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2405,7 +2404,7 @@ const productItems = {
         {
             "id": "91263050",
             "title": "Мойка врезная Grohe 31570SD0 цвет хром",
-            "price": "59 915",
+            "price": 59915,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2453,13 +2452,13 @@ const productItems = {
                 }
             ],
             "images": [
-                "/assets/products/91263050.webp",
+                "/assets/products/91263050.webp"
             ]
         },
         {
             "id": "90023315",
             "title": "Кухонная мойка AquaGranitEx M-09K (305) зеленый",
-            "price": "10 840",
+            "price": 10840,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2536,13 +2535,13 @@ const productItems = {
             ],
             "images": [
                 "/assets/products/90023315.webp",
-                "/assets/products/90023315_01.webp",
+                "/assets/products/90023315_01.webp"
             ]
         },
         {
             "id": "90023243",
             "title": "Кухонная мойка AquaGranitEx M-18 (305) зеленый",
-            "price": "7 462",
+            "price": 7462,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2626,7 +2625,7 @@ const productItems = {
         {
             "id": "90192920",
             "title": "Мойка врезная прямоугольная 61.2х20х49.5 см GRANFEST мрамор цвет зеленый",
-            "price": "8 257",
+            "price": 8257,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2676,7 +2675,7 @@ const productItems = {
         {
             "id": "93875994",
             "title": "Кухонная мойка GranFest R-750 L RONDOR-750 L кр.м",
-            "price": "7 009",
+            "price": 7009,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2759,7 +2758,7 @@ const productItems = {
         {
             "id": "90023384",
             "title": "Кухонная мойка AquaGranitEx M-17K (334) красный марс",
-            "price": "7 089",
+            "price": 7089,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2843,7 +2842,7 @@ const productItems = {
         {
             "id": "90012970",
             "title": "Кухонная мойка 6045 MELANA ProfLine 3,0/220 БРОНЗА",
-            "price": "49 400",
+            "price": 49400,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2915,13 +2914,13 @@ const productItems = {
                 }
             ],
             "images": [
-                "/assets/products/90012970.webp",
+                "/assets/products/90012970.webp"
             ]
         },
         {
             "id": "90012971",
             "title": "Кухонная мойка 6545 MELANA ProfLine 3,0/220 БРОНЗА",
-            "price": "49 010",
+            "price": 49010,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -2993,13 +2992,13 @@ const productItems = {
                 }
             ],
             "images": [
-                "/assets/products/90012971.webp",
+                "/assets/products/90012971.webp"
             ]
         },
         {
             "id": "90005213",
             "title": "Кухонная мойка Florentina Липси 580_К, капучино",
-            "price": "16 849",
+            "price": 16849,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3079,7 +3078,7 @@ const productItems = {
         {
             "id": "90005307",
             "title": "Кухонная мойка Florentina Липси 860, капучино",
-            "price": "19 517",
+            "price": 19517,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3159,7 +3158,7 @@ const productItems = {
         {
             "id": "93855469",
             "title": "Кухонная мойка IDDIS ARR78SLI77",
-            "price": "11 840",
+            "price": 11840,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3222,7 +3221,7 @@ const productItems = {
         {
             "id": "90230936",
             "title": "Кухонная мойка ZorG ZR-500",
-            "price": "15 450",
+            "price": 15450,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3309,7 +3308,7 @@ const productItems = {
         {
             "id": "90227499",
             "title": "Мойка врезная прямоугольная 78х20х44 см ZORG R 78-2-44 нержавеющая сталь цвет серый металлик",
-            "price": "39 850",
+            "price": 39850,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3392,7 +3391,7 @@ const productItems = {
         {
             "id": "90232585",
             "title": "Кухонная мойка ZorG RX 2344",
-            "price": "15 450",
+            "price": 15450,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3478,7 +3477,7 @@ const productItems = {
         {
             "id": "93718543",
             "title": "Мойка врезная квадратная 78х51х20 см Florentina кварц цвет коричневый",
-            "price": "17 754",
+            "price": 17754,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3558,7 +3557,7 @@ const productItems = {
         {
             "id": "93875774",
             "title": "Кухонная мойка GranFest Z 78 QUARZ78 терракот",
-            "price": "6 455",
+            "price": 6455,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3641,7 +3640,7 @@ const productItems = {
         {
             "id": "93876151",
             "title": "Кухонная мойка GranFest Z 52 QUARZ52 бежевый",
-            "price": "8 851",
+            "price": 8851,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3724,7 +3723,7 @@ const productItems = {
         {
             "id": "93875835",
             "title": "Кухонная мойка GranFest R-480 RONDOR-480 Бежевый",
-            "price": "4 647",
+            "price": 4647,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3807,7 +3806,7 @@ const productItems = {
         {
             "id": "93875765",
             "title": "Кухонная мойка GranFest Z 21K QUARZ21К бежевый",
-            "price": "6 882",
+            "price": 6882,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3890,7 +3889,7 @@ const productItems = {
         {
             "id": "93875770",
             "title": "Кухонная мойка GranFest Z 78 QUARZ78 бежевый",
-            "price": "6 194",
+            "price": 6194,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -3973,7 +3972,7 @@ const productItems = {
         {
             "id": "98291863",
             "title": "Мойкa кухонная MIXLINEML-GM22 двухчашевая с крылом, бежевая (328), 495*770*195мм",
-            "price": "9 544",
+            "price": 9544,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4056,7 +4055,7 @@ const productItems = {
         {
             "id": "93876100",
             "title": "Кухонная мойка GranFest S-940 KL STANDARTS-940 KL иней",
-            "price": "10 365",
+            "price": 10365,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4139,7 +4138,7 @@ const productItems = {
         {
             "id": "93876052",
             "title": "Кухонная мойка GranFest S-780 K STANDARTS-780 K иней",
-            "price": "9 563",
+            "price": 9563,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4222,7 +4221,7 @@ const productItems = {
         {
             "id": "90230949",
             "title": "Кухонная мойка ZorG ZL R 780-2-440 Bronze",
-            "price": "43 100",
+            "price": 43100,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4309,7 +4308,7 @@ const productItems = {
         {
             "id": "90230910",
             "title": "Кухонная мойка ZorG SZR-6249 Bronze",
-            "price": "18 700",
+            "price": 18700,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4396,7 +4395,7 @@ const productItems = {
         {
             "id": "90230906",
             "title": "Кухонная мойка ZorG SZR-7749 Bronze",
-            "price": "19 500",
+            "price": 19500,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4483,7 +4482,7 @@ const productItems = {
         {
             "id": "90230625",
             "title": "Мойка врезная квадратная 44х20х44 см ZorG SH RR 4444 нержавеющая сталь цвет серебристый",
-            "price": "22 300",
+            "price": 22300,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4570,7 +4569,7 @@ const productItems = {
         {
             "id": "93855721",
             "title": "Кухонная мойка TOLERO TL-750 №001 серый металлик",
-            "price": "14 100",
+            "price": 14100,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4652,7 +4651,7 @@ const productItems = {
         {
             "id": "93717396",
             "title": "Мойка врезная квадратная 51х51х20 см Florentina кварц цвет темно-коричневый",
-            "price": "12 091",
+            "price": 12091,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4728,7 +4727,7 @@ const productItems = {
         {
             "id": "93717368",
             "title": "Мойка врезная квадратная 69х52х20 см Florentina кварц цвет темно-коричневый",
-            "price": "15 086",
+            "price": 15086,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4804,7 +4803,7 @@ const productItems = {
         {
             "id": "93717351",
             "title": "Мойка врезная квадратная 89х65х20 см Florentina кварц цвет темно-коричневый",
-            "price": "82 063",
+            "price": 82063,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4879,7 +4878,7 @@ const productItems = {
         {
             "id": "93717298",
             "title": "Мойка врезная квадратная 70х44х20 см Florentina кварц цвет темно-коричневый",
-            "price": "18 300",
+            "price": 18300,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -4956,7 +4955,7 @@ const productItems = {
         {
             "id": "90226878",
             "title": "Мойка врезная прямоугольная 59.50х20х49.50 см GERHANS В19-24 искусственный камень цвет графит",
-            "price": "10 265",
+            "price": 10265,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -5042,7 +5041,7 @@ const productItems = {
         {
             "id": "91266750",
             "title": "Кухонная мойка Gerhans C 01 24 Графит 605Х490 мм",
-            "price": "12 981",
+            "price": 12981,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -5128,7 +5127,7 @@ const productItems = {
         {
             "id": "91266701",
             "title": "Кухонная мойка Gerhans B 15 24 Графит 620Х435",
-            "price": "10 265",
+            "price": 10265,
             "specs": [
                 {
                     "dt": "Тип продукта",
@@ -5230,4 +5229,4 @@ const productItems = {
     [],
 };
 
-module.exports = productItems;
+module.exports = product;

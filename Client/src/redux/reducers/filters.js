@@ -4,6 +4,7 @@ import {
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
     SETLECT_PRODUCTS_SORT_BY,
+    SET_QUERY_STRING,
 } from '../types';
 
 
@@ -12,10 +13,11 @@ const INITIAL_STATE = {
     isFiltering: true,
     products: [],
     sortBy: { value: 'rating', label: 'Сначала популярные' },
+    queryString: {},
 }
 
 const filtersReducer = function (state = INITIAL_STATE, action) {
-  const { type, data, url, sortBy } = action;
+  const { type, data, url, sortBy, queryString } = action;
 
   switch (type) {
     case LOAD_PRODUCTS + SUCCESS:
@@ -38,6 +40,11 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
         return {
             ...state,
             sortBy: sortBy,
+        };
+    case SET_QUERY_STRING:
+        return {
+            ...state,
+            queryString: {...state.queryString, [url]: queryString},
         };
     default:
       return state;

@@ -1,25 +1,27 @@
 const router = require('express').Router();
-const { reply, createProductPromoIformation, getProducts, getProductData, getHome, getMenu, getFilters } = require('./utils');
+const { reply, getProduct, getProductsData, getProductData, getHome, getFilters } = require('./utils');
 
 
 const home = require('./db/home');
 const links = require('./db/links');
 const brands = require('./db/brands');
+const reviews = require('./db/reviews');
 const filters = require('./db/filters');
 const articles = require('./db/articles');
 const catalogs = require('./db/catalogs');
 const categories = require('./db/categories');
-const productItems = require('./db/PRODUCTS');
+const product = require('./db/PRODUCT');
 const sertificates = require('./db/sertificates');
 const articlesItems = require('./db/articlesItems');
 
 
-const menudata = getMenu(links, categories);
-const filtersdata = getFilters(filters, productItems);
-const productsWithPromo = createProductPromoIformation(productItems);
-const productsdata = getProducts(productsWithPromo);
-const productdata = getProductData(productsWithPromo);
 
+const menudata = {links, categories};
+const filtersdata = getFilters(filters, product);
+
+const productItems = getProduct(product);
+const productsdata = getProductsData(productItems);
+const {productdata, reviewsdata} = getProductData(productItems);
 
 
 
@@ -69,6 +71,12 @@ router.get('/product/:url/:productUrl', (req, res, next) => {
     const {url, productUrl} = req.params;
     if (!productdata[url][productUrl]) return res.status(404).send();
     reply(res, productdata[url][productUrl]);
+});
+
+router.get('/reviews/:url/:productUrl', (req, res, next) => {
+    const {url, productUrl} = req.params;
+    if (!reviewsdata[url][productUrl]) return res.status(404).send();
+    reply(res, {entities: reviewsdata[url][productUrl], done: true});
 });
 
 module.exports = router;

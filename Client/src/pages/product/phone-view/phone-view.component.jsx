@@ -2,6 +2,7 @@ import Specifications from "../specifications/specifications.component";
 import Collapsible from 'react-collapsible';
 import FeedbackStatsPanel from "../feedback-stats-panel/feedback-stats-panel.component";
 import FeedbackLeavePanel from "../feedback-leave-panel/feedback-leave-panel.component";
+import FeedbackItemsContainer from '../feedback-items-container/feedback-items-container.component';
 import AskPanel from '../ask-panel/ask-panel.component';
 import styles from './phone-view.module.css';
 
@@ -26,6 +27,8 @@ const PhoneView = ({ specs }) => (
 
             <FeedbackLeavePanel />
         </Collapsible>
+
+        <FeedbackItemsContainer />
 
         <h2 className={styles.title3}>Задать вопрос</h2>
         <AskPanel />

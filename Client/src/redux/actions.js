@@ -25,6 +25,7 @@ import {
     SETLECT_PRODUCTS_SORT_BY,
     ADD_ITEM_TO_CART,
     REMOVE_ITEM_FROM_CART,
+    SET_QUERY_STRING,
 } from './types';
 
 import {
@@ -55,6 +56,7 @@ export const setSertificatesScroll = (value) => ({type: SET_SERTIFICATES_SCROLL,
 export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
 export const changeCartItemCount = (id, count) => ({type: ADD_ITEM_TO_CART, id, count});
 export const removeItemFromCart = (id) => ({type: REMOVE_ITEM_FROM_CART, id});
+export const setQueryString = (url, queryString) => ({type: SET_QUERY_STRING, url, queryString});
 
 
 

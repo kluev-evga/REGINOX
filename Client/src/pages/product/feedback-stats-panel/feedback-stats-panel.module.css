@@ -14,12 +14,16 @@
     width: 154px;
     display: flex;
     gap: 7px;
-    color: transparent;
+    color: #F2994A;
 }
 
 .stars svg {
     flex-grow: 1;
     height: auto;
+}
+
+.clear {
+    color: transparent;
 }
 
 .bars {
@@ -38,35 +42,7 @@
     display: block;
     border-radius: 3px;
     height: 100%;
-    width: 50%;
     background: #F2994A;
-}
-
-.btn_write_feedback,
-.btn_load {
-    margin-top: 10px;
-    width: 100%;
-    padding: 15px 0;
-    font-size: 18px;
-    color: white;
-    background-color: var(--graphite);
-}
-
-.btn_write_feedback:hover,
-.btn_load:hover {
-    background-color: var(--red);
-}
-
-.wrapper {
-    margin-top: 30px;
-    display: grid;
-    gap: 10px;
-}
-
-@media (min-width: 768px) {
-    .wrapper {
-        margin-top: 0;
-    }
 }
 
 @media (min-width: 992px) {

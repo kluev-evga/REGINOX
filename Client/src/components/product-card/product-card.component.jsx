@@ -16,7 +16,8 @@ const RatingBlock = ({ r, reviewers }) => (
 
 const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, url, productUrl, reviewers, price, r, promo, newItem, } = product;
+    const { img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
+    const price = p.toLocaleString('ru-RU');
 
     return (
         <div className={cn(

@@ -25,7 +25,7 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
 
             <div className={styles.price}>
                 <span>
-                    {price} <RublIcon />
+                    {price.toLocaleString('ru-RU')} <RublIcon />
                     {!!discount && <b> -{discount}%</b>}
                 </span>
                 <button className={styles.compare}>

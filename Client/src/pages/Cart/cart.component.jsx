@@ -21,7 +21,7 @@ const Cart = ({ cartItems }) => (
                 {!cartItems.length && <p>В корзине пусто</p>}
             </div>
 
-            <CartSummary />
+            {!!cartItems.length && <CartSummary />}
         </div>
     </div>
 )

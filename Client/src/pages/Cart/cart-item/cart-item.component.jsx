@@ -10,7 +10,7 @@ import styles from './cart-item.module.css';
 
 const CartItem = ({ id, changeCartItemCount, removeItemFromCart, cartItemCount, productItem }) => {
     const increase = () => cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1);
-    const decrease = () => cartItemCount > 0 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
+    const decrease = () => cartItemCount > 0 && changeCartItemCount(id, cartItemCount - 1);
     const { price, discount, img, title } = productItem;
 
     return (
@@ -19,7 +19,7 @@ const CartItem = ({ id, changeCartItemCount, removeItemFromCart, cartItemCount, 
             <div>
                 <h2>{title}</h2>
                 <p className={styles.price}>
-                    {price} руб<RublIcon />
+                    {price.toLocaleString('ru-RU')} руб<RublIcon />
                     {!!discount && <span className={styles.promo}>-{discount} %</span>}
                 </p>
             </div>
