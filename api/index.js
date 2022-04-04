@@ -5,7 +5,6 @@ const { reply, getProduct, getProductsData, getProductData, getHome, getFilters 
 const home = require('./db/home');
 const links = require('./db/links');
 const brands = require('./db/brands');
-const reviews = require('./db/reviews');
 const filters = require('./db/filters');
 const articles = require('./db/articles');
 const catalogs = require('./db/catalogs');
@@ -22,7 +21,6 @@ const filtersdata = getFilters(filters, product);
 const productItems = getProduct(product);
 const productsdata = getProductsData(productItems);
 const {productdata, reviewsdata} = getProductData(productItems);
-
 
 
 

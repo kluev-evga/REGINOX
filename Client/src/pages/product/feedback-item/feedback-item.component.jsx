@@ -4,21 +4,22 @@ import { ReactComponent as ChevronRight } from '../../../assets/svg/chevron-righ
 import { ReactComponent as ChevronUp } from '../../../assets/svg/chevron-up.svg';
 
 
-const [date, dateTime] = ['22 / 01 / 21', '22 / 01 / 21'];
-
-const FeedbackItem = ({ reviewText }) => {
+const FeedbackItem = ({ name, date, dateTime, text, confirmed }) => {
     const [hidden, setHidden] = useState(true);
 
-    const [withButton, text, textSample] = useMemo(() => ([
-        reviewText.length > 250 ? true : false,
-        reviewText,
-        reviewText.slice(0, 150).split(' ').slice(0, -1).join(' ') + '...'
+    const [withButton, textSample] = useMemo(() => ([
+        text.length > 250 ? true : false,
+        text.slice(0, 150).split(' ').slice(0, -1).join(' ') + '...'
     ]), []);//eslint-disable-line
+
 
     return (
         <div className={styles.container}>
             <div className={styles.row}>
-                <h3><span>Анастастия Задова</span><span className={styles.prooved}>Подтвержденная покупка</span></h3>
+                <h3>
+                    <span>{name}</span>
+                    {confirmed && <span className={styles.prooved}>Подтвержденная покупка</span>}
+                </h3>
                 <time dateTime={dateTime}>{date}</time>
             </div>
             <p>

@@ -15,9 +15,9 @@ const randomBoolean = (trueProbability = 0.5) => Math.random() < trueProbability
 const reviewsSlice = (url, arr = reviews) => {// random reviews slice
     const data = shuffle(arr[url]);
     const count = Math.round(randomInteger(0, 30));
-    const start = Math.round(randomInteger(0, arr.length - count));
+    const start = Math.round(randomInteger(0, (data.length - count)));
     const end = start + count;
-    return data.slice(start, end);
+    return data.slice(start, end);;
 };
 
 const getDate = () => {// random date --- {date, dateTime}
@@ -131,7 +131,7 @@ const getProductData = (productItems) => {
       }, {});
 
       reviewsdata[url] = Object.keys(productdata[url]).reduce( (acc, productUrl) => {
-        acc[productUrl] = reviewsSlice(url).map(text => ({name: getName(), ...getDate(), text}));
+        acc[productUrl] = reviewsSlice(url).map(text => ({name: getName(), ...getDate(), text, confirmed: randomBoolean(0.4)}));
         return acc;
       }, {})
   };

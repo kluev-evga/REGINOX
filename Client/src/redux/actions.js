@@ -26,6 +26,7 @@ import {
     ADD_ITEM_TO_CART,
     REMOVE_ITEM_FROM_CART,
     SET_QUERY_STRING,
+    LOAD_REVIEWS,
 } from './types';
 
 import {
@@ -228,6 +229,23 @@ export const loadProductItem = (url, productUrl) => async (dispatch, getState) =
         .then(([res]) => res.json())
         .then((data) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
         .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }));
+};
+
+export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch, getState) => {
+    const state = getState();
+    const loading = state.reviews.loading[productUrl];
+    const loaded = state.reviews.loaded[productUrl];
+    if (loading || loaded) return;
+
+    dispatch({ type: LOAD_REVIEWS + REQUEST, productUrl });
+
+    try {
+        const req = await fetch(`/reviews/${url}/${productUrl}?size=${currentSize}`);
+        const data = await req.json();
+        dispatch({ type: LOAD_REVIEWS + SUCCESS, data, productUrl });
+    } catch (error) {
+        dispatch({ type: LOAD_REVIEWS + FAILURE, error });
+    }
 };
 
 

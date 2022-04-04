@@ -2,7 +2,7 @@ import {
     REQUEST,
     SUCCESS, 
     FAILURE, 
-    LOAD_PRODUCT,
+    LOAD_REVIEWS,
 } from '../types';
 
 
@@ -13,25 +13,25 @@ const INITIAL_STATE = {
     error: {},
 }
 
-const productItemsReducer = function (state = INITIAL_STATE, action) {
+const reviewsReducer = function (state = INITIAL_STATE, action) {
     const { type, data, error, productUrl } = action;
 
     switch (type) {
-        case LOAD_PRODUCT + REQUEST:
+        case LOAD_REVIEWS + REQUEST:
         return {
             ...state,
             loading: {...state.loading, [productUrl]: true},
             loaded: {...state.loaded, [productUrl]: false},
             error: {...state.error, [productUrl]:null},
         }
-        case LOAD_PRODUCT + SUCCESS:
+        case LOAD_REVIEWS + SUCCESS:
         return {
             ...state,
-            entities: {...state.entities, [productUrl]: data},
+            entities: {...state.entities, [productUrl]: data.entities},
             loading: {...state.loading, [productUrl]: false},
             loaded: {...state.loaded, [productUrl]: true},
         };
-        case LOAD_PRODUCT + FAILURE:
+        case LOAD_REVIEWS + FAILURE:
         return {
             ...state,
             loading: {...state.loading, [productUrl]: false},
@@ -42,4 +42,4 @@ const productItemsReducer = function (state = INITIAL_STATE, action) {
     }
 };
 
-export default productItemsReducer;
+export default reviewsReducer;

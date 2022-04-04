@@ -72,6 +72,6 @@ const App = () => (
             <Footer />
         </main>
     </MenuContainer>
-);
+)
 
 export default App;
