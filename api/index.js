@@ -14,7 +14,6 @@ const sertificates = require('./db/sertificates');
 const articlesItems = require('./db/articlesItems');
 
 
-
 const menudata = {links, categories};
 const filtersdata = getFilters(filters, product);
 
@@ -70,6 +69,7 @@ router.get('/product/:url/:productUrl', (req, res, next) => {
     if (!productdata[url][productUrl]) return res.status(404).send();
     reply(res, productdata[url][productUrl]);
 });
+
 
 router.get('/reviews/:url/:productUrl', (req, res, next) => {
     const {url, productUrl} = req.params;
