@@ -2,7 +2,7 @@
   "name": "reginox",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.2",
     "@testing-library/jest-dom": "^5.16.2",
@@ -23,7 +23,6 @@
     "reselect": "^4.1.5",
     "sass": "^1.49.8",
     "swiper": "^8.0.6",
-    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
@@ -39,7 +38,8 @@
     "workbox-streams": "^5.1.4",
     "react-responsive": "^9.0.0-beta.6",
     "react-select": "^5.2.2",
-    "connected-react-router": "^6.9.2"
+    "connected-react-router": "^6.9.2",
+    "react-collapsible": "^2.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
