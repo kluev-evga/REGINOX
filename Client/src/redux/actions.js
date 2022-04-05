@@ -234,8 +234,8 @@ export const loadProductItem = (url, productUrl) => async (dispatch, getState) =
 export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch, getState) => {
     const state = getState();
     const loading = state.reviews.loading[productUrl];
-    const loaded = state.reviews.loaded[productUrl];
-    if (loading || loaded) return;
+    // const loaded = state.reviews.loaded[productUrl];
+    if (loading) return;
 
     dispatch({ type: LOAD_REVIEWS + REQUEST, productUrl });
 
@@ -247,7 +247,6 @@ export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch
         dispatch({ type: LOAD_REVIEWS + FAILURE, error });
     }
 };
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////

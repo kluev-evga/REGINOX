@@ -25,9 +25,10 @@ const reviewsReducer = function (state = INITIAL_STATE, action) {
             error: {...state.error, [productUrl]:null},
         }
         case LOAD_REVIEWS + SUCCESS:
+            const reviews = state.entities[productUrl] ?[...state.entities[productUrl], ...data]: data;
         return {
             ...state,
-            entities: {...state.entities, [productUrl]: data.entities},
+            entities: {...state.entities, [productUrl]: reviews},
             loading: {...state.loading, [productUrl]: false},
             loaded: {...state.loaded, [productUrl]: true},
         };

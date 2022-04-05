@@ -7,7 +7,7 @@ import styles from './feedback-stats-panel.module.css';
 
 const Stars = ({ r }) => (
     <div className={styles.stars}>
-        {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i ? '' : styles.clear} />)}
+        {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : styles.clear} />)}
     </div>
 )
 
@@ -21,16 +21,16 @@ const Bars = ({ ratings }) => (
 
 const FeedbackStatsPanel = () => {
     const match = useRouteMatch();
-    const { r, ratings } = useSelector((state) => productItem(state)(match.params.productUrl));
+    const { r, ratings, reviewsCount } = useSelector((state) => productItem(state)(match.params.productUrl));
 
     return (
         <div>
             <div className={styles.average}>
-                <div className={styles.total}>{r.toFixed(1)}</div>
+                {!!reviewsCount && <div className={styles.total}>{r.toFixed(1)}</div>}
                 <Stars r={r} />
-                Всего 14 оценок
+                Всего {reviewsCount} оценок
             </div>
-            <Bars ratings={ratings} />
+            {!!reviewsCount && <Bars ratings={ratings} />}
         </div>
     )
 }

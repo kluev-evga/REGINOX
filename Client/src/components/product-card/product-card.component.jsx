@@ -9,7 +9,7 @@ import styles from './product-card.module.css';
 
 const RatingBlock = ({ r, reviewers }) => (
     <div className={styles.rating}>
-        {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i ? '' : styles.clear} />)}
+        {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : styles.clear} />)}
         <span>({reviewers})</span>
     </div>
 )

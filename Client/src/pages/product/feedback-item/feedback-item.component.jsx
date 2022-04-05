@@ -8,7 +8,7 @@ const FeedbackItem = ({ name, date, dateTime, text, confirmed }) => {
     const [hidden, setHidden] = useState(true);
 
     const [withButton, textSample] = useMemo(() => ([
-        text.length > 250 ? true : false,
+        text.length > 200 ? true : false,
         text.slice(0, 150).split(' ').slice(0, -1).join(' ') + '...'
     ]), []);//eslint-disable-line
 
@@ -32,7 +32,6 @@ const FeedbackItem = ({ name, date, dateTime, text, confirmed }) => {
                     onClick={() => setHidden(!hidden)}>
                     {hidden ? 'Читать далее' : 'Скрыть'}
                     {hidden ? <ChevronRight /> : <ChevronUp />}
-
                 </button>
             }
         </div>

@@ -73,8 +73,11 @@ router.get('/product/:url/:productUrl', (req, res, next) => {
 
 router.get('/reviews/:url/:productUrl', (req, res, next) => {
     const {url, productUrl} = req.params;
+    const {size} = req.query;
+    const current = Number(size);
     if (!reviewsdata[url][productUrl]) return res.status(404).send();
-    reply(res, {entities: reviewsdata[url][productUrl], done: true});
+    const entities = reviewsdata[url][productUrl].slice(current, current + 5);
+    reply(res, entities);
 });
 
 module.exports = router;

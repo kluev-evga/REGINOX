@@ -9,15 +9,14 @@ const reply = (res, body, status = 200) => res.status(status).json(body);
 
 const randomInteger = (min, max) => Number((min + Math.random() * (max - min)).toFixed(2));
 const shuffle = (arr) => [...arr].sort(() => Math.round(Math.random()) - 0.5);
-const randomDate = (start = new Date(2015, 0, 1), end = new Date()) => new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+const randomDate = (start = new Date(2018, 0, 1), end = new Date()) => new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 const randomBoolean = (trueProbability = 0.5) => Math.random() < trueProbability;//0.9 === 90% probability of true
 
-const reviewsSlice = (url, arr = reviews) => {// random reviews slice
-    const data = shuffle(arr[url]);
-    const count = Math.round(randomInteger(0, 30));
-    const start = Math.round(randomInteger(0, (data.length - count)));
-    const end = start + count;
-    return data.slice(start, end);;
+const reviewsSlice = (url, count, arr = reviews) => {// random reviews slice
+      const data = shuffle(arr[url]);
+      const start = Math.round(randomInteger(0, (data.length - count)));
+      const end = start + count;
+      return data.slice(start, end);
 };
 
 const getDate = () => {// random date --- {date, dateTime}
@@ -35,6 +34,8 @@ const getName = () => {// random name
   const name = firstName + ' ' + last + (!withLast || male ? '': 'a');
   return name;
 }
+
+const getReviews = (url, count) => reviewsSlice(url, count).map(text => ({name: getName(), ...getDate(), text, confirmed: randomBoolean(0.4)}));
 
 const translit = (word) => {
 	const converter = {
@@ -70,18 +71,20 @@ const getProduct = (productItems) => {
   const products = {};
     for (let url in productItems) {
         products[url] = productItems[url].map( item => {
-          const promo = randomBoolean(0.9);
-          const newItem = randomBoolean(0.9);
+          const promo = randomBoolean(0.3);
+          const newItem = randomBoolean(0.2);
           const discount = promo ? Math.round(randomInteger(1, 15)) : 0;
           const discountedPrice = Math.round(item.price * (100 - discount) / 100);
 
+          const hasRating = randomBoolean(0.7);
+          const reviewsCount = hasRating ?  Math.round(randomInteger(0, 30)) : 0;
           const priceR = parseInt(randomInteger(0, 100));
           const qualityR = parseInt(randomInteger(0, 100));
           const appearanceR = parseInt(randomInteger(0, 100));
-          const ratings = [priceR, qualityR, appearanceR];
-          const r = Number(((priceR + qualityR + appearanceR) / 60).toFixed(2));
+          const ratings = hasRating ? [priceR, qualityR, appearanceR]: [0, 0, 0,];
+          const r = hasRating ? Number(((priceR + qualityR + appearanceR) / 60).toFixed(2)) : 0;
 
-          return {...item, promo, discount, discountedPrice, newItem, r, ratings}
+          return {...item, promo, discount, discountedPrice, newItem, r, ratings, reviewsCount}
         });
     };
     return products;
@@ -119,6 +122,7 @@ const getProductsData = (productItems) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
+
 const getProductData = (productItems) => {
   const productdata = {};
   const reviewsdata = {};
@@ -131,7 +135,9 @@ const getProductData = (productItems) => {
       }, {});
 
       reviewsdata[url] = Object.keys(productdata[url]).reduce( (acc, productUrl) => {
-        acc[productUrl] = reviewsSlice(url).map(text => ({name: getName(), ...getDate(), text, confirmed: randomBoolean(0.4)}));
+        const count = productdata[url][productUrl].reviewsCount;
+        const reviews = !!count ? getReviews(url, count) : [];
+        acc[productUrl] = reviews;
         return acc;
       }, {})
   };

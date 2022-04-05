@@ -131,9 +131,9 @@ export const productItemsById = createSelector(
 export const productItemById = (state, id) => productItemsById(state)[id];
 
 
-export const reviews = state => productUrl  => state.reviews.entities[productUrl];
-export const reviewsLoading = state => productUrl  => state.reviews.loading?.[productUrl];
-export const reviewsLoaded = state => productUrl  => state.reviews.loaded?.[productUrl];
+export const reviews = (state, productUrl)  => state.reviews.entities[productUrl];
+export const reviewsLoading = (state, productUrl)  => state.reviews.loading[productUrl];
+export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[productUrl];
 
 
 export const cartItems = state => state.cart.entities;
