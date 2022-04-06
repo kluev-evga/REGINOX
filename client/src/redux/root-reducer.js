@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux';
 
-import history from '../history';
-import { connectRouter } from 'connected-react-router';
-
 import appReducer from './reducers/app';
 import homeReducer from './reducers/home';
 import menuReducer from './reducers/menu';
@@ -19,7 +16,6 @@ import reviewsReducer from './reducers/reviews';
 
 
 export default combineReducers({
-  router: connectRouter(history),
   app: appReducer,
   home: homeReducer,
   menu: menuReducer,

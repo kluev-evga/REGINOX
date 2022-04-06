@@ -23,9 +23,9 @@ const MenuGroup = ({ categories, url, title, closeMenu }) => {
                     triggerOpenedClassName={'menu-button ' + styles.button}>
 
                     {<div className={styles.categories}>
-                        {categories.map(({ title, categoryUrl }) => (
+                        {categories.map(({ title, categoryUrl }, i) => (
                             <NavLink
-                                key={categoryUrl}
+                                key={i}
                                 to={`/products/${url}/${categoryUrl}`}
                                 className='menu-link'
                                 activeClassName='menu-active-link'

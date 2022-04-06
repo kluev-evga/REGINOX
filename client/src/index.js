@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import App from './components/app/app.component';
-import { ConnectedRouter } from 'connected-react-router';
-import history from './history';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import App from './components/app/app.component';
 import store from './redux/store';
 
 
@@ -14,9 +13,9 @@ window.store = store; // DEV ONLY
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <ConnectedRouter history={history}>
+            <BrowserRouter>
                 <App />
-            </ConnectedRouter>
+            </BrowserRouter>
         </Provider>
     </React.StrictMode>,
   document.getElementById('root')

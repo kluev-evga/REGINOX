@@ -8,6 +8,7 @@ import SliderPanel from './slider-panel/slider-panel.component';
 import PhoneView from './phone-view/phone-view.component';
 import TabsContainer from './tabs-container/tabs-container.component';
 import styles from './product.module.css';
+import { useEffect } from 'react';
 
 
 const Product = ({ match, getTitle, productItem }) => {
@@ -15,6 +16,8 @@ const Product = ({ match, getTitle, productItem }) => {
     const { url, categoryUrl, productUrl } = match.params;
     const { id, title, price, discount, specs, images, promo, newItem } = productItem(productUrl);
     const linkTitle = getTitle(url);
+
+    useEffect(() => { window.scrollTo(0, 0); }, []);
 
     return (
         <div className="container">

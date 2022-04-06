@@ -67,11 +67,9 @@ const ProductsContainer = ({ openFiltersMenu, productsfilters, filterProducts })
 
             </div>
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = (state) => ({ productsfilters: filters(state), });
+const mapStateToProps = state => ({ productsfilters: filters(state) })
 
-const mapDispatchToProps = { openFiltersMenu, filterProducts };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
+export default connect(mapStateToProps, { openFiltersMenu, filterProducts })(ProductsContainer)

@@ -1,9 +1,9 @@
 import { useHistory } from 'react-router-dom';
+import cn from 'classnames';
 import FiltersItem from '../filters-item/filters-item.component';
 import CollapsibleBlock from '../collapsible-block/collapsible-block.component';
 import { ReactComponent as TrashIcon } from '../../../assets/svg/trash.svg';
 import styles from '../button.module.css';
-import cn from 'classnames';
 
 
 const FiltersSection = ({ title, filters, searchGroup }) => {

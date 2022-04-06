@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     isFiltering: true,
     products: [],
     sortBy: { value: 'rating', label: 'Сначала популярные' },
-    queryString: {},
+    queryString: null,
 }
 
 const filtersReducer = function (state = INITIAL_STATE, action) {

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { filteredProducts, isFiltering } from '../../../redux/selectors';
 import ProductCardContainer from '../product-card-container/product-card-container.component';
@@ -18,14 +18,15 @@ const sliceProducts = (filteredProducts) => {
 const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl }) => {
     const [currentPage, selectPage] = useState(1);
 
-    const { products, totalItems, totalPages, pages } = useMemo(() => {
-        return !isFiltering && sliceProducts(filteredProducts);
-    }, [isFiltering]); //eslint-disable-line
+    const { products, totalItems, totalPages, pages } = useMemo(() => !isFiltering && sliceProducts(filteredProducts), [isFiltering]); //eslint-disable-line
+    useEffect(() => { !isFiltering && currentPage > totalPages && currentPage !== 1 && selectPage(totalPages) }, [isFiltering])// eslint-disable-line
 
-    useEffect(() => {
-        if (!isFiltering && currentPage > totalPages && currentPage !== 1) selectPage(totalPages)
-    }, [isFiltering])// eslint-disable-line
+    const onSelectPage = useCallback((page) => {
+        selectPage(page);
+        window.scrollTo({ top: 260, behavior: 'smooth' });
+    }, []);
 
+    // console.log(isFiltering);
 
     if (isFiltering) return <div>FILTRING</div>
     if (totalItems === 0) return <div>Ничего не найдено</div>
@@ -42,7 +43,7 @@ const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl 
                     totalPages={totalPages}
                     pages={pages}
                     currentPage={currentPage}
-                    selectPage={selectPage} />
+                    selectPage={onSelectPage} />
             </div>
         </>
     )

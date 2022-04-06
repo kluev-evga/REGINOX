@@ -11,7 +11,7 @@ const CollapsibleBlock = ({ filters, searchGroup }) => {
     const [Outside, inside, time, count] = useMemo(() => ([
         () => filters.slice(0, 3).map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} />),
         filters.slice(3),
-        Math.sqrt(filters.slice(3).length) * 75,
+        Math.sqrt(filters.length) * 80,
         filters.slice(3).length
     ]), []);//eslint-disable-line
 

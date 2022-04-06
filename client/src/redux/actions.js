@@ -200,21 +200,6 @@ export const loadProducts = (url) => async (dispatch, getState) => {
         .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }));
 };
 
-//     dispatch({ type: LOAD_PRODUCTS + REQUEST, url });
-
-//     try {
-//         // const req = await fetch(`/products?id=${id}`);////////////////////????????????????????????????????????????????
-//         const req = await fetch(`/products/${url}`);
-//         // console.log(req);
-//         // response.status 404 - --- push...
-
-//         const data = await req.json();
-//         dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url })
-//     } catch (error) {
-//         dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url });
-//     }
-// };
-
 
 export const loadProductItem = (url, productUrl) => async (dispatch, getState) => {
     const state = getState();
@@ -230,6 +215,7 @@ export const loadProductItem = (url, productUrl) => async (dispatch, getState) =
         .then((data) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
         .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }));
 };
+
 
 export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch, getState) => {
     const state = getState();
@@ -311,18 +297,7 @@ export const filterProducts = (url, categoryUrl, selected) => async (dispatch, g
         const sortBy = state.filters.sortBy;
         const prd = state.products.products[url];
         const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
-
-        // let arr = [];//                       замедлитель
-        // for (let i=0; i<3500000; i++) {
-        //     // console.log(i);
-        //     const a = Math.random();
-        //     arr.push(a);
-        // }
-        // const aaa = await arr.reverse();
-        // console.log(aaa);
     
         dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
     }, 50);
 };
-
-

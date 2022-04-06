@@ -37,6 +37,12 @@ const links = [
         url: 'storage-manhattan',
     },
     {
+        title: 'Другая продукция',
+        img: '/assets/catalog/muscellaneous.webp',
+        alt: 'muscellaneous',
+        url: 'muscellaneous',
+    },
+    {
         title: 'Дозаторы',
         img: '/assets/catalog/storage.webp',
         alt: 'storage',
@@ -48,12 +54,6 @@ const links = [
         img: '/assets/catalog/garbagedisposers.webp',
         alt: 'garbagedisposers',
         url: 'garbage-disposers',
-    },
-    {
-        title: 'Другая продукция',
-        img: '/assets/catalog/muscellaneous.webp',
-        alt: 'muscellaneous',
-        url: 'muscellaneous',
     },
 ];
 

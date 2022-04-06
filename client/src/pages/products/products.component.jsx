@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { menuTitleByUrl, queryString } from '../../redux/selectors';
 import { setQueryString } from '../../redux/actions';
 import { useMediaQuery } from 'react-responsive';
-import Filters from '../../components/filters/filters-container.component';
+import Filters from '../../components/filters/filters.component';
 import ProductsContainer from './products-container/products-container.component';
 import styles from './products.module.css';
 
@@ -14,8 +14,14 @@ const Products = ({ getTitle, queryString, match, location, history, setQueryStr
     const url = match.params.url;
     const title = getTitle(url);
 
-    useEffect(() => queryString && history.push({ search: queryString }), [])//eslint-disable-line
-    useEffect(() => setQueryString(url, location.search), [location.search]);//eslint-disable-line
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+
+        // return setQueryString(url, location.search);
+    }, []);//eslint-disable-line
+
+
+    // useEffect(() => { queryString && history.push({ search: queryString }) }, [])//eslint-disable-line
 
     return (
         <div className="container">

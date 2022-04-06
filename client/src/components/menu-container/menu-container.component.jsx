@@ -5,7 +5,7 @@ import { isMainMenu, menuIsOpen } from '../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import Menu from 'react-burger-menu/lib/menus/reveal';
 import MainMenu from '../main-menu/main-menu.component';
-import Filters from '../filters/filters-container.component';
+import Filters from '../filters/filters.component';
 import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg';
 import './menu-container.css';
 
