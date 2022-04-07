@@ -20,7 +20,7 @@ const options = [
     { value: 'from expensive', label: 'cначала дорогие' },
 ];
 
-const SelectButton = ({ setSortBy, sortBy, url }) => (
+const HeaderSelect = ({ setSortBy, sortBy, url }) => (
     <Select
         onChange={(sortBy) => setSortBy(sortBy, url)}
         options={options}
@@ -33,8 +33,8 @@ const SelectButton = ({ setSortBy, sortBy, url }) => (
             colors: { ...theme.colors, primary25: 'var(--gray-light)', primary: 'var(--gray-med)' },
             spacing: { baseUnit: 4, controlHeight: 28, menuGutter: 0 }
         })} />
-);
+)
 
-const mapStateToProps = (state) => ({ sortBy: sortBy(state) });
+const mapStateToProps = (state) => ({ sortBy: sortBy(state) })
 
-export default connect(mapStateToProps, { setSortBy })(SelectButton);
+export default connect(mapStateToProps, { setSortBy })(HeaderSelect)

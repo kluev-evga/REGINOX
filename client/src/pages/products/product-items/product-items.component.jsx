@@ -1,22 +1,28 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { filteredProducts, isFiltering } from '../../../redux/selectors';
-import ProductCardContainer from '../product-card-container/product-card-container.component';
+import { filteredProducts, isFiltering, appIsTiles } from '../../../redux/selectors';
+import cn from 'classnames';
+import ProductItem from '../product-item/product-item.component';
 import Pagination from '../../../components/pagination/pagination.component';
-import styles from './products-block.module.css';
+import styles from './product-items.module.css';
 
 
 const sliceProducts = (filteredProducts) => {
-    const j = 18;
     const totalItems = filteredProducts.length;
-    const totalPages = Math.ceil(totalItems / j);
+    const totalPages = Math.ceil(totalItems / 18);
     const pages = [...Array(totalPages)].map((_, i) => i + 1);
-    const products = pages.map((_, i) => filteredProducts.slice(i * j, i * j + j));
+    const products = pages.map((_, i) => filteredProducts.slice(i * 18, i * 18 + 18));
     return { products, totalItems, totalPages, pages };
-};
+}
 
-const ProductsBlock = ({ url, categoryUrl, filteredProducts, isFiltering, tiles }) => {
+
+const ProductItems = ({ productItems, filtering, isTiles }) => {
     const [currentPage, selectPage] = useState(1);
+    const { params } = useRouteMatch();
+    const url = params.url;
+    const filteredProducts = productItems(url);
+    const isFiltering = filtering(url);
 
     const { products, totalItems, totalPages, pages } = useMemo(() => !isFiltering && sliceProducts(filteredProducts), [isFiltering]); //eslint-disable-line
     useEffect(() => { !isFiltering && currentPage > totalPages && currentPage !== 1 && selectPage(totalPages) }, [isFiltering])// eslint-disable-line
@@ -26,15 +32,16 @@ const ProductsBlock = ({ url, categoryUrl, filteredProducts, isFiltering, tiles 
         window.scrollTo({ top: 260, behavior: 'smooth' });
     }, []);
 
+
     if (isFiltering) return <div>FILTERING</div>
     if (totalItems === 0) return <div>Ничего не найдено</div>
 
     return (
-        <>
-            {currentPage <= totalPages && !!totalItems &&
-                products[currentPage - 1].map(id =>
-                    <ProductCardContainer key={id} id={id} url={url} categoryUrl={categoryUrl} tiles={tiles} />)}
-
+        <div className={cn(styles.container, { [styles.tiles]: isTiles })}>
+            {
+                currentPage <= totalPages && !!totalItems &&
+                products[currentPage - 1].map(id => <ProductItem key={id} id={id} />)
+            }
             <div className={styles.pagination}>
                 <Pagination
                     totalItems={totalItems}
@@ -43,13 +50,14 @@ const ProductsBlock = ({ url, categoryUrl, filteredProducts, isFiltering, tiles 
                     currentPage={currentPage}
                     selectPage={onSelectPage} />
             </div>
-        </>
+        </div>
     )
 }
 
-const mapStateToProps = (state) => ({
-    filteredProducts: filteredProducts(state),
-    isFiltering: isFiltering(state)
+const mapStateToProps = state => ({
+    productItems: filteredProducts(state),
+    filtering: isFiltering(state),
+    isTiles: appIsTiles(state)
 })
 
-export default connect(mapStateToProps)(ProductsBlock)
+export default connect(mapStateToProps)(ProductItems)

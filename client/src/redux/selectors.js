@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 export const appStatus = state => state.app.status;
 export const appIsHomePage = state => state.app.isHomePage;
 export const appIsPopUp = state => state.app.isPopUp;
+export const appIsTiles = state => state.app.isTiles;
 
 
 export const menuLoaded = state => state.menu.loaded;
@@ -106,8 +107,8 @@ export const selectNormalizedFilters = createSelector(
         return acc
     }, {})
 );
-export const isFiltering = state => state.filters.isFiltering;
-export const filteredProducts = state => state.filters.products;
+export const isFiltering = state => url => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
+export const filteredProducts = state => url => state.filters.products[url];
 export const sortBy = state => state.filters.sortBy;
 export const queryString = (state, props) => state.filters.queryString?.[props.match.params.url];
 

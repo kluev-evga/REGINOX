@@ -3,3 +3,7 @@
     align-items: center;
     gap: 10px;
 }
+
+.active {
+    color: var(--red);
+}

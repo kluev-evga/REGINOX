@@ -3,7 +3,7 @@ import { arrToMap } from '../utils';
 
 
 const INITIAL_STATE = {
-  entities: ['1','2','3'],
+  entities: [],
   loading: false,
   loaded: false,
   error: null,

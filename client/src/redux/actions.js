@@ -5,6 +5,8 @@ import {
     SET_APP_STATUS,
     SET_APP_HOME_PAGE,
     SET_APP_IS_POP_UP,
+    SET_APP_TILES,
+    UNSET_APP_TILES,
     OPEN_MAIN_MENU,
     OPEN_FILTERS_MENU,
     CLOSE_MENU,
@@ -20,6 +22,7 @@ import {
     LOAD_ARTICLE,
     LOAD_PRODUCTS,
     LOAD_PRODUCT,
+    TOGGLE_PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
     SETLECT_PRODUCTS_SORT_BY,
@@ -58,6 +61,9 @@ export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page})
 export const changeCartItemCount = (id, count) => ({type: ADD_ITEM_TO_CART, id, count});
 export const removeItemFromCart = (id) => ({type: REMOVE_ITEM_FROM_CART, id});
 export const setQueryString = (url, queryString) => ({type: SET_QUERY_STRING, url, queryString});
+export const setAppTiles = () => ({type: SET_APP_TILES});
+export const unsetAppTiles = () => ({type: UNSET_APP_TILES});
+export const toggleProductsIsFiltering = (url, status) => ({type: TOGGLE_PRODUCTS_IS_FILTERING, url, status});
 
 
 export const loadMenu = (noScroll) => async (dispatch, getState) => {
@@ -251,15 +257,17 @@ const sortProducts = (sortBy, arr, prd) => {
 //////////////////////////////////////////////////////////////////////////////////////
 export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const state = getState();
-    const arr = [...state.filters.products];
+    const arr = [...state.filters.products[url]];
     const prd = state.products.products[url];
 
+    console.log('sort');
+
     dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
-    dispatch({type: PRODUCTS_IS_FILTERING});// -----------------------------наверное нет необходимости делать .... ?????????????????
+    dispatch({type: PRODUCTS_IS_FILTERING, url});
 
     const products = await sortProducts(sortBy, arr, prd);
 
-    dispatch({type: PRODUCTS_IS_FILTERED, data:products});
+    dispatch({type: PRODUCTS_IS_FILTERED, data:products, url});
 };
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -278,23 +286,35 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
     }, productsbyCategory);
 };
 
-export const filterProducts = (url, categoryUrl, selected) => async (dispatch, getState) => {
+export const filterProducts = (url, categoryUrl, selected) => (dispatch, getState) => {
     const state = getState();
     const filters = state.filters.filters[url];
     const categoryFilters = filters[0];
     const normalizedFilters = selectNormalizedFilters(state, url);
 
-    await dispatch({type: PRODUCTS_IS_FILTERING});
+    dispatch({type: PRODUCTS_IS_FILTERING, url});
 
-    const productsbyCategory = await categoryFilters.products[categoryUrl];
+    new Promise((resolve) => {
+        const productsbyCategory = categoryFilters.products[categoryUrl];
 
-    const productsFiltered = await (!Object.keys(selected).length)
-        ? productsbyCategory
-        : filteredProducts(productsbyCategory, selected, normalizedFilters);
+        setTimeout(()=> resolve(productsbyCategory), 0);
+    })
+    .then(productsbyCategory => {
 
-    const sortBy = state.filters.sortBy;
-    const prd = state.products.products[url];
-    const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
+        const productsFiltered = (!Object.keys(selected).length)
+            ? productsbyCategory
+            : filteredProducts(productsbyCategory, selected, normalizedFilters);
 
-    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
+        return productsFiltered;
+    })
+    .then(productsFiltered => {
+        const sortBy = state.filters.sortBy;
+        const prd = state.products.products[url];
+        const sortedProducts = sortProducts(sortBy, productsFiltered, prd);
+        return sortedProducts;
+    })
+    .then(sortedProducts => {
+        dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts, url });
+    })
+
 };
