@@ -17,7 +17,7 @@ const Product = ({ match, getTitle, productItem }) => {
     const { id, title, price, discount, specs, images, promo, newItem } = productItem(productUrl);
     const linkTitle = getTitle(url);
 
-    useEffect(() => { window.scrollTo(0, 0); }, []);
+    useEffect(() => { window.scrollTo(0, 0) }, []);
 
     return (
         <div className="container">

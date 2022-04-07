@@ -69,6 +69,10 @@
     height: 20px;
 }
 
+button.active {
+    background-color: var(--graphite);
+}
+
 .new_item::after,
 .promo::before {
     position: absolute;

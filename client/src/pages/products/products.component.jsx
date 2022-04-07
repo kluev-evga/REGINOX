@@ -16,12 +16,10 @@ const Products = ({ getTitle, queryString, match, location, history, setQueryStr
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'auto' });
-
-        // return setQueryString(url, location.search);
+        queryString && history.push({ search: queryString });
     }, []);//eslint-disable-line
 
-
-    // useEffect(() => { queryString && history.push({ search: queryString }) }, [])//eslint-disable-line
+    useEffect(() => () => setQueryString(url, location.search), [location.search]);//eslint-disable-line
 
     return (
         <div className="container">

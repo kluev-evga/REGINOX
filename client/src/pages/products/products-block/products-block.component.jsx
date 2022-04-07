@@ -15,7 +15,7 @@ const sliceProducts = (filteredProducts) => {
     return { products, totalItems, totalPages, pages };
 };
 
-const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl }) => {
+const ProductsBlock = ({ url, categoryUrl, filteredProducts, isFiltering, tiles }) => {
     const [currentPage, selectPage] = useState(1);
 
     const { products, totalItems, totalPages, pages } = useMemo(() => !isFiltering && sliceProducts(filteredProducts), [isFiltering]); //eslint-disable-line
@@ -26,9 +26,7 @@ const ProductsBlock = ({ tiles, url, filteredProducts, isFiltering, categoryUrl 
         window.scrollTo({ top: 260, behavior: 'smooth' });
     }, []);
 
-    // console.log(isFiltering);
-
-    if (isFiltering) return <div>FILTRING</div>
+    if (isFiltering) return <div>FILTERING</div>
     if (totalItems === 0) return <div>Ничего не найдено</div>
 
     return (

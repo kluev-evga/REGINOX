@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useRouteMatch, useHistory } from 'react-router-dom';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { filters } from '../../../redux/selectors';
 import { openFiltersMenu, filterProducts } from '../../../redux/actions';
@@ -16,15 +16,15 @@ import styles from './products-container.module.css';
 
 
 const ProductsContainer = ({ openFiltersMenu, productsfilters, filterProducts }) => {
+    const match = useRouteMatch('/products/:url?/:categoryUrl?');
+    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const [tiles, setTiles] = useState(true);
     const history = useHistory();
-    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
-    const location = useLocation();
-    const match = useRouteMatch('/products/:url?/:categoryUrl?');
+    const { search } = history.location;
     const { url, categoryUrl } = match.params;
 
     useEffect(() => {
-        const params = new URLSearchParams(location.search);
+        const params = new URLSearchParams(search);
         const filters = productsfilters(url).slice(1);
         const selected = filters.reduce((acc, { searchGroup, products }) => {
             const group = params.get(searchGroup);
@@ -34,8 +34,10 @@ const ProductsContainer = ({ openFiltersMenu, productsfilters, filterProducts })
             };
             return acc;
         }, {});
+
+        console.log('filter products called', search);
         filterProducts(url, categoryUrl, selected);
-    }, [categoryUrl, location.search]);//eslint-disable-line
+    }, [categoryUrl, search]);//eslint-disable-line
 
     return (
         <div className={styles.wrapper}>
@@ -47,7 +49,7 @@ const ProductsContainer = ({ openFiltersMenu, productsfilters, filterProducts })
 
                     <button
                         onClick={() => history.push(`/products/${url}/all`)}
-                        className={cn(styles.reset, { [styles.disabled]: categoryUrl === 'all' && !location.search })}>
+                        className={cn(styles.reset, { [styles.disabled]: categoryUrl === 'all' && !search })}>
                         cбросить все
                         <CrossIcon />
                     </button>

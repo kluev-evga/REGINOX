@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeCartItemCount, removeItemFromCart } from '../../../redux/actions';
 import { cartItemCount } from '../../../redux/selectors';
@@ -12,12 +11,10 @@ import styles from './slider-panel.module.css';
 
 
 const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount }) => {
-    const history = useHistory();
     const incart = isFinite(cartItemCount);
     const increase = () => incart ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1);
-    const decrease = () => incart && cartItemCount > 0 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
+    const decrease = () => incart && cartItemCount > 1 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
     const addItem = () => !incart && increase();
-    const openCart = () => history.push('/home/cart');
 
     return (
         <div className={styles.container}>
@@ -47,9 +44,10 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
             <div className={styles.buy}>
                 <button>Купить в один клик</button>
                 <button
-                    onClick={incart ? openCart : addItem}
+                    onClick={addItem}
                     className={cn({ [styles.active]: incart })}>
                     <CartIcon />
+                    <span>Товар в корзине</span>
                 </button>
             </div>
         </div>

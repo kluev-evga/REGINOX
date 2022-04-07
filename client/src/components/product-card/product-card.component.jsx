@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { cartItemCount } from '../../redux/selectors';
+import { changeCartItemCount } from '../../redux/actions';
 import cn from 'classnames';
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg';
@@ -16,8 +19,13 @@ const RatingBlock = ({ r, reviewers }) => (
 
 const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' }) => {
     const [hover, setHover] = useState(false);
-    const { img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
+    const dispatch = useDispatch();
+    const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
+    const count = useSelector(state => cartItemCount(state, id));
+    const incart = isFinite(count);
     const price = p.toLocaleString('ru-RU');
+
+    const handleClick = () => !incart && dispatch(changeCartItemCount(id, 1));
 
     return (
         <div className={cn(
@@ -47,8 +55,10 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' })
                 <RublIcon />
             </p>
 
-            <button className={styles.button + ' button-block'}>
-                <Cart /> В корзину
+            <button
+                className={cn(styles.button, 'button-block', { [styles.active]: incart })}
+                onClick={handleClick}>
+                <Cart /> {incart ? 'Товар в корзине' : 'В корзину'}
             </button>
         </div>
     )

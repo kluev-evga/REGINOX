@@ -34,9 +34,8 @@ import 'swiper/scss/a11y';
 
 import './app.scss';
 
-
-
 SwiperCore.use([Pagination, Navigation, A11y, Autoplay, Thumbs]);
+
 
 const App = () => (
     <MenuContainer>

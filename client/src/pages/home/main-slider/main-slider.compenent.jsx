@@ -23,10 +23,9 @@ const MainSlider = ({ slider }) => {
             pagination={{
                 clickable: true,
                 modifierClass: `${styles.pagination} swiper-pagination`,
-                bulletClass: `${styles.bullet} swiper-pagination-bullet`,
-                bulletActiveClass: `${styles.bullet_active} swiper-pagination-bullet-active`
-            }}
-        >
+                bulletActiveClass: `${styles.bullet_active} swiper-pagination-bullet-active`,
+            }}>
+
             {slider.map(({ id, title, subtitle, img, alt, url, titleLink, imgLink, altLink }) =>
 
                 <SwiperSlide key={id}>
@@ -51,11 +50,9 @@ const MainSlider = ({ slider }) => {
 
             )}
         </Swiper>
-    );
-};
+    )
+}
 
-const mapStateToProps = (state) => ({
-    slider: homeSlider(state)
-})
+const mapStateToProps = state => ({ slider: homeSlider(state) })
 
-export default connect(mapStateToProps)(MainSlider);
+export default connect(mapStateToProps)(MainSlider)

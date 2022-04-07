@@ -15,8 +15,8 @@ const PopularProducts = ({ products }) => {
             <h2 className='title'>Популярные товары</h2>
 
             <div className={styles.container}>
-                {(isDesktopLG ? products : products.slice(0, 6)).map(({ id, ...rest }) =>
-                    <ProductCard key={id} tiles={true} product={rest} withRating={false} />)}
+                {(isDesktopLG ? products : products.slice(0, 6)).map(product =>
+                    <ProductCard key={product.id} tiles={true} product={product} withRating={false} />)}
             </div>
         </div>
     )

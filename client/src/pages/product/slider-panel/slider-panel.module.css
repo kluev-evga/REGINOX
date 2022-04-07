@@ -1,11 +1,10 @@
 .container {
     padding: 30px 0 50px;
     display: grid;
-    row-gap: 10px;
+    row-gap: 15px;
 }
 
 .articul {
-    padding-left: 10px;
     font-weight: 500;
     color: var(--gray);
 }
@@ -15,7 +14,7 @@
 }
 
 .price {
-    padding: 0 10px;
+    padding-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +31,6 @@
 }
 
 .price b {
-    font-size: inherit;
     font-weight: 500;
     color: #F2994A;
 }
@@ -40,33 +38,23 @@
 .compare {
     display: flex;
     align-items: center;
+    gap: 10px;
     font-weight: 500;
     color: var(--gray);
-}
-
-.compare svg {
-    margin-right: 10px;
 }
 
 .count {
-    height: 70px;
-    display: flex;
-    column-gap: 20px;
-    background-color: var(--gray-light);
-    font-weight: 500;
-    color: var(--gray);
-}
-
-.count>span {
-    flex-grow: 1;
-    padding-left: 10px;
+    height: 60px;
+    padding: 10px;
     display: flex;
     align-items: center;
-    width: 110px;
+    justify-content: space-between;
+    font-weight: 500;
+    color: var(--gray);
+    background-color: var(--gray-light);
 }
 
 .count div {
-    padding-right: 10px;
     width: 100px;
     display: flex;
     align-items: center;
@@ -74,112 +62,63 @@
 }
 
 .count div span {
-    margin: 2px;
+    min-width: 22px;
+    display: flex;
+    justify-content: center;
+    user-select: none;
 }
 
 .buy {
-    height: 70px;
-    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
     color: var(--white);
 }
 
 .buy button {
-    display: inline-flex;
-    align-items: center;
+    height: 60px;
+    width: 100%;
 }
 
 .buy button:first-of-type {
-    flex-grow: 1;
-    padding-left: 10px;
     background-color: var(--graphite);
 }
 
 .buy button:last-of-type {
-    width: 70px;
+    display: flex;
+    align-items: center;
     justify-content: center;
     background-color: var(--red);
 }
 
-.buy button.active {
-    outline: 2px solid var(--white);
-    outline-style: dashed;
-    outline-offset: -4px;
+.buy button:last-of-type span {
+    width: 0;
+    overflow: hidden;
+    text-align: right;
+    background-color: var(--red);
+    white-space: nowrap;
+    opacity: 0;
+    transition: width 0.1s ease, opacity 0.3s linear;
 }
 
-@media (min-width: 370px) {
-    .container {
-        row-gap: 15px;
-    }
-
-    .articul {
-        padding-left: 20px;
-    }
-
-    .price {
-        padding-left: 20px;
-        padding-right: 0;
-    }
-
-    .compare {
-        width: 150px;
-        justify-content: center;
-    }
-
-    .count>span {
-        padding-left: 20px;
-    }
-
-    .count div {
-        width: 150px;
-        padding: 0 20px;
-    }
-
-    .buy button:first-of-type {
-        padding-left: 20px;
-    }
-
-    .buy button:last-of-type {
-        width: 150px;
-    }
+.buy button:last-of-type.active span {
+    width: 145px;
+    opacity: 1;
+    transition: width 0.1s ease, opacity 0.25s ease-in;
 }
 
 @media (min-width: 768px) {
     .container {
-        grid-area: 2 / 2 / 3 / -1;
         align-content: start;
         padding-bottom: 10px;
     }
 
-    .articul,
-    .price {
-        padding-left: 0;
-    }
-
-    .compare {
-        width: 140px;
-        justify-content: center;
-    }
-
-    .count>span {
-        padding-left: 20px;
-    }
-
-    .count div {
-        width: 140px;
-        padding: 0 15px;
+    .count {
+        padding-right: 5px;
     }
 
     .count button {
         padding: 5px;
-    }
-
-    .buy button:first-of-type {
-        padding: 20px;
-    }
-
-    .buy button:last-of-type {
-        width: 140px;
     }
 }
 
@@ -193,13 +132,13 @@
         margin-bottom: 20px;
     }
 
+    .articul span {
+        letter-spacing: 1.2px;
+    }
+
     .price,
     .count {
         width: 410px;
-    }
-
-    .articul span {
-        letter-spacing: 1.2px;
     }
 
     .price span {
@@ -207,16 +146,12 @@
     }
 
     .price span svg {
-        height: 15px;
+        height: 14px;
     }
 
-    .count button {
-        padding: 10px;
-    }
-
-    /* buttons hover-------------------------------------- */
-    .count div span {
-        transition: all 0.1s linear;
+    .count {
+        padding: 0 10px 0 20px;
+        height: 65px;
     }
 
     .count button:hover {
@@ -224,91 +159,24 @@
     }
 
     .buy {
-        width: 542px;
-        position: relative;
+        flex-wrap: unset;
+    }
+
+    .buy button {
+        height: 65px;
     }
 
     .buy button:first-of-type {
-        flex-grow: unset;
         width: 270px;
-        height: 70px;
-        position: absolute;
-    }
-
-    .buy button:first-of-type:hover {
-        width: 410px;
-        transition: width 0.1s ease-out 0.08s
     }
 
     .buy button:last-of-type {
-        margin-left: 270px;
-        transition: flex-grow 0.1s ease-out 0.08s;
-    }
-
-    .buy button:last-of-type svg {
-        transition: color 0.15s linear;
-    }
-
-    .buy button:last-of-type svg {
-        z-index: 1;
-        height: 100%;
-        padding: 0 55px;
         width: 140px;
-        transition: all 0.15s linear 0.1s;
+        transition: flex-grow 0.1s ease;
     }
 
-    .buy button:last-of-type:hover {
+    .buy button:last-of-type.active {
         flex-grow: 1;
-    }
-
-    .buy button:last-of-type:hover svg {
-        width: 50px;
-        padding: 0 10px;
-        transition: all 0.15s linear;
-    }
-
-    .buy button:last-of-type::after {
-        content: 'Добавить в корзину';
-        overflow: hidden;
-        white-space: nowrap;
-        color: transparent;
-
-        width: 0;
-        transition: all 0.1s ease-out 0.08s, color 0.1s ease-in 0.1s;
-    }
-
-    .buy button:last-of-type:hover::after {
-        width: 168px;
-        color: var(--white)
-    }
-
-    .buy button.active:last-of-type::after {
-        content: 'Товар в корзине';
-    }
-
-    .buy button.active:last-of-type:hover::after {
-        animation: cartBtn 1s linear forwards;
-    }
-
-    @keyframes cartBtn {
-        40% {
-            color: var(--white);
-            content: 'Товар в корзине';
-        }
-
-        55% {
-            color: transparent;
-        }
-
-        65% {
-            color: transparent;
-            content: 'Перейти в корзину'
-        }
-
-        to {
-            color: var(--white);
-            content: 'Перейти в корзину'
-        }
     }
 }
 
@@ -347,14 +215,6 @@
 
     .buy {
         width: 642px;
-    }
-
-    .buy button:last-of-type {
-        margin-left: 370px;
-    }
-
-    .buy button:first-of-type:hover {
-        width: 510px;
     }
 
     .buy button:first-of-type {

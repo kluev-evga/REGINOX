@@ -60,7 +60,6 @@ export const removeItemFromCart = (id) => ({type: REMOVE_ITEM_FROM_CART, id});
 export const setQueryString = (url, queryString) => ({type: SET_QUERY_STRING, url, queryString});
 
 
-
 export const loadMenu = (noScroll) => async (dispatch, getState) => {
     window.scrollTo({top: 0, behavior: noScroll ? 'auto':'smooth'});
     const state = getState();
@@ -285,19 +284,17 @@ export const filterProducts = (url, categoryUrl, selected) => async (dispatch, g
     const categoryFilters = filters[0];
     const normalizedFilters = selectNormalizedFilters(state, url);
 
-    dispatch({type: PRODUCTS_IS_FILTERING});
+    await dispatch({type: PRODUCTS_IS_FILTERING});
 
-    setTimeout( async () => {
-        const productsbyCategory = await categoryFilters.products[categoryUrl];
+    const productsbyCategory = await categoryFilters.products[categoryUrl];
 
-        const productsFiltered = await (!Object.keys(selected).length)
-            ? productsbyCategory
-            : filteredProducts(productsbyCategory, selected, normalizedFilters);
+    const productsFiltered = await (!Object.keys(selected).length)
+        ? productsbyCategory
+        : filteredProducts(productsbyCategory, selected, normalizedFilters);
 
-        const sortBy = state.filters.sortBy;
-        const prd = state.products.products[url];
-        const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
-    
-        dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
-    }, 50);
+    const sortBy = state.filters.sortBy;
+    const prd = state.products.products[url];
+    const sortedProducts = await sortProducts(sortBy, productsFiltered, prd);
+
+    dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts});
 };

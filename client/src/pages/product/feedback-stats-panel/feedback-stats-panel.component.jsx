@@ -15,7 +15,8 @@ const fields = ['Цена', 'Качество', 'Внещний вид'];
 
 const Bars = ({ ratings }) => (
     <div className={styles.bars}>
-        {fields.map((item, i) => (<>{item}<div><span style={{ width: ratings[i] + '%' }}></span></div></>))}
+        {fields.map((item, i) =>
+            <span key={i}>{item}<div><span style={{ width: ratings[i] + '%' }}></span></div></span>)}
     </div>
 )
 
