@@ -46,6 +46,10 @@
     text-overflow: ellipsis;
 }
 
+.container {
+    margin: 50px -10px 0;
+}
+
 @media (min-width: 340px) {
     .title {
         font-size: 18px;
@@ -83,6 +87,10 @@
         margin-right: 7px;
         padding: 4px 9px;
     }
+
+    .container {
+        margin: 50px -20px 0;
+    }
 }
 
 @media (min-width: 992px) {
@@ -102,12 +110,20 @@
         padding: 5px 11px;
         font-size: 13px;
     }
+
+    .container {
+        margin: 50px -35px 0;
+    }
 }
 
 @media (min-width: 1200px) {
     .title {
         margin-top: 0;
         font-size: 24px;
+    }
+
+    .container {
+        margin: 50px 0 0;
     }
 }
 

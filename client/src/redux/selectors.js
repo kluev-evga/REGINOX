@@ -120,24 +120,6 @@ export const productItemLoaded = state => productUrl => state.productItems.loade
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
 
 
-
-
-
-////////////////////////////
-// export const productItemsById = createSelector(
-//     productItems,
-//     items => {
-//         return Object.keys(items).reduce((acc, url) => {
-//             const {price, discount, discountedPrice, title, images} = items[url];
-//             const img = images[0];
-//             acc[items[url].id] = { price, discount, discountedPrice, title, img }
-//             return acc;
-//         },{})
-//     }
-//     );
-//     export const productItemById = (state, id) => productItemsById(state)[id];
-    ////////////////////////////
-
 export const reviews = (state, productUrl)  => state.reviews.entities[productUrl];
 export const reviewsLoading = (state, productUrl)  => state.reviews.loading[productUrl];
 export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[productUrl];
@@ -145,7 +127,7 @@ export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[produc
 
 export const cartItems = state => state.cart.entities;
 export const cartItem = (state, id) => state.cart.items[id];
-
+export const cartItemsObj = (state, id) => state.cart.items;
 export const cartloading = state => state.cart.loading;
 export const cartloaded = state => state.cart.loaded;
 export const cartItemCount = (state, id) => state.cart.entities?.[id];
@@ -154,3 +136,6 @@ export const cartItemsArray = createSelector(
     (items) => Object.keys(items)
 );
 
+
+export const similarProducts = state => state.similarProducts.entities;
+export const similarProductsloading = state => state.similarProducts.loading;

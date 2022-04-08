@@ -4,6 +4,15 @@
     border-bottom: 1px solid var(--gray-med);
 }
 
+.container a:hover {
+    border-radius: 2px;
+    box-shadow: 0 0 5px 0 var(--gray-med);
+}
+
+.container a:hover img {
+    transform: scale(1.005);
+}
+
 .container img {
     margin: 0 auto;
     width: 100%;

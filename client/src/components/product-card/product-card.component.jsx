@@ -15,9 +15,11 @@ const RatingBlock = ({ r, reviewers }) => (
         {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : styles.clear} />)}
         <span>({reviewers})</span>
     </div>
-)
+);
 
-const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' }) => {
+const Button = ({ children, noFocus, ...rest }) => noFocus ? <span {...rest}>{children}</span> : <button {...rest}>{children}</button>;
+
+const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all', noFocus }) => {
     const [hover, setHover] = useState(false);
     const dispatch = useDispatch();
     const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
@@ -55,11 +57,12 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' })
                 <RublIcon />
             </p>
 
-            <button
+            <Button
+                noFocus={noFocus}
                 className={cn(styles.button, 'button-block', { [styles.active]: incart })}
-                onClick={handleClick}>
+                onClick={handleClick} >
                 <Cart /> {incart ? 'Товар в корзине' : 'В корзину'}
-            </button>
+            </Button>
         </div>
     )
 }

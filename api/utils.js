@@ -217,17 +217,29 @@ const getFilters = (filtersObj, productItems) => {
 ////////////////////////////////////////////////////////////////////////
 
 const getCartData = (productsdata) => {
-  // console.log(productsdata);
   const cartItems = {}
   for (let url in productsdata) {
     for (productUrl in productsdata[url]) {
       const {id, title, price, discountedPrice, discount, images} = productsdata[url][productUrl];
       const img = images[0];
       if (cartItems[id]) console.log('Повторяется лемент с id:', id);
-      cartItems[id] = {id, title, price, discountedPrice, discount, img, url, productUrl};
+      cartItems[id] = {id, title, p:price, discountedPrice, discount, img, url, productUrl};
     }
   }
   return cartItems
+}
+
+const shuffleData = (data) => {
+  const dataArr = [];
+  for (let key in data) {
+    dataArr.push(data[key]);    
+  }
+  return shuffle(dataArr);
+}
+
+const getSimilarProducts = (shuffledProducts) => {
+  const rnd = Math.floor(randomInteger(15, shuffledProducts.length));
+  return shuffledProducts.slice(rnd - 15, rnd);
 }
 
 module.exports = {
@@ -237,5 +249,7 @@ module.exports = {
     getProductData,
     getHome,
     getFilters,
-    getCartData
+    getCartData,
+    getSimilarProducts,
+    shuffleData
 };

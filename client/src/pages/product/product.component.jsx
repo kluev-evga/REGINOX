@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { menuTitleByUrl, productItem } from '../../redux/selectors';
@@ -7,8 +8,8 @@ import Slider from './slider/slider.component';
 import SliderPanel from './slider-panel/slider-panel.component';
 import PhoneView from './phone-view/phone-view.component';
 import TabsContainer from './tabs-container/tabs-container.component';
+import SimilarProducts from '../../components/similar-products/similar-products.component';
 import styles from './product.module.css';
-import { useEffect } from 'react';
 
 
 const Product = ({ match, getTitle, productItem }) => {
@@ -35,6 +36,10 @@ const Product = ({ match, getTitle, productItem }) => {
                 </h1>
                 <SliderPanel id={id} price={price} discount={discount} />
                 {isTablet ? <TabsContainer specs={specs} /> : <PhoneView specs={specs} />}
+            </div>
+
+            <div className={styles.container}>
+                <SimilarProducts />
             </div>
         </div>
     )

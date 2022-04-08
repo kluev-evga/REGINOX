@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-import { productItemsById, cartItems, cartItemsArray } from '../../../redux/selectors';
+import { cartItems, cartItemsArray, cartItemsObj } from '../../../redux/selectors';
 import styles from './cart-summary.module.css';
 
 
 const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
     const { total, count, grossTotal } = cartItemsArray.reduce((acc, id) => {
-        const { price, discountedPrice } = productItems[id];
-        const itemPrice = discountedPrice ? discountedPrice : price;
+        const { p, discountedPrice } = productItems[id];
+        const itemPrice = discountedPrice ? discountedPrice : p;
         const count = cartItems[id];
         acc.total = acc.total + itemPrice * count;;
         acc.count = acc.count + count;
-        acc.grossTotal = acc.grossTotal + price * count;
+        acc.grossTotal = acc.grossTotal + p * count;
         return acc
     }, { total: 0, count: 0, grossTotal: 0 });
 
@@ -41,7 +41,7 @@ const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
 }
 
 const mapStateToProps = state => ({
-    productItems: productItemsById(state),
+    productItems: cartItemsObj(state),
     cartItems: cartItems(state),
     cartItemsArray: cartItemsArray(state)
 })

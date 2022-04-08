@@ -23,6 +23,7 @@ import {
     LOAD_PRODUCTS,
     LOAD_PRODUCT,
     LOAD_CART,
+    LOAD_SIMILAR_RPODUCTS,
     TOGGLE_PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
@@ -241,7 +242,7 @@ export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch
 };
 
 
-export const loadCart = (items) => async (dispatch, getState) => {
+export const loadCart = items => async (dispatch, getState) => {
     const state = getState();
     const menu =  state.menu.loaded;
 
@@ -251,6 +252,19 @@ export const loadCart = (items) => async (dispatch, getState) => {
         .then(([res]) => res.json())
         .then((data) => dispatch({ type: LOAD_CART + SUCCESS, data }))
         .catch(error => dispatch({ type: LOAD_CART + FAILURE, error }));
+};
+
+
+export const loadSimilarProducts = () => async dispatch => {
+    dispatch({ type: LOAD_SIMILAR_RPODUCTS + REQUEST });
+
+    try {
+        const req = await fetch('/similar-products');
+        const data = await req.json();
+        dispatch({ type: LOAD_SIMILAR_RPODUCTS + SUCCESS, data });
+    } catch (error) {
+        dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error });
+    }
 };
 
 

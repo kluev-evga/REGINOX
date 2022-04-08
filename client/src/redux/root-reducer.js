@@ -13,6 +13,7 @@ import filtersReducer from './reducers/filters';
 import productItemsReducer from './reducers/product-items';
 import cartReducer from './reducers/cart';
 import reviewsReducer from './reducers/reviews';
+import similarProductsReducer from './reducers/similar-products';
 
 
 export default combineReducers({
@@ -29,4 +30,5 @@ export default combineReducers({
   productItems: productItemsReducer,
   cart: cartReducer,
   reviews: reviewsReducer,
+  similarProducts: similarProductsReducer,
 });

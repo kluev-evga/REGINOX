@@ -15,7 +15,7 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide }) =
     const isXL = useMediaQuery({ query: '(min-width: 1400px)' });
 
     return (
-        <div className={styles.slider_container + ' sertificates'}>
+        <div className={styles.slider_container + ' slider-container'}>
             <Swiper
                 className={styles.swiper}
                 speed={400}
