@@ -29,6 +29,7 @@
 
 @media (min-width: 1200px) {
     .slider {
+        margin-bottom: 20px;
         display: grid;
         grid-template: 1fr / auto 1fr;
         column-gap: 10px;
@@ -53,19 +54,23 @@
 }
 
 @media (min-width: 1600px) {
+    .slider {
+        margin-bottom: 35px;
+        column-gap: 30px;
+    }
+
     .thumbs {
         width: 115px;
-        height: 566px;
+        height: 517px;
     }
 }
 
 @media (min-width: 1920px) {
     .slider {
-        display: grid;
-        column-gap: 20px;
+        column-gap: 50px;
     }
 
     .thumbs {
-        height: 601px;
+        height: 539px;
     }
 }

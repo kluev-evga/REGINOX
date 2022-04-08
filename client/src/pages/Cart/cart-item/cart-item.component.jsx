@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { cartItemCount, productItemById } from '../../../redux/selectors';
+import { cartItemCount, cartItem } from '../../../redux/selectors';
 import { changeCartItemCount, removeItemFromCart } from '../../../redux/actions';
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg';
@@ -8,10 +8,11 @@ import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
 import styles from './cart-item.module.css';
 
 
-const CartItem = ({ id, changeCartItemCount, removeItemFromCart, cartItemCount, productItem }) => {
+const CartItem = ({ changeCartItemCount, removeItemFromCart, cartItemCount, cartItem }) => {
+    console.log(cartItem);
+    const { id, title, price, discountedPrice, discount, img, ulr, productUrl } = cartItem;
     const increase = () => cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1);
     const decrease = () => cartItemCount > 0 && changeCartItemCount(id, cartItemCount - 1);
-    const { price, discount, img, title } = productItem;
 
     return (
         <div className={styles.container}>
@@ -43,7 +44,7 @@ const CartItem = ({ id, changeCartItemCount, removeItemFromCart, cartItemCount, 
 
 const mapStateToProps = (state, { id }) => ({
     cartItemCount: cartItemCount(state, id),
-    productItem: productItemById(state, id),
+    cartItem: cartItem(state, id),
 })
 
 export default connect(mapStateToProps, { changeCartItemCount, removeItemFromCart })(CartItem)

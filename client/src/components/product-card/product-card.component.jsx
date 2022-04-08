@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartItemCount } from '../../redux/selectors';
-import { changeCartItemCount } from '../../redux/actions';
+import { changeCartItemCount, removeItemFromCart } from '../../redux/actions';
 import cn from 'classnames';
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg';
@@ -25,7 +25,7 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all' })
     const incart = isFinite(count);
     const price = p.toLocaleString('ru-RU');
 
-    const handleClick = () => !incart && dispatch(changeCartItemCount(id, 1));
+    const handleClick = () => !incart ? dispatch(changeCartItemCount(id, 1)) : dispatch(removeItemFromCart(id));
 
     return (
         <div className={cn(

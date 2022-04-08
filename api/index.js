@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { reply, getProduct, getProductsData, getProductData, getHome, getFilters } = require('./utils');
+const { getFilters, getProduct, getProductsData, getProductData, getCartData, getHome, reply  } = require('./utils');
 
 
 const home = require('./db/home');
@@ -20,6 +20,7 @@ const filtersdata = getFilters(filters, product);
 const productItems = getProduct(product);
 const productsdata = getProductsData(productItems);
 const {productdata, reviewsdata} = getProductData(productItems);
+const cartdata = getCartData(productdata);
 
 
 
@@ -78,6 +79,20 @@ router.get('/reviews/:url/:productUrl', (req, res, next) => {
     if (!reviewsdata[url][productUrl]) return res.status(404).send();
     const entities = reviewsdata[url][productUrl].slice(current, current + 5);
     reply(res, entities);
+});
+
+
+router.get('/cart', (req, res, next) => {
+  const {items} = req.query;
+  const itemsArr = items.split('_');
+
+  console.log(itemsArr);
+
+  const data = itemsArr.reduce((acc, id) => {
+    acc[id] = cartdata[id];
+    return acc;
+  }, {});
+  reply(res, data);
 });
 
 module.exports = router;

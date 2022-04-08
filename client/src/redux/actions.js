@@ -22,6 +22,7 @@ import {
     LOAD_ARTICLE,
     LOAD_PRODUCTS,
     LOAD_PRODUCT,
+    LOAD_CART,
     TOGGLE_PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
@@ -240,6 +241,19 @@ export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch
 };
 
 
+export const loadCart = (items) => async (dispatch, getState) => {
+    const state = getState();
+    const menu =  state.menu.loaded;
+
+    dispatch({ type: LOAD_CART + REQUEST });
+
+    Promise.all([fetch(`/cart?items=${items}`), !menu && loadMenu()(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_CART + SUCCESS, data }))
+        .catch(error => dispatch({ type: LOAD_CART + FAILURE, error }));
+};
+
+
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 const sortFromCheap = (arr, prd) => arr.sort((a, b) => (prd[a]['p'] - prd[b]['p']));
@@ -259,8 +273,6 @@ export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
     const state = getState();
     const arr = [...state.filters.products[url]];
     const prd = state.products.products[url];
-
-    console.log('sort');
 
     dispatch({type: SETLECT_PRODUCTS_SORT_BY, sortBy});
     dispatch({type: PRODUCTS_IS_FILTERING, url});
@@ -296,11 +308,10 @@ export const filterProducts = (url, categoryUrl, selected) => (dispatch, getStat
 
     new Promise((resolve) => {
         const productsbyCategory = categoryFilters.products[categoryUrl];
-
-        setTimeout(()=> resolve(productsbyCategory), 0);
+        // setTimeout(()=> resolve(productsbyCategory), 0);
+        resolve(productsbyCategory);
     })
     .then(productsbyCategory => {
-
         const productsFiltered = (!Object.keys(selected).length)
             ? productsbyCategory
             : filteredProducts(productsbyCategory, selected, normalizedFilters);
@@ -316,5 +327,4 @@ export const filterProducts = (url, categoryUrl, selected) => (dispatch, getStat
     .then(sortedProducts => {
         dispatch({type: PRODUCTS_IS_FILTERED, data:sortedProducts, url });
     })
-
 };

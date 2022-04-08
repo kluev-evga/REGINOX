@@ -214,6 +214,21 @@ const getFilters = (filtersObj, productItems) => {
     };
     return filters;
 };
+////////////////////////////////////////////////////////////////////////
+
+const getCartData = (productsdata) => {
+  // console.log(productsdata);
+  const cartItems = {}
+  for (let url in productsdata) {
+    for (productUrl in productsdata[url]) {
+      const {id, title, price, discountedPrice, discount, images} = productsdata[url][productUrl];
+      const img = images[0];
+      if (cartItems[id]) console.log('Повторяется лемент с id:', id);
+      cartItems[id] = {id, title, price, discountedPrice, discount, img, url, productUrl};
+    }
+  }
+  return cartItems
+}
 
 module.exports = {
     reply,
@@ -221,5 +236,6 @@ module.exports = {
     getProductsData,
     getProductData,
     getHome,
-    getFilters
+    getFilters,
+    getCartData
 };

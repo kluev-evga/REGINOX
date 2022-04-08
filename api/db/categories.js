@@ -11,7 +11,6 @@ const categories = {
         {title: 'Термостатический', categoryUrl: 'thermostatic'},
         {title: 'Кухонные смесители', categoryUrl: 'kitchen'},
         {title: 'Смесители для санузлов', categoryUrl: 'bathroom'},
-        {title: 'Гигиенический душ', categoryUrl: 'bide'},
     ],
     'ranges': [
         {title: 'Все', categoryUrl: 'all'},

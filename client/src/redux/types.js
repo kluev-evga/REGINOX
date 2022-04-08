@@ -18,6 +18,7 @@ export const LOAD_ARTICLE = 'LOAD_ARTICLE';
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const LOAD_PRODUCT = 'LOAD_PRODUCT';
 export const LOAD_REVIEWS = 'LOAD_REVIEWS';
+export const LOAD_CART = 'LOAD_CART';
 
 export const SELECT_ARTICLES_PAGE = 'SELECT_ARTICLES_PAGE';
 

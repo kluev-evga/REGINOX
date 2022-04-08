@@ -118,6 +118,11 @@
 }
 
 @media (min-width: 1600px) {
+    .wrapper {
+        grid-template-columns: 46% 1fr;
+        column-gap: 80px;
+    }
+
     .title {
         font-size: 36px;
         line-height: 1.2;
@@ -134,7 +139,7 @@
 
 @media (min-width: 1920px) {
     .wrapper {
-        grid-template-columns: 46% 1fr;
-        column-gap: 60px;
+        grid-template-columns: 44% 1fr;
+        column-gap: 100px;
     }
 }
