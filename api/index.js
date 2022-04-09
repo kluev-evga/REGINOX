@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getFilters, getProduct, getProductsData, getProductData, getCartData, getHome, getSimilarProducts, shuffleData, reply  } = require('./utils');
+const { getFilters, getProduct, getProductsData, getProductData, getCardsData, getHome, getSimilarProducts, shuffleData, reply  } = require('./utils');
 
 
 const home = require('./db/home');
@@ -20,7 +20,7 @@ const filtersdata = getFilters(filters, product);
 const productItems = getProduct(product);
 const productsdata = getProductsData(productItems);
 const {productdata, reviewsdata} = getProductData(productItems);
-const cartdata = getCartData(productdata);
+const {cartdata, promodata, newitemsdata } = getCardsData(productdata);
 
 const shuffledProducts = shuffleData(cartdata);
 
@@ -29,6 +29,8 @@ const shuffledProducts = shuffleData(cartdata);
 router.get('/menu', (req, res, next) => {reply(res, menudata)});
 router.get('/sertificates', (req, res, next) => {reply(res, sertificates)});
 router.get('/brands', (req, res, next) => {reply(res, brands)});
+router.get('/promo', (req, res, next) => {reply(res, promodata)});
+router.get('/new', (req, res, next) => {  reply(res, newitemsdata)});
 
 
 router.get('/home', (req, res, next) => {

@@ -38,7 +38,7 @@ const SertificatesSlider = ({ sertificatesList, slide, setSertificatesSlide }) =
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     sertificatesList: selectSertificatesList(state),
     slide: sertificatesSlide(state),
 })

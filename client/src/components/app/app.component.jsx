@@ -7,6 +7,7 @@ import Footer from '../footer/footer.component';
 import Home from '../../pages/home/home.component';
 import ProductsRoutes from '../products-routes/products-routes.component';
 import Cart from '../../pages/Cart/cart.component';
+import Promo from '../../pages/promo/promo.component';
 
 import WhyUs from '../../pages/why-us/why-us.component';
 import Partners from '../../pages/partners/partners.component';
@@ -50,6 +51,8 @@ const App = () => (
 
                 <Route exact path='/products/:url/:categoryUrl?/:productUrl?' component={ProductsRoutes} />
                 <Route exact path='/home/cart' component={Cart} />
+                <Route exact path='/promo' component={Promo} />
+                <Route exact path='/latest' render={() => <Promo latest={true} />} />
 
                 <Route exact path='/why-us' component={WhyUs} />
                 <Route exact path='/partners' component={Partners} />

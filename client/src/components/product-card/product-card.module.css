@@ -69,7 +69,8 @@
     height: 20px;
 }
 
-button.active {
+button.active,
+span.active {
     background-color: var(--gray);
 }
 

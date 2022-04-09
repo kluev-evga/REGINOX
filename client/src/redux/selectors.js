@@ -139,3 +139,11 @@ export const cartItemsArray = createSelector(
 
 export const similarProducts = state => state.similarProducts.entities;
 export const similarProductsloading = state => state.similarProducts.loading;
+
+
+export const promoItems = state => state.promo.entities;
+export const promoLoaded = state => state.promo.loaded;
+
+
+export const newItems = state => state.newItems.entities;
+export const newItemsLoaded = state => state.newItems.loaded;

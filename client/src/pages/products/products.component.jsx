@@ -52,7 +52,7 @@ const Products = ({ getTitle, queryString, match, location, history, setQueryStr
     return (
         <div className="container">
             <div className="breadcrumbs">
-                <Link to='/'>Главная</Link> / {title}
+                <Link to='/home'>Главная</Link> / {title}
             </div>
             <h1 className="title">{title}</h1>
 

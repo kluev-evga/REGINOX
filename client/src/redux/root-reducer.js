@@ -14,6 +14,8 @@ import productItemsReducer from './reducers/product-items';
 import cartReducer from './reducers/cart';
 import reviewsReducer from './reducers/reviews';
 import similarProductsReducer from './reducers/similar-products';
+import promoReducer from './reducers/promo';
+import newItemsReducer from './reducers/new-items';
 
 
 export default combineReducers({
@@ -31,4 +33,6 @@ export default combineReducers({
   cart: cartReducer,
   reviews: reviewsReducer,
   similarProducts: similarProductsReducer,
+  promo: promoReducer,
+  newItems: newItemsReducer
 });

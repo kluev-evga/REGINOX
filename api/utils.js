@@ -1,4 +1,5 @@
 const { firstNameMale, firstNameFemale, lastName } = require('./db/names');
+const {promo, newItems} = require('./db/promo-new');
 const reviews = require('./db/reviews');
 
 
@@ -216,17 +217,41 @@ const getFilters = (filtersObj, productItems) => {
 };
 ////////////////////////////////////////////////////////////////////////
 
-const getCartData = (productsdata) => {
-  const cartItems = {}
+const getCardsData = (productsdata) => {
+  const cartdata = {}
+  const promoObj = {};
+  const newitemsObj = {};
   for (let url in productsdata) {
     for (productUrl in productsdata[url]) {
-      const {id, title, price, discountedPrice, discount, images} = productsdata[url][productUrl];
+      const {id, title, price, discountedPrice, discount, images, promo, newItem} = productsdata[url][productUrl];
+      const alt = 'product item';
+
       const img = images[0];
-      if (cartItems[id]) console.log('Повторяется лемент с id:', id);
-      cartItems[id] = {id, title, p:price, discountedPrice, discount, img, url, productUrl};
+      if (cartdata[id]) console.log('Повторяется лемент с id:', id);
+      const item = {id, title, p:price, discountedPrice, discount, img, alt, url, productUrl, promo, newItem};
+
+      cartdata[id] = item;
+      if (!promoObj[url]) id && (promoObj[url] = []);
+      if (!newitemsObj[url]) id && (newitemsObj[url] = []);
+      promo && promoObj[url].push(item);
+      newItem && newitemsObj[url].push(item);
     }
   }
-  return cartItems
+
+  const promodata = [];
+  const newitemsdata = [];
+
+  for (let key in promoObj) {
+    const item = {title: promo[key].title, text: promo[key].text, items: promoObj[key] };
+    promodata.push(item);
+  };
+
+  for (let key in newitemsObj) {
+    const item = {title: newItems[key].title, text: newItems[key].text, items: newitemsObj[key] };
+    newitemsdata.push(item);
+  };
+
+  return {cartdata, promodata, newitemsdata};
 }
 
 const shuffleData = (data) => {
@@ -249,7 +274,7 @@ module.exports = {
     getProductData,
     getHome,
     getFilters,
-    getCartData,
+    getCardsData,
     getSimilarProducts,
     shuffleData
 };

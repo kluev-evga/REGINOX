@@ -1,0 +1,10 @@
+.slide {
+    padding: 0 10px;
+    height: unset !important;
+}
+
+@media (min-width: 768px) {
+    .slide {
+        padding: 0;
+    }
+}

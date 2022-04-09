@@ -24,6 +24,8 @@ import {
     LOAD_PRODUCT,
     LOAD_CART,
     LOAD_SIMILAR_RPODUCTS,
+    LOAD_PROMO_ITEMS,
+    LOAD_NEW_ITEMS,
     TOGGLE_PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
@@ -265,6 +267,38 @@ export const loadSimilarProducts = () => async dispatch => {
     } catch (error) {
         dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error });
     }
+};
+
+
+export const loadPromoItems = () => async (dispatch, getState) => {
+    const state = getState();
+    const loading = state.promo.loading;
+    const loaded = state.promo.loaded;
+    if (loading || loaded) return;
+
+    const menu =  state.menu.loaded;
+
+    dispatch({ type: LOAD_PROMO_ITEMS + REQUEST });
+
+    Promise.all([fetch('/promo'), !menu && loadMenu()(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_PROMO_ITEMS + SUCCESS, data }))
+        .catch(error => dispatch({ type: LOAD_PROMO_ITEMS + FAILURE, error }));
+};
+
+export const loadNewItems = () => async (dispatch, getState) => {
+    const state = getState();
+    const loading = state.newItems.loading;
+    const loaded = state.newItems.loaded;
+    if (loading || loaded) return;
+
+    const menu =  state.menu.loaded;
+    dispatch({ type: LOAD_NEW_ITEMS + REQUEST });
+
+    Promise.all([fetch('/new'), !menu && loadMenu()(dispatch, getState)])
+        .then(([res]) => res.json())
+        .then((data) => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
+        .catch(error => dispatch({ type: LOAD_NEW_ITEMS + FAILURE, error }));
 };
 
 

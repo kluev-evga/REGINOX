@@ -3,11 +3,6 @@
     padding-left: 10px;
 }
 
-.slide {
-    padding: 0 10px;
-    height: unset !important;
-}
-
 .spinner {
     margin: 0 auto;
 }
@@ -16,10 +11,6 @@
     .title {
         padding-right: 20px;
         padding-left: 20px;
-    }
-
-    .slide {
-        padding: 0;
     }
 }
 
@@ -34,9 +25,5 @@
     .title {
         padding-right: 0;
         padding-left: 0;
-    }
-
-    .slide {
-        padding: 0;
     }
 }

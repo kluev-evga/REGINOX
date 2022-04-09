@@ -8,7 +8,7 @@ import Slider from './slider/slider.component';
 import SliderPanel from './slider-panel/slider-panel.component';
 import PhoneView from './phone-view/phone-view.component';
 import TabsContainer from './tabs-container/tabs-container.component';
-import SimilarProducts from '../../components/similar-products/similar-products.component';
+import SimilarProducts from './similar-products/similar-products.component';
 import styles from './product.module.css';
 
 
@@ -23,7 +23,7 @@ const Product = ({ match, getTitle, productItem }) => {
     return (
         <div className="container">
             <div className={"breadcrumbs " + styles.breadcrumbs}>
-                <Link to='/'>Главная</Link> / <Link to={`/products/${url}/${categoryUrl}`}>{linkTitle}</Link> / <div>{title}</div>
+                <Link to='/home'>Главная</Link> / <Link to={`/products/${url}/${categoryUrl}`}>{linkTitle}</Link> / <div>{title}</div>
             </div>
 
             <div className={styles.wrapper}>

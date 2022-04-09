@@ -24,7 +24,7 @@ const Cart = ({ cartItems, loading, loadCart }) => {
     return (
         <div className={"container"} >
             <div className={"breadcrumbs"}>
-                <Link to='/'>Главная</Link> / корзина
+                <Link to='/home'>Главная</Link> / корзина
             </div>
             <h1 className={'title'}>Корзина</h1>
 
