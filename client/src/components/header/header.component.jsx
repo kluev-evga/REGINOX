@@ -1,7 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openMainMenu } from '../../redux/actions';
-import { menuLoaded, appStatus, appIsHomePage, appIsPopUp, cartItemsArray } from '../../redux/selectors';
+import { menuLoaded, appStatus, appIsHomePage, appIsPopUp, cartItemsArray, compareCount } from '../../redux/selectors';
 import cn from 'classnames';
 
 import NavLinks from './nav-links/nav-links.component';
@@ -15,12 +15,13 @@ import { ReactComponent as Search } from '../../assets/svg/search.svg';
 import styles from './header.module.css';
 
 
-const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems }) => {
+const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems, compareCount }) => {
     const history = useHistory();
     if (status || isPopUp || !loaded) return null;
 
     const cartItemsCount = cartItems.length;
-    const onCartClick = () => cartItemsCount && history.push('/home/cart');
+    const onCartClick = () => cartItemsCount && history.push('/cart');
+    const onCompareClick = () => compareCount && history.push('/compare');
 
     return (
         <header className={cn(styles.header, { [styles.reversed]: isHome })}>
@@ -44,7 +45,13 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems }) =>
                             : <Link to='/home' aria-label='домашняя страница' ><Logo /></Link>}
                     </div>
                     <div className={styles.buttons_container}>
-                        <button aria-label='сравнить'><Compare /></button>
+                        <button
+                            onClick={onCompareClick}
+                            className={cn({ [styles.active]: compareCount })}
+                            aria-label='сравнить товары'>
+                            <Compare />
+                            <span>{!!compareCount && compareCount}</span>
+                        </button>
                         <button aria-label='аккаунт'><Account /></button>
                         <button aria-label='поиск по каталогу'><Search /></button>
                         <button
@@ -69,7 +76,8 @@ const mapStateToProps = state => ({
     status: appStatus(state),
     isHome: appIsHomePage(state),
     isPopUp: appIsPopUp(state),
-    cartItems: cartItemsArray(state)
-});
+    cartItems: cartItemsArray(state),
+    compareCount: compareCount(state)
+})
 
-export default connect(mapStateToProps, { openMainMenu })(Header);
+export default connect(mapStateToProps, { openMainMenu })(Header)

@@ -1,13 +1,13 @@
 .nav {
     grid-column: 1 / -1;
-    margin: 38px -8px 0;
-    display:flex;
+    margin: 38px -8px 8px;
+    display: flex;
     justify-content: space-between;
 }
 
 .link {
     padding: 8px;
-    line-height: 24px;
+    line-height: 1;
 }
 
 .link:hover {
@@ -16,6 +16,6 @@
 
 @media (min-width: 1400px) {
     .nav {
-        margin: 45px -8px 0;
+        margin: 45px -8px 8px;
     }
 }

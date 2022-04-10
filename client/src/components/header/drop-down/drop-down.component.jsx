@@ -1,12 +1,12 @@
 import { useState, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ReactComponent as ChevronDown } from '../../../assets/svg/chevron-down.svg';
 import { ReactComponent as ChevronUp } from '../../../assets/svg/chevron-up.svg';
 import styles from './drop-down.module.css';
 
 
-const DropDown = ({ links, isHome }) => {
+const DropDown = ({ links, isHome, routeUrl }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [interval, setInterval] = useState();
     const onLeave = useCallback(() => setInterval(setTimeout(() => setIsOpen(false), 300)), []);
@@ -18,21 +18,23 @@ const DropDown = ({ links, isHome }) => {
             onMouseEnter={onEnter}
             className={cn(styles.sub_menu, { [styles.open]: isOpen, [styles.reversed]: isHome })}>
 
-            <button onClick={() => setIsOpen(!isOpen)} >
+            <button
+                className={styles.button}
+                onClick={() => setIsOpen(!isOpen)}>
                 Другие товары
                 {isOpen ? <ChevronUp /> : <ChevronDown />}
             </button>
 
-            <div className={styles.sub_menu_container}>
+            <div className={styles.container}>
                 <div>
                     {links.map(({ title, titleShort, url }) => (
-                        <NavLink
+                        <Link
                             to={`/products/${url}/all`}
                             key={url}
                             onClick={() => setIsOpen(false)}
-                            activeClassName='link_active'>
+                            className={cn(styles.link, { 'link_active': url === routeUrl })}>
                             {titleShort || title}
-                        </NavLink>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -3,22 +3,22 @@
     position: relative;
 }
 
-.sub_menu button {
+.button {
     padding: 8px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    line-height: 24px;
+    line-height: 1;
 
     position: relative;
     z-index: 1;
 }
 
-.sub_menu svg {
-    width: 21px;
+.button svg {
+    height: 16px;
 }
 
-.sub_menu_container {
+.container {
     display: none;
     padding-top: 51px;
     width: calc(100% + 20px);
@@ -28,7 +28,7 @@
     background-color: var(--white);
 }
 
-.sub_menu_container >div {
+.container div {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -36,29 +36,30 @@
     position: relative;
 }
 
-.sub_menu_container >div::before {
+.container div::before {
     box-shadow: 4px 2px 6px 0 #00000014;
     position: absolute;
     content: '';
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
 }
 
-.sub_menu_container a {
+.link {
+    margin-bottom: 8px;
     padding: 8px;
-    line-height: 1.5;
+    line-height: 1;
     font-size: 16px;
 }
 
-.open .sub_menu_container {
+.open .container {
     display: block;
 }
 
-.open.reversed button,
-.open.reversed .sub_menu_container {
+.open.reversed .button,
+.open.reversed .container {
     background-color: transparent;
     animation: submenu 0.1s ease forwards;
 }

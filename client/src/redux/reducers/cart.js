@@ -39,7 +39,7 @@ const cartReducer = function (state = INITIAL_STATE, action) {
           delete entities[id];
           return {
               ...state,
-              entities: {...entities},
+              entities: entities,
           };
       default:
           return state;

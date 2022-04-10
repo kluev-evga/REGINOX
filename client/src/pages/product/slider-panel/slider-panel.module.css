@@ -36,11 +36,19 @@
 }
 
 .compare {
+    padding: 0 3px;
     display: flex;
     align-items: center;
     gap: 10px;
     font-weight: 500;
     color: var(--gray);
+}
+
+.compare.active {
+    border-radius: 2px;
+    outline: 1px solid #F2994A;
+    background-color: var(--graphite);
+    color: #F2994A;
 }
 
 .count {

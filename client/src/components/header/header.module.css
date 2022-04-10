@@ -53,11 +53,11 @@
     color: var(--gray-med);
 }
 
-.buttons_container button:last-of-type {
+.buttons_container button {
     position: relative;
 }
 
-.buttons_container button:last-of-type span {
+.buttons_container button span {
     position: absolute;
     top: 0;
     right: 30px;
@@ -66,7 +66,7 @@
     pointer-events: none;
 }
 
-.active {
+.buttons_container button.active {
     color: var(--red);
 }
 

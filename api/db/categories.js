@@ -14,7 +14,7 @@ const categories = {
     ],
     'ranges': [
         {title: 'Все', categoryUrl: 'all'},
-        {title: 'Варочная панель', ucategoryUrlrl: 'overcounter'},
+        {title: 'Варочная панель', categoryUrl: 'overcounter'},
         {title: 'Газовая плита', categoryUrl: 'freestanding'},
         {title: 'Комбинированная', categoryUrl: 'combined'},
         {title: 'Кухонная конфорка', categoryUrl: 'integratable'},
@@ -35,7 +35,7 @@ const categories = {
         {title: 'Поддоны', categoryUrl: 'pans'},
         {title: 'Сифоны', categoryUrl: 'siphons'},
         {title: 'Разделочные доски', categoryUrl: 'boards'},
-        {title: 'Адаптеры и комплектующие', categoryUrl: 'adapters'},
+        {title: 'Адаптеры', categoryUrl: 'adapters'},
     ],
     'storage-manhattan': [
         {title: 'Все', categoryUrl: 'all'},

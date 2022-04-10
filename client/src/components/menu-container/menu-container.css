@@ -1,40 +1,46 @@
 .bm-overlay {
-    background: rgb(0, 0, 0, 0.5)!important;
+    background: rgb(0, 0, 0, 0.5) !important;
     backdrop-filter: contrast(80%);
 }
 
-.bm-menu{
+.bm-menu-wrap {
+    overflow: auto;
     background: var(--black);
-    padding: 80px 0 0 0px;
 }
 
-.bm-menu::-webkit-scrollbar {
+.bm-menu {
+    padding: 80px 0 0 0px;
+    height: auto !important;
+}
+
+.bm-menu-wrap::-webkit-scrollbar {
     width: 4px;
 }
 
-.bm-menu::-webkit-scrollbar-track {
-    margin: 5px 0;
+.bm-menu-wrap::-webkit-scrollbar-track {
+    background: #151515;
+    padding: 5px 0;
 }
 
-.bm-menu::-webkit-scrollbar-thumb {
+.bm-menu-wrap::-webkit-scrollbar-thumb {
     background: var(--white);
     border-radius: 2px;
 }
 
-.bm-menu::-webkit-scrollbar-thumb:hover {
+.bm-menu-wrap::-webkit-scrollbar-thumb:hover {
     box-shadow: inset 0 0 2px 0 #947cff;
 }
 
-.bm-menu::-webkit-scrollbar-thumb:hover:active {
+.bm-menu-wrap::-webkit-scrollbar-thumb:hover:active {
     background: #ddd;
 }
 
 .bm-cross-button {
     padding: 20px 0 0 22px;
-    top: 0px!important;
-    left:0;
+    top: 0px !important;
+    left: 0;
     height: auto !important;
-    width: 100%!important;
+    width: 100% !important;
     color: var(--white);
 }
 
@@ -44,7 +50,7 @@
     width: calc(100% - 4px);
     height: 70px;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     background: linear-gradient(var(--black) 95%, #0005);
 }
@@ -75,11 +81,11 @@
         width: unset;
     }
 
-    .bm-menu::-webkit-scrollbar {
+    .bm-menu-wrap::-webkit-scrollbar {
         width: 7px;
     }
 
-    .bm-menu::-webkit-scrollbar-thumb {
+    .bm-menu-wrap::-webkit-scrollbar-thumb {
         border-radius: 4px;
     }
 

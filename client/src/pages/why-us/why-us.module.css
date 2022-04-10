@@ -43,7 +43,7 @@
         align-items: center;
     }
 
-    .cards_item svg{
+    .cards_item svg {
         margin: 0 30px 0 0;
     }
 
@@ -64,7 +64,7 @@
         display: block;
     }
 
-    .cards_item svg{
+    .cards_item svg {
         margin: 0 auto 10px;
     }
 }
@@ -83,7 +83,7 @@
         align-items: center;
         text-align: left;
     }
-    
+
     .cards {
         padding: 90px 0;
         margin-bottom: 50px;
@@ -93,7 +93,7 @@
         display: flex;
     }
 
-    .cards_item svg{
+    .cards_item svg {
         margin: 0 20px 0 0;
     }
 }
@@ -218,9 +218,8 @@
     }
 
     .accomplishments p {
-        width: calc(100% + 50px);
-        height: calc(100% + 50px);
-        margin: 0 -25px 0 -25px;
+        width: 100%;
+        height: 100%;
         padding: 30px;
         align-self: center;
 
@@ -228,25 +227,19 @@
         justify-content: center;
         align-items: center;
 
-        font-size: 18px;
         text-align: center;
 
-        opacity: 0;
         background-color: var(--black);
-        transition: opacity 0.8s ease-out 0.1s, transform 0.6s ease-out;
-
-        transform: scale(0.7);
+        mask-image: linear-gradient(90deg, black 33%, transparent 66%, transparent);
+        mask-position: 100% 0;
+        mask-repeat: no-repeat;
+        mask-size: 300% 100%;
+        transition: mask-position 0.4s ease-in;
     }
 
     .accomplishments div:hover p {
-        opacity: 1;
-        transition: opacity 0.4s linear, transform 0.15s ease-out;
-        transform: scale(1);
-    }
-
-    .accomplishments div:hover img {
-        opacity: 0;
-        transition: opacity 0.15s ease-out;
+        mask-position: 0;
+        transition: mask-position 0.5s ease-in;
     }
 }
 
@@ -256,7 +249,7 @@
     }
 
     .accomplishments span {
-        padding: 60px 50px ;
+        padding: 60px 50px;
         font-size: 18px;
     }
 }

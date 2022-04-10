@@ -7,7 +7,7 @@ import { ReactComponent as ProfessionalyIcon } from '../../assets/svg/profession
 
 
 const WhyUs = () => (
-    < div >
+    <div>
         <div className="container">
             <div className="breadcrumbs">
                 <Link to='/home'>Главная</Link> / Почему мы
@@ -118,4 +118,4 @@ const WhyUs = () => (
     </div>
 )
 
-export default withMenuLoader(WhyUs);
+export default withMenuLoader(WhyUs)

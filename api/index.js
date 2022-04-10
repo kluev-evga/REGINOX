@@ -1,5 +1,16 @@
 const router = require('express').Router();
-const { getFilters, getProduct, getProductsData, getProductData, getCardsData, getHome, getSimilarProducts, shuffleData, reply  } = require('./utils');
+const {
+  getFilters,
+  getProduct,
+  getProductsData,
+  getProductData,
+  getCardsData,
+  getHome,
+  getSimilarProducts,
+  shuffleData,
+  getCompareData,
+  reply
+} = require('./utils');
 
 
 const home = require('./db/home');
@@ -16,13 +27,13 @@ const articlesItems = require('./db/articlesItems');
 
 const menudata = {links, categories};
 const filtersdata = getFilters(filters, product);
-
 const productItems = getProduct(product);
 const productsdata = getProductsData(productItems);
 const {productdata, reviewsdata} = getProductData(productItems);
 const {cartdata, promodata, newitemsdata } = getCardsData(productdata);
-
 const shuffledProducts = shuffleData(cartdata);
+const comparedata = getCompareData(productdata);
+
 
 
 
@@ -34,7 +45,7 @@ router.get('/new', (req, res, next) => {  reply(res, newitemsdata)});
 
 
 router.get('/home', (req, res, next) => {
-  const homedata = getHome(home, productsdata);
+  const homedata = getHome(home, shuffledProducts);
   reply(res, homedata);
 });
 
@@ -100,6 +111,17 @@ router.get('/cart', (req, res, next) => {
 router.get('/similar-products', (req, res, next) => {
   const products = getSimilarProducts(shuffledProducts);
   reply(res, products);
+});
+
+
+router.get('/compare', (req, res, next) => {
+  const {items} = req.query;
+  const itemsArr = items.split('_');
+  const data = itemsArr.reduce((acc, id) => {
+    acc[comparedata[id].productUrl] = comparedata[id];
+    return acc;
+  }, {});
+  reply(res, data);
 });
 
 module.exports = router;

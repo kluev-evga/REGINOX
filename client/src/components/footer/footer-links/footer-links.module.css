@@ -7,11 +7,14 @@
 .row {
     display: grid;
     justify-items: start;
-    grid-gap: 8px;
+    align-content: start;
+    grid-gap: 10px;
 }
 
 .row a {
-    padding: 5px 0;
+    padding: 5px;
+    margin-left: -5px;
+    line-height: 1;
     font-weight: 500;
 }
 
@@ -51,12 +54,9 @@
         grid-column: unset;
     }
 
-    .row {
-        justify-items: start;
-    }
-
     .row a {
-        padding: 7px 0;
+        margin-left: -7px;
+        padding: 7px;
     }
 
     .brands p {
@@ -70,7 +70,8 @@
     }
 
     .row a {
-        padding: 8px 0;
+        margin-left: -8px;
+        padding: 8px;
         font-size: 18px;
     }
 }

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartItemCount } from '../../redux/selectors';
-import { changeCartItemCount, removeItemFromCart } from '../../redux/actions';
+import { cartItemCount, itemInCompare } from '../../redux/selectors';
+import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions';
 import cn from 'classnames';
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg';
 import { ReactComponent as StarIcon } from '../../assets/svg/star.svg';
+import { ReactComponent as CompareIcon } from '../../assets/svg/compare.svg';
 import styles from './product-card.module.css';
 
 
@@ -24,10 +25,12 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all', n
     const dispatch = useDispatch();
     const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
     const count = useSelector(state => cartItemCount(state, id));
+    const inCompare = useSelector(state => itemInCompare(state, id));
     const incart = isFinite(count);
     const price = p.toLocaleString('ru-RU');
 
     const handleClick = () => !incart ? dispatch(changeCartItemCount(id, 1)) : dispatch(removeItemFromCart(id));
+    const compareItem = () => dispatch(toggleCompareItem(id));
 
     return (
         <div className={cn(
@@ -63,6 +66,12 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all', n
                 onClick={handleClick} >
                 <Cart /> {incart ? 'Товар в корзине' : 'В корзину'}
             </Button>
+
+            <button
+                className={cn(styles.compare, { [styles.active]: inCompare })}
+                onClick={compareItem}>
+                <CompareIcon />
+            </button>
         </div>
     )
 }

@@ -10,15 +10,15 @@ import {
     OPEN_MAIN_MENU,
     OPEN_FILTERS_MENU,
     CLOSE_MENU,
+    SET_SERTIFICATES_SLIDER_SLIDE,
+    SET_SERTIFICATES_SCROLL,
+    SELECT_ARTICLES_PAGE,
     LOAD_MENU,
     LOAD_HOME,
     LOAD_CATALOGS,
     LOAD_SERTIFICATES,
-    SET_SERTIFICATES_SLIDER_SLIDE,
-    SET_SERTIFICATES_SCROLL,
     LOAD_BRANDS,
     LOAD_ARTICLES,
-    SELECT_ARTICLES_PAGE,
     LOAD_ARTICLE,
     LOAD_PRODUCTS,
     LOAD_PRODUCT,
@@ -26,6 +26,8 @@ import {
     LOAD_SIMILAR_RPODUCTS,
     LOAD_PROMO_ITEMS,
     LOAD_NEW_ITEMS,
+    LOAD_REVIEWS,
+    LOAD_COMPARE_ITEMS,
     TOGGLE_PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERING,
     PRODUCTS_IS_FILTERED,
@@ -33,7 +35,8 @@ import {
     ADD_ITEM_TO_CART,
     REMOVE_ITEM_FROM_CART,
     SET_QUERY_STRING,
-    LOAD_REVIEWS,
+    TOGGLE_COMPARE_ITEM,
+    REMOVE_ITEM_FROM_COMPARE
 } from './types';
 
 import {
@@ -49,25 +52,29 @@ import {
     productsLoaded,
     selectNormalizedFilters,
     productItemLoading,
-    productItemLoaded
+    productItemLoaded,
+    compareItems,
+    productItem,
 } from './selectors';
 
 
-export const setAppStatus = (status) => ({type: SET_APP_STATUS, status});
-export const setAppIsHomePage = (status) => ({type: SET_APP_HOME_PAGE, status});
-export const setAppIsPopUp = (status) => ({type: SET_APP_IS_POP_UP, status});
+export const setAppStatus = status => ({type: SET_APP_STATUS, status});
+export const setAppIsHomePage = status => ({type: SET_APP_HOME_PAGE, status});
+export const setAppIsPopUp = status => ({type: SET_APP_IS_POP_UP, status});
 export const openMainMenu = () => ({type: OPEN_MAIN_MENU});
 export const openFiltersMenu = () => ({type: OPEN_FILTERS_MENU});
 export const closeMenu = () => ({type: CLOSE_MENU});
-export const setSertificatesSlide = (slide) => ({type: SET_SERTIFICATES_SLIDER_SLIDE, data: slide});
-export const setSertificatesScroll = (value) => ({type: SET_SERTIFICATES_SCROLL, data: value});
-export const selectArticlesPage = (page) => ({type: SELECT_ARTICLES_PAGE, page});
+export const setSertificatesSlide = slide => ({type: SET_SERTIFICATES_SLIDER_SLIDE, data: slide});
+export const setSertificatesScroll = value => ({type: SET_SERTIFICATES_SCROLL, data: value});
+export const selectArticlesPage = page => ({type: SELECT_ARTICLES_PAGE, page});
 export const changeCartItemCount = (id, count) => ({type: ADD_ITEM_TO_CART, id, count});
-export const removeItemFromCart = (id) => ({type: REMOVE_ITEM_FROM_CART, id});
+export const removeItemFromCart = id => ({type: REMOVE_ITEM_FROM_CART, id});
 export const setQueryString = (url, queryString) => ({type: SET_QUERY_STRING, url, queryString});
 export const setAppTiles = () => ({type: SET_APP_TILES});
 export const unsetAppTiles = () => ({type: UNSET_APP_TILES});
 export const toggleProductsIsFiltering = (url, status) => ({type: TOGGLE_PRODUCTS_IS_FILTERING, url, status});
+export const toggleCompareItem = id => ({type: TOGGLE_COMPARE_ITEM, id});
+export const removeItemfromCompare = id => ({type: REMOVE_ITEM_FROM_COMPARE, id});
 
 
 export const loadMenu = (noScroll) => async (dispatch, getState) => {
@@ -286,6 +293,7 @@ export const loadPromoItems = () => async (dispatch, getState) => {
         .catch(error => dispatch({ type: LOAD_PROMO_ITEMS + FAILURE, error }));
 };
 
+
 export const loadNewItems = () => async (dispatch, getState) => {
     const state = getState();
     const loading = state.newItems.loading;
@@ -299,6 +307,32 @@ export const loadNewItems = () => async (dispatch, getState) => {
         .then(([res]) => res.json())
         .then((data) => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
         .catch(error => dispatch({ type: LOAD_NEW_ITEMS + FAILURE, error }));
+};
+
+
+export const loadCompareItems = () => async (dispatch, getState) => {
+    const state = getState();
+    const loading = state.compare.loading;
+    const loaded = state.compare.loaded;
+    if (loading || loaded) return;
+
+    const itemsToLoad = compareItems(state).filter(id => productItem(id));
+    const menu =  state.menu.loaded;
+
+    if (menu && itemsToLoad === 0) return;
+
+    if (itemsToLoad.length === 0) {
+        Promise.all([null, loadMenu()(dispatch, getState)])
+        .then(() => dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data:{} }))
+        .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }));
+    } else {
+        dispatch({ type: LOAD_COMPARE_ITEMS + REQUEST });
+    
+        Promise.all([fetch(`/compare?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
+            .then(([res]) => res.json())
+            .then((data) => dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data }))
+            .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }));
+    }
 };
 
 

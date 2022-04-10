@@ -146,9 +146,9 @@ const getProductData = (productItems) => {
 }
 ////////////////////////////////////////////////////////////////////////
 
-const getHome = (home, productsdata) => {
-  const rnd = Math.floor(randomInteger(8, productsdata['sinks'].length));
-  home.popularProducts = productsdata['sinks'].slice(rnd - 8, rnd);
+const getHome = (home, shuffledProducts) => {
+  const rnd = Math.floor(randomInteger(8, shuffledProducts.length));
+  home.popularProducts = shuffledProducts.slice(rnd - 8, rnd);
   return home;
 };
 ////////////////////////////////////////////////////////////////////////
@@ -253,6 +253,7 @@ const getCardsData = (productsdata) => {
 
   return {cartdata, promodata, newitemsdata};
 }
+////////////////////////////////////////////////////////////////////////
 
 const shuffleData = (data) => {
   const dataArr = [];
@@ -261,11 +262,25 @@ const shuffleData = (data) => {
   }
   return shuffle(dataArr);
 }
+////////////////////////////////////////////////////////////////////////
 
 const getSimilarProducts = (shuffledProducts) => {
   const rnd = Math.floor(randomInteger(15, shuffledProducts.length));
   return shuffledProducts.slice(rnd - 15, rnd);
 }
+////////////////////////////////////////////////////////////////////////
+
+const getCompareData = (productdata) => {
+  const comparedata = {};
+  for (let url in productdata) {
+      for (let productUrl in productdata[url] ) {
+          const item = {...productdata[url][productUrl], productUrl};
+          comparedata[item.id] = item;
+      }
+  }
+  return comparedata;
+}
+
 
 module.exports = {
     reply,
@@ -276,5 +291,6 @@ module.exports = {
     getFilters,
     getCardsData,
     getSimilarProducts,
-    shuffleData
+    shuffleData,
+    getCompareData,
 };

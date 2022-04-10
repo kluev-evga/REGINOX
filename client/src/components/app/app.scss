@@ -602,10 +602,14 @@ li {
     color: var(--gray);
 }
 
-.link_active,
 .link_primary:hover,
 .link_secondary:hover {
     color: var(--red);
+}
+
+.link_active {
+    color: var(--red) !important;
+    outline: 1px solid var(--gray-light);
 }
 
 .swiper .swiper-button-disabled {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { changeCartItemCount, removeItemFromCart } from '../../../redux/actions';
-import { cartItemCount } from '../../../redux/selectors';
+import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions';
+import { cartItemCount, itemInCompare } from '../../../redux/selectors';
 import cn from 'classnames';
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg';
 import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg';
@@ -10,7 +10,7 @@ import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
 import styles from './slider-panel.module.css';
 
 
-const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount }) => {
+const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount, toggleCompareItem, itemInCompare }) => {
     const incart = isFinite(cartItemCount);
     const increase = () => incart ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1);
     const decrease = () => incart && cartItemCount > 1 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
@@ -25,8 +25,10 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
                     {price.toLocaleString('ru-RU')} <RublIcon />
                     {!!discount && <b> -{discount}%</b>}
                 </span>
-                <button className={styles.compare}>
-                    <CompareIcon />Сравнить
+                <button
+                    className={cn(styles.compare, { [styles.active]: itemInCompare })}
+                    onClick={() => toggleCompareItem(id)}>
+                    <CompareIcon />{itemInCompare ? 'Добавлен' : 'Сравнить'}
                 </button>
             </div>
 
@@ -54,6 +56,9 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
     )
 }
 
-const mapStateToProps = (state, { id }) => ({ cartItemCount: cartItemCount(state, id) })
+const mapStateToProps = (state, { id }) => ({
+    cartItemCount: cartItemCount(state, id),
+    itemInCompare: itemInCompare(state, id)
+})
 
-export default connect(mapStateToProps, { changeCartItemCount, removeItemFromCart })(SliderPanel)
+export default connect(mapStateToProps, { changeCartItemCount, removeItemFromCart, toggleCompareItem })(SliderPanel)

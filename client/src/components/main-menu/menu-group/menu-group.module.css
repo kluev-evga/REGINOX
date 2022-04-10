@@ -15,5 +15,5 @@
     margin-left: 5px;
     flex-shrink: 0;
     width: 15px;
-    color: #333;
+    color: var(--gray);
 }

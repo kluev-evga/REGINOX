@@ -118,6 +118,14 @@ export const productItem = state => productUrl => productItems(state)[productUrl
 export const productItemLoading = state => productUrl => state.productItems.loading[productUrl];
 export const productItemLoaded = state => productUrl => state.productItems.loaded[productUrl];
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
+const productItemsById = createSelector(
+    productItems,
+    items => items && Object.keys(items).reduce((acc, url) => {
+            acc[items[url].id] = {...items[url], productUrl: url};
+            return acc;
+        }, {})
+);
+export const productItemById = state => id => productItemsById(state)[id];
 
 
 export const reviews = (state, productUrl)  => state.reviews.entities[productUrl];
@@ -147,3 +155,16 @@ export const promoLoaded = state => state.promo.loaded;
 
 export const newItems = state => state.newItems.entities;
 export const newItemsLoaded = state => state.newItems.loaded;
+
+
+export const compareLoaded = state => state.compare.loaded;
+export const itemInCompare = (state, id) => state.compare.entities?.[id];
+const compareItemsObj = state => state.compare.entities;
+export const compareItems = createSelector(
+    compareItemsObj,
+    Object.keys
+);
+export const compareCount = createSelector(
+    compareItems,
+    (items) => Object.keys(items).length
+);

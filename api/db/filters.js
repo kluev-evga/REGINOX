@@ -402,7 +402,7 @@ const filters = {
                 {title: 'Поддоны', url: 'pans'},
                 {title: 'Сифоны', url: 'siphons'},
                 {title: 'Разделочные доски', url: 'boards'},
-                {title: 'Адаптеры и комплектующие', url: 'adapters'},
+                {title: 'Адаптеры', url: 'adapters'},
             ],
         },
         {

@@ -4,7 +4,7 @@
 
 .wrapper:hover img,
 .wrapper:hover div {
-    transition: all 0.5s cubic-bezier(.2,.5,.2,1) 0.2s;
+    transition: all 0.5s cubic-bezier(.2, .5, .2, 1) 0.2s;
     z-index: 2;
 }
 
@@ -19,7 +19,7 @@
     align-self: end;
     grid-area: 1 / 1 / -1 / -1;
 
-    padding: 0 25px;
+    padding: 0 15px;
     height: 50px;
 
     display: flex;
@@ -35,7 +35,8 @@
 }
 
 .wrapper span svg {
-    margin-right: 20px;
+    width: 24px;
+    margin-right: 10px;
 }
 
 .wrapper div {
@@ -131,6 +132,7 @@
 }
 
 @media (max-width: 767.98px) {
+
     .wrapper:hover img,
     .wrapper:hover div {
         transform: translateY(-49px);
@@ -145,11 +147,22 @@
 
     .wrapper span {
         height: 60px;
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .wrapper span {
         padding: 0 35px;
+    }
+
+    .wrapper span svg {
+        width: unset;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199.98px) {
+
     .wrapper:hover img,
     .wrapper:hover div {
         transform: translateY(-59px);
@@ -194,6 +207,7 @@
 }
 
 @media (min-width: 1200px) {
+
     .wrapper:not(.isLocked):hover img,
     .wrapper:not(.isLocked):hover div {
         transform: translateY(-59px);
@@ -210,7 +224,7 @@
         line-height: 1.5;
         order: -1;
     }
-    
+
     .wrapper .with_date {
         flex-direction: row;
         gap: 35px;

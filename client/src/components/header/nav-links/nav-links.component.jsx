@@ -1,13 +1,16 @@
 import { useMemo } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { menuLinks } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import DropDown from '../drop-down/drop-down.component';
+import cn from 'classnames';
 import styles from './nav-links.module.css';
 
 
 const NavLinks = ({ menuLinks, isHome }) => {
+    const match = useRouteMatch('/products/:url?');
+    const routeUrl = match?.params?.url;
     const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
     const isLarge = useMediaQuery({ query: '(min-width: 1600px)' })
 
@@ -20,16 +23,15 @@ const NavLinks = ({ menuLinks, isHome }) => {
     return (
         <nav className={styles.nav}>
             {(isLarge ? menuLinks : navLinks).map(({ title, titleShort, url }) => (
-                <NavLink
+                <Link
                     to={`/products/${url}/all`}
                     key={url}
-                    className={styles.link}
-                    activeClassName='link_active'>
+                    className={cn(styles.link, { 'link_active': url === routeUrl })}>
                     {titleShort || title}
-                </NavLink>
+                </Link>
             ))}
 
-            {!isLarge && <DropDown isHome={isHome} links={dropDownLinks} />}
+            {!isLarge && <DropDown isHome={isHome} links={dropDownLinks} routeUrl={routeUrl} />}
         </nav>
     );
 };
