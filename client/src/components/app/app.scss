@@ -761,6 +761,49 @@ li {
     }
 }
 
+.slider-compare {
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: 45px;
+        margin-top: 0;
+        height: 35px;
+        width: 35px;
+        background-color: var(--red);
+        transition: opacity 0.2s linear;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+
+        &::after {
+            font-size: 18px;
+            color: var(--white);
+        }
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background-color: var(--graphite)
+    }
+
+    .swiper-button-prev {
+        left: 0;
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
+
+    @media (min-width: 768px) {
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            top: 62.5px;
+            height: 45px;
+            width: 45px;
+        }
+    }
+}
+
 .link-card:focus-visible {
     outline-offset: 2px;
     filter: brightness(130%);

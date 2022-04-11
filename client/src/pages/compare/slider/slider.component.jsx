@@ -1,40 +1,41 @@
-import { connect } from 'react-redux';
-import { setSertificatesSlide } from '../../../redux/actions';
-// import { sertificatesSlide, selectSertificatesList } from '../../../redux/selectors';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeItemfromCompare } from '../../../redux/actions';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useMediaQuery } from 'react-responsive';
-import SliderItem from '../slider-item/slider-item.component';
-import styles from './sertificates-slider.module.css';
+import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
+import styles from './slider.module.css';
 
 
-const Slider = () => {
-    const isPhone = useMediaQuery({ query: '(min-width: 340px)' });
-    const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
-    const isTabletLg = useMediaQuery({ query: '(min-width: 992px)' });
-    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' });
-    const isXL = useMediaQuery({ query: '(min-width: 1400px)' });
-
-    const sliderItems = []
+const Slider = ({ data, specs }) => {
+    const dispatch = useDispatch();
 
     return (
-        <Swiper
-            className={styles.swiper}
-            speed={400}
-            slidesPerView={isXL ? 4 : isTabletLg ? 3.5 : isTablet ? 2.5 : isPhone ? 1.9 : 1}
-            spaceBetween={isDesktop ? 30 : isTablet ? 20 : 0}
-            slidesOffsetAfter={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
-            slidesOffsetBefore={isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0}
-            initialSlide={1}
-            onSlideChange={(swiper) => setSertificatesSlide(swiper.activeIndex)}
-            navigation>
+        <div className={styles.slider}>
+            <Swiper
+                className={styles.swiper + ' slider-compare'}
+                speed={200}
+                slidesPerView={1}
+                spaceBetween={10}
+                initialSlide={1}
+                navigation>
 
-            {sliderItems.map(id => (
-                <SwiperSlide key={id} className={styles.swiper_slide}>
-                    <SliderItem id={id} />
-                </SwiperSlide>
-            ))}
+                {data.map(item => (
+                    <SwiperSlide key={item.id} className={styles.slider_item}>
+                        <Link className={styles.link} to={`/products/${item.url}/all/${item.productUrl}`}>
+                            <img src={process.env.PUBLIC_URL + item.images[0]} alt='productI item' />
+                        </Link>
+                        {specs.map((field, i) => (<span key={i}><p>{item.specs[field] || '-'}</p></span>))}
 
-        </Swiper>
+                        <button
+                            onClick={() => dispatch(removeItemfromCompare(item.id))}
+                            className={styles.button}>
+                            <CrossIcon />
+                        </button>
+                    </SwiperSlide>
+                ))}
+
+            </Swiper>
+        </div>
     )
 }
 

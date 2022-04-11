@@ -274,7 +274,7 @@ const getCompareData = (productdata) => {
   const comparedata = {};
   for (let url in productdata) {
       for (let productUrl in productdata[url] ) {
-          const item = {...productdata[url][productUrl], productUrl};
+          const item = {...productdata[url][productUrl], productUrl, url};
           comparedata[item.id] = item;
       }
   }

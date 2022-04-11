@@ -36,7 +36,8 @@ import {
     REMOVE_ITEM_FROM_CART,
     SET_QUERY_STRING,
     TOGGLE_COMPARE_ITEM,
-    REMOVE_ITEM_FROM_COMPARE
+    REMOVE_ITEM_FROM_COMPARE,
+    RESET_COMPARE_LOADED
 } from './types';
 
 import {
@@ -75,6 +76,7 @@ export const unsetAppTiles = () => ({type: UNSET_APP_TILES});
 export const toggleProductsIsFiltering = (url, status) => ({type: TOGGLE_PRODUCTS_IS_FILTERING, url, status});
 export const toggleCompareItem = id => ({type: TOGGLE_COMPARE_ITEM, id});
 export const removeItemfromCompare = id => ({type: REMOVE_ITEM_FROM_COMPARE, id});
+export const resetCompareLoaded = () => ({type: RESET_COMPARE_LOADED});
 
 
 export const loadMenu = (noScroll) => async (dispatch, getState) => {
@@ -390,7 +392,6 @@ export const filterProducts = (url, categoryUrl, selected) => (dispatch, getStat
 
     new Promise((resolve) => {
         const productsbyCategory = categoryFilters.products[categoryUrl];
-        // setTimeout(()=> resolve(productsbyCategory), 0);
         resolve(productsbyCategory);
     })
     .then(productsbyCategory => {

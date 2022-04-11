@@ -4,7 +4,8 @@ import {
     FAILURE, 
     LOAD_COMPARE_ITEMS,
     TOGGLE_COMPARE_ITEM,
-    REMOVE_ITEM_FROM_COMPARE
+    REMOVE_ITEM_FROM_COMPARE,
+    RESET_COMPARE_LOADED
 } from '../types';
 
 
@@ -52,6 +53,11 @@ const compareReducer = function (state = INITIAL_STATE, action) {
                 ...state,
                 loading: false,
                 error: error
+            };
+        case RESET_COMPARE_LOADED:
+            return {
+                ...state,
+                loaded: false
             };
       default:
           return state;
