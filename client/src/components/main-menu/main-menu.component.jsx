@@ -14,13 +14,13 @@ const MainMenu = ({ loaded, links, categories, closeMenu }) => {
     return (
         <div className={styles.menu}>
 
-            {links.map(({ title, url }) => (
+            {links.map(({ title, url }, i) => (
                 categories[url]
                     ? <MenuGroup key={url} categories={categories[url]} url={url} title={title} />
                     : <NavLink
                         key={url}
                         to={`/products/${url}`}
-                        className={cn('menu-link', styles.link)}
+                        className={cn('menu-link', styles.link, { 'temp-disabled': i > 6 })}
                         activeClassName='menu-active-link'>
                         {title}
                     </NavLink>

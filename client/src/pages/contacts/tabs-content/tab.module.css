@@ -35,21 +35,11 @@
 
 @media (min-width: 768px) {
     .contacts {
-        grid-template-columns: 335px 1fr;
-    }
-}
-
-@media (min-width: 992px) {
-    .contacts {
-        grid-template-columns: 195px 1fr;
+        grid-template-columns: 220px 1fr;
     }
 }
 
 @media (min-width: 1200px) {
-    .contacts {
-        grid-template-columns: 240px 1fr;
-    }
-
     .contacts span {
         font-size: 16px;
     }
@@ -60,8 +50,8 @@
     }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1400px) {
     .contacts {
-        grid-template-columns: 302px 1fr;
+        grid-template-columns: 240px 300px 240px 1fr
     }
 }

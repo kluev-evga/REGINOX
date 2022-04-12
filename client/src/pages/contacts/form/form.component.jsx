@@ -7,8 +7,8 @@ const Form = () => (
         <input type="text" placeholder='E-mail' />
         <textarea type="text" placeholder='Ваше сообщение...'></textarea>
         <div>
-            <button type='button'>Отправить</button>
-            <span className={styles.gprd}>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</span>
+            <button type='button' className='button-form'>Отправить</button>
+            <p>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>
         </div>
     </div>
 )

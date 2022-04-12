@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { menuTitleByUrl, productItem } from '../../redux/selectors';
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
 import cn from 'classnames';
 import Slider from './slider/slider.component';
 import SliderPanel from './slider-panel/slider-panel.component';

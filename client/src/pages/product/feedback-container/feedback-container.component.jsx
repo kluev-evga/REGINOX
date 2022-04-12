@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Collapsible from 'react-collapsible';
-import FeedbackLeavePanel from '../feedback-leave-panel/feedback-leave-panel.component';
+import FormFeedback from '../form-feedback/form-feedback.component';
 import FeedbackStatsPanel from '../feedback-stats-panel/feedback-stats-panel.component';
 import FeedbackItemsContainer from '../feedback-items-container/feedback-items-container.component';
 import styles from './feedback-container.module.css';
@@ -31,7 +31,7 @@ const FeedbackContainer = () => {
             </div>
 
             <div>
-                {isForm ? <FeedbackLeavePanel /> : <FeedbackItemsContainer />}
+                {isForm ? <FormFeedback /> : <FeedbackItemsContainer />}
             </div>
         </div>
     )

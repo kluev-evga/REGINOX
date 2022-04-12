@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions';
-import { cartItemCount, itemInCompare } from '../../../redux/selectors';
+import { cartItemCount, compareItem } from '../../../redux/selectors';
 import cn from 'classnames';
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg';
 import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg';
@@ -10,11 +10,11 @@ import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
 import styles from './slider-panel.module.css';
 
 
-const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount, toggleCompareItem, itemInCompare }) => {
+const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount, toggleCompareItem, compareItem }) => {
     const incart = isFinite(cartItemCount);
     const increase = () => incart ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1);
     const decrease = () => incart && cartItemCount > 1 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id);
-    const addItem = () => !incart && increase();
+    const onCartButtonClick = () => incart ? removeItemFromCart(id) : increase();
 
     return (
         <div className={styles.container}>
@@ -26,9 +26,9 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
                     {!!discount && <b> -{discount}%</b>}
                 </span>
                 <button
-                    className={cn(styles.compare, { [styles.active]: itemInCompare })}
+                    className={cn(styles.compare, { [styles.active]: compareItem })}
                     onClick={() => toggleCompareItem(id)}>
-                    <CompareIcon />{itemInCompare ? 'Добавлен' : 'Сравнить'}
+                    <CompareIcon />{compareItem ? 'Добавлен' : 'Сравнить'}
                 </button>
             </div>
 
@@ -46,7 +46,7 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
             <div className={styles.buy}>
                 <button>Купить в один клик</button>
                 <button
-                    onClick={addItem}
+                    onClick={onCartButtonClick}
                     className={cn({ [styles.active]: incart })}>
                     <CartIcon />
                     <span>Товар в корзине</span>
@@ -58,7 +58,7 @@ const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromC
 
 const mapStateToProps = (state, { id }) => ({
     cartItemCount: cartItemCount(state, id),
-    itemInCompare: itemInCompare(state, id)
+    compareItem: compareItem(state, id)
 })
 
 export default connect(mapStateToProps, { changeCartItemCount, removeItemFromCart, toggleCompareItem })(SliderPanel)

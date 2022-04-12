@@ -19,7 +19,7 @@ import newItemsReducer from './reducers/new-items';
 import compareReducer from './reducers/compare';
 
 
-export default combineReducers({
+const rootReducer = combineReducers({
   app: appReducer,
   home: homeReducer,
   menu: menuReducer,
@@ -37,4 +37,6 @@ export default combineReducers({
   promo: promoReducer,
   newItems: newItemsReducer,
   compare: compareReducer
-});
+})
+
+export default rootReducer

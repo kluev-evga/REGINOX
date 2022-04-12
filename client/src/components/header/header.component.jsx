@@ -18,10 +18,7 @@ import styles from './header.module.css';
 const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems, compareCount }) => {
     const history = useHistory();
     if (status || isPopUp || !loaded) return null;
-
     const cartItemsCount = cartItems.length;
-    const onCartClick = () => cartItemsCount && history.push('/cart');
-    const onCompareClick = () => compareCount && history.push('/compare');
 
     return (
         <header className={cn(styles.header, { [styles.reversed]: isHome })}>
@@ -46,7 +43,7 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems, comp
                     </div>
                     <div className={styles.buttons_container}>
                         <button
-                            onClick={onCompareClick}
+                            onClick={() => history.push('/compare')}
                             className={cn({ [styles.active]: compareCount })}
                             aria-label='сравнить товары'>
                             <Compare />
@@ -56,7 +53,7 @@ const Header = ({ openMainMenu, isHome, loaded, status, isPopUp, cartItems, comp
                         <button aria-label='поиск по каталогу'><Search /></button>
                         <button
                             className={cn({ [styles.active]: cartItemsCount })}
-                            onClick={onCartClick}
+                            onClick={() => history.push('/cart')}
                             aria-label='корзина'>
                             <span>{!!cartItemsCount && cartItemsCount}</span>
                             <Cart />

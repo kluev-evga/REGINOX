@@ -1,45 +1,38 @@
 import { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadCatalogs, loadMenu } from '../../redux/actions';
-import { catalogsLoading, catalogsTotal, menuLoaded } from '../../redux/selectors';
+import { loadCatalogs } from '../../redux/actions';
+import { catalogsLoading, catalogsTotal } from '../../redux/selectors';
+import { useMediaQuery } from 'react-responsive';
+import cn from 'classnames';
+import withMenuLoader from '../../hoc/with-menu-loader';
 import CatalogsCards from './catalogs-cards/catalogs-cards.component';
-import Loader from '../../components/loader/loader.coponent';
 import styles from './catalogs.module.css';
 
 
-const Catalogs = ({ loadMenu, loadCatalogs, menuLoaded, loading, total, location, history }) => {
-    useEffect(() => { loadMenu() }, []);//eslint-disable-line
-
+const Catalogs = ({ loadCatalogs, loading, total, location, history }) => {
+    const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' });
+    const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
     const searchParams = new URLSearchParams(location.search);
     const sizeParam = searchParams.get('size');
     const pageSize = parseInt(sizeParam);
     const isLegit = isFinite(Number(sizeParam));
 
     useEffect(() => {
-        if (!isLegit) {
-            const size = pageSize ? pageSize : 3;
-            history.replace(`/catalogs?size=${size}`);
-            loadCatalogs(size);
-        } else {
-            let paramsCount = 0;
-            searchParams.forEach((_) => paramsCount++);
-            if (paramsCount > 1) history.replace(`/catalogs?size=${pageSize}`);
-            loadCatalogs(pageSize);
-        }
-    }, [pageSize, isLegit]);//eslint-disable-line
+        if (!isLegit || searchParams.toString() !== `size=${pageSize}`) 
+            history.replace(`/catalogs?size=${pageSize ? pageSize : 3}`);
+        else loadCatalogs(pageSize, isDesktopXL, isTablet);
+    }, [searchParams]);//eslint-disable-line
 
     useEffect(() => {
         total && pageSize > total && history.replace(`/catalogs?size=${total}`)
-    }, [total, pageSize]);//eslint-disable-line
+    }, [total]);//eslint-disable-line
 
     const handleClick = useCallback(() => {
-        const size = (pageSize + 3 < total) ? pageSize + 3 : total;
-        history.replace(`/catalogs?size=${size}`);
-        loadCatalogs(size);
-    }, [pageSize, total]);// eslint-disable-line
-
-    if (!menuLoaded) return <Loader />
+        const i = isDesktopXL ? 4 : isTablet ? 3 : 2;
+        const size = (pageSize + i) % i === 0 ? pageSize + i :  pageSize + i - pageSize % i;
+        history.replace(`/catalogs?size=${size < total ? size : total}`);
+    }, [pageSize, total, isDesktopXL, isTablet]);// eslint-disable-line
 
     return (
         <div className='container'>
@@ -52,21 +45,19 @@ const Catalogs = ({ loadMenu, loadCatalogs, menuLoaded, loading, total, location
 
             <div className={styles.wrapper}>
                 <button
-                    style={pageSize === total ? { display: 'none' } : {}}
                     onClick={handleClick}
                     disabled={loading ? true : false}
-                    className='button_secondary'>
+                    className={cn('button_secondary', {[styles.hidden]: pageSize === total})}>
                     Загрузить еще
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     total: catalogsTotal(state),
     loading: catalogsLoading(state),
-    menuLoaded: menuLoaded(state),
-});
+})
 
-export default connect(mapStateToProps, { loadCatalogs, loadMenu })(Catalogs);
+export default withMenuLoader(connect(mapStateToProps, { loadCatalogs })(Catalogs))

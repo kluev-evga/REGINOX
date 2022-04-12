@@ -1,7 +1,7 @@
 .summary {
     margin: 0 -10px;
     padding: 10px;
-    background-color: var(--gray-light);
+    background-color: var(--light);
 }
 
 .summary h2 {
@@ -35,16 +35,24 @@
     color: var(--gray);
 }
 
+.price svg {
+    display: inline;
+    height: 11px;
+}
+
 .total {
     display: flex;
     justify-content: space-between;
     font-weight: 600;
 }
 
+.total svg {
+    display: inline;
+    height: 13px;
+}
+
 .summary button {
-    justify-content: center;
     margin-top: 15px;
-    padding: 15px 5px;
 }
 
 @media(min-width: 340px) {
@@ -85,7 +93,15 @@
         gap: 15px;
     }
 
+    .price svg {
+        height: 13px;
+    }
+
     .total {
         font-size: 20px;
+    }
+
+    .total svg {
+        height: 14px;
     }
 }

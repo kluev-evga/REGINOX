@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeItemfromCompare } from '../../../redux/actions';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useMediaQuery } from 'react-responsive';
+import ViewLargeSlideContent from '../view-large-slide-content/view-large-slide-content.component';
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
 import styles from './view-large.module.css';
 
@@ -15,9 +15,9 @@ const ViewLarge = ({ data, specs }) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.specs}>
-                {specs.map((item, i) => <span key={i}><p>{item}</p></span>)}
-            </div>
+            <ul className={styles.specs}>
+                {specs.map((item, i) => <li key={i}><p>{item}</p></li>)}
+            </ul>
 
             <div className={styles.slider}>
                 <Swiper
@@ -30,10 +30,8 @@ const ViewLarge = ({ data, specs }) => {
 
                     {data.map(item => (
                         <SwiperSlide key={item.id} className={styles.slider_item}>
-                            <Link className={styles.link} to={`/products/${item.url}/all/${item.productUrl}`}>
-                                <img src={process.env.PUBLIC_URL + item.images[0]} alt='productI item' />
-                            </Link>
-                            {specs.map((field, i) => (<span key={i}><p>{item.specs[field] || '-'}</p></span>))}
+
+                            <ViewLargeSlideContent item={item} specs={specs}/>
 
                             <button
                                 onClick={() => dispatch(removeItemfromCompare(item.id))}

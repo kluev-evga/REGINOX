@@ -133,16 +133,13 @@ export const reviewsLoading = (state, productUrl)  => state.reviews.loading[prod
 export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[productUrl];
 
 
-export const cartItems = state => state.cart.entities;
-export const cartItem = (state, id) => state.cart.items[id];
-export const cartItemsObj = (state, id) => state.cart.items;
+export const cartItems = state => state.cart.items;
+export const cartEntity = (state, id) => state.cart.entities[id];
+export const cartEntities = state => state.cart.entities;
 export const cartloading = state => state.cart.loading;
 export const cartloaded = state => state.cart.loaded;
-export const cartItemCount = (state, id) => state.cart.entities?.[id];
-export const cartItemsArray = createSelector(
-    cartItems,
-    (items) => Object.keys(items)
-);
+export const cartItemCount = (state, id) => state.cart.items[id];
+export const cartItemsArray = createSelector( cartItems, Object.keys );
 
 
 export const similarProducts = state => state.similarProducts.entities;
@@ -158,13 +155,7 @@ export const newItemsLoaded = state => state.newItems.loaded;
 
 
 export const compareLoaded = state => state.compare.loaded;
-export const itemInCompare = (state, id) => state.compare.entities?.[id];
-const compareItemsObj = state => state.compare.entities;
-export const compareItems = createSelector(
-    compareItemsObj,
-    Object.keys
-);
-export const compareCount = createSelector(
-    compareItems,
-    (items) => Object.keys(items).length
-);
+export const compareItem = (state, id) => state.compare.entities?.[id];
+const compareEntities = state => state.compare.entities;
+export const compareItems = createSelector( compareEntities, Object.keys );
+export const compareCount = createSelector( compareItems, (items) => Object.keys(items).length );

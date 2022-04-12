@@ -7,11 +7,6 @@
 .form input,
 .form textarea {
     margin-bottom: 10px;
-    border: 1px solid var(--gray-light);
-}
-
-.form textarea {
-    height: 180px;
 }
 
 .button {

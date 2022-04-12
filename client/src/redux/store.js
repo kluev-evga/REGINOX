@@ -1,11 +1,21 @@
 import { applyMiddleware, createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import reducer from './root-reducer';
+import rootReducer from './root-reducer';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: [ 'cart', 'compare'],
+};
 
-const enhancer = applyMiddleware(
-    thunk,
-);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default createStore(reducer, composeWithDevTools(enhancer));
+const enhancer = applyMiddleware(thunk);
+
+const store = createStore(persistedReducer, composeWithDevTools(enhancer));
+
+export const persistor = persistStore(store);
+export default store;

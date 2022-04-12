@@ -14,6 +14,10 @@
     color: var(--gray-med)
 }
 
+button.hidden {
+    display: none;
+}
+
 @media (min-width: 576px) {
     .wrapper {
         max-width: unset;

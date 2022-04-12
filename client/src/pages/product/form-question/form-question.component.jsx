@@ -1,10 +1,10 @@
-import styles from './ask-panel.module.css';
+import styles from './form-question.module.css';
 
 
-const AskPanel = () => (
+const FormQuestion = () => (
     <form className={styles.form}>
-        <input type="text" placeholder='ФИО' required autocomplete='off' />
-        <input type="email" placeholder='E-mail' required autocomplete='off' />
+        <input type="text" placeholder='ФИО' required autoComplete='off' />
+        <input type="email" placeholder='E-mail' required autoComplete='off' />
         <div className={styles.textarea}>
             <textarea type="text" placeholder='Ваш вопрос' required></textarea>
         </div>
@@ -15,4 +15,4 @@ const AskPanel = () => (
     </form>
 )
 
-export default AskPanel
+export default FormQuestion

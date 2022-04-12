@@ -1,16 +1,8 @@
 .container {
     padding: 10px;
-    background-color: var(--light);
     border-bottom: 1px solid var(--gray-med);
-}
-
-.container a:hover {
-    border-radius: 2px;
-    box-shadow: 0 0 5px 0 var(--gray-med);
-}
-
-.container a:hover img {
-    transform: scale(1.005);
+    background-color: var(--light);
+    transition: background-color 0.2s ease-out;
 }
 
 .container img {
@@ -25,25 +17,25 @@
 }
 
 .price {
-    margin-top: 18px;
+    margin-top: 14px;
     font-size: 17px;
 }
 
 .price svg {
     margin-left: 5px;
     display: inline;
-    height: 11px;
+    height: 12px;
     width: auto;
 }
 
 .promo {
-    margin-left: 14px;
+    margin-left: 10px;
     color: #F2994A;
     font-weight: 500;
 }
 
 .count {
-    margin-top: 10px;
+    margin-top: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,6 +62,11 @@
     color: var(--red);
 }
 
+.hover {
+    background-color: var(--white);
+    box-shadow: 0 0 5px #0000001a;
+}
+
 @media (min-width: 340px) {
     .container h2 {
         font-size: 16px;
@@ -81,37 +78,11 @@
     }
 
     .price svg {
-        height: 14px;
-    }
-
-    .promo {
-        margin-left: 20px;
-    }
-
-    .count {
-        margin-top: 16px;
+        height: 13px;
     }
 }
 
 @media (min-width: 576px) {
-    .container {
-        display: grid;
-        grid-template: auto 1fr / 150px 1fr;
-        column-gap: 15px;
-    }
-
-    .container h2 {
-        margin-top: 30px;
-    }
-
-    .container img {
-        grid-row: 1 / -1;
-        margin: 0;
-        padding: 0;
-    }
-}
-
-@media (min-width: 768px) {
     .container {
         display: grid;
         grid-template: auto / 100px 1fr 100px;

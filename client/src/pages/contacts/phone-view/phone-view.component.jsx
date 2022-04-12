@@ -11,11 +11,11 @@ const PhoneView = () => (
             <TabMoskow />
         </div>
         <div>
-            <h2 className={'title-1 ' + styles.title1}>Санкт-Петербург</h2>
+            <h2 className={styles.title1}>Санкт-Петербург</h2>
             <TabPeterburg />
         </div>
         <div>
-            <h2 className='title-1'>Обратная связь</h2>
+            <h2 className={styles.title1}>Обратная связь</h2>
             <Form />
         </div>
     </div>

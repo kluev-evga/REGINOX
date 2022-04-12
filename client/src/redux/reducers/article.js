@@ -25,7 +25,6 @@ const articleReducer = function (state = INITIAL_STATE, action) {
         error: null,
       }
     case LOAD_ARTICLE + SUCCESS:
-      console.log(data);
       return {
         ...state,
         entities: {...state.entities, [article]: data},

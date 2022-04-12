@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { cartItems, cartItemsArray, cartItemsObj } from '../../../redux/selectors';
+import { cartItems, cartItemsArray, cartEntities } from '../../../redux/selectors';
+import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg';
 import styles from './cart-summary.module.css';
 
 
-const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
+const CartSummary = ({ cartItems, cartItemsArray, cartEntities }) => {
     const { total, count, grossTotal } = cartItemsArray.reduce((acc, id) => {
-        const { p, discountedPrice } = productItems[id];
-        const itemPrice = discountedPrice ? discountedPrice : p;
+        const { p, discountedPrice } = cartEntities[id];
         const count = cartItems[id];
-        acc.total = acc.total + itemPrice * count;;
+        acc.total = acc.total + discountedPrice * count;;
         acc.count = acc.count + count;
         acc.grossTotal = acc.grossTotal + p * count;
         return acc
@@ -24,24 +24,24 @@ const CartSummary = ({ cartItems, cartItemsArray, productItems }) => {
 
             <div className={styles.price}>
                 <p>Товары<span>({count})</span></p>
-                <span>{grossTotalPrice} руб</span>
+                <span>{grossTotalPrice} <RublIcon/></span>
                 {!!discount && <p>Скидка</p>}
                 {!!discount && <span>{discount} %</span>}
             </div>
 
             <div className={styles.total}>
                 <p>Итого</p>
-                <span>{totalPrice} руб</span>
+                <span>{totalPrice} <RublIcon/></span>
             </div>
 
-            {!!total && <button className='button-block'>Перейти к оплате</button>}
+            {!!total && <button className='button-form'>Перейти к оплате</button>}
 
         </div>
     )
 }
 
 const mapStateToProps = state => ({
-    productItems: cartItemsObj(state),
+    cartEntities: cartEntities(state),
     cartItems: cartItems(state),
     cartItemsArray: cartItemsArray(state)
 })

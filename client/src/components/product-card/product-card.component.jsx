@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartItemCount, itemInCompare } from '../../redux/selectors';
+import { cartItemCount, compareItem } from '../../redux/selectors';
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions';
 import cn from 'classnames';
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg';
@@ -21,16 +21,17 @@ const RatingBlock = ({ r, reviewers }) => (
 const Button = ({ children, noFocus, ...rest }) => noFocus ? <span {...rest}>{children}</span> : <button {...rest}>{children}</button>;
 
 const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all', noFocus }) => {
-    const [hover, setHover] = useState(false);
-    const dispatch = useDispatch();
     const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem, } = product;
     const count = useSelector(state => cartItemCount(state, id));
-    const inCompare = useSelector(state => itemInCompare(state, id));
+    const inCompare = useSelector(state => compareItem(state, id));
     const incart = isFinite(count);
     const price = p.toLocaleString('ru-RU');
 
+    const [hover, setHover] = useState(false);
+
+    const dispatch = useDispatch();
     const handleClick = () => !incart ? dispatch(changeCartItemCount(id, 1)) : dispatch(removeItemFromCart(id));
-    const compareItem = () => dispatch(toggleCompareItem(id));
+    const addToCompare = () => dispatch(toggleCompareItem(id));
 
     return (
         <div className={cn(
@@ -62,14 +63,14 @@ const ProductCard = ({ tiles, product, withRating = true, categoryUrl = 'all', n
 
             <Button
                 noFocus={noFocus}
-                className={cn(styles.button, 'button-block', { [styles.active]: incart })}
+                className={cn(styles.btn_cart, { [styles.active]: incart })}
                 onClick={handleClick} >
                 <Cart /> {incart ? 'Товар в корзине' : 'В корзину'}
             </Button>
 
             <button
-                className={cn(styles.compare, { [styles.active]: inCompare })}
-                onClick={compareItem}>
+                className={cn(styles.btn_compare, { [styles.active]: inCompare })}
+                onClick={addToCompare}>
                 <CompareIcon />
             </button>
         </div>

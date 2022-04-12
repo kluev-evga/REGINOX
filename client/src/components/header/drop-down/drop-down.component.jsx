@@ -32,7 +32,7 @@ const DropDown = ({ links, isHome, routeUrl }) => {
                             to={`/products/${url}/all`}
                             key={url}
                             onClick={() => setIsOpen(false)}
-                            className={cn(styles.link, { 'link_active': url === routeUrl })}>
+                            className={cn(styles.link, 'temp-disabled', { 'link_active': url === routeUrl })}>
                             {titleShort || title}
                         </Link>
                     ))}

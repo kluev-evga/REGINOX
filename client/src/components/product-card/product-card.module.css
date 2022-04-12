@@ -36,8 +36,8 @@
     color: var(--gray-med);
 }
 
-.clear {
-    color: transparent !important;
+.rating .clear {
+    color: transparent;
 }
 
 .title {
@@ -58,18 +58,30 @@
     width: auto;
 }
 
-.button {
-    justify-content: center;
-    font-size: 14px;
+.btn_cart {
+    width: 100%;
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white);
+    font-size: 14px;
+    background-color: var(--red);
 }
 
-.button svg {
+.btn_cart svg {
+    margin-right: 10px;
     width: 20px;
     height: 20px;
 }
 
-.button.active {
+.btn_cart:hover,
+.btn_cart:focus-visible {
+    background-color: var(--graphite);
+}
+
+.btn_cart.active {
     background-color: var(--gray);
 }
 
@@ -97,18 +109,18 @@
     background-color: #2e9cdc;
 }
 
-.compare {
+.btn_compare {
     position: absolute;
     right: 5px;
     top: 5px;
     color: var(--graphite);
 }
 
-.compare:hover {
+.btn_compare:hover {
     color: var(--red);
 }
 
-.compare.active {
+.btn_compare.active {
     border-radius: 2px;
     outline: 1px solid #F2994A;
     background-color: var(--graphite);
@@ -234,13 +246,13 @@
         height: 13px;
     }
 
-    .button {
+    .btn_cart {
         justify-content: flex-start;
         font-size: 16px;
         padding: 12px 30px;
     }
 
-    .button svg {
+    .btn_cart svg {
         width: 25px;
         height: 25px;
     }
@@ -253,6 +265,11 @@
 
     .promo::before {
         top: 29px;
+    }
+
+    .btn_compare {
+        right: 10px;
+        top: 10px;
     }
 
     /* --------------------------------------------------- */
@@ -303,7 +320,7 @@
         padding: 20px 0 0;
     }
 
-    .row .button {
+    .row .btn_cart {
         order: 1;
         display: flex;
         justify-content: center;
@@ -318,17 +335,23 @@
     .row.promo::before {
         top: 25px;
     }
+
+    .row .btn_compare {
+        right: 5px;
+        top: 16px;
+    }
 }
 
 @media (min-width: 1400px) {
     .row.card {
-        grid-template: 1fr / 180px 1fr 150px 90px 200px;
+        grid-template: 1fr / 180px 1fr 150px 140px 200px;
         grid-auto-flow: column;
         align-items: center;
         padding-right: 20px;
     }
 
     .row .link {
+        grid-area: 1 / 1 / -1 / 4;
         padding: 10px 0 10px 65px;
     }
 
@@ -347,7 +370,15 @@
     }
 
     .row .rating {
+        grid-area: 1 / 3 / -1 / 4;
         order: unset;
         padding: 0;
+        pointer-events: none;
+    }
+
+    .row .btn_compare {
+        right: 240px;
+        top:50%;
+        margin-top: -15px;
     }
 }

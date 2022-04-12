@@ -22,11 +22,11 @@ const NavLinks = ({ menuLinks, isHome }) => {
 
     return (
         <nav className={styles.nav}>
-            {(isLarge ? menuLinks : navLinks).map(({ title, titleShort, url }) => (
+            {(isLarge ? menuLinks : navLinks).map(({ title, titleShort, url }, i) => (
                 <Link
                     to={`/products/${url}/all`}
                     key={url}
-                    className={cn(styles.link, { 'link_active': url === routeUrl })}>
+                    className={cn(styles.link, { 'link_active': url === routeUrl, 'temp-disabled': i > 5 })}>
                     {titleShort || title}
                 </Link>
             ))}

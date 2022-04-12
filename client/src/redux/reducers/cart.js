@@ -2,7 +2,7 @@ import { REQUEST, SUCCESS, FAILURE, LOAD_CART, ADD_ITEM_TO_CART, REMOVE_ITEM_FRO
 
 
 const INITIAL_STATE = {
-    items: [],
+    items: {},
     entities: {},
     loading: false,
 }
@@ -20,7 +20,7 @@ const cartReducer = function (state = INITIAL_STATE, action) {
       case LOAD_CART + SUCCESS:
           return {
             ...state,
-            items: data,
+            entities: data,
             loading: false,
           };
       case LOAD_CART + FAILURE:
@@ -32,14 +32,14 @@ const cartReducer = function (state = INITIAL_STATE, action) {
       case ADD_ITEM_TO_CART:
           return {
               ...state,
-              entities: {...state.entities, [id]: count},
+              items: {...state.items, [id]: count},
           };
       case REMOVE_ITEM_FROM_CART:
-          const entities = {...state.entities};
-          delete entities[id];
+          const items = {...state.items};
+          delete items[id];
           return {
               ...state,
-              entities: entities,
+              items: items,
           };
       default:
           return state;

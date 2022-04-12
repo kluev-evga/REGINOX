@@ -15,10 +15,11 @@ const Contacts = () => {
                 <div className="breadcrumbs">
                     <Link to='/home'>Главная</Link>  / Контакты
                 </div>
-                <h1 className={'title ' + styles.title}>контакты</h1>
+                <h1 className='title'>контакты</h1>
 
-                {isTablet && <TabsBlock />}
-                {!isTablet && <PhoneView />}
+                <div className={styles.wrapper}>
+                    {isTablet ? <TabsBlock /> : <PhoneView />}
+                </div>
 
             </div>
 

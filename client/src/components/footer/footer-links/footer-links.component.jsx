@@ -1,11 +1,14 @@
 import { NavLink, Link, useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { menuLinks } from '../../../redux/selectors';
+import { useMediaQuery } from 'react-responsive';
 import cn from 'classnames';
 import styles from './footer-links.module.css';
 
 
 const FooterLinks = () => {
+    const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' });
+    const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
     const match = useRouteMatch('/products/:url?');
     const routeUrl = match?.params?.url;
     const links = useSelector(menuLinks);
@@ -21,7 +24,7 @@ const FooterLinks = () => {
                     <NavLink to='/sertificates' className='link_secondary' activeClassName='link_active'>Сертификаты и гарантии</NavLink>
                     <NavLink to='/articles' className='link_secondary' activeClassName='link_active'>Статьи</NavLink>
                     <NavLink to='/information' className='link_secondary' activeClassName='link_active'>Информация</NavLink>
-                    <NavLink to='/catalogs?size=3' className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
+                    <NavLink to={`/catalogs?size=${isDesktopXL ? 4 : isTablet ? 3 : 2}`} className='link_secondary' activeClassName='link_active'>Каталоги</NavLink>
                     <NavLink to='/delivery' className='link_secondary' activeClassName='link_active'>Доставка и оплата</NavLink>
                     <NavLink to='/contacts' className='link_secondary' activeClassName='link_active'>Контакты</NavLink>
                 </div>

@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { removeItemfromCompare } from '../../../redux/actions';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg';
-import styles from './slider.module.css';
+import styles from './view-phone-slider.module.css';
 
 
-const Slider = ({ data, specs }) => {
+const ViewPhoneSlider = ({ data, specs }) => {
     const dispatch = useDispatch();
 
     return (
@@ -39,4 +39,4 @@ const Slider = ({ data, specs }) => {
     )
 }
 
-export default Slider
+export default ViewPhoneSlider

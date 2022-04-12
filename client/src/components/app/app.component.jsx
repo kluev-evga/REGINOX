@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import MenuContainer from '../menu-container/menu-container.component';
 import Header from '../header/header.component';
 import Footer from '../footer/footer.component';
+import Search from '../search/search.component';
 
 import Home from '../../pages/home/home.component';
 import ProductsRoutes from '../products-routes/products-routes.component';
@@ -36,13 +37,16 @@ import 'swiper/scss/a11y';
 
 import './app.scss';
 
-SwiperCore.use([Pagination, Navigation, A11y, Autoplay, Thumbs]);
 
+SwiperCore.use([Pagination, Navigation, A11y, Autoplay, Thumbs]);
 
 const App = () => (
     <MenuContainer>
         <main id='page-wrap'>
             <Header />
+
+            <Search/>
+
 
             <Switch>
                 <Redirect exact from='/' to='/home' />

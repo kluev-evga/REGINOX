@@ -1,9 +1,9 @@
 import Specifications from "../specifications/specifications.component";
 import Collapsible from 'react-collapsible';
 import FeedbackStatsPanel from "../feedback-stats-panel/feedback-stats-panel.component";
-import FeedbackLeavePanel from "../feedback-leave-panel/feedback-leave-panel.component";
+import FormFeedback from "../form-feedback/form-feedback.component";
 import FeedbackItemsContainer from '../feedback-items-container/feedback-items-container.component';
-import AskPanel from '../ask-panel/ask-panel.component';
+import FormQuestion from '../form-question/form-question.component';
 import styles from './phone-view.module.css';
 
 
@@ -25,13 +25,13 @@ const PhoneView = ({ specs }) => (
             openedClassName={styles.collapsible}
             triggerClassName='button-form'>
 
-            <FeedbackLeavePanel />
+            <FormFeedback />
         </Collapsible>
 
         <FeedbackItemsContainer />
 
         <h2 className={styles.title3}>Задать вопрос</h2>
-        <AskPanel />
+        <FormQuestion />
     </div>
 )
 

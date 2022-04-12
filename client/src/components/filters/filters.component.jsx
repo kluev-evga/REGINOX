@@ -8,11 +8,12 @@ import styles from './filters.module.css';
 
 const FiltersContainer = () => {
     const match = useRouteMatch('/products/:url?');
-    const url = match.params.url;
+    const url = match?.params.url;
     const loaded = useSelector((state) => productsLoaded(state)(url));
-    const [categories, ...filtersGrop] = useSelector((state) => filters(state)(url));
+    const filtersData = useSelector((state) => filters(state)(url));
 
     if (!loaded) return null;
+    const [categories, ...filtersGrop] = filtersData;
 
     return (
         <div className={styles.wrapper}>

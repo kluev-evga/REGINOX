@@ -101,7 +101,7 @@ const createProductItem = ({id, promo, newItem, title, images, price, r}, url) =
     img: images[0],
     alt: title,
     url,
-    productUrl: translit(title.split(',').slice(0,1).join(' ')),
+    productUrl: translit(title.split(',').slice(0,1).join(' ')) + '-' + id,
     p: price,
     r,
     reviewers: Math.round(randomInteger(0, 125)),
@@ -130,7 +130,7 @@ const getProductData = (productItems) => {
 
   for (let url in productItems) {
       productdata[url] = productItems[url].reduce( (acc, item) => {
-          const productUrl = translit(item.title.split(',').slice(0,1).join(' '));
+          const productUrl = translit(item.title.split(',').slice(0,1).join(' ')) + '-' + item.id;
           acc[productUrl] = item;
           return acc;
       }, {});

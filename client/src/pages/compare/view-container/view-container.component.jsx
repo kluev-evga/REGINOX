@@ -3,6 +3,7 @@ import { compareItems, productItemById } from '../../../redux/selectors';
 import { useMediaQuery } from 'react-responsive';
 import ViewPhone from '../view-phone/view-phone.component';
 import ViewLarge from '../view-large/view-large.component';
+import styles from './veiw-container.module.css';
 
 
 const ViewContainer = ({ compareItems, productItem }) => {
@@ -15,7 +16,6 @@ const ViewContainer = ({ compareItems, productItem }) => {
     }, {}));
 
     const data = items.map(({ id, images, specs, productUrl, url }) => {
-        console.log(productUrl);
         const itemSpecs = specs.reduce((acc, item) => {
             acc[item.dt] = item.dd;
             return acc;
@@ -23,7 +23,7 @@ const ViewContainer = ({ compareItems, productItem }) => {
         return ({ id, images, specs: itemSpecs, productUrl, url })
     })
 
-    if (specs.length === 0) return <div>ничего не выбрано</div>
+    if (specs.length === 0) return <div className={styles.empty}>ничего не выбрано</div>
 
     return isLarge
         ? <ViewLarge items={compareItems} data={data} specs={specs} />

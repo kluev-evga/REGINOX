@@ -24,12 +24,6 @@
 .textarea {
     margin: 45px -4px 0;
     padding: 6px 4px 4px;
-    border-radius: 2px;
-}
-
-.form textarea {
-    margin: 0px;
-    height: 160px;
 }
 
 .stars {
@@ -102,7 +96,6 @@
     .form input,
     .form textarea {
         background: unset;
-        border: 1px solid var(--gray-light);
     }
 
     .form input:last-of-type {
@@ -144,33 +137,3 @@
         height: 25px;
     }
 }
-
-/* 
-.ready_container {
-    grid-column: 1 / -1;
-}
-
-.ready_container button {
-    width: 100%;
-    padding: 15px 0;
-    color: var(--white);
-    background-color: var(--graphite);
-}
-
-.ready_container button:hover {
-    background-color: var(--red);
-}
-
-.ready_container span {
-    display: block;
-    width: 100%;
-    padding: 15px 0;
-    text-align: center;
-    color: var(--graphite);
-    background-color: var(--gray-light);
-}
-
-.ready_container div {
-    display: flex;
-}
- */
