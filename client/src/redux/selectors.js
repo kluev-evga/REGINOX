@@ -5,6 +5,7 @@ export const appStatus = state => state.app.status;
 export const appIsHomePage = state => state.app.isHomePage;
 export const appIsPopUp = state => state.app.isPopUp;
 export const appIsTiles = state => state.app.isTiles;
+export const appSearchIsOpen = state => state.app.isSearchOpen;
 
 
 export const menuLoaded = state => state.menu.loaded;
@@ -44,11 +45,11 @@ export const homeAddressBar = state => state.home.addressBar;
 export const homePopularProducts = state => state.home.popularProducts;
 
 
+export const catalogs = state => state.catalogs.entities;
+export const catalogsTotal = state => state.catalogs.total;
 export const catalogsLoading = state => state.catalogs.loading;
 export const catalogsLoaded = state => state.catalogs.loaded;
 export const catalogsError = state => state.catalogs.error;
-export const catalogs = state => state.catalogs.entities;
-export const catalogsTotal = state => state.catalogs.total;
 
 
 export const sertificates = state => state.sertificates.entities;
@@ -93,7 +94,7 @@ export const articleError = (state, {match}) => state.article.error?.[match.para
 
 
 export const productsLoading = state => url => state.products.loading?.[url];
-export const productsLoaded = state => url => state.products.loaded?.[url];
+export const productsLoaded = state => url => state.products.loaded?.[url] || false;
 export const product = (state, url, id) => state.products.products[url][id];
 
 
@@ -116,9 +117,9 @@ export const queryString = (state, props) => state.filters.queryString?.[props.m
 export const productItems = state => state.productItems.entities;
 export const productItem = state => productUrl => productItems(state)[productUrl];
 export const productItemLoading = state => productUrl => state.productItems.loading[productUrl];
-export const productItemLoaded = state => productUrl => state.productItems.loaded[productUrl];
+export const productItemLoaded = state => productUrl => state.productItems.loaded[productUrl] || false;
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
-const productItemsById = createSelector(
+export const productItemsById = createSelector(
     productItems,
     items => items && Object.keys(items).reduce((acc, url) => {
             acc[items[url].id] = {...items[url], productUrl: url};
@@ -136,8 +137,8 @@ export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[produc
 export const cartItems = state => state.cart.items;
 export const cartEntity = (state, id) => state.cart.entities[id];
 export const cartEntities = state => state.cart.entities;
-export const cartloading = state => state.cart.loading;
-export const cartloaded = state => state.cart.loaded;
+export const cartLoading = state => state.cart.loading;
+export const cartLoaded = state => state.cart.loaded;
 export const cartItemCount = (state, id) => state.cart.items[id];
 export const cartItemsArray = createSelector( cartItems, Object.keys );
 
@@ -155,6 +156,7 @@ export const newItemsLoaded = state => state.newItems.loaded;
 
 
 export const compareLoaded = state => state.compare.loaded;
+export const compareLoading = state => state.compare.loading;
 export const compareItem = (state, id) => state.compare.entities?.[id];
 const compareEntities = state => state.compare.entities;
 export const compareItems = createSelector( compareEntities, Object.keys );

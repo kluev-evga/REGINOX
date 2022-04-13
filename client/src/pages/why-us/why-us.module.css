@@ -1,255 +1,260 @@
 .cards {
-    padding: 20px 0;
-    margin-bottom: 40px;
-    background-color: var(--gray-light);
+   padding: 20px 0;
+   margin-bottom: 40px;
+   background-color: var(--gray-light);
 }
 
 .wrapper {
-    display: grid;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
+   display: grid;
+   align-items: center;
+   gap: 20px;
+   text-align: center;
 }
 
 .cards_item svg {
-    flex-shrink: 0;
-    margin: 0 auto;
+   flex-shrink: 0;
+   margin: 0 auto;
 }
 
 .cards_item b {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
+   display: block;
+   margin-bottom: 5px;
+   font-weight: 600;
 }
 
 .cards_item p {
-    line-height: 1.4;
+   line-height: 1.4;
 }
 
 @media (min-width: 576px) {
-    .cards {
-        padding: 50px 0;
-    }
+   .cards {
+      padding: 50px 0;
+   }
 
-    .wrapper {
-        grid-template-columns: auto;
-        justify-content: center;
-        gap: 30px;
-        text-align: left;
-    }
+   .wrapper {
+      grid-template-columns: auto;
+      justify-content: center;
+      gap: 30px;
+      text-align: left;
+   }
 
-    .cards_item {
-        display: flex;
-        align-items: center;
-    }
+   .cards_item {
+      display: flex;
+      align-items: center;
+   }
 
-    .cards_item svg {
-        margin: 0 30px 0 0;
-    }
+   .cards_item svg {
+      margin: 0 30px 0 0;
+   }
 
-    .cards_item b {
-        font-size: 20px;
-    }
+   .cards_item b {
+      font-size: 20px;
+   }
 }
 
 @media (min-width: 768px) {
-    .wrapper {
-        grid-template-columns: repeat(3, 240px);
-        align-items: start;
-        text-align: center;
-        gap: 4px;
-    }
+   .wrapper {
+      grid-template-columns: repeat(3, 240px);
+      align-items: start;
+      text-align: center;
+      gap: 4px;
+   }
 
-    .cards_item {
-        display: block;
-    }
+   .cards_item {
+      display: block;
+   }
 
-    .cards_item svg {
-        margin: 0 auto 10px;
-    }
+   .cards_item svg {
+      margin: 0 auto 10px;
+   }
 }
 
 @media (min-width: 992px) {
-    .wrapper {
-        gap: 80px;
-    }
+   .wrapper {
+      gap: 80px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .wrapper {
-        max-width: 1200px !important;
-        grid-template-columns: 1fr 0.85fr 0.9fr;
-        gap: 20px;
-        align-items: center;
-        text-align: left;
-    }
+   .wrapper {
+      max-width: 1200px !important;
+      grid-template-columns: 1fr 0.85fr 0.9fr;
+      gap: 20px;
+      align-items: center;
+      text-align: left;
+   }
 
-    .cards {
-        padding: 90px 0;
-        margin-bottom: 50px;
-    }
+   .cards {
+      padding: 90px 0;
+      margin-bottom: 50px;
+   }
 
-    .cards_item {
-        display: flex;
-    }
+   .cards_item {
+      display: flex;
+   }
 
-    .cards_item svg {
-        margin: 0 20px 0 0;
-    }
+   .cards_item svg {
+      margin: 0 20px 0 0;
+   }
 }
 
 /* ---------------------------------------------- */
 .accomplishments {
-    padding-top: 10px;
-    display: grid;
-    gap: 20px;
-    color: var(--gray-med);
+   padding-top: 10px;
+   display: grid;
+   gap: 20px;
+   color: var(--gray-med);
 }
 
 .accomplishments div {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    background-color: var(--black);
+   display: grid;
+   grid-template-rows: auto 1fr;
+   background-color: var(--black);
 }
 
 .accomplishments img {
-    grid-area: 1 / 1 / 2 / -1;
-    width: 100%;
-    height: auto;
-    margin-bottom: 30px;
+   grid-area: 1 / 1 / 2 / -1;
+   width: 100%;
+   height: auto;
+   margin-bottom: 30px;
 }
 
 .accomplishments p {
-    padding: 20px;
-    grid-area: 1 / 1 / 2 / -1;
-    align-self: end;
-    font-size: 14px;
-    text-align: center;
+   padding: 20px;
+   grid-area: 1 / 1 / 2 / -1;
+   align-self: end;
+   font-size: 14px;
+   text-align: center;
 }
 
 .accomplishments span {
-    display: block;
-    padding: 20px;
-    grid-area: 1 / 1 / 2 / -1;
-    align-self: center;
-    font-size: 14px;
-    text-align: center;
+   display: block;
+   padding: 20px;
+   grid-area: 1 / 1 / 2 / -1;
+   align-self: center;
+   font-size: 14px;
+   text-align: center;
 }
 
 @media (min-width: 340px) {
-    .accomplishments span {
-        font-size: 18px;
-    }
+   .accomplishments span {
+      font-size: 18px;
+   }
 
-    .accomplishments p {
-        padding-bottom: 30px;
-        font-size: 16px;
-    }
+   .accomplishments p {
+      padding-bottom: 30px;
+      font-size: 16px;
+   }
 }
 
 @media (min-width: 576px) {
-    .accomplishments {
-        grid-template-columns: repeat(2, 1fr);
-    }
+   .accomplishments {
+      grid-template-columns: repeat(2, 1fr);
+   }
 
-    .accomplishments span {
-        align-self: start;
-        font-weight: 600;
-        background: linear-gradient(#04041f6c, transparent 35%);
-        height: 100%;
-    }
+   .accomplishments span {
+      align-self: start;
+      font-weight: 600;
+      background: linear-gradient(#04041f6c, transparent 35%);
+      height: 100%;
+   }
 
-    .accomplishments p {
-        z-index: 1;
-        padding-bottom: 30px;
-        line-height: 1.3;
-        font-size: 14px;
-    }
+   .accomplishments p {
+      z-index: 1;
+      padding-bottom: 30px;
+      line-height: 1.3;
+      font-size: 14px;
+   }
 }
 
 @media (min-width: 768px) {
-    .accomplishments span {
-        padding: 30px 20px;
-    }
+   .accomplishments span {
+      padding: 30px 20px;
+   }
 
-    .accomplishments p {
-        font-size: 16px;
-    }
+   .accomplishments p {
+      font-size: 16px;
+   }
 }
 
 @media (min-width: 992px) {
-    .accomplishments {
-        grid-template-columns: repeat(3, 1fr);
-    }
+   .accomplishments {
+      grid-template-columns: repeat(3, 1fr);
+   }
 
-    .accomplishments span {
-        padding-top: 20px;
-        font-size: 16px;
-    }
+   .accomplishments span {
+      padding-top: 20px;
+      font-size: 16px;
+   }
 
-    .accomplishments p {
-        padding: 20px;
-    }
+   .accomplishments p {
+      padding: 20px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .accomplishments {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0px;
-    }
+   .accomplishments {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0px;
+   }
 
-    .accomplishments div {
-        grid-template-rows: unset;
-        background-color: var(--black);
-        background: none;
-    }
+   .accomplishments div {
+      grid-template-rows: unset;
+      background-color: var(--black);
+      background: none;
+   }
 
-    .accomplishments img {
-        padding: 25px;
-        margin-bottom: 0;
-    }
+   .accomplishments img {
+      padding: 25px;
+      margin-bottom: 0;
+   }
 
-    .accomplishments span {
-        padding-bottom: 50px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        background: none;
-    }
+   .accomplishments span {
+      padding-bottom: 50px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background: none;
+   }
 
-    .accomplishments p {
-        width: 100%;
-        height: 100%;
-        padding: 30px;
-        align-self: center;
+   .accomplishments p {
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      align-self: center;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        text-align: center;
+      text-align: center;
 
-        background-color: var(--black);
-        mask-image: linear-gradient(90deg, black 33%, transparent 66%, transparent);
-        mask-position: 100% 0;
-        mask-repeat: no-repeat;
-        mask-size: 300% 100%;
-        transition: mask-position 0.4s ease-in;
-    }
+      background-color: var(--black);
+      mask-image: linear-gradient(
+         90deg,
+         black 33%,
+         transparent 66%,
+         transparent
+      );
+      mask-position: 100% 0;
+      mask-repeat: no-repeat;
+      mask-size: 300% 100%;
+      transition: mask-position 0.4s ease-in;
+   }
 
-    .accomplishments div:hover p {
-        mask-position: 0;
-        transition: mask-position 0.5s ease-in;
-    }
+   .accomplishments div:hover p {
+      mask-position: 0;
+      transition: mask-position 0.5s ease-in;
+   }
 }
 
 @media (min-width: 1600px) {
-    .accomplishments p {
-        font-size: 20px;
-    }
+   .accomplishments p {
+      font-size: 20px;
+   }
 
-    .accomplishments span {
-        padding: 60px 50px;
-        font-size: 18px;
-    }
+   .accomplishments span {
+      padding: 60px 50px;
+      font-size: 18px;
+   }
 }

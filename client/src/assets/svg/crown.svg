@@ -1,8 +1,6 @@
 <svg width="395" height="280" viewBox="0 0 395 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-        d="m22.5 93.6 53.4 109 244-1.4L372.1 88h-49l-32.5 60h-65.2V93.6H171V148h-67.5L76 93.6H22.5ZM75.9 280v-43h248v43h-248Z"
-        fill="#fff" />
-    <ellipse cx="33.9" cy="34" rx="33.9" ry="34" fill="#fff" />
-    <ellipse cx="197.5" cy="34" rx="33.9" ry="34" fill="#fff" />
-    <ellipse cx="361.1" cy="34" rx="33.9" ry="34" fill="#fff" />
+    <path  fill="CurrentColor" d="m22.5 93.6 53.4 109 244-1.4L372.1 88h-49l-32.5 60h-65.2V93.6H171V148h-67.5L76 93.6H22.5ZM75.9 280v-43h248v43h-248Z" />
+    <ellipse cx="33.9" cy="34" rx="33.9" ry="34" fill="CurrentColor" />
+    <ellipse cx="197.5" cy="34" rx="33.9" ry="34" fill="CurrentColor" />
+    <ellipse cx="361.1" cy="34" rx="33.9" ry="34" fill="CurrentColor" />
 </svg>

@@ -1,49 +1,49 @@
 .link {
-    display: block;
-    margin-bottom: 30px;
+   display: block;
+   margin-bottom: 30px;
 }
 
 .link span {
-    justify-content: center;
+   justify-content: center;
 }
 
 .link img {
-    max-height: 200px;
-    object-fit: cover;
-    object-position: center
+   max-height: 200px;
+   object-fit: cover;
+   object-position: center;
 }
 
 @media (min-width: 576px) {
-    .link img {
-        max-height: 250px;
-    }
+   .link img {
+      max-height: 250px;
+   }
 }
 
 @media (min-width: 768px) {
-    .link {
-        margin-bottom: 40px;
-    }
+   .link {
+      margin-bottom: 40px;
+   }
 
-    .link img {
-        max-height: 280px;
-    }
+   .link img {
+      max-height: 280px;
+   }
 }
 
 @media (min-width: 992px) {
-    .link {
-        margin: 20px auto 60px;
-        max-width: 960px;
-    }
+   .link {
+      margin: 20px auto 60px;
+      max-width: 960px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .link img {
-        max-height: 340px;
-    }
+   .link img {
+      max-height: 340px;
+   }
 }
 
 @media (min-width: 1400px) {
-    .link img {
-        max-height: 360px;
-    }
+   .link img {
+      max-height: 360px;
+   }
 }

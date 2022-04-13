@@ -1,21 +1,21 @@
 .nav {
-    grid-column: 1 / -1;
-    margin: 38px -8px 8px;
-    display: flex;
-    justify-content: space-between;
+   grid-column: 1 / -1;
+   margin: 38px -8px 8px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .link {
-    padding: 8px;
-    line-height: 1;
+   padding: 8px;
+   line-height: 1;
 }
 
 .link:hover {
-    color: var(--gray-med);
+   color: var(--gray-med);
 }
 
 @media (min-width: 1400px) {
-    .nav {
-        margin: 45px -8px 8px;
-    }
+   .nav {
+      margin: 45px -8px 8px;
+   }
 }

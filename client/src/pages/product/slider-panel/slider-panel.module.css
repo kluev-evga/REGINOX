@@ -1,231 +1,231 @@
 .container {
-    padding: 30px 0 50px;
-    display: grid;
-    row-gap: 15px;
+   padding: 30px 0 50px;
+   display: grid;
+   row-gap: 15px;
 }
 
 .articul {
-    font-weight: 500;
-    color: var(--gray);
+   font-weight: 500;
+   color: var(--gray);
 }
 
 .articul span {
-    margin-left: 10px;
+   margin-left: 10px;
 }
 
 .price {
-    padding-bottom: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--gray);
+   padding-bottom: 8px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: var(--gray);
 }
 
 .price span {
-    font-size: 18px;
+   font-size: 18px;
 }
 
 .price span svg {
-    display: inline;
-    height: 13px;
+   display: inline;
+   height: 13px;
 }
 
 .price b {
-    font-weight: 500;
-    color: #F2994A;
+   font-weight: 500;
+   color: #f2994a;
 }
 
 .compare {
-    padding: 0 3px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    color: var(--gray);
+   padding: 0 3px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-weight: 500;
+   color: var(--gray);
 }
 
 .compare.active {
-    border-radius: 2px;
-    outline: 1px solid #F2994A;
-    background-color: var(--graphite);
-    color: #F2994A;
+   border-radius: 2px;
+   outline: 1px solid #f2994a;
+   background-color: var(--graphite);
+   color: #f2994a;
 }
 
 .count {
-    height: 60px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 500;
-    color: var(--gray);
-    background-color: var(--gray-light);
+   height: 60px;
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-weight: 500;
+   color: var(--gray);
+   background-color: var(--gray-light);
 }
 
 .count div {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   width: 100px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .count div span {
-    min-width: 22px;
-    display: flex;
-    justify-content: center;
-    user-select: none;
+   min-width: 22px;
+   display: flex;
+   justify-content: center;
+   user-select: none;
 }
 
 .buy {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 10px;
-    color: var(--white);
+   display: flex;
+   flex-wrap: wrap;
+   row-gap: 10px;
+   color: var(--white);
 }
 
 .buy button {
-    height: 60px;
-    width: 100%;
+   height: 60px;
+   width: 100%;
 }
 
 .buy button:first-of-type {
-    background-color: var(--graphite);
+   background-color: var(--graphite);
 }
 
 .buy button:last-of-type {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--red);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--red);
 }
 
 .buy button:last-of-type span {
-    width: 0;
-    overflow: hidden;
-    text-align: right;
-    background-color: var(--red);
-    white-space: nowrap;
-    opacity: 0;
-    transition: width 0.1s ease, opacity 0.3s linear;
+   width: 0;
+   overflow: hidden;
+   text-align: right;
+   background-color: var(--red);
+   white-space: nowrap;
+   opacity: 0;
+   transition: width 0.1s ease, opacity 0.3s linear;
 }
 
 .buy button:last-of-type.active span {
-    width: 145px;
-    opacity: 1;
-    transition: width 0.1s ease, opacity 0.25s ease-in;
+   width: 145px;
+   opacity: 1;
+   transition: width 0.1s ease, opacity 0.25s ease-in;
 }
 
 @media (min-width: 768px) {
-    .container {
-        align-content: start;
-        padding-bottom: 10px;
-    }
+   .container {
+      align-content: start;
+      padding-bottom: 10px;
+   }
 
-    .count {
-        padding-right: 5px;
-    }
+   .count {
+      padding-right: 5px;
+   }
 
-    .count button {
-        padding: 5px;
-    }
+   .count button {
+      padding: 5px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        row-gap: 20px;
-    }
+   .container {
+      row-gap: 20px;
+   }
 
-    .articul {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
+   .articul {
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
 
-    .articul span {
-        letter-spacing: 1.2px;
-    }
+   .articul span {
+      letter-spacing: 1.2px;
+   }
 
-    .price,
-    .count {
-        width: 410px;
-    }
+   .price,
+   .count {
+      width: 410px;
+   }
 
-    .price span {
-        font-size: 20px;
-    }
+   .price span {
+      font-size: 20px;
+   }
 
-    .price span svg {
-        height: 14px;
-    }
+   .price span svg {
+      height: 14px;
+   }
 
-    .count {
-        padding: 0 10px 0 20px;
-        height: 65px;
-    }
+   .count {
+      padding: 0 10px 0 20px;
+      height: 65px;
+   }
 
-    .count button:hover {
-        color: var(--red);
-    }
+   .count button:hover {
+      color: var(--red);
+   }
 
-    .buy {
-        flex-wrap: unset;
-    }
+   .buy {
+      flex-wrap: unset;
+   }
 
-    .buy button {
-        height: 65px;
-    }
+   .buy button {
+      height: 65px;
+   }
 
-    .buy button:first-of-type {
-        width: 270px;
-    }
+   .buy button:first-of-type {
+      width: 270px;
+   }
 
-    .buy button:last-of-type {
-        width: 140px;
-        transition: flex-grow 0.1s ease;
-    }
+   .buy button:last-of-type {
+      width: 140px;
+      transition: flex-grow 0.1s ease;
+   }
 
-    .buy button:last-of-type.active {
-        flex-grow: 1;
-    }
+   .buy button:last-of-type.active {
+      flex-grow: 1;
+   }
 }
 
 @media (min-width: 1400px) {
-    .container {
-        row-gap: 25px;
-    }
+   .container {
+      row-gap: 25px;
+   }
 
-    .articul {
-        font-size: 20px;
-    }
+   .articul {
+      font-size: 20px;
+   }
 }
 
 @media (min-width: 1600px) {
-    .container {
-        row-gap: 30px;
-    }
+   .container {
+      row-gap: 30px;
+   }
 
-    .articul {
-        margin-bottom: 20px;
-        font-size: 22px;
-    }
+   .articul {
+      margin-bottom: 20px;
+      font-size: 22px;
+   }
 
-    .price,
-    .count {
-        width: 510px;
-    }
+   .price,
+   .count {
+      width: 510px;
+   }
 
-    .price span {
-        font-size: 24px;
-    }
+   .price span {
+      font-size: 24px;
+   }
 
-    .price span svg {
-        height: 17px;
-    }
+   .price span svg {
+      height: 17px;
+   }
 
-    .buy {
-        width: 642px;
-    }
+   .buy {
+      width: 642px;
+   }
 
-    .buy button:first-of-type {
-        width: 370px;
-    }
+   .buy button:first-of-type {
+      width: 370px;
+   }
 }

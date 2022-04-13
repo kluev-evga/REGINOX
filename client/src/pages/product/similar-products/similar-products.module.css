@@ -1,29 +1,29 @@
 .title {
-    padding-right: 10px;
-    padding-left: 10px;
+   padding-right: 10px;
+   padding-left: 10px;
 }
 
 .spinner {
-    margin: 0 auto;
+   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-    .title {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+   .title {
+      padding-right: 20px;
+      padding-left: 20px;
+   }
 }
 
 @media (min-width: 992px) {
-    .title {
-        padding-right: 35px;
-        padding-left: 35px;
-    }
+   .title {
+      padding-right: 35px;
+      padding-left: 35px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .title {
-        padding-right: 0;
-        padding-left: 0;
-    }
+   .title {
+      padding-right: 0;
+      padding-left: 0;
+   }
 }

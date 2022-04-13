@@ -1,51 +1,51 @@
 .cards {
-    padding-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+   padding-top: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
 }
 
 .cards a {
-    flex-grow: 1;
-    flex-basis: 248px;
+   flex-grow: 1;
+   flex-basis: 248px;
 }
 
 @media (min-width: 576px) {
-    .cards {
-        gap: 10px;
-    }
+   .cards {
+      gap: 10px;
+   }
 }
 
 @media (min-width: 768px) {
-    .cards {
-        padding-top: 20px;
-        gap: 20px;
-    }
+   .cards {
+      padding-top: 20px;
+      gap: 20px;
+   }
 }
 
 @media (min-width: 992px) {
-    .cards img {
-        max-height: 350px;
-        object-fit: cover;
-        object-position: top;
-    }
+   .cards img {
+      max-height: 350px;
+      object-fit: cover;
+      object-position: top;
+   }
 }
 
 @media (min-width: 1200px) {
-    .cards {
-        padding-top: 30px;
-        gap: 50px;
-    }
+   .cards {
+      padding-top: 30px;
+      gap: 50px;
+   }
 }
 
 @media (min-width: 1400px) {
-    .cards img {
-        max-height: 400px;
-    }
+   .cards img {
+      max-height: 400px;
+   }
 }
 
 @media (min-width: 1600px) {
-    .cards img {
-        max-height: 440px;
-    }
+   .cards img {
+      max-height: 440px;
+   }
 }

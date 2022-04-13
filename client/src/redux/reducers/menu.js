@@ -3,9 +3,9 @@ import {
     SUCCESS,
     FAILURE,
     LOAD_MENU,
-    OPEN_MAIN_MENU,
-    OPEN_FILTERS_MENU,
-    CLOSE_MENU
+    MENU_OPEN_MAIN,
+    MENU_OPEN_FILTERS,
+    MENU_CLOSE
 } from '../types';
 
 
@@ -44,19 +44,19 @@ const menuReducer = function (state = INITIAL_STATE, action) {
           loaded: false,
           error: error
       };
-    case OPEN_MAIN_MENU:
+    case MENU_OPEN_MAIN:
         return {
             ...state,
             isMainMenu: true,
             isOpen: true,
         };
-    case OPEN_FILTERS_MENU:
+    case MENU_OPEN_FILTERS:
         return {
             ...state,
             isMainMenu: false,
             isOpen: true,
         };
-    case CLOSE_MENU:
+    case MENU_CLOSE:
         return {
             ...state,
             isOpen: false,

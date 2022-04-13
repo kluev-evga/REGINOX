@@ -1,77 +1,77 @@
 .wrapper {
-    margin-top: 60px;
-    display: grid;
-    row-gap: 35px;
+   margin-top: 60px;
+   display: grid;
+   row-gap: 35px;
 }
 
 .row {
-    display: grid;
-    justify-items: start;
-    align-content: start;
-    grid-gap: 10px;
+   display: grid;
+   justify-items: start;
+   align-content: start;
+   grid-gap: 10px;
 }
 
 .row a {
-    padding: 5px;
-    margin-left: -5px;
-    line-height: 1;
-    font-weight: 500;
+   padding: 5px;
+   margin-left: -5px;
+   line-height: 1;
+   font-weight: 500;
 }
 
 .row p {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 700;
+   margin-bottom: 10px;
+   font-size: 20px;
+   font-weight: 700;
 }
 
 @media (min-width: 576px) {
-    .wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 20px;
-    }
+   .wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+   }
 
-    .brands {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 20px;
-        grid-column: 1 / span 2;
-    }
+   .brands {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      grid-column: 1 / span 2;
+   }
 
-    .brands p {
-        grid-column: 1 / span 2;
-    }
+   .brands p {
+      grid-column: 1 / span 2;
+   }
 }
 
 @media (min-width: 992px) {
-    .wrapper {
-        margin-top: 80px;
-        grid-template-columns: 1fr 1fr 238px;
-        align-items: start;
-    }
+   .wrapper {
+      margin-top: 80px;
+      grid-template-columns: 1fr 1fr 238px;
+      align-items: start;
+   }
 
-    .brands {
-        grid-template-columns: unset;
-        grid-column: unset;
-    }
+   .brands {
+      grid-template-columns: unset;
+      grid-column: unset;
+   }
 
-    .row a {
-        margin-left: -7px;
-        padding: 7px;
-    }
+   .row a {
+      margin-left: -7px;
+      padding: 7px;
+   }
 
-    .brands p {
-        grid-column: unset;
-    }
+   .brands p {
+      grid-column: unset;
+   }
 }
 
 @media (min-width: 1400px) {
-    .row p {
-        font-size: 22px;
-    }
+   .row p {
+      font-size: 22px;
+   }
 
-    .row a {
-        margin-left: -8px;
-        padding: 8px;
-        font-size: 18px;
-    }
+   .row a {
+      margin-left: -8px;
+      padding: 8px;
+      font-size: 18px;
+   }
 }

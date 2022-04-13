@@ -1,40 +1,27 @@
-import cn from 'classnames';
-import { ReactComponent as Chevron } from '../../../../assets/svg/chevron-down.svg';
-import { ReactComponent as Phone } from '../../../../assets/svg/phone.svg';
-import { ReactComponent as Mail } from '../../../../assets/svg/mail.svg';
-import { ReactComponent as Globe } from '../../../../assets/svg/globe.svg';
-import styles from './tab.module.css';
+import { useState, useRef } from 'react'
+import cn from 'classnames'
+import useOnClickOutside from 'use-onclickoutside'
+import TabContent from '../tab-content/tab-content.component'
+import { ReactComponent as Chevron } from '../../../../assets/svg/chevron-down.svg'
+import styles from './tab.module.css'
 
+const Tab = ({ name, ...rest }) => {
+   const [isActive, setIsActive] = useState(false)
+   const ref = useRef(null)
+   useOnClickOutside(ref, () => setIsActive(false))
 
-const Tab = ({ id, name, address, phone, phoneText, mail, site, activeId, toggleTab }) => (
-    <li className={styles.tab_item}>
-        <button
-            onClick={() => toggleTab(id)}
-            className={cn('button_primary', styles.button, { [styles.active]: id === activeId })}>
+   return (
+      <li className={styles.tab_item} ref={ref}>
+         <button
+            onClick={() => setIsActive(!isActive)}
+            className={cn(styles.button, { [styles.active]: isActive })}>
             {name}
             <Chevron />
-        </button>
+         </button>
 
-        <div className={cn(styles.tab, { [styles.open]: id === activeId })}>
-            <address>{address}</address>
-            <a href={'tel:' + phone} className={styles.link + ' link_secondary'}>
-                <Phone />
-                {phoneText}
-            </a>
-            <a href={'mailto:' + mail} className={styles.link + ' link_secondary'}>
-                <Mail />
-                {mail}
-            </a>
-            <a
-                href={'https://' + site}
-                className={styles.link + ' link_secondary'}
-                target="_blank"
-                rel='noreferrer'>
-                <Globe />
-                {site}
-            </a>
-        </div>
-    </li>
-);
+         <TabContent {...rest} isActive={isActive} />
+      </li>
+   )
+}
 
-export default Tab;
+export default Tab

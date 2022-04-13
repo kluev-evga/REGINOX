@@ -1,16 +1,15 @@
 .container {
-    margin-top: 10px;
-    grid-column: 1 / -1;
+   margin-top: 10px;
+   grid-column: 1 / -1;
 }
 
 .tab_content {
-    min-height: 829px;
-    padding-top: 20px;
+   min-height: 830px;
+   padding-top: 20px;
 }
 
 @media (min-width: 1200px) {
-    .tab_content {
-        padding-top: 30px;
-        min-height: 900px;
-    }
+   .tab_content {
+      min-height: 900px;
+   }
 }

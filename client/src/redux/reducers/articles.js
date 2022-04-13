@@ -3,7 +3,7 @@ import {
   SUCCESS, 
   FAILURE, 
   LOAD_ARTICLES,
-  SELECT_ARTICLES_PAGE
+  ARTICLES_SELECT_PAGE
 } from '../types';
 
 import { arrToMap } from '../utils';
@@ -44,7 +44,7 @@ const articlesReducer = function (state = INITIAL_STATE, action) {
         loading: {...state.loading, [page]: false},
         error: error
       };
-    case SELECT_ARTICLES_PAGE:
+    case ARTICLES_SELECT_PAGE:
       return {
         ...state,
         currentPage: page

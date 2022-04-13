@@ -1,81 +1,81 @@
 .container {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+   margin-bottom: 10px;
+   padding-bottom: 10px;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-between;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 12px;
+   justify-content: space-between;
 
-    border-bottom: 1px solid var(--gray-light);
-    text-transform: lowercase;
+   border-bottom: 1px solid var(--gray-light);
+   text-transform: lowercase;
 }
 
 .select {
-    order: 1;
-    width: 100%;
+   order: 1;
+   width: 100%;
 }
 
 .button {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid var(--gray-light);
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   border: 1px solid var(--gray-light);
 }
 
 .button svg {
-    margin-left: 6px;
-    height: 15px;
-    width: 20px;
-    color: var(--gray-med);
+   margin-left: 6px;
+   height: 15px;
+   width: 20px;
+   color: var(--gray-med);
 }
 
 .reset {
-    transition: opacity 0.3s linear;
+   transition: opacity 0.3s linear;
 }
 
 .reset:hover {
-    border-color: var(--gray-med);
+   border-color: var(--gray-med);
 }
 
 .disabled {
-    opacity: 0;
-    pointer-events: none;
+   opacity: 0;
+   pointer-events: none;
 }
 
 @media (min-width: 576px) {
-    .select {
-        order: unset;
-        width: 240px;
-    }
+   .select {
+      order: unset;
+      width: 240px;
+   }
 
-    .reset {
-        margin-right: auto;
-    }
+   .reset {
+      margin-right: auto;
+   }
 }
 
 @media (min-width: 768px) {
-    .container {
-        font-size: 17px;
-    }
+   .container {
+      font-size: 17px;
+   }
 
-    .select {
-        width: 260px;
-    }
+   .select {
+      width: 260px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        margin-bottom: 15px;
-    }
+   .container {
+      margin-bottom: 15px;
+   }
 }
 
 @media (min-width: 1400px) {
-    .container {
-        font-size: 18px;
-    }
+   .container {
+      font-size: 18px;
+   }
 
-    .select {
-        width: 320px;
-    }
+   .select {
+      width: 320px;
+   }
 }

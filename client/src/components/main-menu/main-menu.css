@@ -1,54 +1,54 @@
 .menu-button {
-    margin-top: 5px;
-    width: 100%;
-    padding: 14px 5px 14px 10px;
-    text-align: left;
-    background-color: #111;
+   margin-top: 5px;
+   width: 100%;
+   padding: 14px 5px 14px 10px;
+   text-align: left;
+   background-color: #111;
 }
 
 .menu-link {
-    padding: 10px;
-    display: block;
-    margin-bottom: 8px;
-    line-height: 1.5;
-    font-weight: 300;
+   padding: 10px;
+   display: block;
+   margin-bottom: 8px;
+   line-height: 1.5;
+   font-weight: 300;
 }
 
 .menu-active-link {
-    text-decoration: underline;
+   text-decoration: underline;
 }
 
 .menu-button,
 .menu-link {
-    transition: background-color 0.1s linear;
+   transition: background-color 0.08s linear;
 }
 
 .menu-button:hover,
 .menu-link:hover {
-    background-color: #222;
-    transition: none;
+   background-color: #222;
+   transition: none;
 }
 
 @media (min-width: 340px) {
-    .menu-button {
-        padding: 14px 10px 14px 25px;
-        font-weight: 700;
-        font-size: 17px;
-    }
+   .menu-button {
+      padding: 14px 10px 14px 25px;
+      font-weight: 700;
+      font-size: 17px;
+   }
 
-    .menu-link {
-        padding: 10px 25px;
-    }
+   .menu-link {
+      padding: 10px 25px;
+   }
 }
 
 @media (min-width: 360px) {
-    .menu-button {
-        padding: 14px 20px 14px 25px;
-    }
+   .menu-button {
+      padding: 14px 20px 14px 25px;
+   }
 }
 
 @media (min-width: 1200px) {
-    .menu-button {
-        font-weight: 500;
-    }
+   .menu-button {
+      font-weight: 500;
+   }
 }

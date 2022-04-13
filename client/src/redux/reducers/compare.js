@@ -3,9 +3,8 @@ import {
     SUCCESS, 
     FAILURE, 
     LOAD_COMPARE_ITEMS,
-    TOGGLE_COMPARE_ITEM,
-    REMOVE_ITEM_FROM_COMPARE,
-    RESET_COMPARE_LOADED
+    COMPARE_TOGGLE_ITEM,
+    COMPARE_REMOVE_ITEM,
 } from '../types';
 
 
@@ -20,7 +19,7 @@ const compareReducer = function (state = INITIAL_STATE, action) {
     const { type, id, error } = action;
 
     switch (type) {
-        case TOGGLE_COMPARE_ITEM:
+        case COMPARE_TOGGLE_ITEM:
             const item = state.entities?.[id];
             const items = {...state.entities, [id]: true};
             if (item) delete items[id];
@@ -28,7 +27,7 @@ const compareReducer = function (state = INITIAL_STATE, action) {
                 ...state,
                 entities: items,
             };
-        case REMOVE_ITEM_FROM_COMPARE:
+        case COMPARE_REMOVE_ITEM:
             const entities = {...state.entities};
             delete entities[id];
             return {
@@ -53,11 +52,6 @@ const compareReducer = function (state = INITIAL_STATE, action) {
                 ...state,
                 loading: false,
                 error: error
-            };
-        case RESET_COMPARE_LOADED:
-            return {
-                ...state,
-                loaded: false
             };
       default:
           return state;

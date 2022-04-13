@@ -1,11 +1,11 @@
 import {
     LOAD_PRODUCTS,
     SUCCESS,
-    TOGGLE_PRODUCTS_IS_FILTERING,
-    PRODUCTS_IS_FILTERING,
-    PRODUCTS_IS_FILTERED,
-    SETLECT_PRODUCTS_SORT_BY,
-    SET_QUERY_STRING,
+    FILTERS_TOGGLE_IS_FILTERING,
+    FILTERS_IS_FILTERING,
+    FILTERS_IS_FILTERED,
+    FILTERS_SETLECT_SORT_BY,
+    FILTERS_SET_QUERY_STRING,
 } from '../types';
 
 
@@ -26,28 +26,30 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
         ...state,
         filters: {...state.filters, [url]:data.filters},
       };
-    case TOGGLE_PRODUCTS_IS_FILTERING:
+    case FILTERS_TOGGLE_IS_FILTERING:
       return {
           ...state,
           isFiltering: {...state.isFiltering, [url]: status},
       };
-    case PRODUCTS_IS_FILTERING:
+    case FILTERS_IS_FILTERING:
+      // console.log('filtering')
       return {
-          ...state,
-          isFiltering: {...state.isFiltering, [url]: true},
+        ...state,
+        isFiltering: {...state.isFiltering, [url]: true},
       };
-    case PRODUCTS_IS_FILTERED:
+      case FILTERS_IS_FILTERED:
+      // console.log('filtering done')
         return {
             ...state,
             isFiltering: {...state.isFiltering, [url]: false},
             products: {...state.products, [url]: data}
         };
-    case SETLECT_PRODUCTS_SORT_BY:
+    case FILTERS_SETLECT_SORT_BY:
         return {
             ...state,
             sortBy: sortBy,
         };
-    case SET_QUERY_STRING:
+    case FILTERS_SET_QUERY_STRING:
         return {
             ...state,
             queryString: {...state.queryString, [url]: queryString},

@@ -499,7 +499,6 @@ const filters = {
                 {title: 'Armando Vicario (Италия)', url: 'armandovicario'},
                 {title: 'Webert (Италия)', url: 'webert'},
                 {title: 'Effepi (Италия)', url: 'effepi'},
-                {title: 'Webert (Италия)', url: 'webert'},
                 {title: 'Glionna Bagno (Италия)', url: 'glionnabagno'},
                 {title: 'Аквафор (Россия)', url: 'aquafor'},
             ],

@@ -1,25 +1,25 @@
 .wrapper {
-    margin-top: 40px;
+   margin-top: 40px;
 }
 
 .iframe {
-    margin-top: 60px;
+   margin-top: 60px;
 }
 
 @media (min-width: 768px) {
-    .wrapper {
-        margin-top: 0;
-    }
+   .wrapper {
+      margin-top: 0;
+   }
 }
 
 @media (min-width: 1200px) {
-    .iframe {
-        margin-top: 80px;
-    }
+   .iframe {
+      margin-top: 80px;
+   }
 }
 
 @media (min-width: 1600px) {
-    .iframe {
-        margin-top: 100px;
-    }
+   .iframe {
+      margin-top: 100px;
+   }
 }

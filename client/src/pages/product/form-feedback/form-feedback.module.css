@@ -1,139 +1,110 @@
-.form {
-    padding: 50px 10px 50px;
-    background: var(--graphite);
+form.form {
+   padding: 30px 20px;
+   background: var(--graphite);
 }
 
 .form input,
 .form textarea {
-    background: var(--gray-light);
+   background: var(--gray-light);
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
-    color: var(--gray);
+   color: var(--gray);
 }
 
-.form input:first-of-type {
-    margin-bottom: 10px;
-}
-
-.form input:last-of-type {
-    margin-bottom: 45px;
-}
-
-.textarea {
-    margin: 45px -4px 0;
-    padding: 6px 4px 4px;
+.stars_container {
+   margin: 45px 0;
 }
 
 .stars {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 
-    margin: 0 -4px 14px;
-    border-radius: 2px;
-    padding: 6px 4px;
+   margin: 0 -4px 14px;
+   border-radius: 2px;
+   padding: 6px 4px;
 }
 
 .stars p {
-    margin-right: 10px;
-    color: var(--white);
+   margin-right: 10px;
+   color: var(--white);
 }
 
 .stars div {
-    flex-shrink: 0;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+   width: 120px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .stars svg {
-    height: 20px;
-    width: auto;
-    color: #F2994A;
+   height: 20px;
+   width: auto;
+   color: #f2994a;
 }
 
-@media (min-width: 340px) {
-    .stars {
-        margin: 0 -4px 18px;
-    }
+.agreement {
+   color: var(--gray-med);
+}
 
-    .stars p {
-        font-size: 18px;
-    }
-
-    .stars div {
-        width: 160px;
-    }
-
-    .stars svg {
-        height: 22px;
-    }
+button.btn_send {
+   outline: 1px solid var(--gray-med);
 }
 
 @media (min-width: 360px) {
-    .stars {
-        margin: 0 -4px 22px;
-    }
+   .stars {
+      margin-bottom: 20px;
+   }
 
-    .stars div {
-        width: 170px;
-    }
+   .stars p {
+      font-size: 18px;
+   }
 
-    .stars svg {
-        height: 23px;
-    }
+   .stars div {
+      width: 170px;
+   }
+
+   .stars svg {
+      height: 22px;
+   }
 }
 
 @media (min-width: 768px) {
-    .form {
-        padding: 0;
-        background: unset;
-    }
+   form.form {
+      padding: 0;
+      background: unset;
+   }
 
-    .form input,
-    .form textarea {
-        background: unset;
-    }
+   .form input,
+   .form textarea {
+      background: unset;
+   }
 
-    .form input:last-of-type {
-        margin-bottom: 15px;
-    }
+   .stars p {
+      color: var(--graphite);
+   }
 
-    .textarea {
-        margin-top: 25px;
-    }
+   .stars div {
+      width: 180px;
+   }
 
-    .stars p {
-        color: var(--gray-med);
-        font-weight: 500;
-    }
-
-    .stars div {
-        width: 180px;
-    }
-
-    .stars {
-        margin-bottom: 15px;
-    }
+   button.btn_send {
+      outline: unset;
+   }
 }
 
 @media (min-width: 992px) {
-    .form input:last-of-type {
-        margin-bottom: 20px;
-    }
+   .stars {
+      margin-bottom: 15px;
+   }
 
-    .textarea {
-        margin-top: 30px;
-    }
+   .stars div {
+      width: 190px;
+   }
 
-    .stars div {
-        width: 190px;
-    }
-
-    .stars svg {
-        height: 25px;
-    }
+   .stars svg {
+      height: 25px;
+   }
 }

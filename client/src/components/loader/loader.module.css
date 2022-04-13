@@ -1,19 +1,19 @@
 .wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--graphite);
-    color: var(--white);
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   z-index: 1000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: var(--graphite);
+   color: var(--white);
 }
 
 .logo {
-    width: 40%;
-    height: auto;
-    min-width: 230px;
+   width: 40%;
+   height: auto;
+   min-width: 230px;
 }

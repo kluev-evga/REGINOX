@@ -1,9 +1,17 @@
-import { REQUEST, SUCCESS, FAILURE, LOAD_CART, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART } from '../types';
+import {
+    REQUEST,
+    SUCCESS,
+    FAILURE,
+    LOAD_CART,
+    CART_ADD_ITEM,
+    CART_REMOVE_ITEM
+} from '../types';
 
 
 const INITIAL_STATE = {
     items: {},
     entities: {},
+    loaded: false,
     loading: false,
 }
 
@@ -14,13 +22,15 @@ const cartReducer = function (state = INITIAL_STATE, action) {
         case LOAD_CART + REQUEST:
           return {
             ...state,
+            loaded: false,
             loading: true,
             error: null
           };
       case LOAD_CART + SUCCESS:
           return {
             ...state,
-            entities: data,
+            entities: {...state.entities, ...data},
+            loaded: true,
             loading: false,
           };
       case LOAD_CART + FAILURE:
@@ -29,12 +39,12 @@ const cartReducer = function (state = INITIAL_STATE, action) {
             loading: false,
             error: error
           };
-      case ADD_ITEM_TO_CART:
+      case CART_ADD_ITEM:
           return {
               ...state,
               items: {...state.items, [id]: count},
           };
-      case REMOVE_ITEM_FROM_CART:
+      case CART_REMOVE_ITEM:
           const items = {...state.items};
           delete items[id];
           return {

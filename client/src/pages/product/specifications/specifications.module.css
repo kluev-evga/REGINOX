@@ -1,57 +1,57 @@
 .item {
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-    border-bottom: 1px dashed var(--gray-light);
+   display: flex;
+   align-items: center;
+   column-gap: 20px;
+   border-bottom: 1px dashed var(--gray-light);
 }
 
 .item {
-    margin: 10px 0 0;
-    padding-bottom: 10px;
-    font-size: 12px;
+   margin: 10px 0 0;
+   padding-bottom: 10px;
+   font-size: 12px;
 }
 
 .item dt,
 .item dd {
-    flex-basis: 50%;
+   flex-basis: 50%;
 }
 
 .item dd {
-    margin-left: 0;
+   margin-left: 0;
 }
 
 @media (min-width: 360px) {
-    .item {
-        margin: 12px 0 0;
-        padding-bottom: 12px;
-        font-size: 14px;
-    }
+   .item {
+      margin: 12px 0 0;
+      padding-bottom: 12px;
+      font-size: 14px;
+   }
 }
 
 @media (min-width: 576px) {
-    .item {
-        font-size: 14px;
-    }
+   .item {
+      font-size: 14px;
+   }
 }
 
 @media (min-width: 576px) {
-    .item {
-        font-size: 16px;
-    }
+   .item {
+      font-size: 16px;
+   }
 }
 
 @media (min-width: 768px) {
-    .item dt {
-        flex-basis: 330px;
-    }
+   .item dt {
+      flex-basis: 330px;
+   }
 }
 
 @media (min-width: 992px) {
-    .item {
-        font-size: 18px;
-    }
+   .item {
+      font-size: 18px;
+   }
 
-    .item dt {
-        flex-basis: 366px;
-    }
+   .item dt {
+      flex-basis: 366px;
+   }
 }
