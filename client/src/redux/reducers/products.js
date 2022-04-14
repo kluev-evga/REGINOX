@@ -34,7 +34,6 @@ const productsReducer = function (state = INITIAL_STATE, action) {
         loaded: {...state.loaded, [url]: true},
       };
     case LOAD_PRODUCTS + FAILURE:
-      console.log(error);
       return {
         ...state,
         loading: {...state.loading, [url]: false},

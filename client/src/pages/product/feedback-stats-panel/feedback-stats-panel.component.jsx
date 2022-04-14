@@ -1,4 +1,4 @@
-import { useRouteMatch } from 'react-router-dom'
+import { useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productItem } from '../../../redux/selectors'
 import { ReactComponent as StarIcon } from '../../../assets/svg/star.svg'
@@ -6,9 +6,7 @@ import styles from './feedback-stats-panel.module.css'
 
 const Stars = ({ r }) => (
    <div className={styles.stars}>
-      {[...Array(5)].map((_, i) => (
-         <StarIcon key={i} className={r > i + 0.5 ? '' : styles.clear} />
-      ))}
+      {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : styles.clear} /> )}
    </div>
 )
 
@@ -28,7 +26,7 @@ const Bars = ({ ratings }) => (
 )
 
 const FeedbackStatsPanel = () => {
-   const match = useRouteMatch()
+   const match = useMatch()
    const { r, ratings, reviewsCount } = useSelector(state =>
       productItem(state)(match.params.productUrl)
    )

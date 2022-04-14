@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 
 
 export const appStatus = state => state.app.status;
-export const appIsHomePage = state => state.app.isHomePage;
 export const appIsPopUp = state => state.app.isPopUp;
 export const appIsTiles = state => state.app.isTiles;
 export const appSearchIsOpen = state => state.app.isSearchOpen;
@@ -12,8 +11,15 @@ export const menuLoaded = state => state.menu.loaded;
 export const menuError = state => state.menu.error;
 export const menuLinks = state => state.menu.links;
 export const menuCategories = state => state.menu.categories;
-export const isMainMenu = state => state.menu.isMainMenu;
-export const menuIsOpen = state => state.menu.isOpen;
+
+// export const isMainMenu = state => state.menu.isMainMenu;
+
+// export const menuIsOpen = state => state.menu.isOpen;
+
+export const mainMenuIsOpen = state => state.menu.mainIsOpen;
+export const filtersMenuIsOpen = state => state.menu.filtersIsOpen;
+
+
 const menuTitlesByUrl = createSelector(
     menuLinks,
     (links) => links.reduce((acc, item) => {
@@ -21,7 +27,9 @@ const menuTitlesByUrl = createSelector(
         return acc;
     },{})
 );
-export const menuTitleByUrl = (state) => (url) => menuTitlesByUrl(state)[url];
+export const getTitle = (state, url) =>  menuTitlesByUrl(state)[url]
+
+
 export const menuLinksList = createSelector(
     menuCategories,
     (categories) => {
@@ -56,10 +64,8 @@ export const sertificates = state => state.sertificates.entities;
 export const sertificatesLoading = state => state.sertificates.loading;
 export const sertificatesLoaded = state => state.sertificates.loaded;
 export const sertificatesError = state => state.sertificates.error;
-export const sertificatesItem = (state, {id}) => sertificates(state)[id];
+export const sertificatesItem = (state, id) => sertificates(state)[id];
 export const selectSertificatesList = createSelector(sertificates, Object.keys);
-export const sertificatesSlide = state => state.sertificates.sliderSlide;
-export const sertificatesScroll = state => state.sertificates.scroll;
 
 
 export const brands = state => state.brands.entities;
@@ -93,22 +99,22 @@ export const articleLoaded = (state, {match}) => !!state.article.loaded[match.pa
 export const articleError = (state, {match}) => state.article.error?.[match.params.article];
 
 
-export const productsLoading = state => url => state.products.loading?.[url];
-export const productsLoaded = state => url => state.products.loaded?.[url] || false;
+export const productsLoading = (state, url) => state.products.loading?.[url];
+export const productsLoaded = (state, url) => state.products.loaded?.[url];
 export const product = (state, url, id) => state.products.products[url][id];
 
 
-export const filters = state => url => state.filters.filters[url];
+export const filters = (state, url) => state.filters.filters[url];
 const fltr = (state, url) => state.filters.filters[url];
 export const selectNormalizedFilters = createSelector(
     fltr,
-    (filters) => filters.slice(1).reduce((acc, {searchGroup, products}) => {
+    (filters) => filters.reduce((acc, {searchGroup, products}) => {
         acc[searchGroup] = {};
         for (let [key, value] of Object.entries(products)) acc[searchGroup][key] = value;
         return acc
     }, {})
 );
-export const isFiltering = state => url => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
+export const filtersisFiltering = (state, url) => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
 export const filteredProducts = state => url => state.filters.products[url];
 export const sortBy = state => state.filters.sortBy;
 export const queryString = (state, props) => state.filters.queryString?.[props.match.params.url];

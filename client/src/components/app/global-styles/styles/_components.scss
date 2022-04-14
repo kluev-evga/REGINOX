@@ -1,0 +1,33 @@
+.logo {
+   position: relative;
+
+   &__pr {
+      display: none;
+      width: 52px;
+      height: 33px;
+      position: absolute;
+      top: 26px;
+      right: -40px;
+   }
+
+   @media (min-width: 340px) {
+      &__pr {
+         display: block;
+         pointer-events: none;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__pr {
+         height: 40px;
+         width: auto;
+         top: 36px;
+         right: -50px;
+      }
+
+      &__crown {
+         height: 48px;
+         width: auto;
+      }
+   }
+}

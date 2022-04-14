@@ -1,105 +1,53 @@
-import { Link, useHistory } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { openMainMenu, openSearchMenu } from '../../redux/actions'
-import {
-   menuLoaded,
-   appStatus,
-   appIsHomePage,
-   appIsPopUp,
-   cartItemsArray,
-   compareCount,
-} from '../../redux/selectors'
+import { Link, useMatch } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { openMainMenu } from '../../redux/actions'
+import { menuLoaded } from '../../redux/selectors'
 import cn from 'classnames'
-
-import NavLinks from './nav-links/nav-links.component'
 import Logo from '../logo/logo.component'
-
+import NavLinks from './components/nav-links.component'
+import ButtonsContainer from './components/buttons-container.component'
 import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
-import { ReactComponent as Account } from '../../assets/svg/account.svg'
-import { ReactComponent as Cart } from '../../assets/svg/cart.svg'
-import { ReactComponent as Compare } from '../../assets/svg/compare.svg'
-import { ReactComponent as Search } from '../../assets/svg/search.svg'
-import styles from './header.module.css'
 
-const Header = ({
-   openMainMenu,
-   openSearchMenu,
-   isHome,
-   loaded,
-   status,
-   isPopUp,
-   cartItems,
-   compareCount,
-}) => {
-   const history = useHistory()
-   if (status || isPopUp || !loaded) return null
-   const cartItemsCount = cartItems.length
+
+const Header = () => {
+   const dispatch = useDispatch()
+   const isHomePage = Boolean(useMatch(''))
+   const isLoading = !useSelector(menuLoaded)
+
+   if (isLoading) return null
 
    return (
-      <header className={cn(styles.header, { [styles.reversed]: isHome })}>
+      <header className={cn('header', {'header_reversed': isHomePage})}>
          <div className='container'>
-            <div className={styles.row_top}>
+
+            <div className='header__row-top'>
                <p>Пн-Вс 10-19</p>
                <a href='tel:84952298559'>8 (495) 229 85 59</a>
             </div>
 
-            <div className={styles.row_bottom}>
+            <div className='header__row-bottom'>
+
                <button
-                  onClick={openMainMenu}
-                  className={cn(styles.burger)}
+                  className='header__btn-burger'
+                  onClick={() => dispatch(openMainMenu())}
                   aria-label='главное меню'>
                   <MenuIcon />
                </button>
-               <div className={styles.logo}>
-                  {isHome ? (
-                     <Logo reversed />
-                  ) : (
-                     <Link to='/home' aria-label='домашняя страница'>
-                        <Logo />
-                     </Link>
-                  )}
-               </div>
-               <div className={styles.buttons_container}>
-                  <button
-                     onClick={() => history.push('/compare')}
-                     className={cn({ [styles.active]: compareCount })}
-                     aria-label='сравнить товары'>
-                     <Compare />
-                     <span>{!!compareCount && compareCount}</span>
-                  </button>
-                  <button aria-label='аккаунт'>
-                     <Account />
-                  </button>
-                  <button
-                     aria-label='поиск по каталогу'
-                     onClick={openSearchMenu}>
-                     <Search />
-                  </button>
-                  <button
-                     className={cn({ [styles.active]: cartItemsCount })}
-                     onClick={() => history.push('/cart')}
-                     aria-label='корзина'>
-                     <span>{!!cartItemsCount && cartItemsCount}</span>
-                     <Cart />
-                  </button>
+
+               <div className='header__logo-container'>
+                  { isHomePage
+                        ? <Logo reversed />
+                        : <Link to='' aria-label='домашняя страница'><Logo /></Link>
+                  }
                </div>
 
-               <NavLinks key={isHome} isHome={isHome} />
+               <ButtonsContainer/>
+               <NavLinks />
+
             </div>
          </div>
       </header>
    )
 }
 
-const mapStateToProps = state => ({
-   loaded: menuLoaded(state),
-   status: appStatus(state),
-   isHome: appIsHomePage(state),
-   isPopUp: appIsPopUp(state),
-   cartItems: cartItemsArray(state),
-   compareCount: compareCount(state),
-})
-
-export default connect(mapStateToProps, { openMainMenu, openSearchMenu })(
-   Header
-)
+export default Header

@@ -1,10 +1,14 @@
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { menuLoaded, appStatus, appIsPopUp } from '../../redux/selectors'
-import FooterLinks from './footer-links/footer-links.component'
-import FooterBar from './footer-bar/footer-bar.component'
+import FooterLinks from './components/footer-links.component'
+import FooterBar from './components/footer-bar.component'
 
-const Footer = ({ loaded, status, isPopUp }) => {
-   if (!loaded || isPopUp) return null
+const Footer = () => {
+   const isloaded = !useSelector(menuLoaded)
+   const status = useSelector(appStatus)
+   const isPopUp = useSelector(appIsPopUp)
+
+   if (isloaded || isPopUp) return null
 
    return (
       <footer className='footer'>
@@ -14,10 +18,4 @@ const Footer = ({ loaded, status, isPopUp }) => {
    )
 }
 
-const mapStateToProps = state => ({
-   loaded: menuLoaded(state),
-   status: appStatus(state),
-   isPopUp: appIsPopUp(state),
-})
-
-export default connect(mapStateToProps)(Footer)
+export default Footer

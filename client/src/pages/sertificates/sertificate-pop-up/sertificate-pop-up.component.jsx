@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { sertificates } from '../../../redux/selectors'
 import { setAppIsPopUp } from '../../../redux/actions'
@@ -7,23 +7,26 @@ import cn from 'classnames'
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg'
 import styles from './sertificate-pop-up.module.css'
 
-const SertificatePopUp = ({ setAppIsPopUp, sertificates, match, history }) => {
+const SertificatePopUp = ({ setAppIsPopUp, sertificates }) => {
+   const {sertificateId} = useParams()
+   const navigate = useNavigate()
    const [zoom, setZoom] = useState(false)
    const toggleZoom = useCallback(() => setZoom(!zoom), [zoom])
+
    useEffect(() => {
       setAppIsPopUp(true)
       return () => setAppIsPopUp(false)
    }) //eslint-disable-line
 
-   const sertificate = sertificates[match.params.sertificateId]
-   if (!sertificate) return <Redirect to='/sertificates/not-found' />
+   const sertificate = sertificates[sertificateId]
+   // if (!sertificate) return <Redirect to='/sertificates/not-found' />
 
    const { img, alt, width, height } = sertificate
 
    return (
       <div className={cn(styles.wrapper, { [styles.zoom]: zoom })}>
          <div className={styles.container}>
-            <button onClick={() => history.push('/sertificates')}>
+            <button onClick={() => navigate('/sertificates')}>
                <CrossIcon />
             </button>
             <img

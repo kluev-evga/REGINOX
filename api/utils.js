@@ -166,32 +166,13 @@ const getProductsItemData = data =>
 const getFilters = (filtersObj, productItems) => {
     const filters = {...filtersObj};
 
+
     for (let url in filters) {
         const products = getProductsItemData(productItems[url]);// выбираем группу продуктов по url и трансформируем продукты в нужный формат(used for filters only)
         const filter = filters[url];// выбираем нужную группу фильтров с которой работаем
 
-        // --------------------------------------- categories:
-        const categories = filter[0];
-        categories.products = categories.filters.reduce( (acc, item) => {// cоздаем ветку  products : { all: [], anycategory: []}
-          acc[item.url] = [];
-          return acc;
-        }, {});
 
-        const title = categories.title;
-        const match = categories.filters.reduce( (acc, item) => {// объект для перебора по продуктам ниже (только для категорий)
-          acc[item.title] = item.url;
-          return acc;
-        }, {});
-
-        products.forEach( ({id, specs}) => {// наполняем ветку products массивам id-шников продуктов
-            categories.products.all.push(id);
-            categories.products[match[specs[title]]].push(id);
-        });
-
-        categories.filters.forEach(item => item.count = categories.products[item.url].length);// считаем количество в массивах и фигачим count в фильтры
-
-        // --------------------------------------- все остальные ветки фильтров(помимо категорий, т.к. со всторого айтема фильтров):
-        filter.slice(1).forEach( item => {
+        filter.forEach( item => {
             const {title, filters} = item;
             const match = filters.reduce( (acc, item) => {// создаем нужный объект match для перебора по продуктам(отдельно для каждого фильтра)
               acc[item.title] = item.search;
@@ -213,6 +194,7 @@ const getFilters = (filtersObj, productItems) => {
             filters.forEach( fltr => fltr.count = Object.keys(item.products[fltr.search]).length);// считаем все и пишем в counts
         });
     };
+
     return filters;
 };
 ////////////////////////////////////////////////////////////////////////

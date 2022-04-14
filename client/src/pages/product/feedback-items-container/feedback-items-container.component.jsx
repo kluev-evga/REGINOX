@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useRouteMatch } from 'react-router-dom'
+import { useMatch } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadReviews } from '../../../redux/actions'
 import {
@@ -12,7 +12,7 @@ import FeedbackItem from '../feedback-item/feedback-item.component'
 import styles from './feedback-items-container.module.css'
 
 const FeedbackItemsContainer = () => {
-   const match = useRouteMatch()
+   const match = useMatch()
    const { url, productUrl } = match.params
    const dispatch = useDispatch()
 

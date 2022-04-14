@@ -1,25 +1,19 @@
-import { useRouteMatch } from 'react-router-dom'
+import { useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productsLoaded, filters } from '../../redux/selectors'
-import FiltersSection from './filters-section/filters-section.component'
-import CategoriesSection from './categories-section/categories-section.component'
+import FilterSection from './filters-section/filters-section.component'
 import styles from './filters.module.css'
 
 const FiltersContainer = () => {
-   const match = useRouteMatch('/products/:url?')
-   const url = match?.params.url
-   const loaded = useSelector(state => productsLoaded(state)(url))
-   const filtersData = useSelector(state => filters(state)(url))
-
-   if (!loaded) return null
-   const [categories, ...filtersGrop] = filtersData
+   const { params } = useMatch('/products/:url')
+   const {url} = params
+   const isLoading = useSelector(state => !productsLoaded(state, url))
+   const filterSections = useSelector(state => filters(state, url))
+   if (isLoading) return null
 
    return (
       <div className={styles.wrapper}>
-         <CategoriesSection {...categories} />
-         {filtersGrop.map((item, i) => (
-            <FiltersSection key={i} {...item} />
-         ))}
+         { filterSections.map( (item, i) => <FilterSection key={url+i} {...item} /> ) }
       </div>
    )
 }

@@ -1,11 +1,4 @@
-import {
-  REQUEST,
-  SUCCESS,
-  FAILURE,
-  LOAD_SERTIFICATES,
-  SERTIFICATES_SET_SLIDER_SLIDE,
-  SERTIFICATES_SET_SCROLL
-} from '../types';
+import { REQUEST, SUCCESS, FAILURE, LOAD_SERTIFICATES } from '../types';
 import { arrToMap } from '../utils';
 
 
@@ -14,8 +7,6 @@ const INITIAL_STATE = {
   loading: false,
   loaded: false,
   error: null,
-  sliderSlide: 0,
-  scroll: 0,
 };
 
 const sertificatesReducer = function (state = INITIAL_STATE, action) {
@@ -42,16 +33,6 @@ const sertificatesReducer = function (state = INITIAL_STATE, action) {
         loaded: false,
         error: error
       };
-      case SERTIFICATES_SET_SLIDER_SLIDE:
-        return {
-            ...state,
-            sliderSlide: data
-        };
-      case SERTIFICATES_SET_SCROLL:
-        return {
-            ...state,
-            scroll: data
-        };
     default:
       return state;
   }

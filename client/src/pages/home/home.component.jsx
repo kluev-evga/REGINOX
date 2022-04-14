@@ -1,42 +1,30 @@
 import { useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { loadHome, setAppIsHomePage } from '../../redux/actions'
-import { homeLoaded, homeError } from '../../redux/selectors'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { loadHome } from '../../redux/actions'
+import { homeLoaded } from '../../redux/selectors'
 import Loader from '../../components/loader/loader.coponent'
-import MainSlider from './main-slider/main-slider.compenent'
-import AdressBar from './address-bar/address-bar.component'
-import Catalog from './catalog/catalog.component'
-import PopularProducts from './popular-products/popular-products.components'
-import About from './about/about.component'
+import HomeSlider from './components/home-slider.compenent'
+import HomeAdress from './components/home-address/home-address.component'
+import HomeCatalog from './components/home-catalog.component'
+import HomePopularProducts from './components/popular-products.components'
+import HomeAbout from './components/home-about.component'
 
-const Home = ({ loadHome, loaded, error, setAppIsHomePage }) => {
-   useEffect(() => {
-      loadHome()
-   }, []) // eslint-disable-line
-   useEffect(() => {
-      setAppIsHomePage(true)
-      return () => setAppIsHomePage(false)
-   }, []) //eslint-disable-line
 
-   if (!loaded) return <Loader />
-   if (error) <Redirect to='/error' />
+const Home = () => {
+   const dispatch = useDispatch()
+   useEffect(() => { dispatch(loadHome()) }, []) //eslint-disable-line
+   const isLoading = !useSelector(homeLoaded)
+   if (isLoading) return <Loader />
 
    return (
-      <div>
-         <MainSlider />
-         <AdressBar />
-         <Catalog />
-         <PopularProducts />
-         <About />
-      </div>
+      <>
+         <HomeSlider/>
+         <HomeAdress/>
+         <HomeCatalog/>
+         <HomePopularProducts/>
+         <HomeAbout/>
+      </>
    )
 }
 
-const mapStateToProps = state => ({
-   loaded: homeLoaded(state),
-   error: homeError(state),
-})
-
-export default connect(mapStateToProps, { loadHome, setAppIsHomePage })(Home)
+export default Home

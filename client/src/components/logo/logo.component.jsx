@@ -1,11 +1,10 @@
 import { ReactComponent as LogoIcon } from '../../assets/svg/logo.svg'
 import { ReactComponent as PRholding } from '../../assets/svg/PRHolding.svg'
-import styles from './logo.module.css'
 
 const Logo = () => (
-   <div className={styles.logo}>
-      <LogoIcon className={styles.crown} />
-      <PRholding className={styles.svg} />
+   <div className='logo'>
+      <LogoIcon className='logo__crown' />
+      <PRholding className='logo__pr' />
    </div>
 )
 

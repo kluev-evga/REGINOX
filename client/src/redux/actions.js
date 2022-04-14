@@ -18,7 +18,6 @@ import {
    LOAD_REVIEWS,
    LOAD_COMPARE_ITEMS,
    APP_SET_STATUS,
-   APP_SET_HOME_PAGE,
    APP_SET_IS_POP_UP,
    APP_SET_TILES,
    APP_UNSET_TILES,
@@ -34,11 +33,12 @@ import {
    FILTERS_IS_FILTERING,
    FILTERS_SETLECT_SORT_BY,
    FILTERS_SET_QUERY_STRING,
+
+
    MENU_OPEN_MAIN,
+   MENU_СLOSE_MAIN,
    MENU_OPEN_FILTERS,
-   MENU_CLOSE,
-   SERTIFICATES_SET_SLIDER_SLIDE,
-   SERTIFICATES_SET_SCROLL
+   MENU_CLOSE_FILTERS,
 } from './types'
 
 import {
@@ -57,16 +57,15 @@ import {
    productItemLoaded
 } from './selectors'
 
-// import axios from 'axios'
 
 export const setAppStatus = status => ({ type: APP_SET_STATUS, status })
-export const setAppIsHomePage = status => ({ type: APP_SET_HOME_PAGE, status })
 export const setAppIsPopUp = status => ({ type: APP_SET_IS_POP_UP, status })
+
 export const openMainMenu = () => ({ type: MENU_OPEN_MAIN })
+export const closeMainMenu = () => ({ type: MENU_СLOSE_MAIN })
 export const openFiltersMenu = () => ({ type: MENU_OPEN_FILTERS })
-export const closeMenu = () => ({ type: MENU_CLOSE })
-export const setSertificatesSlide = slide => ({ type: SERTIFICATES_SET_SLIDER_SLIDE, data: slide })
-export const setSertificatesScroll = value => ({ type: SERTIFICATES_SET_SCROLL, data: value })
+export const closeFiltersMenu = () => ({ type: MENU_CLOSE_FILTERS })
+
 export const selectArticlesPage = page => ({ type: ARTICLES_SELECT_PAGE, page })
 export const changeCartItemCount = (id, count) => ({ type: CART_ADD_ITEM, id, count })
 export const removeItemFromCart = id => ({ type: CART_REMOVE_ITEM, id })
@@ -134,6 +133,7 @@ export const loadHome = () => (dispatch, getState) => {
    const state = getState()
    const loading = state.home.loading
    const loaded = state.home.loaded
+
    if (loading || loaded) return
 
    dispatch({ type: LOAD_HOME + REQUEST })
@@ -200,8 +200,8 @@ export const loadArticle = (match, history) => async (dispatch, getState) => {
 
 export const loadProducts = url => async (dispatch, getState) => {
    const state = getState()
-   const loading = productsLoading(state)(url)
-   const loaded = productsLoaded(state)(url)
+   const loading = productsLoading(state, url)
+   const loaded = productsLoaded(state, url)
    if (loading || loaded) return
 
    const menu = state.menu.loaded
@@ -373,30 +373,48 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
    }, productsbyCategory)
 }
 
-export const filterProducts = (url, categoryUrl, selected) => (dispatch, getState) => {
+
+
+
+
+
+export const filterProducts = (url, searchParams) => (dispatch, getState) => {
    const state = getState()
    const filters = state.filters.filters[url]
-   const categoryFilters = filters[0]
+   const products = Object.keys(state.products.products[url])
    const normalizedFilters = selectNormalizedFilters(state, url)
+
+
+   const getSelected = (filters, searchParams) => {
+      return filters.reduce((acc, { searchGroup, products }) => {
+         const group = searchParams.get(searchGroup)
+         if (group) {
+            const groupItems = group.split('_').filter(item => item in products)
+            if (groupItems.length > 0) acc[searchGroup] = groupItems
+         }
+         return acc
+      }, {})
+   }
+
+   const selected = getSelected(filters, searchParams);
+
+
 
    dispatch({ type: FILTERS_IS_FILTERING, url })
 
-   new Promise(resolve => {
-      const productsbyCategory = categoryFilters.products[categoryUrl]
-      resolve(productsbyCategory)
+   Promise.resolve(products)
+   .then((products) => {
+      const filterIsSelected = Object.keys(selected).length
+      if (filterIsSelected) return filteredProducts(products, selected, normalizedFilters)
+      else return products
    })
-      .then(productsbyCategory => {
-         const productsFiltered = !Object.keys(selected).length ? productsbyCategory : filteredProducts(productsbyCategory, selected, normalizedFilters)
-
-         return productsFiltered
-      })
-      .then(productsFiltered => {
-         const sortBy = state.filters.sortBy
-         const prd = state.products.products[url]
-         const sortedProducts = sortProducts(sortBy, productsFiltered, prd)
-         return sortedProducts
-      })
-      .then(sortedProducts => {
-         dispatch({ type: FILTERS_IS_FILTERED, data: sortedProducts, url })
-      })
+   .then(productsFiltered => {
+      const sortBy = state.filters.sortBy
+      const prd = state.products.products[url]
+      const sortedProducts = sortProducts(sortBy, productsFiltered, prd)
+      return sortedProducts
+   })
+   .then(sortedProducts => {
+      dispatch({ type: FILTERS_IS_FILTERED, data: sortedProducts, url })
+   })
 }

@@ -1,0 +1,20 @@
+.link_secondary {
+   color: var(--gray);
+}
+
+.link_primary:hover,
+.link_secondary:hover {
+   color: var(--red);
+}
+
+.link_active {
+   color: var(--red);
+   border-radius: 3px;
+   outline: 2px solid var(--black);
+}
+
+.link-card:focus-visible {
+   outline-offset: 2px;
+   filter: brightness(130%);
+   transform: scale(1.006);
+}

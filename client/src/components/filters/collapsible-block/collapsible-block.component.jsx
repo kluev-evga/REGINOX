@@ -10,34 +10,19 @@ const CollapsibleBlock = ({ filters, searchGroup }) => {
    const [Outside, inside, time, count] = useMemo(
       () => [
          () =>
-            filters
-               .slice(0, 3)
-               .map((data, i) => (
-                  <FiltersItem key={i} {...data} searchGroup={searchGroup} />
-               )),
-         filters.slice(3),
-         Math.sqrt(filters.length) * 80,
-         filters.slice(3).length,
+            filters.slice(0, 3).map((data, i) => <FiltersItem key={i} {...data} searchGroup={searchGroup} /> ),
+            filters.slice(3),
+            Math.sqrt(filters.length) * 80,
+            filters.slice(3).length,
       ],
-      []
-   ) //eslint-disable-line
+      []) //eslint-disable-line
 
    return (
       <div className={styles.container}>
          <Outside />
          <Collapsible
-            trigger={
-               <>
-                  Ещё {count}
-                  <ChevronDownIcon />
-               </>
-            }
-            triggerWhenOpen={
-               <>
-                  Свернуть
-                  <ChevronUpIcon />
-               </>
-            }
+            trigger={ <> Ещё{count}<ChevronDownIcon /> </> }
+            triggerWhenOpen={ <> Свернуть<ChevronUpIcon /> </> }
             triggerTagName={'button'}
             transitionTime={time}
             className={styles.collapsible}
@@ -47,14 +32,11 @@ const CollapsibleBlock = ({ filters, searchGroup }) => {
             contentOuterClassName={styles.folded}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}>
+
             {inside.map((data, i) => (
-               <FiltersItem
-                  key={i}
-                  {...data}
-                  searchGroup={searchGroup}
-                  isOpen={isOpen}
-               />
+               <FiltersItem key={i} {...data} searchGroup={searchGroup} isHidden={!isOpen} />
             ))}
+
          </Collapsible>
       </div>
    )

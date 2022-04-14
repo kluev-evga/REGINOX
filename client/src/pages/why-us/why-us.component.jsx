@@ -8,35 +8,30 @@ import { ReactComponent as ProfessionalyIcon } from '../../assets/svg/profession
 const WhyUs = () => (
    <div>
       <div className='container'>
-         <div className='breadcrumbs'>
-            <Link to='/home'>Главная</Link> / Почему мы
-         </div>
+         <div className='breadcrumbs'><Link to='/'>Главная</Link> / Почему мы</div>
+
          <h1 className='title'>Почему мы</h1>
 
          <div className='article'>
             <ul>
                <li>
-                  наличие на складе Москвы и Санкт-Петербурга, а также
-                  возможность производства под индивидуальный заказ;
+                  наличие на складе Москвы и Санкт-Петербурга, а также возможность производства под индивидуальный заказ;
                </li>
                <li>
-                  различный ценовой диапазон, позволяющий осуществлять продажи и
-                  реализовать проекты с каждым клиентом (эконом, бизнес и
-                  премиум);
+                  различный ценовой диапазон, позволяющий осуществлять продажи и реализовать проекты с каждым клиентом (эконом, бизнес и премиум);
                </li>
                <li>
-                  широкий ассортимент, различные стилистические направления
-                  сантехники (от классики до хай-тек), инновационные тенденции;
+                  широкий ассортимент, различные стилистические направления сантехники (от классики до хай-тек), инновационные тенденции;
                </li>
                <li>
-                  исключительное качество, соответствие всем международным и
-                  российским стандартам и требованиям;
+                  исключительное качество, соответствие всем международным и российским стандартам и требованиям;
                </li>
                <li>
-                  работаем с индивидуальными проектами, проектировщиками и
-                  дизайнерами, застройщиками;
+                  работаем с индивидуальными проектами, проектировщиками и дизайнерами, застройщиками;
                </li>
-               <li>профессиональный подход, надежное партнерство.</li>
+               <li>
+                  профессиональный подход, надежное партнерство.
+               </li>
             </ul>
          </div>
       </div>
@@ -47,42 +42,21 @@ const WhyUs = () => (
                <ValuableIcon />
                <div>
                   <b>Выгодно</b>
-                  <p>
-                     Гибкие цены
-                     <br />
-                     Все в наличии
-                     <br />
-                     Гаранития производителя
-                     <br />
-                  </p>
+                  <p>Гибкие цены<br />Все в наличии<br />Гаранития производителя<br /></p>
                </div>
             </div>
             <div className={styles.cards_item}>
                <CasualIcon />
                <div>
                   <b>Удобно </b>
-                  <p>
-                     Бесплатная доставка
-                     <br />
-                     Доставка по России
-                     <br />
-                     Самовывоз
-                     <br />
-                  </p>
+                  <p>Бесплатная доставка<br />Доставка по России<br />Самовывоз<br /></p>
                </div>
             </div>
             <div className={styles.cards_item}>
                <ProfessionalyIcon />
                <div>
                   <b>Профессионально</b>
-                  <p>
-                     Консультация специалиста
-                     <br />
-                     Индивидуальный подход
-                     <br />
-                     Работаем с 1993 года
-                     <br />
-                  </p>
+                  <p>Консультация специалиста<br />Индивидуальный подход<br />Работаем с 1993 года<br /></p>
                </div>
             </div>
          </div>
@@ -91,19 +65,13 @@ const WhyUs = () => (
       <div className='container'>
          <div className='article'>
             <h2 className='title-1'>Наши достижения</h2>
-            <p>
-               Наши достижения — это взаимовыгодное сотрудничество с разными
-               участниками рынка.{' '}
-            </p>
+            <p>Наши достижения — это взаимовыгодное сотрудничество с разными участниками рынка.</p>
          </div>
 
          <div className={styles.accomplishments}>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_1.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_1.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'
@@ -113,10 +81,7 @@ const WhyUs = () => (
             </div>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_2.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_2.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'
@@ -126,26 +91,17 @@ const WhyUs = () => (
             </div>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_3.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_3.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'
                />
                <span>В промышленном производстве</span>
-               <p>
-                  Тверской вагоностроительный и Гомельский вагоностроительный
-                  заводы и другие
-               </p>
+               <p>Тверской вагоностроительный и Гомельский вагоностроительный заводы и другие</p>
             </div>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_4.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_4.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'
@@ -155,10 +111,7 @@ const WhyUs = () => (
             </div>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_5.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_5.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'
@@ -168,10 +121,7 @@ const WhyUs = () => (
             </div>
             <div>
                <img
-                  src={
-                     process.env.PUBLIC_URL +
-                     '/assets/accomplishments/accomplishments_6.webp'
-                  }
+                  src={process.env.PUBLIC_URL + '/assets/accomplishments/accomplishments_6.webp'}
                   width='355'
                   height='238'
                   alt='accomplishments'

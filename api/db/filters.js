@@ -2,11 +2,11 @@ const filters = {
     'sinks': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                {title: 'Все', url: 'all'},
-                {title: 'Врезная мойка', url: 'integrated'},
-                {title: 'Накладная мойка', url: 'overhead'},
-                {title: 'Мойка под столешницу', url: 'underlining'},
+                {title: 'Врезная мойка', search: 'integrated'},
+                {title: 'Накладная мойка', search: 'overhead'},
+                {title: 'Мойка под столешницу', search: 'underlining'},
             ],
         },
         {
@@ -100,12 +100,12 @@ const filters = {
     'taps': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                {title: 'Все', url: 'all'},
-                {title: 'Сенсорный', url: 'sensor'},
-                {title: 'Термостатический', url: 'thermostatic'},
-                {title: 'Кухонный смеситель', url: 'kitchen'},
-                {title: 'Смеситель для санузлов', url: 'bathroom'},
+                {title: 'Сенсорный', search: 'sensor'},
+                {title: 'Термостатический', search: 'thermostatic'},
+                {title: 'Кухонный смеситель', search: 'kitchen'},
+                {title: 'Смеситель для санузлов', search: 'bathroom'},
             ],
         },
         {
@@ -233,12 +233,12 @@ const filters = {
     'ranges': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                { title: 'Все', url: 'all'},
-                { title: 'Варочная панель', url: 'overcounter'},
-                { title: 'Газовая плита', url: 'freestanding'},
-                { title: 'Комбинированная', url: 'combined'},
-                { title: 'Кухонная конфорка', url: 'integratable'},
+                { title: 'Варочная панель', search: 'overcounter'},
+                { title: 'Газовая плита', search: 'freestanding'},
+                { title: 'Комбинированная', search: 'combined'},
+                { title: 'Кухонная конфорка', search: 'integratable'},
             ],
         },
         {
@@ -294,15 +294,15 @@ const filters = {
     'washstands': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                { title: 'Все', url: 'all'},
-                { title: "Раковина", url: "sink" },
-                { title: "Подвесная раковина", url: "hanged" },
-                { title: "На пьедестале", url: "stand" },
-                { title: "Двойная", url: "double" },
-                { title: "Угловая", url: "corner" },
-                { title: "Отдельностоящая", url: "freestanding" },
-                { title: "Рукомойник", url: "dispenser" },
+                { title: "Раковина", search: "sink" },
+                { title: "Подвесная раковина", search: "hanged" },
+                { title: "На пьедестале", search: "stand" },
+                { title: "Двойная", search: "double" },
+                { title: "Угловая", search: "corner" },
+                { title: "Отдельностоящая", search: "freestanding" },
+                { title: "Рукомойник", search: "dispenser" },
             ],
         },
         {
@@ -396,13 +396,13 @@ const filters = {
     'accessories': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                {title: 'Все', url: 'all'},
-                {title: 'Корзины', url: 'baskets'},
-                {title: 'Поддоны', url: 'pans'},
-                {title: 'Сифоны', url: 'siphons'},
-                {title: 'Разделочные доски', url: 'boards'},
-                {title: 'Адаптеры', url: 'adapters'},
+                {title: 'Корзины', search: 'baskets'},
+                {title: 'Поддоны', search: 'pans'},
+                {title: 'Сифоны', search: 'siphons'},
+                {title: 'Разделочные доски', search: 'boards'},
+                {title: 'Адаптеры', search: 'adapters'},
             ],
         },
         {
@@ -451,11 +451,11 @@ const filters = {
     'storage-manhattan': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                {title: 'Все', url: 'all'},
-                {title: 'Manhattan', url: 'manhattan'},
-                {title: 'Manhattan Slim', url: 'slim'},
-                {title: 'Комплекты Manhattan', url: 'kits'},
+                {title: 'Manhattan', search: 'manhattan'},
+                {title: 'Manhattan Slim', search: 'slim'},
+                {title: 'Комплекты Manhattan', search: 'kits'},
             ],
         },
         {
@@ -491,16 +491,17 @@ const filters = {
     'muscellaneous': [
         {
             title: 'Тип продукта',
+            searchGroup: 'type',
             filters: [
-                {title: 'Rodi (Португалия)', url: 'rodi'},
-                {title: 'Whinstone (Россия)', url: 'whinstone'},
-                {title: 'Rerih (Италия)', url: 'rerih'},
-                {title: 'Status (Италия)', url: 'status'},
-                {title: 'Armando Vicario (Италия)', url: 'armandovicario'},
-                {title: 'Webert (Италия)', url: 'webert'},
-                {title: 'Effepi (Италия)', url: 'effepi'},
-                {title: 'Glionna Bagno (Италия)', url: 'glionnabagno'},
-                {title: 'Аквафор (Россия)', url: 'aquafor'},
+                {title: 'Rodi (Португалия)', search: 'rodi'},
+                {title: 'Whinstone (Россия)', search: 'whinstone'},
+                {title: 'Rerih (Италия)', search: 'rerih'},
+                {title: 'Status (Италия)', search: 'status'},
+                {title: 'Armando Vicario (Италия)', search: 'armandovicario'},
+                {title: 'Webert (Италия)', search: 'webert'},
+                {title: 'Effepi (Италия)', search: 'effepi'},
+                {title: 'Glionna Bagno (Италия)', search: 'glionnabagno'},
+                {title: 'Аквафор (Россия)', search: 'aquafor'},
             ],
         },
         {

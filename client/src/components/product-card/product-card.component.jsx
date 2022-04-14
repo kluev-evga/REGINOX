@@ -2,11 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { cartItemCount, compareItem } from '../../redux/selectors'
-import {
-   changeCartItemCount,
-   removeItemFromCart,
-   toggleCompareItem,
-} from '../../redux/actions'
+import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions'
 import cn from 'classnames'
 import { ReactComponent as Cart } from '../../assets/svg/cart.svg'
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg'
@@ -24,32 +20,10 @@ const RatingBlock = ({ r, reviewers }) => (
 )
 
 const Button = ({ children, noFocus, ...rest }) =>
-   noFocus ? (
-      <span {...rest}>{children}</span>
-   ) : (
-      <button {...rest}>{children}</button>
-   )
+   noFocus ? <span {...rest}>{children}</span> : <button {...rest}>{children}</button>
 
-const ProductCard = ({
-   tiles,
-   product,
-   withRating = true,
-   categoryUrl = 'all',
-   noFocus,
-}) => {
-   const {
-      id,
-      img,
-      alt,
-      title,
-      url,
-      productUrl,
-      reviewers,
-      p,
-      r,
-      promo,
-      newItem,
-   } = product
+const ProductCard = ({ tiles, product, withRating = true, noFocus }) => {
+   const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem } = product
    const count = useSelector(state => cartItemCount(state, id))
    const inCompare = useSelector(state => compareItem(state, id))
    const incart = isFinite(count)
@@ -64,6 +38,7 @@ const ProductCard = ({
          : dispatch(removeItemFromCart(id))
    const addToCompare = () => dispatch(toggleCompareItem(id))
 
+
    return (
       <div
          className={cn(
@@ -74,7 +49,7 @@ const ProductCard = ({
             { [styles.hover]: hover }
          )}>
          <Link
-            to={`/products/${url}/${categoryUrl}/${productUrl}`}
+            to={`/products/${url}/${productUrl}`}
             className={styles.link}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>

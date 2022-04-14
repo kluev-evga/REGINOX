@@ -14,28 +14,10 @@ const Slider = ({ items }) => {
    return (
       <div className={'slider-container'}>
          <Swiper
-            slidesPerView={
-               isXL
-                  ? 4
-                  : isDesktop
-                  ? 3
-                  : isTabletLg
-                  ? 3.2
-                  : isTablet
-                  ? 3.13
-                  : isPhoneLG
-                  ? 3
-                  : isPhone
-                  ? 2
-                  : 1
-            }
+            slidesPerView={ isXL ? 4 : isDesktop ? 3 : isTabletLg ? 3.2 : isTablet ? 3.13 : isPhoneLG ? 3 : isPhone ? 2 : 1 }
             spaceBetween={isTabletLg ? 35 : isTablet ? 20 : 0}
-            slidesOffsetBefore={
-               isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0
-            }
-            slidesOffsetAfter={
-               isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0
-            }
+            slidesOffsetBefore={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
+            slidesOffsetAfter={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
             navigation>
             {items.map(product => (
                <SwiperSlide key={product.id} className={styles.slide}>

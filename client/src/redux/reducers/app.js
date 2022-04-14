@@ -1,6 +1,5 @@
 import {
     APP_SET_STATUS,
-    APP_SET_HOME_PAGE,
     APP_SET_IS_POP_UP,
     APP_SET_TILES,
     APP_UNSET_TILES,
@@ -26,11 +25,6 @@ const appReducer = function (state = INITIAL_STATE, action) {
             return {
                 ...state,
                 status: status
-            }
-        case APP_SET_HOME_PAGE:
-            return {
-                ...state,
-                isHomePage: status
             }
         case APP_SET_IS_POP_UP:
             return {

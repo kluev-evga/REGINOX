@@ -1,39 +1,35 @@
 import { useCallback } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import cn from 'classnames'
 import { ReactComponent as CheckboxIcon } from '../../../assets/svg/checkbox.svg'
 import styles from '../button.module.css'
 
-const FiltersItem = ({ title, count, search, searchGroup, isOpen = true }) => {
-   const history = useHistory()
-   const params = new URLSearchParams(history.location.search)
-   const isActive = params.get(searchGroup)?.includes(search)
+const FiltersItem = ({ title, count, search, searchGroup, isHidden = false }) => {
+   const [params, setSearchParams] = useSearchParams()
+   const isChecked = params.get(searchGroup)?.split('_').includes(search)
 
-   const handleClick = useCallback((isActive, params) => {
-      if (!params.has(searchGroup) && !isActive) {
+   const handleClick = useCallback((isChecked, params) => {
+      if (!params.has(searchGroup) && !isChecked) {
          params.set(searchGroup, search)
       } else {
          const searchArr = params.get(searchGroup).split('_')
 
-         if (searchArr.length < 2 && isActive) {
+         if (searchArr.length < 2 && isChecked) {
             params.delete(searchGroup)
          } else {
             const arr = searchArr.filter(item => item !== search)
-            !isActive && arr.push(search)
+            !isChecked && arr.push(search)
             params.set(searchGroup, arr.join('_'))
          }
       }
-      history.push({ search: params.toString() })
+      setSearchParams(params)
    }, []) // eslint-disable-line
 
    return (
       <button
-         tabIndex={count === 0 || !isOpen ? -1 : null}
-         onClick={() => handleClick(isActive, params)}
-         className={cn(styles.button, {
-            [styles.disabled]: count === 0,
-            [styles.active]: isActive,
-         })}>
+         tabIndex={count === 0 || isHidden ? -1 : null}
+         onClick={() => handleClick(isChecked, params)}
+         className={cn(styles.button, { [styles.disabled]: count === 0, [styles.active]: isChecked })}>
          <CheckboxIcon />
          {title}
          <span>({count})</span>

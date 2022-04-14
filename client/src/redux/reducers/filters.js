@@ -32,13 +32,11 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
           isFiltering: {...state.isFiltering, [url]: status},
       };
     case FILTERS_IS_FILTERING:
-      // console.log('filtering')
       return {
         ...state,
         isFiltering: {...state.isFiltering, [url]: true},
       };
       case FILTERS_IS_FILTERED:
-      // console.log('filtering done')
         return {
             ...state,
             isFiltering: {...state.isFiltering, [url]: false},

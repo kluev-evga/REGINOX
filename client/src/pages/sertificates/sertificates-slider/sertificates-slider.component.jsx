@@ -1,58 +1,62 @@
-import { connect } from 'react-redux'
-import { setSertificatesSlide } from '../../../redux/actions'
-import {
-   sertificatesSlide,
-   selectSertificatesList,
-} from '../../../redux/selectors'
+import { useCallback, useRef} from 'react'
+import { useSelector } from 'react-redux'
+import { selectSertificatesList } from '../../../redux/selectors'
+import { Gallery } from 'react-photoswipe-gallery'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useMediaQuery } from 'react-responsive'
 import SliderItem from '../slider-item/slider-item.component'
 import styles from './sertificates-slider.module.css'
 
-const SertificatesSlider = ({
-   sertificatesList,
-   slide,
-   setSertificatesSlide,
-}) => {
-   const isPhone = useMediaQuery({ query: '(min-width: 340px)' })
+
+
+const SertificatesSlider = () => {
+   const isPhone = useMediaQuery({ query: '(min-width: 375px)' })
    const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
    const isTabletLg = useMediaQuery({ query: '(min-width: 992px)' })
    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
-   const isXL = useMediaQuery({ query: '(min-width: 1400px)' })
+   const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' })
+
+   const sertificatesList = useSelector(selectSertificatesList)
+
+   let SWP = useRef();
+   const onInitFunc = useCallback((swiperInstance) => {SWP.current=swiperInstance}, [])
+
+   const onBeforeOpen = (pswp) => {
+      pswp.on('close', () => {
+            const swiper = SWP.current
+            const ajust = swiper.clickedIndex - swiper.activeIndex;
+            const index = pswp.potentialIndex - ajust
+            swiper.slideTo(index, 0)
+      })
+   }
 
    return (
       <div className={styles.slider_container + ' slider-container'}>
+
+      <Gallery onBeforeOpen={onBeforeOpen}>
+
          <Swiper
             className={styles.swiper}
-            speed={400}
-            slidesPerView={
-               isXL ? 4 : isTabletLg ? 3.5 : isTablet ? 2.5 : isPhone ? 1.9 : 1
-            }
-            spaceBetween={isDesktop ? 30 : isTablet ? 20 : 0}
-            slidesOffsetAfter={
-               isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0
-            }
-            slidesOffsetBefore={
-               isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0
-            }
-            initialSlide={slide}
-            onSlideChange={swiper => setSertificatesSlide(swiper.activeIndex)}
+            speed={ 400 }
+            slidesPerView={ isDesktopXL ? 5 : isTabletLg ? 4 : isTablet ? 3 : isPhone ? 2.2 : 1 }
+            spaceBetween={ isDesktop ? 15 : isTablet ? 10 : 0 }
+            slidesOffsetAfter={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
+            slidesOffsetBefore={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
+            onInit={onInitFunc}
             navigation>
-            {sertificatesList.map(id => (
-               <SwiperSlide key={id} className={styles.swiper_slide}>
-                  <SliderItem id={id} />
-               </SwiperSlide>
-            ))}
-         </Swiper>
+
+               {sertificatesList.map(id => (
+                  <SwiperSlide key={id} className={styles.swiper_slide}>
+                     <SliderItem id={id} />
+                  </SwiperSlide>
+               ))}
+
+            </Swiper>
+
+         </Gallery>
+
       </div>
    )
 }
 
-const mapStateToProps = state => ({
-   sertificatesList: selectSertificatesList(state),
-   slide: sertificatesSlide(state),
-})
-
-export default connect(mapStateToProps, { setSertificatesSlide })(
-   SertificatesSlider
-)
+export default SertificatesSlider

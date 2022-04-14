@@ -37,7 +37,7 @@ const NotFound = ({ setAppStatus }) => {
                Запрашиваемая вами страница была удалена либо никогда не
                существовала. Извините за неудобства.
             </p>
-            <Link to='/home' className={styles.link}>
+            <Link to='/' className={styles.link}>
                Вернуться на главную
             </Link>
          </div>
