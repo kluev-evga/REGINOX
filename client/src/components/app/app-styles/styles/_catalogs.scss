@@ -1,0 +1,152 @@
+.catalog {
+
+   &__container {
+      margin-top: 20px;
+      display: grid;
+      grid-auto-rows: 1fr;
+      grid-gap: 10px;
+   }
+
+   &__card {
+      position: relative;
+      flex-grow: 1;
+      cursor: pointer;
+      box-shadow: 5px 5px 5px 0 #00000080;
+
+      img {
+         width: 100%;
+         max-width: unset;
+         height: auto;
+      }
+
+      &:hover {
+         .catalog__card-pdf {
+            opacity: 1;
+            transition: opacity 0.1s ease-out;
+         }
+      }
+   }
+
+   &__card-caption {
+      position: absolute;
+      inset: 0 0 0 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      background: linear-gradient(0deg, #000b 10%, #0005 50%, transparent);
+   }
+
+   &__card-download {
+      align-self: flex-end;
+      margin: 12px;
+   }
+
+   &__card-pdf {
+      align-self: center;
+      
+      margin-left: -12px;
+      margin-bottom: 50px;
+      width: 60px;
+      height: 60px;
+
+      opacity: 0;
+   }
+
+   &__card-title {
+      padding: 0 5px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--white);
+      text-align: center;
+   }
+
+   &__load-btn {
+      margin: 30px auto 0;
+   
+      button {
+         display: block;
+         margin-left: auto;
+         padding: 10px 0;
+   
+         color: var(--red);
+         font-weight: 500;
+   
+         &:hover {
+            color: var(--graphite);
+         }
+   
+         &:disabled {
+            color: var(--gray-med);
+         }
+   
+         &.hidden {
+            display: none;
+         }
+      }
+   }
+
+   &__spinner {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   @media (min-width: 375px) {
+      &__container {
+         grid-template-columns: repeat(2, 1fr);
+      }
+   }
+
+   @media (min-width: 576px) {
+      &__container {
+         grid-template-columns: repeat(3, 1fr);
+      }
+   }
+
+   @media (min-width: 768px) {
+      &__container {
+         grid-gap: 15px;
+      }
+   }
+
+   @media (min-width: 992px) {
+      &__container {
+         grid-template-columns: repeat(4, 1fr);
+      }
+   }
+
+   @media (min-width: 1200px) {
+      &__container {
+         grid-gap: 20px;
+      }
+
+      &__card {
+         box-shadow: 10px 10px 10px 0 #00000080;
+      }
+
+      &__card-title {
+         padding: 0 5px;
+         margin-bottom: 35px;
+         font-size: 15px;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__container {
+         grid-template-columns: repeat(5, 1fr);
+      }
+
+      &__load-btn {
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 1600px) {
+      &__container {
+         grid-gap: 25px;
+      }
+   }
+}

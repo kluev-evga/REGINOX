@@ -1,0 +1,135 @@
+.search {
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 2;
+   width: 100%;
+   height: 200px;
+
+   color: var(--white);
+   background: var(--black);
+   box-shadow: 0 0 1px 0 var(--gray-med);
+
+   &__container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+   }
+
+   &__icon {
+      width: 25px;
+      height: 25px;
+   }
+
+   &__input-container {
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+
+      input {
+         margin-left: -25px;
+         padding-left: 45px;
+         border: none;
+         outline: none;
+         border-bottom: 1px solid var(--white);
+         color: var(--white);
+         background: transparent;
+      }
+
+      span {
+         position: absolute;
+         top: 13px;
+         left: 45px;
+         pointer-events: none;
+         transition: all 0.1s ease-out;
+      }
+
+      &.active span {
+         font-size: 12px;
+         top: -10px;
+         left: 35px;
+      }
+   }
+
+   button:hover {
+      color: var(--gray-med);
+   }
+
+   &__btn-clear {
+      position: absolute;
+      z-index: 1;
+      top: 1px;
+      right: -7px;
+      padding: 18px;
+
+      svg {
+         width: 15px;
+         height: 15px;
+      }
+   }
+
+   &__btn-close {
+      order: -1;
+      width: 100%;
+      padding: 20px 0 50px;
+
+      button {
+         padding: 10px;
+         display: block;
+         margin-left: auto;
+      }
+
+      svg {
+         height: 20px;
+         width: 20px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      .search__container {
+         padding-top: 55px;
+      }
+
+      &__input-container {
+         margin-right: 20px;
+         transition: margin 0.1s ease;
+
+         &.active {
+            margin-right: 100px;
+
+            .search__btn-clear {
+               animation: fade-in 0.15s ease 0.15s forwards;
+               @keyframes fase-in {
+                  to {
+                     opacity: 1;
+                  }
+               }
+            }
+         }
+      }
+
+      &__btn-clear {
+         right: -17px;
+         opacity: 0;
+      }
+
+      &__btn-close {
+         order: unset;
+         width: unset;
+         padding: 0;
+
+         button {
+            padding-right: 0;
+            display: flex;
+            align-items: center;
+         }
+
+         svg {
+            margin-right: 10px;
+            height: 25px;
+            width: 25px;
+         }
+      }
+   }
+}

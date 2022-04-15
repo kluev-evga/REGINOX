@@ -6,7 +6,6 @@ const articles = [
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
-        wide: true,
     },
     {
         id: '0aa284e1-1393-43cd-8970-c50fb767e067',
@@ -65,7 +64,6 @@ const articles = [
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
-        wide: true,
     },
     {
         id: '556fa03c-265f-4791-bec3-9ea10807210b',
@@ -106,7 +104,6 @@ const articles = [
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
-        wide: true,
     },
     {
         id: '2b6eade0-eca4-4177-a433-917ef2dc225c',
@@ -147,7 +144,6 @@ const articles = [
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
-        wide: true,
     },
     {
         id: '87dd5f29-7fe5-41d4-8103-e303db258d86',
@@ -172,7 +168,6 @@ const articles = [
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
-        wide: true,
     },
     {
         id: '019c717a-1eac-4244-9533-51b8736e03f4',
@@ -229,7 +224,6 @@ const articles = [
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
-        wide: true,
     },
     {
         id: 'e715d10f-14e3-4287-8cc4-da29b8d09918',
@@ -254,7 +248,6 @@ const articles = [
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
-        wide: true,
     },
     {
         id: 'f8c913a5-c007-488f-8950-6c94018f089e',

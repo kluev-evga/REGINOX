@@ -1,4 +1,4 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden='true' xmlns="http://www.w3.org/2000/svg">
     <path
         d="M19.63 15.03c-.36 0-.66.3-.66.65v3.95c0 .36-.3.65-.66.65H5.17a.66.66 0 0 1-.66-.65v-3.95a.66.66 0 0 0-1.31 0v3.95c0 1.09.88 1.97 1.97 1.97h13.14c1.1 0 1.98-.88 1.98-1.97v-3.95c0-.36-.3-.65-.66-.65Z"
         fill="#fff" />

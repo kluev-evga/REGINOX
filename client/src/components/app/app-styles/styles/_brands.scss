@@ -1,0 +1,130 @@
+.brands {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 2px;
+
+   figure {
+      flex-basis: 150px;
+      flex-grow: 1;
+      padding: 0 10px 5px;
+      margin: 0;
+      border: 1px solid var(--gray-light);
+
+      &:hover {
+         border-color: var(--gray-med);
+         box-shadow: inset 0 0px 8px 0 #00000000, 0 0 20px 0 #4848484f;
+         transition: border-color 0.1s linear, box-shadow 0.1s linear;
+      }
+   }
+
+   img {
+      margin: 0 auto;
+      width: 120px;
+      height: auto;
+   }
+
+   figcaption {
+      max-width: 240px;
+      margin: 0 auto;
+
+      font-size: 14px;
+      line-height: 1.1;
+      text-align: center;
+      font-weight: 500;
+   }
+
+   a {
+      display: block;
+      margin-top: 8px;
+      text-decoration: underline;
+
+      &:hover {
+         color: var(--red);
+         text-decoration: none;
+      }
+   }
+
+   @media (min-width: 576px) {
+      gap: 3px;
+
+      figure {
+         padding: 5px 10px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      figure {
+         flex-basis: 179px;
+         padding: 5px 10px 10px;
+      }
+
+      figcaption {
+         margin-top: 5px;
+      }
+   }
+
+   @media (min-width: 900px) {
+      figure {
+         flex-basis: 210px;
+      }
+   }
+
+   @media (min-width: 992px) {
+      figure {
+         flex-basis: 230px;
+      }
+
+      figcaption {
+         margin-top: 10px;
+         font-size: 16px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      gap: 0;
+
+      figure {
+         flex-basis: 0;
+         padding: 50px 0;
+         position: relative;
+      }
+
+      figcaption {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+
+         margin-top: 0;
+         padding: 15px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+
+         background-color: var(--gray-light);
+         opacity: 0;
+         transition: opacity 0.25s linear 0.05s;
+      }
+
+      a {
+         margin-top: 10px;
+      }
+
+      img {
+         transition: opacity 0.05s linear;
+      }
+
+      figure:hover figcaption {
+         opacity: 1;
+         transition: opacity 0.25s linear;
+      }
+
+      figure:hover img {
+         opacity: 0;
+         transition: opacity 0.1s linear;
+      }
+   }
+}

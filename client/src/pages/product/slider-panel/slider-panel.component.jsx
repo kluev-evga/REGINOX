@@ -1,9 +1,5 @@
 import { connect } from 'react-redux'
-import {
-   changeCartItemCount,
-   removeItemFromCart,
-   toggleCompareItem,
-} from '../../../redux/actions'
+import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions'
 import { cartItemCount, compareItem } from '../../../redux/selectors'
 import cn from 'classnames'
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg'
@@ -13,27 +9,11 @@ import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
 import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg'
 import styles from './slider-panel.module.css'
 
-const SliderPanel = ({
-   id,
-   price,
-   discount,
-   changeCartItemCount,
-   removeItemFromCart,
-   cartItemCount,
-   toggleCompareItem,
-   compareItem,
-}) => {
+const SliderPanel = ({ id, price, discount, changeCartItemCount, removeItemFromCart, cartItemCount, toggleCompareItem, compareItem }) => {
    const incart = isFinite(cartItemCount)
-   const increase = () =>
-      incart
-         ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1)
-         : changeCartItemCount(id, 1)
-   const decrease = () =>
-      incart && cartItemCount > 1
-         ? changeCartItemCount(id, cartItemCount - 1)
-         : removeItemFromCart(id)
-   const onCartButtonClick = () =>
-      incart ? removeItemFromCart(id) : increase()
+   const increase = () => incart ? cartItemCount < 99 && changeCartItemCount(id, cartItemCount + 1) : changeCartItemCount(id, 1)
+   const decrease = () => incart && cartItemCount > 1 ? changeCartItemCount(id, cartItemCount - 1) : removeItemFromCart(id)
+   const onCartButtonClick = () => incart ? removeItemFromCart(id) : increase()
 
    return (
       <div className={styles.container}>
@@ -67,14 +47,14 @@ const SliderPanel = ({
             </div>
          </div>
 
-         {cartItemCount === 99 && (
+         {cartItemCount === 99 &&
             <span>
                Телефон для оптовых клиентов:{' '}
                <a className='link_secondary' href='tel:84952298559'>
                   8 (495) 229 85 59
                </a>
             </span>
-         )}
+         }
 
          <div className={styles.buy}>
             <button>Купить в один клик</button>

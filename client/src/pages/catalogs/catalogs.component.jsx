@@ -1,58 +1,69 @@
-import { useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useCallback, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadCatalogs } from '../../redux/actions'
 import { catalogsLoading, catalogsTotal } from '../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import withMenuLoader from '../../hoc/with-menu-loader'
-import CatalogsCards from './catalogs-cards/catalogs-cards.component'
-import styles from './catalogs.module.css'
+import CatalogsCards from './catalogs-cards.component'
 
-const Catalogs = ({ loadCatalogs, loading, total, location, history }) => {
+
+const Catalogs = ({ loadCatalogs, loading, total }) => {
+   const ref=useRef()
    const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' })
-   const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
-   const searchParams = new URLSearchParams(location.search)
+   const isTabletLG = useMediaQuery({ query: '(min-width: 992px)' })
+   const isTablet = useMediaQuery({ query: '(min-width: 576px)' })
+   const [searchParams, setSearchParams] = useSearchParams()
    const sizeParam = searchParams.get('size')
    const pageSize = parseInt(sizeParam)
-   const isLegit = isFinite(Number(sizeParam))
+   const isInteger = isFinite(Number(sizeParam))
+   const i = isDesktopXL ? 5 : isTabletLG ? 4 : isTablet ? 3 : 2
+
+   useEffect(() => {ref.current.scrollIntoView({behavior: "smooth", block: "start"})}, [] )
 
    useEffect(() => {
-      if (!isLegit || searchParams.toString() !== `size=${pageSize}`)
-         history.replace(`/catalogs?size=${pageSize ? pageSize : 3}`)
-      else loadCatalogs(pageSize, isDesktopXL, isTablet)
+      if (!isInteger || searchParams.toString() !== `size=${pageSize}`) {
+         const params = new URLSearchParams()
+         params.set('size', pageSize ? pageSize : i) // remove any else than size query:
+         setSearchParams(params)
+      } else {
+         loadCatalogs(pageSize)
+      }
    }, [searchParams]) //eslint-disable-line
 
    useEffect(() => {
-      total && pageSize > total && history.replace(`/catalogs?size=${total}`)
+      if (total && pageSize > total) {// cut-out overhauled number when total is received
+         searchParams.set('size', total)
+         setSearchParams(searchParams)
+      }
    }, [total]) //eslint-disable-line
 
    const handleClick = useCallback(() => {
-      const i = isDesktopXL ? 4 : isTablet ? 3 : 2
-      const size =
-         (pageSize + i) % i === 0 ? pageSize + i : pageSize + i - (pageSize % i)
-      history.replace(`/catalogs?size=${size < total ? size : total}`)
-   }, [pageSize, total, isDesktopXL, isTablet]) // eslint-disable-line
+      const size = (pageSize + i) % i === 0 ? pageSize + i : pageSize + i - (pageSize % i) // ajust on breakpoints
+      const sizeParam =  size < total ? size : total // max value check
+      searchParams.set('size', sizeParam)
+      setSearchParams(searchParams)
+   }, [pageSize, total, isDesktopXL, isTabletLG, isTablet]) // eslint-disable-line
 
    return (
-      <div className='container'>
-         <div className='breadcrumbs'>
-            <Link to='/home'>Главная</Link> / Каталоги
-         </div>
+      <div className='container catalog' ref={ref}>
+
+         <div className='breadcrumbs'><Link to='/'>Главная</Link> / Каталоги</div>
+   
          <h1 className='title'>Каталоги</h1>
 
          <CatalogsCards pageSize={pageSize} />
 
-         <div className={styles.wrapper}>
+         <div className='catalog__load-btn'>
             <button
                onClick={handleClick}
                disabled={loading ? true : false}
-               className={cn(styles.button, {
-                  [styles.hidden]: pageSize === total,
-               })}>
+               className={cn({ 'hidden': pageSize === total })}>
                Загрузить еще
             </button>
          </div>
+
       </div>
    )
 }
@@ -62,6 +73,4 @@ const mapStateToProps = state => ({
    loading: catalogsLoading(state),
 })
 
-export default withMenuLoader(
-   connect(mapStateToProps, { loadCatalogs })(Catalogs)
-)
+export default withMenuLoader(connect(mapStateToProps, { loadCatalogs })(Catalogs))

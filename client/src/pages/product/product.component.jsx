@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { menuTitleByUrl, productItem } from '../../redux/selectors'
+import { useEffect, useRef } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getTitle, productItem } from '../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import Slider from './slider/slider.component'
@@ -11,20 +11,20 @@ import TabsContainer from './tabs-container/tabs-container.component'
 import SimilarProducts from './similar-products/similar-products.component'
 import styles from './product.module.css'
 
-const Product = ({ match, getTitle, productItem }) => {
-   const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
-   const { url, categoryUrl, productUrl } = match.params
-   const { id, title, price, discount, specs, images, promo, newItem } = productItem(productUrl)
-   const linkTitle = getTitle(url)
 
-   useEffect(() => {
-      window.scrollTo(0, 0)
-   }, [])
+const Product = () => {
+   const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
+   const ref = useRef()
+   const { url, productUrl } = useParams()
+   const { id, title, price, discount, specs, images, promo, newItem } = useSelector((state) => productItem(state, productUrl))
+   const linkTitle = useSelector((state) => getTitle(state, url))
+
+   useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
 
    return (
-      <div className='container'>
+      <div className='container' ref={ref}>
          <div className={'breadcrumbs ' + styles.breadcrumbs}>
-            <Link to='/home'>Главная</Link> / <Link to={`/products/${url}/${categoryUrl}`}>{linkTitle}</Link> / <div>{title}</div>
+            <Link to='/'>Главная</Link> / <Link to={`/products/${url}`}>{linkTitle}</Link> / <div>{title}</div>
          </div>
 
          <div className={styles.wrapper}>
@@ -46,9 +46,4 @@ const Product = ({ match, getTitle, productItem }) => {
    )
 }
 
-const mapStateToProps = state => ({
-   getTitle: menuTitleByUrl(state),
-   productItem: productItem(state)
-})
-
-export default connect(mapStateToProps)(Product)
+export default Product

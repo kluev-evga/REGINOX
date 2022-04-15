@@ -1,7 +1,7 @@
 import { Link, useMatch } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { openMainMenu } from '../../redux/actions'
 import { menuLoaded } from '../../redux/selectors'
+import {action as toggleMenu} from 'redux-burger-menu';
 import cn from 'classnames'
 import Logo from '../logo/logo.component'
 import NavLinks from './components/nav-links.component'
@@ -29,7 +29,7 @@ const Header = () => {
 
                <button
                   className='header__btn-burger'
-                  onClick={() => dispatch(openMainMenu())}
+                  onClick={() => dispatch(toggleMenu(true, 'main'))}
                   aria-label='главное меню'>
                   <MenuIcon />
                </button>

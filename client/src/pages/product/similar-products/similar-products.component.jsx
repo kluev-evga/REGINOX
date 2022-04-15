@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadSimilarProducts } from '../../../redux/actions'
-import {
-   similarProducts,
-   similarProductsloading,
-} from '../../../redux/selectors'
+import { similarProducts, similarProductsloading } from '../../../redux/selectors'
 import Slider from '../../../components/slider/slider.component'
 import { ReactComponent as Loading } from '../../../assets/svg/spinner.svg'
 import styles from './similar-products.module.css'
@@ -17,12 +14,9 @@ const SimilarProducts = ({ loadSimilarProducts, loading, similarProducts }) => {
       loadSimilarProducts()
    }, []) //eslint-disable-line
 
-   useEffect(() => {
-      !loading && setLoaded(true)
-   }, [loading])
+   useEffect(() => { !loading && setLoaded(true) }, [loading])
 
-   if (loading || !loaded)
-      return <Loading className={styles.spinner} height='100' />
+   if (loading || !loaded) return <Loading className={styles.spinner} height='100' />
 
    return (
       <div>
@@ -37,6 +31,4 @@ const mapStateToProps = state => ({
    loading: similarProductsloading(state),
 })
 
-export default connect(mapStateToProps, { loadSimilarProducts })(
-   SimilarProducts
-)
+export default connect(mapStateToProps, { loadSimilarProducts })(SimilarProducts)

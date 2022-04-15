@@ -25,8 +25,8 @@
 
 .button svg {
    margin-left: 6px;
-   height: 15px;
-   width: 20px;
+   height: 22px;
+   width: auto;
    color: var(--gray-med);
 }
 

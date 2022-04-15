@@ -67,36 +67,15 @@
    color: var(--white);
 }
 
-.wrapper time {
-   flex-shrink: 0;
-   color: var(--gray-med);
-   font-size: 14px;
-}
-
 .fixed p {
    max-width: unset;
 }
 
 /* -------------------------------------------------- */
-.wrapper .sm {
-   padding: 30px 20px;
-   font-size: 18px;
-}
-
 .wrapper .md {
    padding: 20px;
    font-size: 16px;
    max-width: unset;
-}
-
-.wrapper .with_date {
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
-
-   text-align: left;
-   font-size: 16px;
-   line-height: 1.3;
 }
 
 @media (min-width: 340px) {
@@ -171,15 +150,6 @@
       font-size: 20px;
    }
 
-   .wrapper time {
-      font-size: 16px;
-   }
-
-   .wrapper .with_date {
-      gap: 15px;
-      font-size: 18px;
-   }
-
    .wrapper .md {
       font-size: 24px;
    }
@@ -214,31 +184,11 @@
       max-width: unset;
       font-size: 22px;
    }
-
-   .wrapper time {
-      font-size: 18px;
-      line-height: 1.5;
-      order: -1;
-   }
-
-   .wrapper .with_date {
-      flex-direction: row;
-      gap: 35px;
-      font-size: 22px;
-   }
 }
 
 @media (min-width: 1400px) {
    .wrapper p {
       font-size: 24px;
-   }
-
-   .wrapper time {
-      line-height: 2;
-   }
-
-   .wrapper .with_date {
-      font-size: 26px;
    }
 }
 

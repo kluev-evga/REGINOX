@@ -1,11 +1,4 @@
-import {
-    REQUEST,
-    SUCCESS,
-    FAILURE,
-    LOAD_CART,
-    CART_ADD_ITEM,
-    CART_REMOVE_ITEM
-} from '../types';
+import { REQUEST, SUCCESS, FAILURE, LOAD_CART, CART_ADD_ITEM, CART_REMOVE_ITEM } from '../types';
 
 
 const INITIAL_STATE = {
@@ -54,6 +47,6 @@ const cartReducer = function (state = INITIAL_STATE, action) {
       default:
           return state;
     }
-};
+}
 
-export default cartReducer;
+export default cartReducer

@@ -7,7 +7,8 @@ import cn from 'classnames'
 
 const FooterLinks = () => {
    const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' })
-   const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
+   const isTabletLG = useMediaQuery({ query: '(min-width: 1200px)' })
+   const isTablet = useMediaQuery({ query: '(min-width: 576px)' })
    const links = useSelector(menuLinks)
 
    return (
@@ -21,7 +22,7 @@ const FooterLinks = () => {
                <NavLink className='footer__link' to='/sertificates'>Сертификаты и гарантии</NavLink>
                <NavLink className='footer__link' to='/articles'>Статьи</NavLink>
                <NavLink className='footer__link' to='/information'>Информация</NavLink>
-               <NavLink className='footer__link' to={`/catalogs?size=${isDesktopXL ? 4 : isTablet ? 3 : 2}`}>Каталоги</NavLink>
+               <NavLink className='footer__link' to={`/catalogs?size=${isDesktopXL ? 5 : isTabletLG ? 4 : isTablet ? 3 : 2}`}>Каталоги</NavLink>
                <NavLink className='footer__link' to='/delivery'>Доставка и оплата</NavLink>
                <NavLink className='footer__link' to='/contacts'>Контакты</NavLink>
             </div>

@@ -1,4 +1,4 @@
-import { useMatch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productItem } from '../../../redux/selectors'
 import { ReactComponent as StarIcon } from '../../../assets/svg/star.svg'
@@ -26,10 +26,8 @@ const Bars = ({ ratings }) => (
 )
 
 const FeedbackStatsPanel = () => {
-   const match = useMatch()
-   const { r, ratings, reviewsCount } = useSelector(state =>
-      productItem(state)(match.params.productUrl)
-   )
+   const { productUrl } = useParams()
+   const { r, ratings, reviewsCount } = useSelector(state => productItem(state, productUrl))
 
    return (
       <div>

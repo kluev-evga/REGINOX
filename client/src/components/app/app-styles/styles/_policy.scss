@@ -1,0 +1,41 @@
+.policy {
+   &__date {
+      margin-top: 20px;
+      font-weight: 500;
+      color: var(--gray-med);
+   }
+
+   @media (max-width: 340px) {
+      .policy__title {
+         font-size: 16px;
+      }
+
+      .policy__sub-title {
+         font-size: 16px;
+         font-weight: 600;
+      }
+   }
+
+   @media (min-width: 340px) and (max-width: 420px) {
+      .policy__title {
+         font-size: 20px;
+      }
+
+      .policy__sub-title {
+         font-size: 18px;
+         font-weight: 600;
+      }
+   }
+
+   @media (min-width: 576px) {
+      &__date {
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      &__date {
+         font-size: 20px;
+      }
+   }
+}

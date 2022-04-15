@@ -17,8 +17,6 @@ import {
    LOAD_NEW_ITEMS,
    LOAD_REVIEWS,
    LOAD_COMPARE_ITEMS,
-   APP_SET_STATUS,
-   APP_SET_IS_POP_UP,
    APP_SET_TILES,
    APP_UNSET_TILES,
    APP_OPEN_SEARCH,
@@ -33,12 +31,6 @@ import {
    FILTERS_IS_FILTERING,
    FILTERS_SETLECT_SORT_BY,
    FILTERS_SET_QUERY_STRING,
-
-
-   MENU_OPEN_MAIN,
-   MENU_СLOSE_MAIN,
-   MENU_OPEN_FILTERS,
-   MENU_CLOSE_FILTERS,
 } from './types'
 
 import {
@@ -58,14 +50,6 @@ import {
 } from './selectors'
 
 
-export const setAppStatus = status => ({ type: APP_SET_STATUS, status })
-export const setAppIsPopUp = status => ({ type: APP_SET_IS_POP_UP, status })
-
-export const openMainMenu = () => ({ type: MENU_OPEN_MAIN })
-export const closeMainMenu = () => ({ type: MENU_СLOSE_MAIN })
-export const openFiltersMenu = () => ({ type: MENU_OPEN_FILTERS })
-export const closeFiltersMenu = () => ({ type: MENU_CLOSE_FILTERS })
-
 export const selectArticlesPage = page => ({ type: ARTICLES_SELECT_PAGE, page })
 export const changeCartItemCount = (id, count) => ({ type: CART_ADD_ITEM, id, count })
 export const removeItemFromCart = id => ({ type: CART_REMOVE_ITEM, id })
@@ -78,8 +62,7 @@ export const removeItemfromCompare = id => ({ type: COMPARE_REMOVE_ITEM, id })
 export const openSearchMenu = () => ({ type: APP_OPEN_SEARCH })
 export const closeSearchMenu = () => ({ type: APP_CLOSE_SEARCH })
 
-export const loadMenu = noScroll => async (dispatch, getState) => {
-   window.scrollTo({ top: 0, behavior: noScroll ? 'auto' : 'smooth' })
+export const loadMenu = () => async (dispatch, getState) => {
    const state = getState()
    const loaded = state.menu.loaded
    const loading = state.menu.loading
@@ -129,7 +112,6 @@ export const loadSertificates = () => async (dispatch, getState) => {
 }
 
 export const loadHome = () => (dispatch, getState) => {
-   window.scrollTo({ top: 0, behavior: 'auto' })
    const state = getState()
    const loading = state.home.loading
    const loaded = state.home.loaded
@@ -176,24 +158,15 @@ export const loadArticles = page => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }))
 }
 
-export const loadArticle = (match, history) => async (dispatch, getState) => {
+export const loadArticle = (article) => async (dispatch, getState) => {
    const state = getState()
-   const loading = articleLoading(state, { match })
-   const loaded = articleLoaded(state, { match })
+   const loading = articleLoading(state, article)
+   const loaded = articleLoaded(state, article)
    if (loading || loaded) return
-
-   const article = match.params.article
 
    dispatch({ type: LOAD_ARTICLE + REQUEST, article })
    Promise.all([fetch(`/get-articles/${article}`), loadMenu()(dispatch, getState)])
-      .then(([res], reject) => {
-         if (res.status === 404) {
-            history.replace(`/articles/${article}/not-found`)
-            reject()
-         } else {
-            return res.json()
-         }
-      })
+      .then(([res]) =>  res.json())
       .then(data => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
       .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }))
 }
@@ -220,8 +193,8 @@ export const loadProducts = url => async (dispatch, getState) => {
 
 export const loadProductItem = (url, productUrl) => async (dispatch, getState) => {
    const state = getState()
-   const loading = productItemLoading(state)(productUrl)
-   const loaded = productItemLoaded(state)(productUrl)
+   const loading = productItemLoading(state, productUrl)
+   const loaded = productItemLoaded(state, productUrl)
    if (loading || loaded) return
 
    const menu = state.menu.loaded

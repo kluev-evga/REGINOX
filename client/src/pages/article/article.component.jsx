@@ -1,25 +1,31 @@
-import { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { loadArticle } from '../../redux/actions'
-import { article, articleLoaded, articleError } from '../../redux/selectors'
-import { Link } from 'react-router-dom'
-import ArticleContent from './article-content/article-content.component'
+import { articleEntity, articleLoaded } from '../../redux/selectors'
+import { Link, useParams } from 'react-router-dom'
+import ArticleContent from './article-content.component'
 import Loader from '../../components/loader/loader.coponent'
 
-const Article = ({ match, history, loadArticle, article, loaded }) => {
-   useEffect(() => {
-      loadArticle(match, history)
-   }, []) //eslint-disable-line
 
-   if (!loaded) return <Loader />
+const Article = () => {
+   const ref = useRef()
+   const dispatch = useDispatch()
+   const {article} = useParams()
+   const isLoading = !useSelector((state) => articleLoaded(state, article))
+   const articleData = useSelector((state) => articleEntity(state, article))
 
-   const { date, title } = article
+   useEffect(() => { dispatch(loadArticle(article)) }, []) //eslint-disable-line
+   useEffect(() => {!isLoading && ref.current.scrollIntoView({block: "start"})}, [isLoading] )
+
+   if (isLoading) return <Loader />
+
+   const { date, title } = articleData
    const { d, m, y } = date
    const dateText = d + ' / ' + m + ' / ' + y
    const dateTime = '20' + y + '-' + m + '-' + d
 
    return (
-      <div className='container'>
+      <div className='container' ref={ref}>
          <div className='breadcrumbs'>
             <Link to='/home'>Главная</Link> / <Link to='/articles'>Статьи</Link>{' '}
             / {title}
@@ -29,15 +35,9 @@ const Article = ({ match, history, loadArticle, article, loaded }) => {
             {dateText}
          </time>
 
-         <ArticleContent entities={article.content} />
+         <ArticleContent entities={articleData.content} />
       </div>
    )
 }
 
-const mapStateToProps = (state, props) => ({
-   article: article(state, props),
-   loaded: articleLoaded(state, props),
-   error: articleError(state, props),
-})
-
-export default connect(mapStateToProps, { loadArticle })(Article)
+export default Article

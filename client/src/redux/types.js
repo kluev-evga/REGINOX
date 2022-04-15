@@ -1,6 +1,6 @@
-export const REQUEST = 'REQUEST';
-export const SUCCESS = 'SUCCESS';
-export const FAILURE = 'FAILURE';
+export const REQUEST = '_REQUEST';
+export const SUCCESS = '_SUCCESS';
+export const FAILURE = '_FAILURE';
 
 export const LOAD_MENU = 'LOAD_MENU';
 export const LOAD_HOME = 'LOAD_HOME';
@@ -19,8 +19,6 @@ export const LOAD_NEW_ITEMS = 'LOAD_NEW_ITEMS';
 export const LOAD_COMPARE_ITEMS = 'LOAD_COMPARE_ITEMS';
 
 
-export const APP_SET_STATUS = 'APP_SET_STATUS';
-export const APP_SET_IS_POP_UP = 'APP_SET_IS_POP_UP';
 export const APP_SET_TILES = 'APP_SET_TILES';
 export const APP_UNSET_TILES = 'APP_UNSET_TILES';
 export const APP_OPEN_SEARCH = 'OPEN_SEARCH';
@@ -39,8 +37,3 @@ export const FILTERS_IS_FILTERED = 'FILTERS_IS_FILTERED';
 export const FILTERS_IS_FILTERING = 'FILTERS_IS_FILTERING';
 export const FILTERS_SETLECT_SORT_BY = 'FILTERS_SETLECT_SORT_BY';
 export const FILTERS_SET_QUERY_STRING = 'FILTERS_SET_QUERY_STRING';
-
-export const MENU_OPEN_MAIN = 'MENU_OPEN_MAIN';
-export const MENU_СLOSE_MAIN = 'MENU_СLOSE_MAIN';
-export const MENU_OPEN_FILTERS = 'MENU_OPEN_FILTERS';
-export const MENU_CLOSE_FILTERS = 'MENU_CLOSE_FILTERS';

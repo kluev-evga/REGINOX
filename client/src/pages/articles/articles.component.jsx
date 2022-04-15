@@ -1,43 +1,22 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {
-   selectArticlesPages,
-   selectArticlesTotalPages,
-   articlesCurrentPage,
-   articlesTotal,
-} from '../../redux/selectors'
+import { selectArticlesPages, selectArticlesTotalPages, articlesCurrentPage, articlesTotal } from '../../redux/selectors'
 import { selectArticlesPage } from '../../redux/actions'
-import ArticlesCards from './article-cards/articles-cards.component'
+import ArticlesCards from './components/articles-cards.component'
 import Pagination from '../../components/pagination/pagination.component'
-import { useEffect } from 'react'
 
-const Articles = ({
-   pages,
-   totalPages,
-   currentPage,
-   totalItems,
-   selectArticlesPage,
-}) => {
-   useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-   }, [])
+
+const Articles = ({ pages, totalPages, currentPage, totalItems, selectArticlesPage }) => {
+   const ref = useRef()
+   useEffect(() => {ref.current.scrollIntoView({behavior: "smooth", block: "start"})}, [] )
 
    return (
-      <div className='container'>
-         <div className='breadcrumbs'>
-            <Link to='/home'>Главная</Link> / Статьи
-         </div>
+      <div className='container' ref={ref}>
+         <div className='breadcrumbs'><Link to='/'>Главная</Link> / Статьи </div>
          <h1 className='title'>Статьи</h1>
-
          <ArticlesCards />
-
-         <Pagination
-            pages={pages}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            totalItems={totalItems}
-            selectPage={selectArticlesPage}
-         />
+         <Pagination pages={pages} totalPages={totalPages} currentPage={currentPage} totalItems={totalItems} selectPage={selectArticlesPage} />
       </div>
    )
 }

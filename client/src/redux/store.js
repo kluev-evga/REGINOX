@@ -11,11 +11,18 @@ const persistConfig = {
   whitelist: [ 'cart', 'compare'],
 };
 
+const initialState = {
+  burgerMenu: {
+    main: { isOpen: false },
+    filters: { isOpen: false }
+  }
+}
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const enhancer = applyMiddleware(thunk);
 
-const store = createStore(persistedReducer, composeWithDevTools(enhancer));
+const store = createStore(persistedReducer, initialState, composeWithDevTools(enhancer));
 
 export const persistor = persistStore(store);
 export default store;

@@ -1,0 +1,51 @@
+.partners {
+   &__link {
+      display: block;
+      margin-bottom: 30px;
+
+      span {
+         justify-content: center;
+      }
+
+      img {
+         max-height: 200px;
+         object-fit: cover;
+         object-position: center;
+      }
+   }
+
+   @media (min-width: 576px) {
+      &__link img {
+         max-height: 250px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      &__link {
+         margin-bottom: 40px;
+
+         img {
+            max-height: 280px;
+         }
+      }
+   }
+
+   @media (min-width: 992px) {
+      &__link {
+         margin: 20px auto 60px;
+         max-width: 960px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      &_link img {
+         max-height: 340px;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &_link img {
+         max-height: 360px;
+      }
+   }
+}

@@ -1,4 +1,4 @@
-import {REQUEST, SUCCESS, FAILURE, LOAD_BRANDS} from '../types';
+import {REQUEST, SUCCESS, FAILURE, LOAD_BRANDS} from '../types'
 
 
 const INITIAL_STATE = {
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   loading: false,
   loaded: false,
   error: null,
-};
+}
 
 const brandsReducer = function (state = INITIAL_STATE, action) {
   const { type, data, error } = action;
@@ -35,6 +35,6 @@ const brandsReducer = function (state = INITIAL_STATE, action) {
     default:
       return state;
   }
-};
+}
 
-export default brandsReducer;
+export default brandsReducer

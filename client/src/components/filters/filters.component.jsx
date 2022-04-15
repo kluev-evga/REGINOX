@@ -1,21 +1,20 @@
 import { useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productsLoaded, filters } from '../../redux/selectors'
-import FilterSection from './filters-section/filters-section.component'
-import styles from './filters.module.css'
+import FilterSection from './components/filters-section.component'
 
-const FiltersContainer = () => {
-   const { params } = useMatch('/products/:url')
-   const {url} = params
-   const isLoading = useSelector(state => !productsLoaded(state, url))
-   const filterSections = useSelector(state => filters(state, url))
+
+const Filters = () => {
+   const { params } = useMatch({path: '/products/:url', end: false })
+   const isLoading = useSelector(state => !productsLoaded(state, params.url))
+   const filterSections = useSelector(state => filters(state, params.url))
    if (isLoading) return null
 
    return (
-      <div className={styles.wrapper}>
-         { filterSections.map( (item, i) => <FilterSection key={url+i} {...item} /> ) }
+      <div className='filters'>
+         { filterSections.map( (item, i) => <FilterSection key={params.url + i} {...item} /> ) }
       </div>
    )
 }
 
-export default FiltersContainer
+export default Filters

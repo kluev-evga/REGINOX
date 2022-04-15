@@ -12,9 +12,9 @@ const HomeSlider = () => {
    return (
       <Swiper
          allowTouchMove={isDesktop ? false : true}
-         speed={isDesktop ? 800 : 400}
+         speed={isDesktop ? 500 : 300}
          loop={true}
-         autoplay={{ delay: 8000 }}
+         autoplay={{ delay: 6000 }}
          effect={'creative'}
          creativeEffect={{
             prev: { translate: ["-30%", 0, -1] },

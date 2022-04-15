@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { cartItemCount, compareItem } from '../../redux/selectors'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions'
 import cn from 'classnames'
-import { ReactComponent as Cart } from '../../assets/svg/cart.svg'
+import { ReactComponent as CartIcon } from '../../assets/svg/cart.svg'
 import { ReactComponent as RublIcon } from '../../assets/svg/rubl.svg'
 import { ReactComponent as StarIcon } from '../../assets/svg/star.svg'
 import { ReactComponent as CompareIcon } from '../../assets/svg/compare.svg'
 import styles from './product-card.module.css'
+
 
 const RatingBlock = ({ r, reviewers }) => (
    <div className={styles.rating}>
@@ -19,10 +20,7 @@ const RatingBlock = ({ r, reviewers }) => (
    </div>
 )
 
-const Button = ({ children, noFocus, ...rest }) =>
-   noFocus ? <span {...rest}>{children}</span> : <button {...rest}>{children}</button>
-
-const ProductCard = ({ tiles, product, withRating = true, noFocus }) => {
+const ProductCard = ({ tiles, product, withRating = true }) => {
    const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem } = product
    const count = useSelector(state => cartItemCount(state, id))
    const inCompare = useSelector(state => compareItem(state, id))
@@ -32,12 +30,8 @@ const ProductCard = ({ tiles, product, withRating = true, noFocus }) => {
    const [hover, setHover] = useState(false)
 
    const dispatch = useDispatch()
-   const handleClick = () =>
-      !incart
-         ? dispatch(changeCartItemCount(id, 1))
-         : dispatch(removeItemFromCart(id))
+   const handleClick = () => !incart ? dispatch(changeCartItemCount(id, 1)) : dispatch(removeItemFromCart(id))
    const addToCompare = () => dispatch(toggleCompareItem(id))
-
 
    return (
       <div
@@ -70,12 +64,11 @@ const ProductCard = ({ tiles, product, withRating = true, noFocus }) => {
             <RublIcon />
          </p>
 
-         <Button
-            noFocus={noFocus}
+         <button
             className={cn(styles.btn_cart, { [styles.active]: incart })}
             onClick={handleClick}>
-            <Cart /> {incart ? 'Товар в корзине' : 'В корзину'}
-         </Button>
+            <CartIcon /> {incart ? 'Товар в корзине' : 'В корзину'}
+         </button>
 
          <button
             className={cn(styles.btn_compare, { [styles.active]: inCompare })}

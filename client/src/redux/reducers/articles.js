@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   currentPage: 1,
   total: null,
   error: null,
-};
+}
 
 const articlesReducer = function (state = INITIAL_STATE, action) {
   const { type, data, error, page } = action;
@@ -54,4 +54,4 @@ const articlesReducer = function (state = INITIAL_STATE, action) {
   }
 };
 
-export default articlesReducer;
+export default articlesReducer

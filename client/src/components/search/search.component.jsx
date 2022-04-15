@@ -1,26 +1,24 @@
 import { useState, useRef } from 'react'
-import { connect } from 'react-redux'
-import { appSearchIsOpen } from '../../redux/selectors'
+import { useDispatch } from 'react-redux'
 import { closeSearchMenu } from '../../redux/actions'
 import cn from 'classnames'
+import { useMediaQuery } from 'react-responsive'
 import useOnClickOutside from 'use-onclickoutside'
 import { ReactComponent as SearchIcon } from '../../assets/svg/search.svg'
 import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg'
-import styles from './search.module.css'
 
-const Search = ({ isOpen, closeSearchMenu }) => {
-   const refInput = useRef(null)
-   const refInputContainer = useRef(null)
-   const refBody = useRef(null)
+
+const Search = () => {
+   const isTablet = useMediaQuery({ query: '(min-width: 768px)' })
+   const refInput = useRef()
+   const refBody = useRef()
    const [isActive, setActive] = useState(false)
    const [searchText, setsearchText] = useState('')
+   const dispatch = useDispatch()
 
-   useOnClickOutside(refInputContainer, () => setActive(false))
-   useOnClickOutside(refBody, closeSearchMenu)
+   useOnClickOutside(refBody, () => dispatch(closeSearchMenu()))
 
-   const handleChange = ({ target }) => {
-      setsearchText(target.value)
-   }
+   const handleChange = ({ target }) => { setsearchText(target.value) }
 
    const handleClearClick = () => {
       setsearchText('')
@@ -28,53 +26,40 @@ const Search = ({ isOpen, closeSearchMenu }) => {
    }
 
    return (
-      <div
-         ref={refBody}
-         className={cn(styles.container, { [styles.open]: isOpen })}>
-         <div className='container'>
-            <div className={styles.wrapper}>
-               <div
-                  className={cn(styles.input, { [styles.active]: isActive })}
-                  ref={refInputContainer}>
-                  <SearchIcon />
+      <div className='search' ref={refBody} >
+         <div className='container search__container'>
+
+               <div className={cn('search__input-container', {'active': isActive})}>
+                  <SearchIcon className='search__icon' />
+
                   <input
+                     ref={refInput}
                      onChange={handleChange}
                      onFocus={() => setActive(true)}
+                     onBlur={() => !searchText && setActive(false)}
                      value={searchText}
-                     placeholder={isActive ? '' : 'поиск по сайту'}
                      maxLength={40}
                      type='text'
-                     ref={refInput}
                   />
+                  <span>поиск по сайту</span>
 
                   {isActive && (
-                     <button
-                        className={styles.btn_clear}
-                        onClick={handleClearClick}>
+                     <button className='search__btn-clear' onClick={handleClearClick}>
                         <CrossIcon />
                      </button>
                   )}
                </div>
 
-               {!isActive && (
-                  <button
-                     onClick={closeSearchMenu}
-                     className={cn(styles.btn_close, {
-                        [styles.active]: isActive,
-                     })}>
+               <div className='search__btn-close'>
+                  <button onClick={() => dispatch(closeSearchMenu())} >
                      <CrossIcon />
-                     <span>Закрыть</span>
+                     {isTablet && <span>Закрыть</span>}
                   </button>
-               )}
-            </div>
+               </div>
 
-            <div
-               className={cn(styles.line, { [styles.active]: isActive })}></div>
          </div>
       </div>
    )
 }
 
-const mapStateToProps = state => ({ isOpen: appSearchIsOpen(state) })
-
-export default connect(mapStateToProps, { closeSearchMenu })(Search)
+export default Search

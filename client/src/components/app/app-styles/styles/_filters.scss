@@ -1,0 +1,230 @@
+.filters {
+   padding-bottom: 20px;
+
+   section {
+      padding-bottom: 20px;
+   }
+
+   &__section-heading {
+      margin-bottom: 5px;
+      padding: 9px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+
+      button {
+         cursor: pointer;
+         font-size: 12px;
+         color: var(--gray);
+         opacity: 0;
+         animation: fade-in 0.05s linear forwards;
+         @keyframes fade-in {
+            to {
+               opacity: 1;
+            }
+         }
+
+         svg {
+            margin-right: 5px;
+            display: inline;
+            vertical-align: middle;
+            color: var(--white);
+         }
+      }
+   }
+
+   &__collapsible {
+      margin-bottom: 39px;
+   }
+
+   &__collapsible-container {
+      position: relative;
+   }
+
+   &__collapsible-trigger {
+      position: absolute;
+      bottom: -34px;
+      left: 0;
+
+      padding: 8px 0 8px 50px;
+      width: 100%;
+
+      font-size: 14px;
+      text-align: left;
+      color: var(--gray);
+      font-weight: 300;
+      word-spacing: 5px;
+
+      background-color: #111;
+
+      svg {
+         display: inline;
+         vertical-align: middle;
+         width: 14px;
+         height: auto;
+         margin-left: 8px;
+      }
+   }
+
+   &__checkbox {
+      width: 100%;
+      padding: 7px 10px;
+      margin-bottom: 5px;
+
+      display: flex;
+      align-items: center;
+
+      font-size: 14px;
+      color: var(--gray-light);
+      font-weight: 300;
+      background-color: #111;
+
+      &:first-letter {
+         text-transform: uppercase;
+      }
+
+      span {
+         margin-left: 10px;
+         letter-spacing: 1px;
+         font-size: 14px;
+         font-weight: 300;
+         color: var(--gray);
+      }
+
+      svg {
+         margin-right: 10px;
+         color: transparent;
+      }
+
+      &.disabled {
+         color: var(--gray);
+         pointer-events: none;
+
+         svg {
+            opacity: 0.4;
+            color: transparent;
+         }
+
+         span:first-of-type {
+            color: var(--gray);
+         }
+      }
+
+      &.active svg {
+         color: var(--red);
+      }
+   }
+
+   @media (min-width: 340px) {
+      &__section-heading {
+         padding: 9px 20px;
+
+         p {
+            font-size: 17px;
+         }
+      }
+
+      &__checkbox {
+         padding: 7px 20px;
+         font-size: 15px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      padding-bottom: 0;
+
+      section {
+         padding-bottom: 35px;
+      }
+
+      &__section-heading {
+         padding: 0;
+         margin-bottom: 10px;
+         background-color: transparent;
+
+         p {
+            font-weight: 500;
+         }
+
+         button {
+            svg {
+               color: var(--gray);
+            }
+
+            &:hover svg {
+               color: var(--red)
+            }
+         }
+      }
+
+      &__collapsible-trigger {
+         padding: 5.5px 0 5.5px 30px;
+
+         bottom: -30px;
+         left: 0;
+
+         text-align: left;
+         font-size: 15px;
+         color: var(--gray-med);
+         background-color: transparent;
+
+         &:hover {
+            color: var(--red);
+         }
+      }
+
+      &__checkbox {
+         width: auto;
+         margin-bottom: 0;
+         padding: 5px 5px 5px 0;
+
+         font-size: 16px;
+         color: var(--graphite);
+         font-weight: 400;
+         background-color: transparent;
+
+         &:hover svg path:nth-of-type(2) {
+            animation: checkbox 0.15s ease forwards;
+            stroke: #ad213177;
+            stroke-dasharray: 0 12;
+         }
+
+         @keyframes checkbox {
+            to {
+               stroke-dasharray: 12 12;
+            }
+         }
+
+         span {
+            letter-spacing: 0.5px;
+            font-size: 15px;
+            color: var(--gray-med);
+         }
+
+         &.disabled {
+            color: var(--gray-light);
+   
+            span:first-of-type {
+               color: var(--gray-light);
+            }
+         }
+      }
+   }
+
+   @media (min-width: 1600px) {
+      &__section-heading {
+         p {
+           font-size: 19px;
+         }
+
+         button {
+            font-size: 14px;
+         }
+      }
+
+      &__checkbox {
+         font-size: 17;
+      }
+   }
+}

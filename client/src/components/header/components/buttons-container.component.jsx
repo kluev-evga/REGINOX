@@ -35,7 +35,7 @@ const ButtonsContainer = () => {
 
          <button
             aria-label='поиск по каталогу'
-            onClick={() => dispatch(openSearchMenu)}>
+            onClick={() => dispatch(openSearchMenu())}>
             <Search />
          </button>
 

@@ -1,0 +1,53 @@
+.information {
+   &__cards {
+      padding-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      a {
+         flex-grow: 1;
+         flex-basis: 248px;
+      }
+   }
+
+   @media (min-width: 576px) {
+      &__cards {
+         gap: 10px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      &__cards {
+         padding-top: 20px;
+         gap: 20px;
+      }
+   }
+
+   @media (min-width: 992px) {
+      &__cards img {
+         max-height: 350px;
+         object-fit: cover;
+         object-position: top;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      &__cards {
+         padding-top: 30px;
+         gap: 50px;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__cards img {
+         max-height: 400px;
+      }
+   }
+
+   @media (min-width: 1600px) {
+      &__cards img {
+         max-height: 440px;
+      }
+   }
+}

@@ -1,7 +1,9 @@
 import { useMediaQuery } from 'react-responsive'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Navigation } from 'swiper'
 import ProductCard from '../../components/product-card/product-card.component'
 import styles from './slider.module.css'
+
 
 const Slider = ({ items }) => {
    const isPhone = useMediaQuery({ query: '(min-width: 400px)' })
@@ -18,15 +20,13 @@ const Slider = ({ items }) => {
             spaceBetween={isTabletLg ? 35 : isTablet ? 20 : 0}
             slidesOffsetBefore={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
             slidesOffsetAfter={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 0 }
-            navigation>
+            navigation
+            modules={[Pagination, Navigation]}
+            >
+
             {items.map(product => (
                <SwiperSlide key={product.id} className={styles.slide}>
-                  <ProductCard
-                     tiles={true}
-                     product={product}
-                     withRating={false}
-                     noFocus={true}
-                  />
+                  <ProductCard tiles={true} product={product} withRating={false} />
                </SwiperSlide>
             ))}
          </Swiper>

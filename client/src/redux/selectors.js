@@ -11,15 +11,6 @@ export const menuLoaded = state => state.menu.loaded;
 export const menuError = state => state.menu.error;
 export const menuLinks = state => state.menu.links;
 export const menuCategories = state => state.menu.categories;
-
-// export const isMainMenu = state => state.menu.isMainMenu;
-
-// export const menuIsOpen = state => state.menu.isOpen;
-
-export const mainMenuIsOpen = state => state.menu.mainIsOpen;
-export const filtersMenuIsOpen = state => state.menu.filtersIsOpen;
-
-
 const menuTitlesByUrl = createSelector(
     menuLinks,
     (links) => links.reduce((acc, item) => {
@@ -28,8 +19,6 @@ const menuTitlesByUrl = createSelector(
     },{})
 );
 export const getTitle = (state, url) =>  menuTitlesByUrl(state)[url]
-
-
 export const menuLinksList = createSelector(
     menuCategories,
     (categories) => {
@@ -43,6 +32,10 @@ export const menuLinksList = createSelector(
         return result
     }
 );
+
+
+export const mainMenuIsOpen = state => state.burgerMenu.main.isOpen;
+export const filtersMenuIsOpen = state => state.burgerMenu.filters.isOpen;
 
 
 export const homeLoading = state => state.home.loading;
@@ -74,7 +67,7 @@ export const brandsLoaded = state => state.brands.loaded;
 export const brandsError = state => state.brands.error;
 
 
-export const articlesItem = (state, {id}) => state.articles.entities[id];
+export const articlesItem = (state, id) => state.articles.entities[id];
 export const articlesItemLoading = (state, page) => state.articles.loading[page];
 export const articlesItemLoaded = (state, page) => state.articles.loaded[page];
 export const articlesError = state => state.articles.error;
@@ -93,9 +86,9 @@ export const selectArticlesPages = createSelector(
 );
 
 
-export const article = (state, {match}) => state.article.entities[match.params.article];
-export const articleLoading = (state, {match}) => state.article.loading[match.params.article];
-export const articleLoaded = (state, {match}) => !!state.article.loaded[match.params.article];
+export const articleEntity = (state, article) => state.article.entities[article];
+export const articleLoading = (state, article) => state.article.loading[article];
+export const articleLoaded = (state, article) => !!state.article.loaded[article];
 export const articleError = (state, {match}) => state.article.error?.[match.params.article];
 
 
@@ -121,9 +114,9 @@ export const queryString = (state, props) => state.filters.queryString?.[props.m
 
 
 export const productItems = state => state.productItems.entities;
-export const productItem = state => productUrl => productItems(state)[productUrl];
-export const productItemLoading = state => productUrl => state.productItems.loading[productUrl];
-export const productItemLoaded = state => productUrl => state.productItems.loaded[productUrl] || false;
+export const productItem = (state, productUrl) => productItems(state)[productUrl];
+export const productItemLoading = (state, productUrl) => state.productItems.loading[productUrl];
+export const productItemLoaded = (state, productUrl) => state.productItems.loaded[productUrl] || false;
 export const productItemError = (state, productUrl) => state.productItems.error[productUrl];
 export const productItemsById = createSelector(
     productItems,

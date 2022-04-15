@@ -1,13 +1,14 @@
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { openFiltersMenu } from '../../../redux/actions'
+import {action as toggleMenu} from 'redux-burger-menu';
 import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import HeaderSelect from '../header-select/header-select.component'
 import HeaderTilesButtons from '../header-tiles-buttons/header-tiles-buttons.component'
 import { ReactComponent as ChevronLeftIcon } from '../../../assets/svg/chevron-left.svg'
-import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg'
+import { ReactComponent as ClearIcon } from '../../../assets/svg/clear.svg'
 import styles from './header.module.css'
+
 
 const Header = () => {
    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
@@ -26,8 +27,8 @@ const Header = () => {
          <button
             className={cn(styles.button, styles.reset, { [styles.disabled]: !search })}
             onClick={() => navigate(`/products/${url}`)}>
-            cбросить все
-            <CrossIcon />
+            cбросить
+            <ClearIcon />
          </button>
 
          {isDesktop
@@ -35,7 +36,7 @@ const Header = () => {
                : (
                   <button
                      className={styles.button}
-                     onClick={() => dispatch(openFiltersMenu())}
+                     onClick={() => dispatch(toggleMenu(true, 'filters'))}
                      aria-label='открыть меню фильтров'>
                      фильтры
                      <ChevronLeftIcon />

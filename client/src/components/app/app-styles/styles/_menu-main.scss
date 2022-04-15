@@ -1,0 +1,109 @@
+.menu {
+   width: 100%;
+   padding-bottom: 30px;
+
+   &__links-container {
+      margin: 40px 0 0;
+   }
+
+   &__menu-link {
+      padding: 10px;
+      display: block;
+      margin-bottom: 8px;
+      line-height: 1.5;
+      font-weight: 300;
+      transition: background-color 0.08s linear;
+
+      &:hover {
+         background-color: #222;
+         transition: none;
+      }
+   }
+
+   &__link-bold {
+      margin: 5px 0 0 !important;
+   }
+
+   &__collapsible-links {
+      padding-top: 10px;
+      padding-bottom: 2px;
+      margin-bottom: 15px;
+      background-color: #151515;
+
+      a.active.active-link{
+         //attn: double class
+         text-decoration: underline;
+      }
+   }
+
+   &__collapsible-trigger {
+      margin-top: 5px;
+      width: 100%;
+      padding: 14px 5px 14px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      text-align: left;
+      background-color: #111;
+      transition: background-color 0.08s linear;
+
+      &.active {
+         text-decoration: underline;
+      }
+
+      svg {
+         margin-left: 5px;
+         flex-shrink: 0;
+         width: 15px;
+         color: var(--gray);
+      }
+
+      &.is-open svg {
+         //lib class
+         transform: rotateZ(180deg)
+      }
+
+      &:hover {
+         background-color: #222;
+         transition: none;
+      }
+   }
+
+   @media (min-width: 340px) {
+   }
+   
+   @media (min-width: 340px) {
+      &__menu-link {
+         padding: 10px 25px;
+      }
+
+      &__link-bold {
+         font-weight: 700;
+         font-size: 17px;
+      }
+
+      &__collapsible-trigger {
+         padding: 14px 10px 14px 25px;
+         font-weight: 700;
+         font-size: 17px;
+      }
+
+      &__links-container a {
+         font-weight: 700;
+         font-size: 17px;
+      }
+   }
+
+   @media (min-width: 360px) {
+      &__collapsible-trigger {
+         padding: 14px 20px 14px 25px;
+      }
+   }
+   
+   @media (min-width: 1200px) {
+      &__collapsible-trigger {
+         font-weight: 500;
+      }
+   }
+}

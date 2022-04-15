@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as burgerMenu } from 'redux-burger-menu'
 
 import appReducer from './reducers/app';
 import homeReducer from './reducers/home';
@@ -20,6 +21,7 @@ import compareReducer from './reducers/compare';
 
 
 const rootReducer = combineReducers({
+  burgerMenu: burgerMenu,
   app: appReducer,
   home: homeReducer,
   menu: menuReducer,

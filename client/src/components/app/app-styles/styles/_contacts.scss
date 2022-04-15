@@ -1,0 +1,89 @@
+.contacts {
+
+   &__container {
+      margin-top: 40px;
+   }
+   
+   &__iframe {
+      margin-top: 60px;
+   }
+
+   &__phone-container {
+      display: grid;
+      gap: 25px;
+   }
+   
+   &__phone-container-title {
+      margin: 0 -10px 10px;
+      padding: 0 10px 3px;
+      text-transform: uppercase;
+      font-size: 24px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--gray-light);
+   }
+
+   &__tab {
+      display: grid;
+      grid-gap: 20px;
+
+      b {
+         margin-bottom: 20px;
+         display: block;
+         font-size: 20px;
+         font-weight: 500;
+      }
+
+      p {
+         margin-bottom: 5px;
+         font-size: 18px;
+         line-height: 1.4;
+      }
+
+      span {
+         margin-bottom: 15px;
+         display: block;
+         font-size: 14px;
+         color: var(--gray-med);
+         line-height: 1.6;
+      }
+
+      a {
+         margin-bottom: 5px;
+         display: block;
+      }
+   }
+
+   @media (min-width: 768px) {
+      &__container {
+         margin-top: 0;
+      }
+
+      &__container-view-large {
+         margin-top: 20px;
+         min-height: 415px;
+      }
+
+      &__tab {
+         grid-template-columns: 220px 1fr;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      &__tab {
+         span {
+            font-size: 16px;
+         }
+
+         a {
+            margin-bottom: 8px;
+            font-size: 18px;
+         }
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__tab {
+         grid-template-columns: 240px 300px 240px 1fr;
+      }
+   }
+}
