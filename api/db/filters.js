@@ -307,7 +307,7 @@ const filters = {
         },
         {
             title: 'Назначение',
-            searchGroup: 'type',
+            searchGroup: 'location',
             filters: [
                 { title: "Ванная комната", "search": "bathroom" },
                 { title: "Для тумбы", "search": "cabinet" },
@@ -531,6 +531,159 @@ const filters = {
                 {title: 'Темно-коричневый', search:'dbrwn'},
                 {title: 'Хром', search:'crome'},
                 {title: 'Черный', search:'black'},
+            ]
+        },
+    ],
+    'soap-dispensers': [
+        {
+            title: 'Тип продукта',
+            searchGroup: 'type',
+            filters: [
+                {title: 'Дозатор для жидкого мыла', search: 'doser'},
+                {title: 'Диспенсер', search: 'dispenser'},
+                {title: 'Аксессуары для ванной', search: 'bathroom-appliance'},
+                {title: 'Лоток для моющих средств', search: 'soap-dish'},
+                {title: 'Гель для очистки рук', search: 'hand-sanitazer'},
+            ],
+        },
+        {
+            title: 'Назначение',
+            searchGroup: 'application',
+            filters: [
+                {title: 'Кухня', search: 'kitcher'},
+                {title: 'Ванная комната', search: 'bathroom'},
+                {title: 'Мойка', search: 'sink'},
+                {title: 'Для дома', search: 'household'},
+                {title: 'Коммерческий', search: 'commercial'},
+            ]
+        },
+        {
+            title: 'Цветовая палитра',
+            searchGroup: 'color',
+            filters: [
+                {title: 'Белый', search:'white'},
+                {title: 'Бесцветный прозрачный', search:'clear'},
+                {title: 'Жёлтый золотой', search:'yellow'},
+                {title: 'Зеленый', search:'green'},
+                {title: 'Коричневый', search:'brown'},
+                {title: 'Красный', search:'red'},
+                {title: 'Оранжевый медный', search:'orange'},
+                {title: 'Разноцветный', search:'multi-color'},
+                {title: 'Розовый', search:'rose'},
+                {title: 'Серый Серебристый', search:'gray'},
+                {title: 'Синий', search:'blue'},
+                {title: 'Фиолетовый', search:'purple'},
+                {title: 'Черный', search:'black'},
+            ]
+        },
+        {
+            title: 'Основной материал',
+            searchGroup: 'material',
+            filters: [
+                {title: 'ABS-пластик', search:'ABS'},
+                {title: 'Акрил', search:'akril'},
+                {title: 'Бамбук', search:'bamboo'},
+                {title: 'Бетон', search:'concrete'},
+                {title: 'Винил', search:'vinil'},
+                {title: 'Дерево', search:'wood'},
+                {title: 'Керамика', search:'ceramics'},
+                {title: 'Латунь', search:'brass'},
+                {title: 'Металл', search:'metal'},
+                {title: 'Мрамор', search:'marble'},
+                {title: 'Нержавеющая сталь', search:'stainless-steel'},
+                {title: 'ПВХ', search:'pvh'},
+                {title: 'Пенополиуретан', search:'polyurethane'},
+                {title: 'Пластик', search:'plastic'},
+                {title: 'Полимер', search:'polimer'},
+                {title: 'Полипропилен', search:'polypropylene'},
+                {title: 'Полирезина', search:'poly-rabber'},
+                {title: 'Полистирол', search:'polystyrene'},
+                {title: 'Полиэтилентерефталат(PET)', search:'pet'},
+                {title: 'Резина', search:'rubber'},
+                {title: 'Синтетическая смола', search:'sintetic-resin'},
+                {title: 'Смола', search:'resin'},
+                {title: 'Сталь', search:'steel'},
+                {title: 'Стекло', search:'glass'},
+                {title: 'Термопластичная резина', search:'thermo-rubber'},
+                {title: 'Фарфор', search:'porcelain'},
+            ]
+        },
+        {
+            title: 'Тип монтажа',
+            searchGroup: 'mounting',
+            filters: [
+                {title: 'На раковину', search:'on-sink'},
+                {title: 'Настенный', search:'on-wall'},
+                {title: 'Настольный', search:'table-top'},
+                {title: 'Отдельностоящий', search:'free-standing'},
+                {title: 'Подвесной', search:'hanging'},
+                {title: 'С винтовым креплением', search:'bolted'},
+                {title: 'на столешницу', search:'on-counter'},
+            ]
+        },
+        {
+            title: 'Марка',
+            searchGroup: 'brand',
+            filters: [
+                {title: 'АКВАЛИНИЯ', search:'akvalinia'},
+                {title: 'ЛАЙМА', search:'laima'},
+                {title: 'BXG', search:'bxg'},
+                {title: 'PRIMANOVA', search:'primanova'},
+                {title: 'MR PENGUIN', search:'mr-penguin'},
+                {title: 'LEMER', search:'lemer'},
+                {title: 'SWENSA', search:'swensa'},
+                {title: 'RUSH', search:'rush'},
+                {title: 'ARTWELLE', search:'artwelle'},
+                {title: 'BATH PLUS', search:'bath-plus'},
+                {title: 'BEROSSI', search:'berossi'},
+                {title: 'BRABANTIA', search:'brabantia'},
+                {title: 'BRONZE DE LUXE', search:'bronze-de-lux'},
+                {title: 'DENASTIA', search:'denastia'},
+                {title: 'Duravit', search:'duravit'},
+                {title: 'EKKO', search:'ekko'},
+                {title: 'ELAN GALLERY', search:'elan-gallery'},
+                {title: 'FBS', search:'fbs'},
+                {title: 'FIXSEN', search:'fixsen'},
+                {title: 'GROHE', search:'grohe'},
+            ]
+        },
+    ],
+    'garbage-disposers': [
+        {
+            title: 'Марка',
+            searchGroup: 'make',
+            filters: [
+                {title: 'BONE CRUSHER', search: 'bone-crusher'},
+                {title: 'FRANKE', search: 'franke'},
+                {title: 'OMOIKIRI (Италия)', search: 'omoikiri'},
+            ],
+        },
+        {
+            title: 'Количество оборотов',
+            searchGroup: 'speed',
+            filters: [
+                {title: '2600', search:'2600'},
+                {title: '2700', search:'2700'},
+                {title: '2800', search:'2800'},
+            ]
+        },
+        {
+            title: 'Тип функциональности',
+            searchGroup: 'gears',
+            filters: [
+                {title: 'Магнитный улавливатель', search:'magnetic'},
+                {title: 'Реверс', search:'revers'},
+                {title: 'Самопромывная камера', search:'flusher'},
+            ]
+        },
+        {
+            title: 'Уровень шума (дБ)',
+            searchGroup: 'noise',
+            filters: [
+                {title: '45.0', search:'d45'},
+                {title: '48.0', search:'d48'},
+                {title: '57.0', search:'d57'},
+                {title: '63.0', search:'d63'},
             ]
         },
     ],

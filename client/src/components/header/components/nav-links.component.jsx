@@ -22,14 +22,9 @@ const NavLinks = () => {
 
    return (
       <nav className='header__nav'>
-         {(isDesktopXL ? headerLinks : navLinks).map(
-            ({ title, titleShort, url }) => (
-               <NavLink to={`products/${url}`} key={url} className='header__nav-link'>
-                  {titleShort || title}
-               </NavLink>
-            )
-         )}
-
+         {(isDesktopXL ? headerLinks : navLinks).map(({ title, titleShort, url }) =>
+               <NavLink to={`products/${url}`} key={url}>{titleShort || title}</NavLink>
+            )}
          { !isDesktopXL && <DropDown dropDownLinks={dropDownLinks} /> }
       </nav>
    )

@@ -26,18 +26,6 @@
       justify-content: space-between;
    }
 
-   &__nav {
-      grid-column: 1 / -1;
-      margin: 38px -8px 8px;
-      display: flex;
-      justify-content: space-between;
-   }
-
-   button:hover,
-   a:hover {
-      color: var(--gray-med);
-   }
-
    &__logo-container {
       margin-bottom: 45px;
       width: 100%;
@@ -47,6 +35,29 @@
       a:hover {
          color: inherit
       }
+   }
+
+   &__nav {
+      grid-column: 1 / -1;
+      margin: 38px -8px 8px;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+         padding: 8px;
+         border-radius: 3px;
+         line-height: 1;
+      }
+   }
+
+   button:hover,
+   a:hover {
+      color: var(--gray-med);
+   }
+
+   a.active {
+      color: var(--graphite);
+      background: var(--light);
    }
 
    &__btn-burger {
@@ -76,11 +87,6 @@
       }
    }
 
-   &__nav-link {
-      padding: 8px;
-      line-height: 1;
-   }
-
    &__drop-down{
       width: 200px;
       position: relative;
@@ -99,6 +105,26 @@
                background-color: #000b;
             }
          }
+      }
+
+      button {
+         position: relative;
+         z-index: 1;
+   
+         padding: 8px;
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         line-height: 1;
+   
+         svg {
+            height: 16px;
+         }
+      }
+
+      a {
+         margin-bottom: 8px;
+         padding: 8px;
       }
    }
 
@@ -130,33 +156,6 @@
             box-shadow: 4px 2px 6px 0 #00000014;
          }
       }
-   }
-
-   &__drop-down-btn {
-      position: relative;
-      z-index: 1;
-
-      padding: 8px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      line-height: 1;
-
-      svg {
-         height: 16px;
-      }
-   }
-
-   &__drop-down-link {
-      margin-bottom: 8px;
-      padding: 8px;
-   }
-
-   &__nav-link.active,
-   &__drop-down-link.active {
-      color: var(--red);
-      border-radius: 3px;
-      outline: 2px solid var(--black);
    }
 
    @media (min-width: 340px) {

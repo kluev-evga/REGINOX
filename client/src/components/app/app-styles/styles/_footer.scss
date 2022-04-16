@@ -3,19 +3,22 @@
       margin-top: 60px;
       display: grid;
       row-gap: 35px;
-   }
-
-   &__row {
-      display: grid;
-      justify-items: start;
-      align-content: start;
-      grid-gap: 10px;
 
       a {
          padding: 5px;
          margin-left: -5px;
          line-height: 1;
-         font-weight: 500;
+         color: var(--graphite);
+
+         &:hover {
+            color: var(--gray-med);
+         }
+
+         &.active {
+            border-radius: 3px;
+            color: var(--graphite);
+            background-color: var(--gray-light);
+         }
       }
 
       p {
@@ -25,26 +28,15 @@
       }
    }
 
-   &__link {
-      color: var(--gray);
-
-      &:hover {
-         color: var(--gray-med)
-      }
-
-      &.active {
-         color: var(--red);
-         border-radius: 3px;
-         outline: 2px solid var(--black);
-      }
+   &__column {
+      display: grid;
+      justify-items: start;
+      align-content: start;
+      grid-gap: 10px;
    }
 
    &__bar-background {
-      background: linear-gradient(
-         0deg,
-         var(--gray-light) 135px,
-         transparent 135px
-      );
+      background: linear-gradient(0deg, var(--gray-light) 135px, transparent 135px);
    }
 
    &__bar-container {
@@ -72,8 +64,13 @@
          display: flex;
          align-items: center;
          justify-content: center;
-      
+
+         color: var(--graphite);
          background-color: var(--gray-light);
+
+         &:hover {
+            color: var(--red);
+         }
       }
    }
 
@@ -89,8 +86,25 @@
       gap: 20px;
 
       a {
+         padding: 5px;
+         margin-left: -5px;
+         border-radius: 3px;
+
+         color: var(--graphite);
          text-decoration: underline;
          text-decoration-skip-ink: none;
+
+         &:hover {
+            color: var(--gray-med);
+         }
+
+         &.active {
+            color: var(--red);
+         }
+      }
+
+      p {
+         padding: 5px 0;
       }
    }
 
@@ -112,11 +126,7 @@
       }
 
       &__bar-background {
-         background: linear-gradient(
-            0deg,
-            var(--gray-light) 160px,
-            transparent 160px
-         );
+         background: linear-gradient(0deg, var(--gray-light) 160px, transparent 160px);
       }
 
       &__bar-container {
@@ -154,7 +164,7 @@
          }
       }
 
-      &__row a {
+      &__column a {
          margin-left: -7px;
          padding: 7px;
       }
@@ -186,14 +196,16 @@
    }
 
    @media (min-width: 1400px) {
-      &__row p {
-         font-size: 22px;
-      }
+      &__column {
+         p {
+            font-size: 22px;
+         }
 
-      &__row a {
-         margin-left: -8px;
-         padding: 8px;
-         font-size: 18px;
+         a {
+            margin-left: -8px;
+            padding: 8px;
+            font-size: 18px;
+         }
       }
    }
 }

@@ -18,26 +18,28 @@ const Information = () => {
             <b>«Реджинокс Риф Холдинг» является эксклюзивным представителем в России нидерландской Компании «REGINOX».</b>
          </div>
          <div className='information__cards'>
-            <Link to='buyers' className='link-card'>
+            <Link to='buyers'>
                <CardSlider
                   title='Для розничных покупателей'
                   img={process.env.PUBLIC_URL + '/assets/information_buyers.webp'}
                   alt='Для розничных покупателей'
-                  md
                   width='590'
-                  height='430'>
+                  height='430'
+                  md
+               >
                   <EyeIcon />
                   Смотреть
                </CardSlider>
             </Link>
-            <Link to='partners' className='link-card'>
+            <Link to='partners'>
                <CardSlider
                   title='Для партнеров'
                   img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}
                   alt='Для партнеров'
-                  md
                   width='590'
-                  height='430'>
+                  height='430'
+                  md
+               >
                   <EyeIcon />
                   Смотреть
                </CardSlider>

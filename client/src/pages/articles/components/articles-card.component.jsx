@@ -7,16 +7,14 @@ import { ReactComponent as EyeIcon } from '../../../assets/svg/eye.svg'
 const ArticlesCard = ({ id }) => {
    const article = useSelector((state) => articlesItem(state, id))
    const { url, title, img, alt, date } = article
-   const { d, m, y } = date
-   const dateText = d + ' / ' + m + ' / ' + y
-   const dateTime = '20' + y + '-' + m + '-' + d
+   const dateText = new Date(date).toLocaleDateString('en-GB').replace(/\/20/, '/').replace(/\//g, ' / ')
 
    return (
       <Link to={`/articles/${url}`} className='articles__card'>
          <img src={img} alt={alt} width={1250} height={900} />
 
          <p className='articles__card-caption'>
-            <time dateTime={dateTime}>
+            <time dateTime={date}>
                {dateText}
             </time>
             <span className='articles__card-title'>

@@ -1,6 +1,7 @@
 const { firstNameMale, firstNameFemale, lastName } = require('./db/names');
 const {promo, newItems} = require('./db/promo-new');
 const reviews = require('./db/reviews');
+const { v4: uuidv4 } = require('uuid')
 
 
 
@@ -36,7 +37,8 @@ const getName = () => {// random name
   return name;
 }
 
-const getReviews = (url, count) => reviewsSlice(url, count).map(text => ({name: getName(), ...getDate(), text, confirmed: randomBoolean(0.4)}));
+const getReviews = (url, count) => reviewsSlice(url, count).map(text =>
+  ({name: getName(), ...getDate(), text, confirmed: randomBoolean(0.4), id: uuidv4()}));
 
 const translit = (word) => {
 	const converter = {

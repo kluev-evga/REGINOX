@@ -56,6 +56,6 @@ const compareReducer = function (state = INITIAL_STATE, action) {
       default:
           return state;
     }
-};
+}
 
-export default compareReducer;
+export default compareReducer

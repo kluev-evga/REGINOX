@@ -1,18 +1,25 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loadPromoItems, loadNewItems } from '../../redux/actions'
 import { promoItems, promoLoaded, newItems, newItemsLoaded } from '../../redux/selectors'
-import PromoItem from './promo-item/promo-item.component'
+import PromoSection from './promo-section.component'
 import Loader from '../../components/loader/loader.coponent'
 
 
-const Promo = ({ latest, loadItems, loaded, items }) => {
-   useEffect(() => { loadItems() }, [latest]) //eslint-disable-line
-   if (!loaded) return <Loader />
+const Promo = ({ latest=false }) => {
+   const dispatch = useDispatch()
+   const isLoading = !useSelector(latest ? newItemsLoaded : promoLoaded)
+   const items = useSelector(latest ? newItems : promoItems)
+   const ref = useRef()
+
+   useEffect(() => { !isLoading && ref.current.scrollIntoView({ block: "start"})}, [latest] ) //eslint-disable-line
+   useEffect(() => { dispatch(latest ? loadNewItems() : loadPromoItems()) }, [latest]) //eslint-disable-line
+
+   if (isLoading) return <Loader />
 
    return (
-      <div className={'container'}>
+      <div className={'container'} ref={ref}>
 
          <div className={'breadcrumbs'}>
             <Link to='/'>Главная</Link> / {latest ? 'Новинки' : 'Акциии'}
@@ -20,25 +27,9 @@ const Promo = ({ latest, loadItems, loaded, items }) => {
 
          <h1 className={'title'}>{latest ? 'Новинки' : 'Акции и скидки'}</h1>
 
-         {items.map((data, i) => (
-            <PromoItem key={i} {...data} />
-         ))}
+         {items.map((data, i) => <PromoSection key={i} {...data} /> )}
       </div>
    )
 }
 
-const mapStateToProps = (state, { latest }) => {
-   const loaded = latest ? newItemsLoaded : promoLoaded
-   const items = latest ? newItems : promoItems
-   return {
-      loaded: loaded(state),
-      items: items(state),
-   }
-}
-
-const mapDispatchToProps = (dispatch, { latest }) => {
-   const loadItems = latest ? loadNewItems : loadPromoItems
-   return { loadItems: () => dispatch(loadItems()) }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Promo)
+export default Promo

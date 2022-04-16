@@ -7,7 +7,6 @@ import { changeCartItemCount, removeItemFromCart } from '../../../redux/actions'
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg'
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg'
 import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
-import { ReactComponent as RublIcon } from '../../../assets/svg/rubl.svg'
 
 
 const CartItem = ({id}) => {
@@ -30,8 +29,7 @@ const CartItem = ({id}) => {
          <div>
             <h2>{title}</h2>
             <p className='cart__product-price'>
-               {p.toLocaleString('ru-RU')}
-               <RublIcon />
+               {p.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})}
                {!!discount && <span className='cart__product-promo'>-{discount} %</span> }
             </p>
          </div>

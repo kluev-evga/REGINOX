@@ -20,21 +20,15 @@ const Article = () => {
    if (isLoading) return <Loader />
 
    const { date, title } = articleData
-   const { d, m, y } = date
-   const dateText = d + ' / ' + m + ' / ' + y
-   const dateTime = '20' + y + '-' + m + '-' + d
+   const dateText = new Date(date).toLocaleDateString('en-GB').replace(/\/20/, '/').replace(/\//g, ' / ')
 
    return (
       <div className='container' ref={ref}>
          <div className='breadcrumbs'>
-            <Link to='/home'>Главная</Link> / <Link to='/articles'>Статьи</Link>{' '}
-            / {title}
+            <Link to='/home'>Главная</Link> / <Link to='/articles'>Статьи</Link> / {title}
          </div>
          <h1 className='title'>{title}</h1>
-         <time dateTime={dateTime} className='article-date'>
-            {dateText}
-         </time>
-
+         <time  className='article-date' dateTime={date}>{dateText}</time>
          <ArticleContent entities={articleData.content} />
       </div>
    )

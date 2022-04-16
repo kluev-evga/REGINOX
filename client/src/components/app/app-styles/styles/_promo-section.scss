@@ -1,0 +1,23 @@
+.promo-section {
+   padding: 20px 0 50px;
+
+   &__sub-title {
+      margin-bottom: 10px;
+      color: var(--gray);
+   }
+
+   @media (min-width: 768px) {
+      &__sub-title {
+         margin-bottom: 15px;
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      padding: 20px 0 70px;
+
+      &__sub-title {
+         font-size: 20px;
+      }
+   }
+}

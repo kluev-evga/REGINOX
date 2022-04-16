@@ -6,6 +6,8 @@ const promo = {
     'accessories':  {title: '', text: ''},
     'storage-manhattan':  {title: '', text: ''},
     'muscellaneous':  {title: '', text: ''},
+    'soap-dispensers':  {title: '', text: ''},
+    'garbage-disposers':  {title: '', text: ''},
 };
 
 const newItems = {
@@ -16,6 +18,8 @@ const newItems = {
     'accessories':  {title: '', text: ''},
     'storage-manhattan':  {title: '', text: ''},
     'muscellaneous':  {title: '', text: ''},
+    'soap-dispensers':  {title: '', text: ''},
+    'garbage-disposers':  {title: '', text: ''},
 }
 
 module.exports = {promo, newItems};

@@ -1,4 +1,9 @@
 .home-slider {
+   &__slide {
+      background: var(--gray-med);
+      width: 100%;
+   }
+
    &__background {
       height: 720px;
       width: 100%;
@@ -41,7 +46,6 @@
 
    &__link-container {
       flex-grow: 1;
-   
       padding-bottom: 60px;
       margin-right: -10px;
       display: flex;
@@ -50,21 +54,30 @@
    }
 
    &__link {
+      position: relative;
       width: 200px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       background-color: var(--red);
 
+      &::before {
+         content: '';
+         position: absolute;
+         inset: 0 0 0 0;
+         background: #00000025;
+      }
+
       img {
+         grid-area: 1 / 2 / -1 / -1;
          margin-left: auto;
          width: 152px;
          height: auto;
-         grid-area: 1 / 2 / -1 / -1;
       }
 
       span {
-         width: 80%;
          grid-area: 1 / 1 / -1 / -1;
+         z-index: 1;
+         width: 80%;
          place-self: center;
       }
    }
@@ -75,7 +88,7 @@
       bottom: unset;
       right: 0;
       top: 50%;
-   
+
       display: grid;
       grid-gap: 20px;
 

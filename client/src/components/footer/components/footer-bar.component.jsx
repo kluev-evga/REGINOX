@@ -14,7 +14,7 @@ const FooterBar = () => (
             <div className='footer__bar-container'>
                <div className='footer__logo'>
                   <img
-                     src={process.env.PUBLIC_URL + '/assets/barcode.webp'}
+                     src={'/assets/barcode.webp'}
                      alt='barcode'
                      width='160'
                      height='60'
@@ -24,7 +24,6 @@ const FooterBar = () => (
                <div className='footer__socials'>
                   <a
                      href='https://facebook.com'
-                     className='link_primary'
                      aria-label='фейсбук'
                      target='_blank'
                      rel='noreferrer'>
@@ -32,7 +31,6 @@ const FooterBar = () => (
                   </a>
                   <a
                      href='https://twitter.com'
-                     className='link_primary'
                      aria-label='твиттер'
                      target='_blank'
                      rel='noreferrer'>
@@ -40,7 +38,6 @@ const FooterBar = () => (
                   </a>
                   <a
                      href='https://vkontakte.com'
-                     className='link_primary'
                      aria-label='вконтакте'
                      target='_blank'
                      rel='noreferrer'>
@@ -48,7 +45,6 @@ const FooterBar = () => (
                   </a>
                   <a
                      href='https://instagram.com'
-                     className='link_primary'
                      aria-label='инстаграм'
                      target='_blank'
                      rel='noreferrer'>
@@ -62,12 +58,8 @@ const FooterBar = () => (
 
       <div className='container'>
          <div className='footer__policy'>
-            <NavLink
-               to='/policy'
-               className={({isActive}) => isActive ? 'link_active' : 'link_secondary'}>
-               Политика конфеденциальности
-            </NavLink>
-            <span>2020 © Reginox-shop</span>
+            <NavLink to='policy'>Политика конфеденциальности</NavLink>
+            <p>2020 © Reginox-shop</p>
          </div>
       </div>
    </div>

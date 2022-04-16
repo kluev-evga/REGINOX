@@ -1,17 +1,15 @@
 import cn from 'classnames'
-import styles from './card-slider.module.css'
 
 
-const CardSlider = ({ title, img, alt, children, fixed, md, width, height, isLocked }) => (
-   <div
-      className={cn(styles.wrapper, { [styles.fixed]: fixed, [styles.isLocked]: isLocked })}>
+const CardSlider = ({ title, img, alt, children, width, height, md }) => (
+   <div className={cn('card-slider', { 'md': md } )}>
+
       <span>{children}</span>
       <img src={img} alt={alt} width={width} height={height} />
       <div>
-         <p className={cn({ [styles.md]: md })}>
-            {title}
-         </p>
+         <p>{title}</p>
       </div>
+
    </div>
 )
 

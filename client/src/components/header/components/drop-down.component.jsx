@@ -15,7 +15,7 @@ const DropDown = ({ dropDownLinks }) => {
    return (
       <div className={cn('header__drop-down', {'open': isOpen, 'reversed': isHomePage })} ref={ref}>
 
-         <button className='header__drop-down-btn' onClick={() => setIsOpen(!isOpen)}>
+         <button onClick={() => setIsOpen(!isOpen)}>
             Другие товары
             {isOpen ? <ChevronUp /> : <ChevronDown />}
          </button>
@@ -23,11 +23,7 @@ const DropDown = ({ dropDownLinks }) => {
          <div className='header__drop-down-container'>
             <div>
                {dropDownLinks.map(({ title, titleShort, url }) => (
-                  <NavLink
-                     to={`/products/${url}`}
-                     key={url}
-                     onClick={() => setIsOpen(false)}
-                     className='header__drop-down-link'>
+                  <NavLink to={`products/${url}`} onClick={() => setIsOpen(false)} key={url}>
                      {titleShort || title}
                   </NavLink>
                ))}

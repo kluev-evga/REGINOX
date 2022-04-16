@@ -1,12 +1,4 @@
-import {
-    LOAD_PRODUCTS,
-    SUCCESS,
-    FILTERS_TOGGLE_IS_FILTERING,
-    FILTERS_IS_FILTERING,
-    FILTERS_IS_FILTERED,
-    FILTERS_SETLECT_SORT_BY,
-    FILTERS_SET_QUERY_STRING,
-} from '../types';
+import { LOAD_PRODUCTS, SUCCESS, FILTERS_IS_FILTERING, FILTERS_IS_FILTERED, FILTERS_SORT_PRODUCTS_INIT } from '../types';
 
 
 const INITIAL_STATE = {
@@ -18,18 +10,13 @@ const INITIAL_STATE = {
 }
 
 const filtersReducer = function (state = INITIAL_STATE, action) {
-  const { type, data, url, sortBy, queryString, status } = action;
+  const { type, data, url, sortBy, sortedProducts, queryString } = action;
 
   switch (type) {
     case LOAD_PRODUCTS + SUCCESS:
       return {
         ...state,
         filters: {...state.filters, [url]:data.filters},
-      };
-    case FILTERS_TOGGLE_IS_FILTERING:
-      return {
-          ...state,
-          isFiltering: {...state.isFiltering, [url]: status},
       };
     case FILTERS_IS_FILTERING:
       return {
@@ -40,21 +27,17 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
         return {
             ...state,
             isFiltering: {...state.isFiltering, [url]: false},
-            products: {...state.products, [url]: data}
+            products: {...state.products, [url]: sortedProducts},
+            queryString: {...state.queryString, [url]: queryString}
         };
-    case FILTERS_SETLECT_SORT_BY:
+    case FILTERS_SORT_PRODUCTS_INIT:
         return {
             ...state,
             sortBy: sortBy,
         };
-    case FILTERS_SET_QUERY_STRING:
-        return {
-            ...state,
-            queryString: {...state.queryString, [url]: queryString},
-        };
     default:
       return state;
   }
-};
+}
 
-export default filtersReducer;
+export default filtersReducer

@@ -1,20 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import App from './components/app/app.component'
-import store, { persistor } from './redux/store'
-
+import Loader from './components/loader/loader.coponent'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
+import { BrowserRouter } from 'react-router-dom'
+import store, { persistor } from './redux/store'
+
 
 window.store = store // DEV ONLY
 
 ReactDOM.render(
    <React.StrictMode>
       <Provider store={store}>
-         <PersistGate loading={null} persistor={persistor}>
+         <PersistGate loading={<Loader/>} persistor={persistor}>
             <BrowserRouter>
                <App />
             </BrowserRouter>

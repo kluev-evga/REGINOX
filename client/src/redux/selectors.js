@@ -108,9 +108,9 @@ export const selectNormalizedFilters = createSelector(
     }, {})
 );
 export const filtersisFiltering = (state, url) => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
-export const filteredProducts = state => url => state.filters.products[url];
+export const filteredProducts = (state, url) => state.filters.products[url];
 export const sortBy = state => state.filters.sortBy;
-export const queryString = (state, props) => state.filters.queryString?.[props.match.params.url];
+export const queryString = (state, url) => state.filters.queryString?.[url];
 
 
 export const productItems = state => state.productItems.entities;
@@ -129,6 +129,7 @@ export const productItemById = state => id => productItemsById(state)[id];
 
 
 export const reviews = (state, productUrl)  => state.reviews.entities[productUrl];
+export const reviewsCount = (state, productUrl) => productItems(state)[productUrl].reviewsCount
 export const reviewsLoading = (state, productUrl)  => state.reviews.loading[productUrl];
 export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[productUrl];
 

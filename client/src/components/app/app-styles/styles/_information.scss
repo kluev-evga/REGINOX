@@ -1,6 +1,6 @@
 .information {
    &__cards {
-      padding-top: 10px;
+      padding-top: 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -19,14 +19,14 @@
 
    @media (min-width: 768px) {
       &__cards {
-         padding-top: 20px;
+         padding-top: 10px;
          gap: 20px;
       }
    }
 
    @media (min-width: 992px) {
       &__cards img {
-         max-height: 350px;
+         height: 350px;
          object-fit: cover;
          object-position: top;
       }
@@ -34,20 +34,13 @@
 
    @media (min-width: 1200px) {
       &__cards {
-         padding-top: 30px;
          gap: 50px;
       }
    }
 
    @media (min-width: 1400px) {
       &__cards img {
-         max-height: 400px;
-      }
-   }
-
-   @media (min-width: 1600px) {
-      &__cards img {
-         max-height: 440px;
+         height: 400px;
       }
    }
 }

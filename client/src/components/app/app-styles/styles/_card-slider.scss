@@ -1,0 +1,170 @@
+.card-slider {
+   display: grid;
+
+   &:hover {
+      img,
+      div {
+         transform: translateY(-44px);
+         transition: all 0.5s cubic-bezier(0.2, 0.5, 0.2, 1) 0.2s;
+         z-index: 2;
+      }
+
+      span {
+         opacity: 1;
+         transition: opacity 0.2s steps(1, end);
+      }
+   }
+
+   span {
+      align-self: end;
+      grid-area: 1 / 1 / -1 / -1;
+
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 15px;
+      text-align: center;
+      color: var(--white);
+
+      background-color: var(--red);
+      opacity: 0;
+      transition: opacity 0.3s steps(1, end);
+
+      &:hover {
+         background-color: var(--graphite);
+      }
+
+      svg {
+         width: 24px;
+         margin-right: 10px;
+      }
+   }
+
+   img {
+      grid-area: 1 / 1 / -1 / -1;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in;
+      object-fit: cover;
+   }
+
+   div {
+      grid-area: 1 / 1 / -1 / -1;
+      z-index: 1;
+   
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+   
+      background: linear-gradient(0deg, #000b 10%, #0005 50%, transparent);
+      transition: transform 0.3s ease-in;
+   }
+
+   p {
+      padding: 25px 15px;
+      text-align: center;
+      color: var(--white);
+   }
+
+   &.md p {
+      padding: 25px 15px;
+      font-size: 16px;
+   }
+
+   @media (min-width: 375px) {
+      span svg {
+         display: none;
+      }
+
+      &.md p {
+         padding: 30px 15px;
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 450px) {
+      span svg {
+         display: unset;
+      }
+   }
+
+   @media (min-width: 576px) {
+      p {
+         padding: 30px 15px;
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 768px) {
+      p {
+         padding: 40px 15px;
+         font-size: 18px;
+      }
+
+      &.md p {
+         padding: 35px 20px;
+         font-size: 20px;
+      }
+   }
+
+   @media (min-width: 992px) {
+      &:hover {
+         img,
+         div {
+            transform: translateY(-49px);
+         }
+      }
+
+      span {
+         height: 50px;
+         padding: 0 35px;
+         justify-content: start;
+         text-align: left;
+
+         svg {
+            width: unset;
+         }
+      }
+
+      img {
+         max-height: 400px;
+      }
+
+      &.md p {
+         padding: 45px 25px;
+         font-size: 22px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      p {
+         padding: 40px 20px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      p {
+         padding: 40px 20px;
+      }
+
+      &:not(.md) span {
+         padding: 0;
+         justify-content: center;
+         text-align: center;
+      }
+   }
+
+   @media (min-width: 1600px) {
+      p {
+         font-size: 22px;
+      }
+
+      &.md p {
+         font-size: 24px;
+      }
+   }
+}

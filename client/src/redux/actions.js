@@ -27,10 +27,8 @@ import {
    COMPARE_TOGGLE_ITEM,
    COMPARE_REMOVE_ITEM,
    FILTERS_IS_FILTERED,
-   FILTERS_TOGGLE_IS_FILTERING,
    FILTERS_IS_FILTERING,
-   FILTERS_SETLECT_SORT_BY,
-   FILTERS_SET_QUERY_STRING,
+   FILTERS_SORT_PRODUCTS_INIT,
 } from './types'
 
 import {
@@ -53,14 +51,13 @@ import {
 export const selectArticlesPage = page => ({ type: ARTICLES_SELECT_PAGE, page })
 export const changeCartItemCount = (id, count) => ({ type: CART_ADD_ITEM, id, count })
 export const removeItemFromCart = id => ({ type: CART_REMOVE_ITEM, id })
-export const setQueryString = (url, queryString) => ({ type: FILTERS_SET_QUERY_STRING, url, queryString })
 export const setAppTiles = () => ({ type: APP_SET_TILES })
 export const unsetAppTiles = () => ({ type: APP_UNSET_TILES })
-export const toggleProductsIsFiltering = (url, status) => ({ type: FILTERS_TOGGLE_IS_FILTERING, url, status })
 export const toggleCompareItem = id => ({ type: COMPARE_TOGGLE_ITEM, id })
 export const removeItemfromCompare = id => ({ type: COMPARE_REMOVE_ITEM, id })
 export const openSearchMenu = () => ({ type: APP_OPEN_SEARCH })
 export const closeSearchMenu = () => ({ type: APP_CLOSE_SEARCH })
+
 
 export const loadMenu = () => async (dispatch, getState) => {
    const state = getState()
@@ -76,9 +73,9 @@ export const loadMenu = () => async (dispatch, getState) => {
       dispatch({ type: LOAD_MENU + SUCCESS, data })
    } catch (error) {
       dispatch({ type: LOAD_MENU + FAILURE, error })
-      return Promise.reject(error)
    }
 }
+
 
 export const loadBrands = () => async (dispatch, getState) => {
    const state = getState()
@@ -91,11 +88,9 @@ export const loadBrands = () => async (dispatch, getState) => {
    Promise.all([fetch('/get-brands'), loadMenu()(dispatch, getState)])
       .then(([res]) => res.json())
       .then(data => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
-      .catch(error => {
-         dispatch({ type: LOAD_BRANDS + FAILURE, error })
-         return Promise.reject(error)
-      })
+      .catch(error => dispatch({ type: LOAD_BRANDS + FAILURE, error }))
 }
+
 
 export const loadSertificates = () => async (dispatch, getState) => {
    const state = getState()
@@ -111,6 +106,7 @@ export const loadSertificates = () => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_SERTIFICATES + FAILURE, error }))
 }
 
+
 export const loadHome = () => (dispatch, getState) => {
    const state = getState()
    const loading = state.home.loading
@@ -125,6 +121,7 @@ export const loadHome = () => (dispatch, getState) => {
       .then(data => dispatch({ type: LOAD_HOME + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_HOME + FAILURE, error }))
 }
+
 
 export const loadCatalogs = pageSize => async (dispatch, getState) => {
    const state = getState()
@@ -143,6 +140,7 @@ export const loadCatalogs = pageSize => async (dispatch, getState) => {
    }
 }
 
+
 export const loadArticles = page => async (dispatch, getState) => {
    const state = getState()
    const loading = articlesItemLoading(state, page)
@@ -158,6 +156,7 @@ export const loadArticles = page => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }))
 }
 
+
 export const loadArticle = (article) => async (dispatch, getState) => {
    const state = getState()
    const loading = articleLoading(state, article)
@@ -171,6 +170,7 @@ export const loadArticle = (article) => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }))
 }
 
+
 export const loadProducts = url => async (dispatch, getState) => {
    const state = getState()
    const loading = productsLoading(state, url)
@@ -181,15 +181,11 @@ export const loadProducts = url => async (dispatch, getState) => {
    dispatch({ type: LOAD_PRODUCTS + REQUEST, url })
 
    Promise.all([fetch(`/get-products/${url}`), !menu && loadMenu()(dispatch, getState)])
-
-      .then(([res]) => {
-         if (res.ok) return res.json()
-         else throw new Error(res.status)
-      })
-      
+      .then(([res]) => res.json())
       .then(data => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
       .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }))
 }
+
 
 export const loadProductItem = (url, productUrl) => async (dispatch, getState) => {
    const state = getState()
@@ -206,9 +202,8 @@ export const loadProductItem = (url, productUrl) => async (dispatch, getState) =
       .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }))
 }
 
-export const loadReviews =
-   (url, productUrl, currentSize = 0) =>
-   async (dispatch, getState) => {
+
+export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch, getState) => {
       const state = getState()
       const loading = state.reviews.loading[productUrl]
       if (loading) return
@@ -223,6 +218,7 @@ export const loadReviews =
          dispatch({ type: LOAD_REVIEWS + FAILURE, error })
       }
    }
+
 
 export const loadCart = itemsToLoad => async (dispatch, getState) => {
    const state = getState()
@@ -241,6 +237,7 @@ export const loadCart = itemsToLoad => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_CART + FAILURE, error }))
 }
 
+
 export const loadSimilarProducts = () => async dispatch => {
    dispatch({ type: LOAD_SIMILAR_RPODUCTS + REQUEST })
 
@@ -252,6 +249,7 @@ export const loadSimilarProducts = () => async dispatch => {
       dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error })
    }
 }
+
 
 export const loadPromoItems = () => async (dispatch, getState) => {
    const state = getState()
@@ -269,6 +267,7 @@ export const loadPromoItems = () => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_PROMO_ITEMS + FAILURE, error }))
 }
 
+
 export const loadNewItems = () => async (dispatch, getState) => {
    const state = getState()
    const loading = state.newItems.loading
@@ -283,6 +282,7 @@ export const loadNewItems = () => async (dispatch, getState) => {
       .then(data => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_NEW_ITEMS + FAILURE, error }))
 }
+
 
 export const loadCompareItems = itemsToLoad => async (dispatch, getState) => {
    const state = getState()
@@ -301,13 +301,14 @@ export const loadCompareItems = itemsToLoad => async (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }))
 }
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 const sortCheap = (arr, prd) => arr.sort((a, b) => prd[a]['p'] - prd[b]['p'])
 const sortExpensive = (arr, prd) => arr.sort((a, b) => prd[b]['p'] - prd[a]['p'])
 const sortRating = (arr, prd) => arr.sort((a, b) => prd[b]['r'] - prd[a]['r'])
 
-const sortProducts = (sortBy, arr, prd) => {
+const sortProductsByValue = (sortBy, arr, prd) => {
    switch (sortBy.value) {
       case 'cheap': return sortCheap(arr, prd)
       case 'expensive': return sortExpensive(arr, prd)
@@ -316,21 +317,21 @@ const sortProducts = (sortBy, arr, prd) => {
    }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
-export const setSortBy = (sortBy, url) => async (dispatch, getState) => {
+//////////////////////////////////////////////////////////////////////////
+export const sortProducts = (sortBy, url) => async (dispatch, getState) => {
    const state = getState()
    const arr = [...state.filters.products[url]]
    const prd = state.products.products[url]
 
-   dispatch({ type: FILTERS_SETLECT_SORT_BY, sortBy })
+   dispatch({ type: FILTERS_SORT_PRODUCTS_INIT, sortBy })
    dispatch({ type: FILTERS_IS_FILTERING, url })
 
-   const products = await sortProducts(sortBy, arr, prd)
+   const sortedProducts = await sortProductsByValue(sortBy, arr, prd)
 
-   dispatch({ type: FILTERS_IS_FILTERED, data: products, url })
+   dispatch({ type: FILTERS_IS_FILTERED, sortedProducts, url })
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
    // массив массивов для сортировки:
    const sortArr = Object.keys(selected).reduce((acc, key) => {
@@ -346,17 +347,12 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
    }, productsbyCategory)
 }
 
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////
 export const filterProducts = (url, searchParams) => (dispatch, getState) => {
    const state = getState()
    const filters = state.filters.filters[url]
    const products = Object.keys(state.products.products[url])
    const normalizedFilters = selectNormalizedFilters(state, url)
-
 
    const getSelected = (filters, searchParams) => {
       return filters.reduce((acc, { searchGroup, products }) => {
@@ -384,10 +380,11 @@ export const filterProducts = (url, searchParams) => (dispatch, getState) => {
    .then(productsFiltered => {
       const sortBy = state.filters.sortBy
       const prd = state.products.products[url]
-      const sortedProducts = sortProducts(sortBy, productsFiltered, prd)
+      const sortedProducts = sortProductsByValue(sortBy, productsFiltered, prd)
       return sortedProducts
    })
    .then(sortedProducts => {
-      dispatch({ type: FILTERS_IS_FILTERED, data: sortedProducts, url })
+      // attn: searchParams stringified on purpose, so in products it can be checked if its empty string(do not change)
+      dispatch({ type: FILTERS_IS_FILTERED, sortedProducts, url, queryString: searchParams.toString() })
    })
 }

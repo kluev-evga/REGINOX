@@ -7,15 +7,15 @@ import { ReactComponent as Globe } from '../../../../../assets/svg/globe.svg'
 const TabContent = ({ address, phone, phoneText, mail, site, isActive }) => (
    <div className={cn('home-address__tab', {'active': isActive })}>
       <address>{address}</address>
-      <a href={`tel:${phone}`} className='home-address__link link_secondary'>
+      <a href={`tel:${phone}`} className='home-address__link' target='_blank' rel='noreferrer'>
          <Phone />
          {phoneText}
       </a>
-      <a href={`mailto:${mail}`} className='home-address__link link_secondary'>
+      <a href={`mailto:${mail}`} className='home-address__link' target='_blank' rel='noreferrer'>
          <Mail />
          {mail}
       </a>
-      <a href={`https://${site}`} className='home-address__link link_secondary' target='_blank' rel='noreferrer'>
+      <a href={`https://${site}`} className='home-address__link' target='_blank' rel='noreferrer'>
          <Globe />
          {site}
       </a>

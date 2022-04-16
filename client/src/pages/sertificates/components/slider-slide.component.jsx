@@ -17,12 +17,12 @@ const SliderSlide = ({ id }) => {
       >
 
          {({ ref, open }) => (
-            <div className='sertificates-slider__slide' onClick={open}  ref={ref}>
+            <div className='sertificates-slider__slide' onClick={open} ref={ref}>
                <img src={process.env.PUBLIC_URL + '/assets/sertificates/' + img} alt={alt} />
                <p>{name}</p>
             </div>
          )}
-   
+
       </Item>
    )
 }

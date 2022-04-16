@@ -36,6 +36,6 @@ const similarProductsReducer = function (state = INITIAL_STATE, action) {
       default:
             return state;
     }
-};
-  
-export default similarProductsReducer;
+}
+
+export default similarProductsReducer

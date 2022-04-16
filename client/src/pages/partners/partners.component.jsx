@@ -31,10 +31,10 @@ const Partners = () => {
                title='Станьте нашим партнером'
                img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}
                alt='Для партнеров'
-               md
                width='590'
                height='430'
-               fixed>
+               md
+            >
                <EyeIcon />
                Смотреть
             </CardSlider>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectSertificatesList } from '../../../redux/selectors'
 import { Gallery } from 'react-photoswipe-gallery'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
 import { useMediaQuery } from 'react-responsive'
 import SliderSlide from './slider-slide.component'
 
@@ -39,6 +40,7 @@ const SertificatesSlider = () => {
                slidesOffsetAfter={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 10 }
                slidesOffsetBefore={ isDesktop ? 0 : isTabletLg ? 35 : isTablet ? 20 : 10 }
                navigation
+               modules={[Navigation]}
             >
 
                {sertificatesList.map(id => (

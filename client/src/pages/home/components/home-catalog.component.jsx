@@ -14,7 +14,7 @@ const HomeCatalog = () => {
          <div className='home-catalog'>
 
             {links.map(({ url, ...rest }) => (
-               <Link to={`products/${url}`} key={url} className='link-card'>
+               <Link to={`products/${url}`} key={url}>
 
                   <CardSlider {...rest} width='550' height='640'>
                      <ListIcon />

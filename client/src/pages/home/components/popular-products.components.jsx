@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { homePopularProducts } from '../../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
-import ProductCard from '../../../components/product-card/product-card.component'
+import CardProduct from '../../../components/card-product/card-product.component'
 
 
 const HomePopularProducts = () => {
@@ -16,7 +16,7 @@ const HomePopularProducts = () => {
 
          <div className='home-popular-products'>
             {(isDesktopLG ? products : products.slice(0, 6))
-               .map(product => <ProductCard key={product.id} tiles={true} product={product} withRating={false} /> )
+               .map(product => <CardProduct key={product.id} tiles={true} product={product} withRating={false} /> )
             }
          </div>
       </div>

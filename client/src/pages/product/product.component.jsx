@@ -5,11 +5,10 @@ import { getTitle, productItem } from '../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import Slider from './slider/slider.component'
-import SliderPanel from './slider-panel/slider-panel.component'
-import PhoneView from './phone-view/phone-view.component'
-import TabsContainer from './tabs-container/tabs-container.component'
+import SliderPanel from './slider/slider-panel.component'
+import TabsContainerLargeView from './tabs/tabs-container-large-view.component'
+import TabsContainerPhoneView from './tabs/tabs-container-phone-view.component'
 import SimilarProducts from './similar-products/similar-products.component'
-import styles from './product.module.css'
 
 
 const Product = () => {
@@ -22,24 +21,23 @@ const Product = () => {
    useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
 
    return (
-      <div className='container' ref={ref}>
-         <div className={'breadcrumbs ' + styles.breadcrumbs}>
+      <div className='container product' ref={ref}>
+         <div className='breadcrumbs product__breadcrumbs'>
             <Link to='/'>Главная</Link> / <Link to={`/products/${url}`}>{linkTitle}</Link> / <div>{title}</div>
          </div>
 
-         <div className={styles.wrapper}>
+         <div className='product__slider-container'>
             <Slider images={images} />
-            <h1 className={styles.title}>
-               {title}
-               <i> </i>
-               <span className={cn({ [styles.promo]: promo })}></span>
-               <span className={cn({ [styles.new_item]: newItem })}></span>
+            <h1 className='product__title'>
+               {title}&nbsp;
+               <span className={cn({ 'promo': promo })}></span>
+               <span className={cn({ 'new-item': newItem })}></span>
             </h1>
             <SliderPanel id={id} price={price} discount={discount} />
-            {isTablet ? <TabsContainer specs={specs} /> : <PhoneView specs={specs} />}
+            {isTablet ? <TabsContainerLargeView specs={specs} /> : <TabsContainerPhoneView specs={specs} />}
          </div>
 
-         <div className={styles.container}>
+         <div className='product__similar-products-container'>
             <SimilarProducts />
          </div>
       </div>

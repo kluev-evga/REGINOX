@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { closeSearchMenu } from '../../redux/actions'
 import cn from 'classnames'
+import FocusTrap from 'focus-trap-react'
 import { useMediaQuery } from 'react-responsive'
 import useOnClickOutside from 'use-onclickoutside'
 import { ReactComponent as SearchIcon } from '../../assets/svg/search.svg'
@@ -20,12 +21,20 @@ const Search = () => {
 
    const handleChange = ({ target }) => { setsearchText(target.value) }
 
-   const handleClearClick = () => {
+   const handleClearClick = useCallback(() => {
       setsearchText('')
       refInput.current.focus()
-   }
+   }, [])
+
+   const handleKeyDown = useCallback((e) => { if (e.code === 'Escape') dispatch(closeSearchMenu()) }, [])//eslint-disable-line
+
+   useEffect(() => {
+      document.addEventListener('keydown', handleKeyDown)
+      return () => {document.removeEventListener('keydown', handleKeyDown)}
+   })
 
    return (
+      <FocusTrap>
       <div className='search' ref={refBody} >
          <div className='container search__container'>
 
@@ -44,7 +53,11 @@ const Search = () => {
                   <span>поиск по сайту</span>
 
                   {isActive && (
-                     <button className='search__btn-clear' onClick={handleClearClick}>
+                     <button
+                        className='search__btn-clear'
+                        onClick={handleClearClick}
+                        tabIndex={-1}
+                     >
                         <CrossIcon />
                      </button>
                   )}
@@ -59,6 +72,7 @@ const Search = () => {
 
          </div>
       </div>
+      </FocusTrap>
    )
 }
 

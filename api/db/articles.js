@@ -2,7 +2,7 @@ const articles = [
     {
         id: 'b6c8448a-d78c-4702-9324-99adc728db97',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -10,7 +10,7 @@ const articles = [
     {
         id: '0aa284e1-1393-43cd-8970-c50fb767e067',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -18,7 +18,7 @@ const articles = [
     {
         id: '2073284c-23fc-43dd-ab92-effe42dc20e2',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -26,7 +26,7 @@ const articles = [
     {
         id: 'b8e0a0fa-7236-4485-8ca3-111507db4244',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -34,7 +34,7 @@ const articles = [
     {
         id: '763fcd1b-817b-4142-9e7d-f6ef7639baff',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -44,7 +44,7 @@ const articles = [
     {
         id: 'eb43e2cc-dd76-411e-ad3c-a8c7581271af',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -52,7 +52,7 @@ const articles = [
     {
         id: '6a7fa5a0-d603-452e-8672-f75220c66097',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -60,7 +60,7 @@ const articles = [
     {
         id: 'b4f1411d-c8f8-4c57-9886-9590ba86fdfd',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -68,7 +68,7 @@ const articles = [
     {
         id: '556fa03c-265f-4791-bec3-9ea10807210b',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -76,7 +76,7 @@ const articles = [
     {
         id: '6b02f6c3-4ed7-40c8-b8d4-31b36a680caf',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -84,7 +84,7 @@ const articles = [
     {
         id: '0fb934c5-f1d5-4d0c-aa9f-18df37cfd1fe',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -92,7 +92,7 @@ const articles = [
     {
         id: '776b1e7a-f502-41c4-9993-7ecd7a031d0b',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -100,7 +100,7 @@ const articles = [
     {
         id: '53a2607f-4e3f-49d9-b79e-990b109696d2',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -108,7 +108,7 @@ const articles = [
     {
         id: '2b6eade0-eca4-4177-a433-917ef2dc225c',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -116,7 +116,7 @@ const articles = [
     {
         id: 'd46452fd-6f7e-4613-82a8-89fee2254a54',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -124,7 +124,7 @@ const articles = [
     {
         id: '0bedf91d-589a-41b1-83ab-3278d4beec4e',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -132,7 +132,7 @@ const articles = [
     {
         id: '6434c552-c292-4a0a-aa19-cd2f6907cd8f',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -140,7 +140,7 @@ const articles = [
     {
         id: 'e02841f2-aed5-4c0d-b3a9-cbccbb12f3eb',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -148,7 +148,7 @@ const articles = [
     {
         id: '87dd5f29-7fe5-41d4-8103-e303db258d86',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -156,7 +156,7 @@ const articles = [
     {
         id: 'd875df76-d332-4b3c-bc97-078fa64b998a',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -164,7 +164,7 @@ const articles = [
     {
         id: '4a95cba7-aeec-408e-bf6a-15685516b08d',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -172,7 +172,7 @@ const articles = [
     {
         id: '019c717a-1eac-4244-9533-51b8736e03f4',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -180,7 +180,7 @@ const articles = [
     {
         id: '1ba2d709-5055-4d70-9121-30ae4499ceeb',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -188,7 +188,7 @@ const articles = [
     {
         id: '268d983c-0adb-4698-a3bb-8947fa364897',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -196,7 +196,7 @@ const articles = [
     {
         id: '19b512e1-1ea7-49bb-b6ce-16328e8520d5',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -204,7 +204,7 @@ const articles = [
     {
         id: 'c2182b5d-f710-400a-8ebc-2ef0dc478493',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -212,7 +212,7 @@ const articles = [
     {
         id: 'f9d9e986-a178-4d85-b3d4-23ca0e6fc0cd',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -220,7 +220,7 @@ const articles = [
     {
         id: '737a83d6-56ee-46fc-b2af-b0c9101382f2',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -228,7 +228,7 @@ const articles = [
     {
         id: 'e715d10f-14e3-4287-8cc4-da29b8d09918',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -236,7 +236,7 @@ const articles = [
     {
         id: '2543d436-d0da-4b17-8cd2-3c82950e07d2',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',
@@ -244,7 +244,7 @@ const articles = [
     {
         id: 'e4f28c35-9750-4fb5-b074-14052e6611cc',
         title: 'Ontario — стильный дизайн и надежность!',
-        date: { d:'16', m:'12', y:'19'},
+        date: '2019-12-16',
         img: '/assets/articles/previews/article_1.webp',
         alt: 'ontario',
         url: 'ontario',
@@ -252,7 +252,7 @@ const articles = [
     {
         id: 'f8c913a5-c007-488f-8950-6c94018f089e',
         title: 'Уход за мойкой из нержавеющей стали',
-        date: { d:'01', m:'04', y:'19' },
+        date: '2019-04-01',
         img: '/assets/articles/previews/article_2.webp',
         alt: 'stainless-steel',
         url: 'stainless-steel',
@@ -260,7 +260,7 @@ const articles = [
     {
         id: '84ae2216-1adc-4a21-a127-9db8280221f3',
         title: 'История появления кухонных моек',
-        date: { d:'12', m:'02', y:'20' },
+        date: '2020-02-12',
         img: '/assets/articles/previews/article_3.webp',
         alt: 'history',
         url: 'history',
@@ -268,7 +268,7 @@ const articles = [
     {
         id: 'f4d09c57-fd64-454c-839e-25586903bdb9',
         title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-        date: { d:'22', m:'08', y:'21' },
+        date: '2021-08-22',
         img: '/assets/articles/previews/article_4.webp',
         alt: 'remove stains',
         url: 'remove-stains',
@@ -276,7 +276,7 @@ const articles = [
     {
         id: '4a95d230-4330-4719-b924-3def92ad8c04',
         title: 'История появления смесителей',
-        date: { d:'04', m:'03', y:'19' },
+        date: '2019-03-04',
         img: '/assets/articles/previews/article_5.webp',
         alt: 'history plumbing',
         url: 'history-plumbing',

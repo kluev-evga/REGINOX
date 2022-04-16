@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as burgerMenu } from 'redux-burger-menu'
+import { persistReducer } from 'redux-persist';
 
 import appReducer from './reducers/app';
 import homeReducer from './reducers/home';
@@ -18,7 +19,20 @@ import similarProductsReducer from './reducers/similar-products';
 import promoReducer from './reducers/promo';
 import newItemsReducer from './reducers/new-items';
 import compareReducer from './reducers/compare';
+import storage from 'redux-persist/lib/storage';
 
+
+const comparePersistConfig = {
+  key: 'compare',
+  storage: storage,
+  whitelist: ['entities']
+}
+
+const cartPersistConfig = {
+  key: 'cart',
+  storage: storage,
+  whitelist: ['items']
+}
 
 const rootReducer = combineReducers({
   burgerMenu: burgerMenu,
@@ -33,12 +47,12 @@ const rootReducer = combineReducers({
   products: productsReducer,
   filters: filtersReducer,
   productItems: productItemsReducer,
-  cart: cartReducer,
+  cart: persistReducer(cartPersistConfig, cartReducer),
   reviews: reviewsReducer,
   similarProducts: similarProductsReducer,
   promo: promoReducer,
   newItems: newItemsReducer,
-  compare: compareReducer
+  compare: persistReducer(comparePersistConfig, compareReducer)
 })
 
 export default rootReducer

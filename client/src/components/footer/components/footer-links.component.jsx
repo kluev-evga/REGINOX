@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { menuLinks } from '../../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
-import cn from 'classnames'
 
 
 const FooterLinks = () => {
@@ -15,40 +14,36 @@ const FooterLinks = () => {
       <div className='container'>
          <div className='footer__container'>
 
-            <div className='footer__row'>
+            <div className='footer__column'>
                <p>О компании</p>
-               <NavLink className='footer__link' to='/why-us'>Почему мы</NavLink>
-               <NavLink className='footer__link' to='/partners'>Наши партнеры</NavLink>
-               <NavLink className='footer__link' to='/sertificates'>Сертификаты и гарантии</NavLink>
-               <NavLink className='footer__link' to='/articles'>Статьи</NavLink>
-               <NavLink className='footer__link' to='/information'>Информация</NavLink>
-               <NavLink className='footer__link' to={`/catalogs?size=${isDesktopXL ? 5 : isTabletLG ? 4 : isTablet ? 3 : 2}`}>Каталоги</NavLink>
-               <NavLink className='footer__link' to='/delivery'>Доставка и оплата</NavLink>
-               <NavLink className='footer__link' to='/contacts'>Контакты</NavLink>
+               <NavLink to='/why-us'>Почему мы</NavLink>
+               <NavLink to='/partners'>Наши партнеры</NavLink>
+               <NavLink to='/sertificates'>Сертификаты и гарантии</NavLink>
+               <NavLink to='/articles'>Статьи</NavLink>
+               <NavLink to='/information'>Информация</NavLink>
+               <NavLink to={`/catalogs?size=${isDesktopXL ? 5 : isTabletLG ? 4 : isTablet ? 3 : 2}`}>Каталоги</NavLink>
+               <NavLink to='/delivery'>Доставка и оплата</NavLink>
+               <NavLink to='/contacts'>Контакты</NavLink>
             </div>
 
-            <div className='footer__row'>
+            <div className='footer__column'>
                <p>Каталог</p>
-               {links.map(({ title, url }) => (
-                  <NavLink key={url} to={`/products/${url}`} className='footer__link'>
-                     {title}
-                  </NavLink>
-               ))}
+               {links.map(({ title, url }) => <NavLink key={url} to={`/products/${url}`}>{title}</NavLink> )}
             </div>
 
-            <div className={cn('footer__row', 'footer__brands')}>
+            <div className='footer__column footer__brands'>
                <p>Бренды</p>
-               <NavLink className='footer__link' to='/'>Reginox</NavLink>
-               <NavLink className='footer__link' to='/'>Rodi</NavLink>
-               <NavLink className='footer__link' to='/'>Whinstone</NavLink>
-               <NavLink className='footer__link' to='/'>Rerih</NavLink>
-               <NavLink className='footer__link' to='/'>Status</NavLink>
-               <NavLink className='footer__link' to='/'>Bone Crusher</NavLink>
-               <NavLink className='footer__link' to='/'>Armando Vicario</NavLink>
-               <NavLink className='footer__link' to='/'>Webert</NavLink>
-               <NavLink className='footer__link' to='/'>Effepi</NavLink>
-               <NavLink className='footer__link' to='/'>Glionna Bagno</NavLink>
-               <NavLink className='footer__link' to='/'>Аквафор</NavLink>
+               <NavLink to='/'>Reginox</NavLink>
+               <NavLink to='/'>Rodi</NavLink>
+               <NavLink to='/'>Whinstone</NavLink>
+               <NavLink to='/'>Rerih</NavLink>
+               <NavLink to='/'>Status</NavLink>
+               <NavLink to='/'>Bone Crusher</NavLink>
+               <NavLink to='/'>Armando Vicario</NavLink>
+               <NavLink to='/'>Webert</NavLink>
+               <NavLink to='/'>Effepi</NavLink>
+               <NavLink to='/'>Glionna Bagno</NavLink>
+               <NavLink to='/'>Аквафор</NavLink>
             </div>
          </div>
       </div>

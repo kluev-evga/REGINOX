@@ -1,25 +1,25 @@
 import { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { loadCompareItems } from '../../redux/actions'
 import { compareLoaded, compareItems, productItemsById } from '../../redux/selectors'
-import ViewContainer from './view-container/view-container.component'
+import ViewContainer from './components/view-container.component'
 import Loader from '../../components/loader/loader.coponent'
 
-const Compare = ({ loadCompareItems, compareItems, productItemsById, loaded }) => {
-   const itemsToLoad = useMemo(
-      () => compareItems.filter(id => (productItemsById[id] ? false : id)),
-      [productItemsById]
-   ) //eslint-disable-line
 
-   useEffect(() => {
-      loadCompareItems(itemsToLoad)
-   }, []) //eslint-disable-line
+const Compare = () => {
+   const dispatch = useDispatch()
+   const isLoading = !useSelector(compareLoaded)
+   const items = useSelector(compareItems)
+   const itemsById = useSelector(productItemsById)
+   const itemsToLoad = useMemo( () => items.filter(id => (itemsById[id] ? false : id)), [itemsById] )//eslint-disable-line
 
-   if (!loaded || itemsToLoad.length !== 0) return <Loader />
+   useEffect(() => { dispatch(loadCompareItems(itemsToLoad)) }, [])//eslint-disable-line
+
+   if (isLoading || itemsToLoad.length !== 0) return <Loader />
 
    return (
-      <div>
+      <div className='compare'>
          <div className={'container'}>
 
             <div className={'breadcrumbs'}><Link to='/'>Главная</Link> / сравнить</div>
@@ -32,10 +32,4 @@ const Compare = ({ loadCompareItems, compareItems, productItemsById, loaded }) =
    )
 }
 
-const mapStateToProps = state => ({
-   loaded: compareLoaded(state),
-   compareItems: compareItems(state),
-   productItemsById: productItemsById(state),
-})
-
-export default connect(mapStateToProps, { loadCompareItems })(Compare)
+export default Compare

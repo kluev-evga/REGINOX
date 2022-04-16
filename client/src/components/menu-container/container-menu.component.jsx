@@ -12,6 +12,7 @@ const ContainerMenu = ({ children }) => {
 
    return (
       <div id='outer-container'>
+
          <ContainerMainMenu>
             <MenuMain />
          </ContainerMainMenu>

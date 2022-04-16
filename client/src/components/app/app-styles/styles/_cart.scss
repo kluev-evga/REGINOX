@@ -67,11 +67,6 @@
          color: var(--gray);
       }
 
-      svg {
-         display: inline;
-         height: 11px;
-      }
-
       button {
          margin-top: 15px;
       }
@@ -81,11 +76,6 @@
       display: flex;
       justify-content: space-between;
       font-weight: 600;
-
-      svg {
-         display: inline;
-         height: 13px;
-      }
    }
 
    @media (min-width: 340px) {
@@ -124,18 +114,10 @@
          font-size: 18px;
          margin-bottom: 35px;
          gap: 15px;
-
-         svg {
-            height: 13px;
-         }
       }
 
       &__summary-price-total {
          font-size: 20px;
-
-         svg {
-            height: 14px;
-         }
       }
    }
 }
@@ -171,13 +153,6 @@
    &__product-price {
       margin-top: 14px;
       font-size: 17px;
-
-      svg {
-         margin-left: 5px;
-         display: inline;
-         height: 12px;
-         width: auto;
-      }
    }
 
    &__product-promo {
@@ -218,10 +193,6 @@
       &__product-price {
          font-size: 18px;
          font-weight: 500;
-
-         svg {
-            height: 13px;
-         }
       }
    }
 

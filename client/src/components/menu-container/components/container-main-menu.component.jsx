@@ -27,7 +27,7 @@ const ContainerMainMenu = ({ children }) => {
          width={isPhone ? '100%' : '400px'}
       >
 
-      {children}
+         {children}
 
       </MenuBody>
    )

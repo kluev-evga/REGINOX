@@ -1,7 +1,7 @@
 const articlesItems = {
   'ontario' : {
     title: 'Ontario — стильный дизайн и надежность!',
-    date: { d:'16', m:'12', y:'19' },
+    date: '2019-12-16',
     content: [
       {
         type: 'article',
@@ -66,7 +66,7 @@ const articlesItems = {
   },
   'stainless-steel' : {
     title: 'Уход за мойкой из нержавеющей стали',
-    date: { d:'01', m:'04', y:'19' },
+    date: '2019-04-01',
     content: [
       {
         type: 'article',
@@ -128,7 +128,7 @@ const articlesItems = {
   },
   'history' : {
     title: 'История появления кухонных моек',
-    date: { d:'12', m:'02', y:'20' },
+    date: '2020-02-12',
     content: [
       {
         type: 'article',
@@ -157,7 +157,7 @@ const articlesItems = {
   },
   'remove-stains' : {
     title: 'Как удалить белые разводы с поверхности мойки и смесителя?',
-    date: { d:'22', m:'08', y:'21' },
+    date: '2021-08-22',
     content: [
       {
         type: 'article',
@@ -191,7 +191,7 @@ const articlesItems = {
   },
   'history-plumbing' : {
     title: 'История появления смесителей',
-    date: { d:'04', m:'03', y:'19' },
+    date: '2019-03-04',
     content: [
       {
         type: 'article',

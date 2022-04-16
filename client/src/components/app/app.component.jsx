@@ -23,13 +23,8 @@ import Policy from '../../pages/policy/policy.component'
 import NotFound from '../../pages/not-found/not-found.component'
 import Error from '../../pages/error/error.component'
 
-import SwiperCore, { Pagination, Navigation, EffectCreative, A11y, Autoplay, Thumbs } from 'swiper'
-
-// Styles entry point:
 import './app-styles/app.scss'
 
-
-SwiperCore.use([Pagination, Navigation, EffectCreative, A11y, Autoplay, Thumbs])
 
 const App = () => (
    <ContainerMenu>
