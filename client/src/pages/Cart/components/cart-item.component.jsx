@@ -29,7 +29,7 @@ const CartItem = ({id}) => {
          <div>
             <h2>{title}</h2>
             <p className='cart__product-price'>
-               {p.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})}
+               {p.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}
                {!!discount && <span className='cart__product-promo'>-{discount} %</span> }
             </p>
          </div>

@@ -44,7 +44,9 @@ import {
    productsLoaded,
    selectNormalizedFilters,
    productItemLoading,
-   productItemLoaded
+   productItemLoaded,
+   filtersMinMax,
+   filterStoredMinMax
 } from './selectors'
 
 
@@ -348,11 +350,13 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
 }
 
 //////////////////////////////////////////////////////////////////////////
-export const filterProducts = (url, searchParams) => (dispatch, getState) => {
+export const filterProducts = (url, search, minmax=null) => (dispatch, getState) => {
    const state = getState()
    const filters = state.filters.filters[url]
    const products = Object.keys(state.products.products[url])
    const normalizedFilters = selectNormalizedFilters(state, url)
+
+   const searchParams = search ? search : new URLSearchParams(state.filters.queryString[url])
 
    const getSelected = (filters, searchParams) => {
       return filters.reduce((acc, { searchGroup, products }) => {
@@ -367,23 +371,30 @@ export const filterProducts = (url, searchParams) => (dispatch, getState) => {
 
    const selected = getSelected(filters, searchParams);
 
+   // if range triggered, minmax goes from range(else from stored) || stored minmax || option 3 - only initialization
+   const newMinMax = minmax ? minmax : filterStoredMinMax(state, url) ? filterStoredMinMax(state, url) : filtersMinMax(state, url)
+   dispatch({ type: FILTERS_IS_FILTERING, url, newMinMax })
 
-
-   dispatch({ type: FILTERS_IS_FILTERING, url })
 
    Promise.resolve(products)
    .then((products) => {
-      const filterIsSelected = Object.keys(selected).length
-      if (filterIsSelected) return filteredProducts(products, selected, normalizedFilters)
-      else return products
-   })
-   .then(productsFiltered => {
+      // checkbox:
+      const isCheckboxSelected = Object.keys(selected).length
+      const filteredByCheckbox = (isCheckboxSelected) ? filteredProducts(products, selected, normalizedFilters) : products
+
+      // range-slider:
+      const [ MIN, MAX ] = newMinMax
+      const filteredByPrice = filteredByCheckbox.reduce((result, id) => {
+         const price = state.products.products[url][id].p
+         if (price >= MIN && price <= MAX) result.push(id)
+         return result
+      }, [])
+
+      // select:
       const sortBy = state.filters.sortBy
       const prd = state.products.products[url]
-      const sortedProducts = sortProductsByValue(sortBy, productsFiltered, prd)
-      return sortedProducts
-   })
-   .then(sortedProducts => {
+      const sortedProducts = sortProductsByValue(sortBy, filteredByPrice, prd)
+
       // attn: searchParams stringified on purpose, so in products it can be checked if its empty string(do not change)
       dispatch({ type: FILTERS_IS_FILTERED, sortedProducts, url, queryString: searchParams.toString() })
    })

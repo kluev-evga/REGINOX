@@ -44,7 +44,7 @@
    }
 
    &__section-header-reset {
-      transition: opacity 0.3s linear;
+      transition: opacity 0.1s ease;
 
       &:hover {
          border-color: var(--gray-med);

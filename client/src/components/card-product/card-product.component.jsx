@@ -21,7 +21,7 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
    const count = useSelector(state => cartItemCount(state, id))
    const inCompare = useSelector(state => compareItem(state, id))
    const incart = isFinite(count)
-   const price = p.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})
+   const price = p.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})
 
    const [hover, setHover] = useState(false)
 

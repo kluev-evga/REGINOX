@@ -3,6 +3,7 @@ import { compareItems, productItemById } from '../../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import ViewPhone from './view-phone.component'
 import ViewLarge from './view-large.component'
+import Empty from '../../../components/empty/empty.component'
 
 
 const ViewContainer = () => {
@@ -27,7 +28,7 @@ const ViewContainer = () => {
       return { id, images, specs: itemSpecs, productUrl, url, price }
    })
 
-   if (specs.length === 0) return <div>ничего не выбрано</div>
+   if (specs.length === 0) return <Empty/>
 
    return isLarge ? <ViewLarge items={compareItms} data={data} specs={specs} />
                   : <ViewPhone items={compareItms} data={data} specs={specs} />

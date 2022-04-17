@@ -6,6 +6,7 @@ import { loadCart } from '../../redux/actions'
 import CartItem from './components/cart-item.component'
 import CartSummary from './components/cart-summary.component'
 import Loader from '../../components/loader/loader.coponent'
+import Empty from '../../components/empty/empty.component'
 
 
 const Cart = () => {
@@ -28,7 +29,7 @@ const Cart = () => {
          <div className='cart__container'>
             <div className='cart__items-container'>
                {cartItems.map(id => <CartItem key={id} id={id} /> )}
-               {!cartItems.length && <p>В корзине ничего нет</p>}
+               {!cartItems.length && <Empty/>}
             </div>
 
             <CartSummary />

@@ -7,10 +7,11 @@ const INITIAL_STATE = {
     products: [],
     sortBy: { value: 'rating', label: 'Сначала популярные' },
     queryString: null,
+    minmax: {}
 }
 
 const filtersReducer = function (state = INITIAL_STATE, action) {
-  const { type, data, url, sortBy, sortedProducts, queryString } = action;
+  const { type, data, url, sortBy, sortedProducts, queryString, newMinMax } = action;
 
   switch (type) {
     case LOAD_PRODUCTS + SUCCESS:
@@ -22,6 +23,7 @@ const filtersReducer = function (state = INITIAL_STATE, action) {
       return {
         ...state,
         isFiltering: {...state.isFiltering, [url]: true},
+        minmax: newMinMax ? {...state.minmax, [url]: newMinMax} : state.minmax
       };
       case FILTERS_IS_FILTERED:
         return {

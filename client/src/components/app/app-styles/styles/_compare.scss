@@ -1,7 +1,4 @@
-.compare {
-   min-height: 600px;
-}
-/////////////////////////////////////////
+///////////////////////////////////////// View below 768px:
 .compare {
    &__view-phone {
       margin: 20px -10px;
@@ -130,9 +127,10 @@
       }
    }
 }
-/////////////////////////////////////////
+///////////////////////////////////////// View over 768px:
 .compare {
    &__view-large-container {
+      min-height: 800px;
       margin-top: 30px;
       display: grid;
       grid-template-columns: 100%;

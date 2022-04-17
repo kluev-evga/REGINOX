@@ -18,7 +18,7 @@ const ViewLargeSlideContent = ({ item, specs }) => {
                alt='productI item'
             />
          </Link>
-         <p>{item.price.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})}</p>
+         <p>{item.price.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}</p>
          {specs.map((field, i) => (
             <span key={i}>
                <p>{item.specs[field] || '-'}</p>

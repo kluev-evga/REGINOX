@@ -94,6 +94,7 @@ export const articleError = (state, {match}) => state.article.error?.[match.para
 
 export const productsLoading = (state, url) => state.products.loading?.[url];
 export const productsLoaded = (state, url) => state.products.loaded?.[url];
+const products = (state, url) => state.products.products[url];
 export const product = (state, url, id) => state.products.products[url][id];
 
 
@@ -107,10 +108,21 @@ export const selectNormalizedFilters = createSelector(
         return acc
     }, {})
 );
-export const filtersisFiltering = (state, url) => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
+export const filtersIsFiltering = (state, url) => state.filters.isFiltering[url] === undefined ? true : state.filters.isFiltering[url];
 export const filteredProducts = (state, url) => state.filters.products[url];
 export const sortBy = state => state.filters.sortBy;
 export const queryString = (state, url) => state.filters.queryString?.[url];
+export const filtersMinMax = createSelector(
+    products,
+    (products) => {
+        const productsArr =  Object.keys(products)
+        if (productsArr.length !== 0) {
+            const priceArr =productsArr.map(id => products[id].p)
+            return [Math.min(...priceArr), Math.max(...priceArr)]
+        } else return [0, 0.00001]// guard when no products
+    }
+)
+export const filterStoredMinMax = (state, url) => state.filters.minmax?.[url]
 
 
 export const productItems = state => state.productItems.entities;

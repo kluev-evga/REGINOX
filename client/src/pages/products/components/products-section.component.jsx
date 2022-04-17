@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { filteredProducts, filtersisFiltering, appIsTiles } from '../../../redux/selectors'
+import { filteredProducts, filtersIsFiltering, appIsTiles } from '../../../redux/selectors'
 import cn from 'classnames'
 import ProductItem from './product-item.component'
 import Pagination from '../../../components/pagination/pagination.component'
@@ -19,7 +19,7 @@ const ProductsSection = () => {
    const [currentPage, selectPage] = useState(1)
    const { url } = useParams()
    const isTiles = useSelector(appIsTiles)
-   const isFiltering = useSelector((state) => filtersisFiltering(state, url))
+   const isFiltering = useSelector((state) => filtersIsFiltering(state, url))
    const productItems = useSelector((state) => filteredProducts(state, url))
 
    const { products, totalItems, totalPages, pages } = useMemo(
@@ -41,7 +41,7 @@ const ProductsSection = () => {
    return (
       <div className={cn('products__section', { 'tiles': isTiles })}>
 
-         { products[currentPage - 1].map(id => <ProductItem key={id} id={id} /> ) }
+         { products[currentPage - 1].map(id => <ProductItem key={id} id={id} /> )}
 
          <div className='products__pagination'>
             <Pagination

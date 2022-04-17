@@ -19,8 +19,8 @@ const CartSummary = () => {
       { total: 0, count: 0, grossTotal: 0 }
    )
 
-   const totalPrice = total.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})
-   const grossTotalPrice = grossTotal.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})
+   const totalPrice = total.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})
+   const grossTotalPrice = grossTotal.toLocaleString('ru-RU', {style: 'currency', minimumFractionDigits:0, currency:'RUB'})
    const discount = parseFloat(Number((100 - (total * 100) / grossTotal).toFixed(1)))
 
    return (

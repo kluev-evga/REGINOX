@@ -18,7 +18,7 @@ const Products = () => {
    const title = useSelector((state) => getTitle(state, url))
    const querySrt = useSelector((state) => queryString(state, url));
 
-   useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
+   useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [url])
    // restore query string:
    useEffect(() => {if (querySrt) setSearchParams(querySrt)}, [url])//eslint-disable-line
    // start filtering:

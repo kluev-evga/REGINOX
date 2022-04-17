@@ -28,7 +28,7 @@ const SliderPanel = ({ id, price, discount }) => {
 
          <div className='product-panel__price'>
             <span>
-               {price.toLocaleString('ru-RU', {style: 'currency', currency:'RUB'})}
+               {price.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}
                {!!discount && <b> -{discount}%</b>}
             </span>
             <button
