@@ -1,12 +1,12 @@
 import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { cartItemCount, cartEntity } from '../../../redux/selectors'
+import { cartItemCount, cartEntity } from '../../redux/selectors'
 import cn from 'classnames'
-import { changeCartItemCount, removeItemFromCart } from '../../../redux/actions'
-import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg'
-import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg'
-import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
+import { changeCartItemCount, removeItemFromCart } from '../../redux/actions'
+import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg'
+import { ReactComponent as PlusIcon } from '../../assets/svg/plus.svg'
+import { ReactComponent as MinusIcon } from '../../assets/svg/minus.svg'
 
 
 const CartItem = ({id}) => {

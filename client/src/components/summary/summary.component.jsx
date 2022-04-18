@@ -1,8 +1,10 @@
+import { Link, useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { cartItems, cartItemsArray, cartEntities } from '../../../redux/selectors'
+import { cartItems, cartItemsArray, cartEntities } from '../../redux/selectors'
 
 
 const CartSummary = () => {
+   const isCart = useMatch('/cart');
    const items = useSelector(cartItems)
    const itemsArr = useSelector(cartItemsArray)
    const entities = useSelector(cartEntities)
@@ -24,22 +26,25 @@ const CartSummary = () => {
    const discount = parseFloat(Number((100 - (total * 100) / grossTotal).toFixed(1)))
 
    return (
-      <div className='cart__summary'>
+      <div className='summary'>
          <h2>Ваша корзина</h2>
 
-         <div className='cart__summary-price'>
+         <div className='summary__price'>
             <p>Товары<span>({count})</span></p>
             <span>{grossTotalPrice}</span>
             {!!discount && <p>Скидка</p>}
             {!!discount && <span>{discount} %</span>}
          </div>
 
-         <div className='cart__summary-price-total'>
+         <div className='summary__price-total'>
             <p>Итого</p>
             <span>{totalPrice}</span>
          </div>
 
-         {!!total && <button className='button-form'>Перейти к оплате</button>}
+         {!!total && isCart && <Link to='order' className='button-form'>Перейти к оплате</Link>}
+         {!isCart && <button className='button-form'>Оплатить</button>}
+
+         <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>
       </div>
    )
 }

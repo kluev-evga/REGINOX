@@ -75,37 +75,40 @@
       flex-wrap: wrap;
       row-gap: 7px;
       color: var(--white);
+   }
 
-      button {
-         height: 52px;
-         width: 100%;
+   &__wrapper-buy-now {
+      width: 100%;
+   }
 
-         &:first-of-type {
-            background-color: var(--graphite);
-         }
+   &__buy-now {
+      height: 52px;
+      width: 100%;
+      background-color: var(--graphite) !important;
+   }
 
-         &:last-of-type {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--red);
+   &__buy-cart {
+      height: 52px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--red);
 
-            span {
-               width: 0;
-               overflow: hidden;
-               text-align: right;
-               background-color: var(--red);
-               white-space: nowrap;
-               opacity: 0;
-               transition: width 0.1s ease, opacity 0.3s linear;
-            }
+      span {
+         width: 0;
+         overflow: hidden;
+         text-align: right;
+         background-color: var(--red);
+         white-space: nowrap;
+         opacity: 0;
+         transition: width 0.1s ease, opacity 0.3s linear;
+      }
 
-            &.active span {
-               width: 145px;
-               opacity: 1;
-               transition: width 0.1s ease, opacity 0.25s ease-in;
-            }
-         }
+      &.active span {
+         width: 145px;
+         opacity: 1;
+         transition: width 0.1s ease, opacity 0.25s ease-in;
       }
    }
 
@@ -159,22 +162,24 @@
 
       &__buy {
          flex-wrap: unset;
+      }
 
-         button {
-            height: 65px;
+      &__wrapper-buy-now {
+         width: 270px;
+      }
 
-            &:first-of-type {
-               width: 270px;
-            }
+      &__buy-now {
+         width: 100%;
+         height: 65px;
+      }
 
-            &:last-of-type {
-               width: 140px;
-               transition: flex-grow 0.1s ease;
-            }
+      &__buy-cart {
+         height: 65px;
+         width: 140px;
+         transition: flex-grow 0.1s ease;
 
-            &.active {
-               flex-grow: 1;
-            }
+         &.active {
+            flex-grow: 1;
          }
       }
    }
@@ -209,10 +214,10 @@
 
       &__buy {
          width: 642px;
+      }
 
-         button:first-of-type {
-            width: 370px;
-         }
+      &__wrapper-buy-now {
+         width: 370px;
       }
    }
 }

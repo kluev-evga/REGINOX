@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as Crown } from '../../assets/svg/crown.svg'
 import Logo from '../../components/logo/logo.component'
+import FooterBar from '../../components/footer/components/footer-bar.component'
 
 
 const Error = () => (
    <div className='error'>
 
-      <Link to='/' className='error__logo'>
+      <Link to='/' className='error__logo' replace>
          <Logo />
       </Link>
 
@@ -21,9 +22,10 @@ const Error = () => (
 
       <div className='article container'>
          <p className='error__paragraph'>Произошла ошибка. Возможно нет подключения с интернетом. Извините за неудобства.</p>
-         <Link to='/' className='error__link'>Вернуться на главную</Link>
+         <Link to='/' className='error__link' replace>Вернуться на главную</Link>
       </div>
 
+      <FooterBar/>
    </div>
 )
 

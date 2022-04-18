@@ -2,10 +2,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions'
 import { cartItemCount, compareItem } from '../../../redux/selectors'
 import cn from 'classnames'
+import ModalBuy from '../modal-buy/modal-buy.component'
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg'
 import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg'
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg'
 import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
+
 
 
 const SliderPanel = ({ id, price, discount }) => {
@@ -53,10 +55,10 @@ const SliderPanel = ({ id, price, discount }) => {
          </div>
 
          <div className='product-panel__buy'>
-            <button>Купить в один клик</button>
+            <ModalBuy/>
             <button
                onClick={onCartButtonClick}
-               className={cn({ 'active': incart })}>
+               className={cn('product-panel__buy-cart',{ 'active': incart })}>
                <CartIcon />
                <span>Товар в корзине</span>
             </button>

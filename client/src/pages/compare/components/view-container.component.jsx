@@ -11,7 +11,6 @@ const ViewContainer = () => {
    const compareItms = useSelector(compareItems)
    const productItem = useSelector(productItemById)
 
-
    const items = compareItms.map(id => productItem(id))
    const specs = Object.keys(
       items.reduce((acc, {specs}) => {

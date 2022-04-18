@@ -2,7 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Layout from '../layout/layout.component'
 import ContainerMenu from '../menu-container/container-menu.component'
-import Cart from '../../pages/Cart/cart.component'
+import Cart from '../../pages/cart/cart.component'
+import Order from '../../pages/order/order.component'
 import Promo from '../../pages/promo/promo.component'
 import Compare from '../../pages/compare/compare.compnent'
 import Home from '../../pages/home/home.component'
@@ -32,11 +33,13 @@ const App = () => (
          <Routes>
             <Route path="/" element={<Layout/>}>
                <Route index element={<Home/>} />
+
                <Route path='products' element={<Navigate to='/' replace />} />
                <Route path='products/:url' element={<ProductsContainer/>} />
                <Route path='products/:url/:productUrl' element={<ProductContainer/>} />
 
                <Route path='cart' element={<Cart/>} />
+               <Route path='cart/order' element={<Order/>} />
                <Route path='compare' element={<Compare/>} />
 
                <Route path='promo' element={<Promo/>} />
@@ -55,11 +58,10 @@ const App = () => (
                <Route path='contacts' element={<Contacts/>} />
 
                <Route path='policy' element={<Policy/>} />
+
+               <Route path='/error' element={<Error/>} />
+               <Route path='/*' element={<NotFound/>} />
             </Route>
-
-            <Route path='/not-found' element={<NotFound/>}/>
-            <Route path='/error' element={<Error/>} />
-
          </Routes>
       </main>
    </ContainerMenu>

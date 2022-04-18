@@ -1,6 +1,6 @@
 <p align="center">
-    <a href='https://github.com/byteofmonkey/TestReadme/blob/master/LICENSE'>
-      <img src='https://img.shields.io/github/license/byteofmonkey/TestReadme?color=ffcc66&style=for-the-badge' alt='bage'/>
+    <a href='https://github.com/kluev-evga/TestReadme/blob/master/LICENSE'>
+      <img src='https://img.shields.io/github/license/kluev-evga/TestReadme?color=ffcc66&style=for-the-badge' alt='bage'/>
      </a>
     <a href='https://nodejs.org'>
       <img src='https://img.shields.io/static/v1?label=Node&message=14.17.3&color=97ca00&style=for-the-badge' alt='bage'/>
@@ -14,11 +14,11 @@
 </p>
 
 <p align="center">
-      <img src="https://img.shields.io/github/languages/code-size/byteofmonkey/REGINOX" alt='bage'/>
+      <img src="https://img.shields.io/github/languages/code-size/kluev-evga/REGINOX" alt='bage'/>
 </p>
 
 <p align='center'>
-        <img height='300' src='https://github.com/byteofmonkey/TestReadme/blob/master/readme/desktop.gif' alt='preview'/>
+        <img height='300' src='https://github.com/kluev-evga/TestReadme/blob/master/readme/desktop.gif' alt='preview'/>
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -158,4 +158,4 @@ Contributions are what make the open source community such an amazing place to l
 
 # License
 
-Distributed under the `MIT` License. See [LICENSE](https://github.com/byteofmonkey/REGINOX/blob/main/LICENSE) for more information.
+Distributed under the `MIT` License. See [LICENSE](https://github.com/kluev-evga/REGINOX/blob/main/LICENSE) for more information.
