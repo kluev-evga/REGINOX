@@ -1,0 +1,148 @@
+.modal-order {
+   width: 100%;
+   padding: 20px 10px 30px;
+   background: var(--white);
+
+   height: 100%;
+   max-height: 400px;
+   max-width: 300px;
+   overflow-y: auto;
+
+   h2 {
+      margin-bottom: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 600;
+   }
+
+   p {
+      font-size: 14px;
+   }
+
+   a {
+      display: block;
+      margin-top: 30px;
+      font-size: 15px;
+      color: var(--red);
+
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+
+   svg {
+      position: absolute;
+      z-index: -1;
+      top: 200px;
+      left: 50%;
+      width: 80%;
+      transform: translate(-50%, -50%);
+      color: var(--light)
+   }
+
+   @media (min-width: 340px) {
+      max-height: 340px;
+      max-width: 340px;
+   }
+
+   @media (min-width: 576px) {
+      max-height: 320px;
+      max-width: 500px;
+      padding: 30px 30px 20px;
+
+      h2 {
+         margin-bottom: 25px;
+         font-size: 20px;
+      }
+
+      p {
+         font-size: 15px;
+      }
+
+      a {
+         margin-top: 35px;
+         font-size: 16px;
+      }
+
+      svg {
+         top: 180px;
+         left: 65%;
+         width: 60%;
+      }
+   }
+
+   @media (min-width: 992px) {
+      max-height: 340px;
+      max-width: 600px;
+      padding: 50px 40px 20px;
+
+      h2 {
+         text-align: left;
+         margin-bottom: 30px;
+         font-size: 22px;
+      }
+
+      svg {
+         top: 190px;
+         left: 70%;
+         width: 50%;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      max-height: 380px;
+      max-width: 650px;
+      padding: 60px 55px 30px;
+
+      h2 {
+         margin-bottom: 30px;
+         font-size: 24px;
+      }
+
+      p {
+         font-size: 16px;
+      }
+
+      a {
+         margin-top: 35px;
+         font-size: 17px;
+      }
+
+      svg {
+         top: 190px;
+         left: 70%;
+         width: 50%;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      max-width: 1050px;
+      max-height: 680px;
+      padding: 20px 50px 35px;
+
+      max-height: 440px;
+      max-width: 760px;
+      padding: 80px 65px 30px;
+
+      h2 {
+         margin-bottom: 40px;
+         font-size: 28px;
+      }
+
+      p {
+         font-size: 17px;
+      }
+
+      a {
+         margin-top: 45px;
+         font-size: 18px;
+      }
+
+      svg {
+         top: 260px;
+         left: 70%;
+         width: 42%;
+      }
+   }
+}

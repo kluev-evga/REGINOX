@@ -1,9 +1,10 @@
 import { Link, useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { cartItems, cartItemsArray, cartEntities } from '../../redux/selectors'
+import ModalOrder from '../../pages/order/order-modal.component'
 
 
-const CartSummary = () => {
+const CartSummary = ({ modalIsOpen, setIsOpen}) => {
    const isCart = useMatch('/cart');
    const items = useSelector(cartItems)
    const itemsArr = useSelector(cartItemsArray)
@@ -42,9 +43,8 @@ const CartSummary = () => {
          </div>
 
          {!!total && isCart && <Link to='order' className='button-form'>Перейти к оплате</Link>}
-         {!isCart && <button className='button-form'>Оплатить</button>}
-
-         <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>
+         {!isCart && <ModalOrder modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>}
+         {!!total && isCart && <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>}
       </div>
    )
 }

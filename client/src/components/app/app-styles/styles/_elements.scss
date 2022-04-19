@@ -468,3 +468,80 @@
       margin: 0 auto;
    }
 }
+
+.ReactModal {
+   &__Overlay {
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: rgba(0, 0, 0, 0.8) !important;
+
+      transform: scaleY(0.01) scaleX(0);
+      animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes unfoldIn {
+         0% {
+            transform: scaleY(0.005) scaleX(0);
+         }
+
+         50% {
+            transform: scaleY(0.005) scaleX(1);
+         }
+
+         100% {
+            transform: scaleY(1) scaleX(1);
+         }
+      }
+   }
+
+   &__Content {
+      transform: scale(0);
+      animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes zoomIn {
+         0% {
+            transform: scale(0);
+         }
+
+         100% {
+            transform: scale(1);
+         }
+      }
+   }
+
+   &__Overlay--before-close {
+      transform: scale(1);
+      animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes unfoldOut {
+         0% {
+            transform: scaleY(1) scaleX(1);
+         }
+
+         50% {
+            transform: scaleY(0.005) scaleX(1);
+         }
+
+         100% {
+            transform: scaleY(0.005) scaleX(0);
+         }
+      }
+   }
+
+   &__Content--before-close {
+      animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes zoomOut {
+         0% {
+            transform: scale(1);
+         }
+
+         100% {
+            transform: scale(0);
+         }
+      }
+   }
+}

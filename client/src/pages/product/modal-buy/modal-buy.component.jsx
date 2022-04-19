@@ -34,28 +34,28 @@ function ModalBuy() {
     <div className='product-panel__wrapper-buy-now'>
       <button className='product-panel__buy-now' onClick={openModal}>Купить в один клик</button>
       <Modal
-        className='modal'
+        className='product-modal'
         isOpen={modalIsOpen}
         onRequestClose={() => setIsOpen(false)}
-        contentLabel="Example Modal"
+        contentLabel="Купить в один клик"
         closeTimeoutMS={1300}
       >
         <button
-          className='modal__close'
+          className='product-modal__close'
           onClick={() => setIsOpen(false)}
           aria-label='закрыть'
         >
           <CrossIcon/>
         </button>
 
-        <div className='modal__container'>
+        <div className='product-modal__container'>
 
           <h2>Форма быстрого заказа</h2>
 
-          <div className='modal__item-container'>
+          <div className='product-modal__item-container'>
             <img src={images[0]} alt={title}/>
 
-            <div className='modal__item-count'>
+            <div className='product-modal__item-count'>
               <span>Количество</span>
               <div>
                 <button onClick={decrease} aria-label='уменьшить количество'>
@@ -70,23 +70,23 @@ function ModalBuy() {
             <h3>{title}</h3>
           </div>
 
-          <div className="modal__form-wrapper">
-            <form className='modal__form'>
+          <div className="product-modal__form-wrapper">
+            <form className='product-modal__form'>
               <input type="text" placeholder='ФИО' />
               <input type="text" placeholder='E-mail' />
               <input type="text" placeholder='Телефон' />
             </form>
 
-            <p className='modal__text'>Отправьте заказ и мы Вам перезвоним. Специалист нашего интернет-магазина уточнит, где и когда будет удобно получить заказ.</p>
-            <p className='modal__text'>Перед отправкой заказа, убедитесь в правильном заполнении данных.</p>
+            <p className='product-modal__text'>Отправьте заказ и мы Вам перезвоним. Специалист нашего интернет-магазина уточнит, где и когда будет удобно получить заказ.</p>
+            <p className='product-modal__text'>Перед отправкой заказа, убедитесь в правильном заполнении данных.</p>
             <hr/>
-            <p className='modal__text-small'>Возможно пред отправкой заказа вас заинтерсует информация:</p>
+            <p className='product-modal__text-small'>Возможно пред отправкой заказа вас заинтерсует информация:</p>
             <Link to='/delivery'>Доставка и оплата</Link>
             <Link to='/sertificates'>Гарантии</Link>
           </div>
 
-          <div class="modal__btn-container">
-            <button className='modal__submit'>Отправить</button>
+          <div class="product-modal__btn-container">
+            <button className='product-modal__submit'>Отправить</button>
             <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>
           </div>
         </div>
