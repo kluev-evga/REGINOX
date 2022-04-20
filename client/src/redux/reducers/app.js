@@ -2,8 +2,10 @@ import {
     APP_SET_TILES,
     APP_UNSET_TILES,
     APP_OPEN_SEARCH,
-    APP_CLOSE_SEARCH
-} from '../types';
+    APP_CLOSE_SEARCH,
+    APP_SET_ERROR,
+    APP_UNSET_ERROR
+} from '../types'
 
 
 const INITIAL_STATE = {
@@ -11,7 +13,7 @@ const INITIAL_STATE = {
     isHomePage: false,
     error: null,
     isTiles: true,
-};
+}
 
 const appReducer = function (state = INITIAL_STATE, action) {
     const { type } = action;
@@ -37,9 +39,19 @@ const appReducer = function (state = INITIAL_STATE, action) {
                 ...state,
                 isSearchOpen: false
             }
+        case APP_SET_ERROR:
+            return {
+                ...state,
+                error: true
+            }
+        case APP_UNSET_ERROR:
+            return {
+                ...state,
+                error: false
+            }
         default:
             return state;
     }
-};
+}
 
-export default appReducer;
+export default appReducer

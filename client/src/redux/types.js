@@ -23,6 +23,8 @@ export const APP_SET_TILES = 'APP_SET_TILES';
 export const APP_UNSET_TILES = 'APP_UNSET_TILES';
 export const APP_OPEN_SEARCH = 'OPEN_SEARCH';
 export const APP_CLOSE_SEARCH = 'CLOSE_SEARCH';
+export const APP_SET_ERROR = 'APP_SET_ERROR';
+export const APP_UNSET_ERROR = 'APP_UNSET_ERROR';
 
 export const ARTICLES_SELECT_PAGE = 'ARTICLES_SELECT_PAGE';
 

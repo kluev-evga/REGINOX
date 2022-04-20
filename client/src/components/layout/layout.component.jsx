@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { appSearchIsOpen } from '../../redux/selectors'
+import { appSearchIsOpen, appError } from '../../redux/selectors'
 import Header from '../header/header.component'
 import Footer from '../footer/footer.component'
 import Search from '../search/search.component'
@@ -8,13 +8,14 @@ import Search from '../search/search.component'
 
 const Layout = () => {
    const searchIsOpen = useSelector(appSearchIsOpen)
+   const appIsNotError = !useSelector(appError)
 
    return (
       <>
-         <Header/>
+         {appIsNotError && <Header/>}
          {searchIsOpen && <Search /> }
          <Outlet />
-         <Footer />
+         {appIsNotError && <Footer />}
       </>
    )
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import cn from 'classnames';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
-import MaskedInput from "react-text-mask";
+import InputMask from "react-input-mask";
 import CartSummary from '../../components/summary/summary.component'
 import withMenuLoader from '../../hoc/with-menu-loader'
 
@@ -19,23 +19,6 @@ const initialValues = {
    payment: '',
    commments: '',
 }
-
-const phoneNumberMask = [
-   "(",
-   /[1-9]/,
-   /\d/,
-   /\d/,
-   ")",
-   " ",
-   /\d/,
-   /\d/,
-   /\d/,
-   "-",
-   /\d/,
-   /\d/,
-   /\d/,
-   /\d/
-]
 
 const validationSchema = Yup.object().shape({
    payer: Yup.string().required('не указан тип плательщика'),
@@ -61,7 +44,7 @@ const validationSchema = Yup.object().shape({
 const Error = ({children}) => <div className='error'>{children}</div>
 
 const PhoneInput = ({ field }) =>
-   <MaskedInput {...field} placeholder='Телефон' autoComplete='off' mask={phoneNumberMask} type="text" />
+   <InputMask {...field} mask="+7 (999) 999-99-99" placeholder='Телефон' autoComplete='off' type="text" />
 
 const Order = () => {
   const [modalIsOpen, setIsOpen] = useState(false);

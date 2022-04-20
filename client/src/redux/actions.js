@@ -21,6 +21,8 @@ import {
    APP_UNSET_TILES,
    APP_OPEN_SEARCH,
    APP_CLOSE_SEARCH,
+   APP_SET_ERROR,
+   APP_UNSET_ERROR,
    ARTICLES_SELECT_PAGE,
    CART_ADD_ITEM,
    CART_REMOVE_ITEM,
@@ -49,11 +51,15 @@ import {
    filterStoredMinMax
 } from './selectors'
 
+import { api } from '../utils/api'
+
 
 export const selectArticlesPage = page => ({ type: ARTICLES_SELECT_PAGE, page })
 export const changeCartItemCount = (id, count) => ({ type: CART_ADD_ITEM, id, count })
 export const removeItemFromCart = id => ({ type: CART_REMOVE_ITEM, id })
 export const setAppTiles = () => ({ type: APP_SET_TILES })
+export const setAppError = () => ({ type: APP_SET_ERROR })
+export const unsetAppError = () => ({ type: APP_UNSET_ERROR })
 export const unsetAppTiles = () => ({ type: APP_UNSET_TILES })
 export const toggleCompareItem = id => ({ type: COMPARE_TOGGLE_ITEM, id })
 export const removeItemfromCompare = id => ({ type: COMPARE_REMOVE_ITEM, id })
@@ -61,7 +67,7 @@ export const openSearchMenu = () => ({ type: APP_OPEN_SEARCH })
 export const closeSearchMenu = () => ({ type: APP_CLOSE_SEARCH })
 
 
-export const loadMenu = () => async (dispatch, getState) => {
+export const loadMenu = () => (dispatch, getState) => {
    const state = getState()
    const loaded = state.menu.loaded
    const loading = state.menu.loading
@@ -69,17 +75,13 @@ export const loadMenu = () => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_MENU + REQUEST })
 
-   try {
-      const req = await fetch('/get-menu')
-      const data = await req.json()
-      dispatch({ type: LOAD_MENU + SUCCESS, data })
-   } catch (error) {
-      dispatch({ type: LOAD_MENU + FAILURE, error })
-   }
+   api.get('/menu')
+      .then(({data}) => { dispatch({ type: LOAD_MENU + SUCCESS, data }) })
+      .catch((error) => { dispatch({ type: LOAD_MENU + FAILURE, error }) })
 }
 
 
-export const loadBrands = () => async (dispatch, getState) => {
+export const loadBrands = () => (dispatch, getState) => {
    const state = getState()
    const loading = brandsLoading(state)
    const loaded = brandsLoaded(state)
@@ -87,14 +89,13 @@ export const loadBrands = () => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_BRANDS + REQUEST })
 
-   Promise.all([fetch('/get-brands'), loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
+   Promise.all([api.get('/brands'), loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_BRANDS + FAILURE, error }))
 }
 
 
-export const loadSertificates = () => async (dispatch, getState) => {
+export const loadSertificates = () => (dispatch, getState) => {
    const state = getState()
    const loading = sertificatesLoading(state)
    const loaded = sertificatesLoaded(state)
@@ -102,9 +103,8 @@ export const loadSertificates = () => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_SERTIFICATES + REQUEST })
 
-   Promise.all([fetch('/get-sertificates'), loadBrands()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data }))
+   Promise.all([api.get('/sertificates'), loadBrands()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_SERTIFICATES + FAILURE, error }))
 }
 
@@ -113,19 +113,17 @@ export const loadHome = () => (dispatch, getState) => {
    const state = getState()
    const loading = state.home.loading
    const loaded = state.home.loaded
-
    if (loading || loaded) return
 
    dispatch({ type: LOAD_HOME + REQUEST })
 
-   Promise.all([fetch('/get-home'), loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_HOME + SUCCESS, data }))
+   Promise.all([api.get('/home'), loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_HOME + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_HOME + FAILURE, error }))
 }
 
 
-export const loadCatalogs = pageSize => async (dispatch, getState) => {
+export const loadCatalogs = pageSize => (dispatch, getState) => {
    const state = getState()
    const loading = state.catalogs.loading
    const current = state.catalogs.entities.length
@@ -133,17 +131,13 @@ export const loadCatalogs = pageSize => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_CATALOGS + REQUEST })
 
-   try {
-      const req = await fetch(`/catalogs?size=${pageSize}&current=${current}`)
-      const data = await req.json()
-      dispatch({ type: LOAD_CATALOGS + SUCCESS, data })
-   } catch (error) {
-      dispatch({ type: LOAD_CATALOGS + FAILURE, error })
-   }
+   api.get(`/catalogs?size=${pageSize}&current=${current}`)
+      .then(({data}) => { dispatch({ type: LOAD_CATALOGS + SUCCESS, data }) })
+      .catch((error) => { dispatch({ type: LOAD_CATALOGS + FAILURE, error }) })
 }
 
 
-export const loadArticles = page => async (dispatch, getState) => {
+export const loadArticles = page => (dispatch, getState) => {
    const state = getState()
    const loading = articlesItemLoading(state, page)
    const loaded = articlesItemLoaded(state, page)
@@ -152,28 +146,27 @@ export const loadArticles = page => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_ARTICLES + REQUEST, page })
 
-   Promise.all([fetch(`/get-articles?page=${page}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
+   Promise.all([api.get(`/articles?page=${page}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
       .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }))
 }
 
 
-export const loadArticle = (article) => async (dispatch, getState) => {
+export const loadArticle = (article) => (dispatch, getState) => {
    const state = getState()
    const loading = articleLoading(state, article)
    const loaded = articleLoaded(state, article)
    if (loading || loaded) return
 
    dispatch({ type: LOAD_ARTICLE + REQUEST, article })
-   Promise.all([fetch(`/get-articles/${article}`), loadMenu()(dispatch, getState)])
-      .then(([res]) =>  res.json())
-      .then(data => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
+
+   Promise.all([api.get(`/articles/${article}`), loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
       .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }))
 }
 
 
-export const loadProducts = url => async (dispatch, getState) => {
+export const loadProducts = url => (dispatch, getState) => {
    const state = getState()
    const loading = productsLoading(state, url)
    const loaded = productsLoaded(state, url)
@@ -182,47 +175,42 @@ export const loadProducts = url => async (dispatch, getState) => {
    const menu = state.menu.loaded
    dispatch({ type: LOAD_PRODUCTS + REQUEST, url })
 
-   Promise.all([fetch(`/get-products/${url}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
+   Promise.all([api.get(`/productss/${url}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
       .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }))
 }
 
 
-export const loadProductItem = (url, productUrl) => async (dispatch, getState) => {
+export const loadProductItem = (url, productUrl) => (dispatch, getState) => {
    const state = getState()
    const loading = productItemLoading(state, productUrl)
    const loaded = productItemLoaded(state, productUrl)
    if (loading || loaded) return
 
-   const menu = state.menu.loaded
    dispatch({ type: LOAD_PRODUCT + REQUEST, productUrl })
 
-   Promise.all([fetch(`/get-product/${url}/${productUrl}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
+   const menu = state.menu.loaded
+
+   Promise.all([api.get(`/product/${url}/${productUrl}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
       .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }))
 }
 
 
-export const loadReviews = (url, productUrl, currentSize = 0) => async (dispatch, getState) => {
-      const state = getState()
-      const loading = state.reviews.loading[productUrl]
-      if (loading) return
+export const loadReviews = (url, productUrl, currentSize = 0) => (dispatch, getState) => {
+   const state = getState()
+   const loading = state.reviews.loading[productUrl]
+   if (loading) return
 
-      dispatch({ type: LOAD_REVIEWS + REQUEST, productUrl })
+   dispatch({ type: LOAD_REVIEWS + REQUEST, productUrl })
 
-      try {
-         const req = await fetch(`/get-reviews/${url}/${productUrl}?size=${currentSize}`)
-         const data = await req.json()
-         dispatch({ type: LOAD_REVIEWS + SUCCESS, data, productUrl })
-      } catch (error) {
-         dispatch({ type: LOAD_REVIEWS + FAILURE, error })
-      }
-   }
+   api.get(`/reviews/${url}/${productUrl}?size=${currentSize}`)
+      .then(({data}) => { dispatch({ type: LOAD_REVIEWS + SUCCESS, data, productUrl }) })
+      .catch((error) => { dispatch({ type: LOAD_REVIEWS + FAILURE, error }) })
+}
 
 
-export const loadCart = itemsToLoad => async (dispatch, getState) => {
+export const loadCart = itemsToLoad => (dispatch, getState) => {
    const state = getState()
    if (state.cart.loading) return
    const menu = state.menu.loaded
@@ -230,63 +218,60 @@ export const loadCart = itemsToLoad => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_CART + REQUEST })
 
-   Promise.all([itemsToLoad.length === 0 ? null : fetch(`/get-cart-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res && res.json())
-      .then(resData => {
-         const data = resData || {}
-         dispatch({ type: LOAD_CART + SUCCESS, data })
+   Promise.all([itemsToLoad.length === 0 ? null : api.get(`/cart-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([result]) => {
+         if (result) {
+            const {data} = result
+            dispatch({ type: LOAD_CART + SUCCESS, data })
+         }
+         dispatch({ type: LOAD_CART + SUCCESS, data: {} })
       })
       .catch(error => dispatch({ type: LOAD_CART + FAILURE, error }))
 }
 
 
-export const loadSimilarProducts = () => async dispatch => {
+export const loadSimilarProducts = () => dispatch => {
    dispatch({ type: LOAD_SIMILAR_RPODUCTS + REQUEST })
 
-   try {
-      const req = await fetch('/get-similar-products')
-      const data = await req.json()
-      dispatch({ type: LOAD_SIMILAR_RPODUCTS + SUCCESS, data })
-   } catch (error) {
-      dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error })
-   }
+   api.get('/similar-products')
+      .then(({data}) => { dispatch({ type: LOAD_SIMILAR_RPODUCTS + SUCCESS, data }) })
+      .catch((error) => {dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error }) })
 }
 
 
-export const loadPromoItems = () => async (dispatch, getState) => {
+export const loadPromoItems = () => (dispatch, getState) => {
    const state = getState()
    const loading = state.promo.loading
    const loaded = state.promo.loaded
    if (loading || loaded) return
 
-   const menu = state.menu.loaded
-
    dispatch({ type: LOAD_PROMO_ITEMS + REQUEST })
 
-   Promise.all([fetch('/get-promo-items'), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_PROMO_ITEMS + SUCCESS, data }))
+   const menu = state.menu.loaded
+
+   Promise.all([api.get('/promo-items'), !menu && loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_PROMO_ITEMS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_PROMO_ITEMS + FAILURE, error }))
 }
 
 
-export const loadNewItems = () => async (dispatch, getState) => {
+export const loadNewItems = () => (dispatch, getState) => {
    const state = getState()
    const loading = state.newItems.loading
    const loaded = state.newItems.loaded
    if (loading || loaded) return
 
-   const menu = state.menu.loaded
    dispatch({ type: LOAD_NEW_ITEMS + REQUEST })
 
-   Promise.all([fetch('/get-new-items'), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res.json())
-      .then(data => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
+   const menu = state.menu.loaded
+
+   Promise.all([api.get('/new-items'), !menu && loadMenu()(dispatch, getState)])
+      .then(([{data}]) => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_NEW_ITEMS + FAILURE, error }))
 }
 
 
-export const loadCompareItems = itemsToLoad => async (dispatch, getState) => {
+export const loadCompareItems = itemsToLoad => (dispatch, getState) => {
    const state = getState()
    if (state.compare.loading) return
    const menu = state.menu.loaded
@@ -294,11 +279,13 @@ export const loadCompareItems = itemsToLoad => async (dispatch, getState) => {
 
    dispatch({ type: LOAD_COMPARE_ITEMS + REQUEST })
 
-   Promise.all([itemsToLoad.length === 0 ? null : fetch(`/get-compare-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([res]) => res && res.json())
-      .then(resData => {
-         const data = resData || {}
-         dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data })
+   Promise.all([itemsToLoad.length === 0 ? null : api.get(`/compare-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([result]) => {
+         if (result) {
+            const {data} = result
+            dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data })
+         }
+         dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: {} })
       })
       .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }))
 }

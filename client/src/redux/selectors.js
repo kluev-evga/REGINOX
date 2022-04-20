@@ -5,6 +5,7 @@ export const appStatus = state => state.app.status;
 export const appIsPopUp = state => state.app.isPopUp;
 export const appIsTiles = state => state.app.isTiles;
 export const appSearchIsOpen = state => state.app.isSearchOpen;
+export const appError = state => state.app.error;
 
 
 export const menuLoaded = state => state.menu.loaded;

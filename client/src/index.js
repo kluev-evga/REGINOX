@@ -6,8 +6,9 @@ import App from './components/app/app.component'
 import Loader from './components/loader/loader.coponent'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
-import { BrowserRouter } from 'react-router-dom'
 import store, { persistor } from './redux/store'
+import { CustomRouter } from './utils/custom-router'
+import customHistory from './utils/custom-history'
 
 
 window.store = store // DEV ONLY
@@ -16,9 +17,9 @@ ReactDOM.render(
    <React.StrictMode>
       <Provider store={store}>
          <PersistGate loading={<Loader/>} persistor={persistor}>
-            <BrowserRouter>
+            <CustomRouter history={customHistory}>
                <App />
-            </BrowserRouter>
+            </CustomRouter>
          </PersistGate>
       </Provider>
    </React.StrictMode>,
