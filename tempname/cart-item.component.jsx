@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { cartItemCount, cartEntity } from '../../redux/selectors'
 import cn from 'classnames'
-import { currency } from '../../utils/currency'
 import { changeCartItemCount, removeItemFromCart } from '../../redux/actions'
 import { ReactComponent as CrossIcon } from '../../assets/svg/cross.svg'
 import { ReactComponent as PlusIcon } from '../../assets/svg/plus.svg'
@@ -30,8 +29,8 @@ const CartItem = ({id}) => {
          <div>
             <h2>{title}</h2>
             <p className='cart__product-price'>
-               {currency(p)}
-               {Boolean(discount) && <span className='cart__product-promo'>-{discount} %</span> }
+               {p.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}
+               {!!discount && <span className='cart__product-promo'>-{discount} %</span> }
             </p>
          </div>
          <div>

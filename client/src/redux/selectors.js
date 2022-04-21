@@ -51,7 +51,7 @@ export const catalogs = state => state.catalogs.entities;
 export const catalogsTotal = state => state.catalogs.total;
 export const catalogsLoading = state => state.catalogs.loading;
 export const catalogsLoaded = state => state.catalogs.loaded;
-export const catalogsError = state => state.catalogs.error;
+// export const catalogsError = state => state.catalogs.error;
 
 
 export const sertificates = state => state.sertificates.entities;
@@ -148,12 +148,18 @@ export const reviewsLoaded = (state, productUrl)  => state.reviews.loaded[produc
 
 
 export const cartItems = state => state.cart.items;
+export const cartHasItems = createSelector(cartItems, items => Boolean(Object.keys(items).length));
 export const cartEntity = (state, id) => state.cart.entities[id];
 export const cartEntities = state => state.cart.entities;
 export const cartLoading = state => state.cart.loading;
 export const cartLoaded = state => state.cart.loaded;
 export const cartItemCount = (state, id) => state.cart.items[id];
 export const cartItemsArray = createSelector( cartItems, Object.keys );
+
+
+export const orderModalIsOpen = state => state.order.modalIsOpen
+export const orderLoading = state => state.order.loading
+export const orderPaymentIsSuccessful = state => state.order.paymentIssuccessful
 
 
 export const similarProducts = state => state.similarProducts.entities;

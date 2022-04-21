@@ -19,6 +19,7 @@ import similarProductsReducer from './reducers/similar-products';
 import promoReducer from './reducers/promo';
 import newItemsReducer from './reducers/new-items';
 import compareReducer from './reducers/compare';
+import orderReducer from './reducers/order';
 import storage from 'redux-persist/lib/storage';
 
 
@@ -48,6 +49,7 @@ const rootReducer = combineReducers({
   filters: filtersReducer,
   productItems: productItemsReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
+  order: orderReducer,
   reviews: reviewsReducer,
   similarProducts: similarProductsReducer,
   promo: promoReducer,

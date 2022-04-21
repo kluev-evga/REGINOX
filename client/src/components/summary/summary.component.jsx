@@ -1,11 +1,9 @@
-import { Link, useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { cartItems, cartItemsArray, cartEntities } from '../../redux/selectors'
-import ModalOrder from '../../pages/order/order-modal.component'
+import { currency } from '../../utils/currency'
 
 
-const CartSummary = ({ modalIsOpen, setIsOpen}) => {
-   const isCart = useMatch('/cart');
+const CartSummary = ({ children }) => {
    const items = useSelector(cartItems)
    const itemsArr = useSelector(cartItemsArray)
    const entities = useSelector(cartEntities)
@@ -21,9 +19,6 @@ const CartSummary = ({ modalIsOpen, setIsOpen}) => {
       },
       { total: 0, count: 0, grossTotal: 0 }
    )
-
-   const totalPrice = total.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})
-   const grossTotalPrice = grossTotal.toLocaleString('ru-RU', {style: 'currency', minimumFractionDigits:0, currency:'RUB'})
    const discount = parseFloat(Number((100 - (total * 100) / grossTotal).toFixed(1)))
 
    return (
@@ -32,19 +27,16 @@ const CartSummary = ({ modalIsOpen, setIsOpen}) => {
 
          <div className='summary__price'>
             <p>Товары<span>({count})</span></p>
-            <span>{grossTotalPrice}</span>
-            {!!discount && <p>Скидка</p>}
-            {!!discount && <span>{discount} %</span>}
+            <span>{currency(grossTotal)}</span>
+            {Boolean(discount) && <p>Скидка</p>}
+            {Boolean(discount) && <span>{discount} %</span>}
          </div>
 
          <div className='summary__price-total'>
-            <p>Итого</p>
-            <span>{totalPrice}</span>
+            <p>Итого</p><span>{currency(total)}</span>
          </div>
 
-         {!!total && isCart && <Link to='order' className='button-form'>Перейти к оплате</Link>}
-         {!isCart && <ModalOrder modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>}
-         {!!total && isCart && <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>}
+         {children}
       </div>
    )
 }

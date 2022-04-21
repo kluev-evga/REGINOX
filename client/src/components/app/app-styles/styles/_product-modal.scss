@@ -1,26 +1,8 @@
 .product-modal {
   width: 100%;
-  padding: 10px;
-  background: var(--white);
-
   height: 100%;
   max-height: 860px;
   overflow-y: auto;
-
-  &__close {
-    display: block;
-    margin: 0 -10px 0 auto;
-    padding: 10px;
-
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    &:hover {
-      color: var(--gray-med)
-    }
-  }
 
   h2 {
     font-size: 16px;
@@ -147,11 +129,6 @@
   @media (min-width: 576px) {
     max-height: 790px;
     max-width: 576px;
-    padding: 10px 20px 20px;
-
-    &__close {
-      margin: 0 -10px -5px auto;
-    }
 
     &__item-container {
       margin: 5px 0 8px;
@@ -208,16 +185,6 @@
   @media (min-width: 992px) {
     max-height: 760px;
     max-width: 690px;
-    padding: 15px 35px 35px;
-
-    &__close {
-      margin: 0 -20px -20px auto;
-
-      svg {
-        width: unset;
-        height: unset;
-      }
-    }
 
     h2 {
       font-size: 22px;
@@ -301,7 +268,6 @@
   @media (min-width: 1400px) {
     max-width: 1050px;
     max-height: 680px;
-    padding: 20px 50px 35px;
 
     &__container {
       column-gap: 45px;

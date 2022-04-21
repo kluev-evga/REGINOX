@@ -1,12 +1,12 @@
 import { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { cartLoaded, cartItemsArray, cartEntities, cartHasItems } from '../../redux/selectors'
+import { cartLoaded, cartItemsArray, cartEntities } from '../../redux/selectors'
 import { loadCart } from '../../redux/actions'
 import CartItem from './cart-item.component'
 import CartSummary from '../../components/summary/summary.component'
 import Loader from '../../components/loader/loader.coponent'
-import { ReactComponent as EmptyIcon } from '../../assets/svg/empty.svg'
+import Empty from '../../components/empty/empty.component'
 
 
 const Cart = () => {
@@ -14,7 +14,6 @@ const Cart = () => {
    const isLoading = !useSelector(cartLoaded)
    const cartItems = useSelector(cartItemsArray)
    const cartItemEntities = useSelector(cartEntities)
-   const hasItems = useSelector(cartHasItems);
 
    const itemsToLoad = useMemo( () => cartItems.filter(id => cartItemEntities[id] ? false : id), [cartItemEntities] ) //eslint-disable-line
    useEffect(() => { dispatch(loadCart(itemsToLoad)) }, []) //eslint-disable-line
@@ -27,17 +26,14 @@ const Cart = () => {
 
          <h1 className='title'>Корзина</h1>
 
-         {hasItems
-            ? <div className='cart__container'>
-               <div className='cart__items-container'>
-                  {cartItems.map(id => <CartItem key={id} id={id} /> )}
-               </div>
-               <CartSummary>
-                  <Link to='order' className='button-form'>Перейти к оплате</Link>
-               </CartSummary>
+         <div className='cart__container'>
+            <div className='cart__items-container'>
+               {cartItems.map(id => <CartItem key={id} id={id} /> )}
+               {!cartItems.length && <Empty/>}
             </div>
-            : <EmptyIcon height='300' style={{margin: '0 auto'}}/>
-         }
+
+            <CartSummary />
+         </div>
       </div>
    )
 }

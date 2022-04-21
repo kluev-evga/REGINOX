@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import cn from 'classnames'
+import { currency } from '../../../utils/currency'
 
 
 const ViewLargeSlideContent = ({ item, specs }) => {
@@ -12,13 +13,11 @@ const ViewLargeSlideContent = ({ item, specs }) => {
             className='compare__view-large-link'
             to={`/products/${item.url}/${item.productUrl}`}
             onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}>
-            <img
-               src={process.env.PUBLIC_URL + item.images[0]}
-               alt='productI item'
-            />
+            onMouseLeave={() => setHover(false)}
+         >
+            <img src={item.images[0]} alt='productI item' />
          </Link>
-         <p>{item.price.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}</p>
+         <p>{currency(item.price)}</p>
          {specs.map((field, i) => (
             <span key={i}>
                <p>{item.specs[field] || '-'}</p>

@@ -41,7 +41,7 @@ function ModalBuy() {
         closeTimeoutMS={1300}
       >
         <button
-          className='product-modal__close'
+          className='ReactModal__close-btn'
           onClick={() => setIsOpen(false)}
           aria-label='закрыть'
         >

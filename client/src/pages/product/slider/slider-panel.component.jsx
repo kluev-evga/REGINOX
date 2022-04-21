@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions'
 import { cartItemCount, compareItem } from '../../../redux/selectors'
 import cn from 'classnames'
-import ModalBuy from '../modal-buy/modal-buy.component'
+import ModalBuy from '../modal/product-modal.component'
+import { currency } from '../../../utils/currency'
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg'
 import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg'
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg'
 import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
-
 
 
 const SliderPanel = ({ id, price, discount }) => {
@@ -30,8 +30,8 @@ const SliderPanel = ({ id, price, discount }) => {
 
          <div className='product-panel__price'>
             <span>
-               {price.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}
-               {!!discount && <b> -{discount}%</b>}
+               {currency(price)}
+               {Boolean(discount) && <b> -{discount}%</b>}
             </span>
             <button
                className={cn('product-panel__compare', { 'active': isCompareItem })}

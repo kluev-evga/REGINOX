@@ -1,0 +1,1 @@
+export const currency = (num) => num.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})

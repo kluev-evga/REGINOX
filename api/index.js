@@ -48,19 +48,19 @@ router.get('/api/articles', (req, res, next) => {
 
 router.get('/api/articles/:article', (req, res, next) => {
    const article = req.params.article
-   if (!articlesItems[article]) return res.status(404).send()
+   if (!articlesItems[article]) return reply(res, 'не найдено', 404);
    reply(res, articlesItems[article])
 })
 
 router.get('/api/products/:url', (req, res, next) => {
    const url = req.params.url
-   if (!productsdata[url]) return res.status(404).send()
+   if (!productsdata[url]) return reply(res, 'не найдено', 404);
    reply(res, { products: productsdata[url], filters: filtersdata[url] })
 })
 
 router.get('/api/product/:url/:productUrl', (req, res, next) => {
    const { url, productUrl } = req.params
-   if (!productdata[url][productUrl]) return res.status(404).send()
+   if (!productdata[url][productUrl]) return reply(res, 'не найдено', 404);
    reply(res, productdata[url][productUrl])
 })
 
@@ -68,7 +68,7 @@ router.get('/api/reviews/:url/:productUrl', (req, res, next) => {
    const { url, productUrl } = req.params
    const { size } = req.query
    const current = Number(size)
-   if (!reviewsdata[url][productUrl]) return res.status(404).send()
+   if (!reviewsdata[url][productUrl]) return reply(res, 'не найдено', 404);
    const entities = reviewsdata[url][productUrl].slice(current, current + 5)
    reply(res, entities)
 })
@@ -96,6 +96,16 @@ router.get('/api/compare-items', (req, res, next) => {
       return acc
    }, {})
    reply(res, data)
+})
+
+router.post('/api/order', function (req, res, next) {
+  try {
+    const orderData = req.body
+      console.log(orderData);
+      return reply(res, 'ok');
+  } catch {
+    return reply(res, 'wrong data', 400);
+  }
 })
 
 module.exports = router

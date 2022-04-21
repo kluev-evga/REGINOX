@@ -17,6 +17,7 @@ import {
    LOAD_NEW_ITEMS,
    LOAD_REVIEWS,
    LOAD_COMPARE_ITEMS,
+   SUBMIT_ORDER,
    APP_SET_TILES,
    APP_UNSET_TILES,
    APP_OPEN_SEARCH,
@@ -26,11 +27,13 @@ import {
    ARTICLES_SELECT_PAGE,
    CART_ADD_ITEM,
    CART_REMOVE_ITEM,
+   CART_CLEAR,
    COMPARE_TOGGLE_ITEM,
    COMPARE_REMOVE_ITEM,
    FILTERS_IS_FILTERED,
    FILTERS_IS_FILTERING,
    FILTERS_SORT_PRODUCTS_INIT,
+   ORDER_CLOSE_MODAL
 } from './types'
 
 import {
@@ -57,6 +60,7 @@ import { api } from '../utils/api'
 export const selectArticlesPage = page => ({ type: ARTICLES_SELECT_PAGE, page })
 export const changeCartItemCount = (id, count) => ({ type: CART_ADD_ITEM, id, count })
 export const removeItemFromCart = id => ({ type: CART_REMOVE_ITEM, id })
+export const clearCart = () => ({ type: CART_CLEAR })
 export const setAppTiles = () => ({ type: APP_SET_TILES })
 export const setAppError = () => ({ type: APP_SET_ERROR })
 export const unsetAppError = () => ({ type: APP_UNSET_ERROR })
@@ -65,6 +69,7 @@ export const toggleCompareItem = id => ({ type: COMPARE_TOGGLE_ITEM, id })
 export const removeItemfromCompare = id => ({ type: COMPARE_REMOVE_ITEM, id })
 export const openSearchMenu = () => ({ type: APP_OPEN_SEARCH })
 export const closeSearchMenu = () => ({ type: APP_CLOSE_SEARCH })
+export const closeModalOrder = () => ({ type: ORDER_CLOSE_MODAL })
 
 
 export const loadMenu = () => (dispatch, getState) => {
@@ -175,7 +180,7 @@ export const loadProducts = url => (dispatch, getState) => {
    const menu = state.menu.loaded
    dispatch({ type: LOAD_PRODUCTS + REQUEST, url })
 
-   Promise.all([api.get(`/productss/${url}`), !menu && loadMenu()(dispatch, getState)])
+   Promise.all([api.get(`/products/${url}`), !menu && loadMenu()(dispatch, getState)])
       .then(([{data}]) => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
       .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }))
 }
@@ -288,6 +293,18 @@ export const loadCompareItems = itemsToLoad => (dispatch, getState) => {
          dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: {} })
       })
       .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }))
+}
+
+export const submitOrder = (values) => (dispatch, getState) => {
+   const state = getState()
+   const loading = state.order.loading
+   if (loading) return
+
+   dispatch({ type: SUBMIT_ORDER + REQUEST })
+
+   api.post('/order', values)
+      .then(() => { dispatch({ type: SUBMIT_ORDER + SUCCESS }) })
+      .catch((error) => {dispatch({ type: SUBMIT_ORDER + FAILURE, error }) })
 }
 
 

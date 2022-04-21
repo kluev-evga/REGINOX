@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { cartItemCount, compareItem } from '../../redux/selectors'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions'
 import cn from 'classnames'
+import { currency } from '../../utils/currency'
 import { ReactComponent as CartIcon } from '../../assets/svg/cart.svg'
 import { ReactComponent as StarIcon } from '../../assets/svg/star.svg'
 import { ReactComponent as CompareIcon } from '../../assets/svg/compare.svg'
+
 
 
 const RatingBlock = ({ r, reviewers }) => (
@@ -21,10 +23,7 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
    const count = useSelector(state => cartItemCount(state, id))
    const inCompare = useSelector(state => compareItem(state, id))
    const incart = isFinite(count)
-   const price = p.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})
-
    const [hover, setHover] = useState(false)
-
    const dispatch = useDispatch()
    const handleClick = () => !incart ? dispatch(changeCartItemCount(id, 1)) : dispatch(removeItemFromCart(id))
    const addToCompare = () => dispatch(toggleCompareItem(id))
@@ -48,7 +47,7 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
 
          {withRating && <RatingBlock r={r} reviewers={reviewers} />}
          <p className='card-product__title'>{title}</p>
-         <p className='card-product__price'>{price}</p>
+         <p className='card-product__price'>{currency(p)}</p>
 
          <button
             className={cn('card-product__btn-cart', { 'active': incart })}

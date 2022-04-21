@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loadCatalogs } from '../../redux/actions'
 import { catalogsLoading, catalogsTotal } from '../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
@@ -9,7 +9,10 @@ import withMenuLoader from '../../hoc/with-menu-loader'
 import CatalogsCards from './catalogs-cards.component'
 
 
-const Catalogs = ({ loadCatalogs, loading, total }) => {
+const Catalogs = () => {
+   const dispatch = useDispatch()
+   const total = useSelector(catalogsTotal)
+   const loading = useSelector(catalogsLoading)
    const ref=useRef()
    const isDesktopXL = useMediaQuery({ query: '(min-width: 1400px)' })
    const isTabletLG = useMediaQuery({ query: '(min-width: 992px)' })
@@ -28,7 +31,7 @@ const Catalogs = ({ loadCatalogs, loading, total }) => {
          params.set('size', pageSize ? pageSize : i) // remove any else than size query:
          setSearchParams(params)
       } else {
-         loadCatalogs(pageSize)
+         dispatch(loadCatalogs(pageSize))
       }
    }, [searchParams]) //eslint-disable-line
 
@@ -50,7 +53,7 @@ const Catalogs = ({ loadCatalogs, loading, total }) => {
       <div className='container catalog' ref={ref}>
 
          <div className='breadcrumbs'><Link to='/'>Главная</Link> / Каталоги</div>
-   
+
          <h1 className='title'>Каталоги</h1>
 
          <CatalogsCards pageSize={pageSize} />
@@ -68,9 +71,4 @@ const Catalogs = ({ loadCatalogs, loading, total }) => {
    )
 }
 
-const mapStateToProps = state => ({
-   total: catalogsTotal(state),
-   loading: catalogsLoading(state),
-})
-
-export default withMenuLoader(connect(mapStateToProps, { loadCatalogs })(Catalogs))
+export default withMenuLoader(Catalogs)

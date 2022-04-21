@@ -3,7 +3,7 @@ import { compareItems, productItemById } from '../../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import ViewPhone from './view-phone.component'
 import ViewLarge from './view-large.component'
-import Empty from '../../../components/empty/empty.component'
+import { ReactComponent as EmptyIcon } from '../../../assets/svg/empty.svg'
 
 
 const ViewContainer = () => {
@@ -27,7 +27,7 @@ const ViewContainer = () => {
       return { id, images, specs: itemSpecs, productUrl, url, price }
    })
 
-   if (specs.length === 0) return <Empty/>
+   if (specs.length === 0) return <EmptyIcon height='300' style={{margin: '0 auto'}}/>
 
    return isLarge ? <ViewLarge items={compareItms} data={data} specs={specs} />
                   : <ViewPhone items={compareItms} data={data} specs={specs} />

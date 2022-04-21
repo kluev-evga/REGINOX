@@ -7,6 +7,13 @@ import InputMask from "react-input-mask";
 import CartSummary from '../../components/summary/summary.component'
 import withMenuLoader from '../../hoc/with-menu-loader'
 
+import ModalOrder from './order-modal.component';
+
+import { useDispatch } from 'react-redux';
+import { submitOrder } from '../../redux/actions'
+
+
+
 
 const initialValues = {
    payer: '',
@@ -47,12 +54,8 @@ const PhoneInput = ({ field }) =>
    <InputMask {...field} mask="+7 (999) 999-99-99" placeholder='Телефон' autoComplete='off' type="text" />
 
 const Order = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-   const handleSubmit = (values) => {
-      console.log(values)
-      setIsOpen(true)
-   }
+   const dispatch = useDispatch()
+   const handleSubmit = (values) => { dispatch(submitOrder(values)) }
 
    return (
       <div className='container order'>
@@ -183,7 +186,10 @@ const Order = () => {
 
                         </div>
 
-                        <CartSummary modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
+                        <CartSummary>
+                           <ModalOrder/>
+                           <p className='form-agreement'>Нажимая кнопку отправить вы даете согласие на обработку пресональных данных</p>
+                        </CartSummary>
 
                      </div>
                   </Form>
@@ -192,6 +198,5 @@ const Order = () => {
       </div>
    )
 }
-// <OrderForm formik={'formik'} modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
 
 export default withMenuLoader(Order)

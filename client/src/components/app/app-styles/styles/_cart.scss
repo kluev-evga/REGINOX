@@ -27,6 +27,26 @@
          gap: 30px;
       }
    }
+
+   @media (min-width: 1400px) {
+      &__container {
+         grid-template-columns: 1fr 380px;
+         gap: 50px;
+      }
+   }
+
+   @media (min-width: 1600px) {
+      &__container {
+         grid-template-columns: 1fr 420px;
+         gap: 100px;
+      }
+   }
+
+   @media (min-width: 1920px) {
+      &__container {
+         grid-template-columns: 1fr 460px;
+      }
+   }
 }
 
 ////////////////////////////////////////////

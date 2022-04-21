@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import { filtersMinMax, filterStoredMinMax } from '../../../redux/selectors';
 import { filterProducts } from '../../../redux/actions';
+import { currency } from '../../../utils/currency';
 
 
 const RangeSlider = () => {
@@ -64,16 +65,12 @@ const RangeSlider = () => {
       />
       <div className='filters__slider-output'>
         <div>
-            <span>от</span>
-          <output>
-            {values[0].toLocaleString('ru-RU', {style: 'currency', minimumFractionDigits:0, currency:'RUB'})}
-          </output>
+          <span>от</span>
+          <output>{currency(values[0])}</output>
         </div>
         <div>
           <span>до</span>
-            <output>
-              {values[1].toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}
-            </output>
+            <output>{currency(values[1])}</output>
         </div>
       </div>
     </div>

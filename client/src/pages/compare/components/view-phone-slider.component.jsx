@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { removeItemfromCompare } from '../../../redux/actions'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, A11y } from 'swiper'
+import { currency } from '../../../utils/currency'
 import { ReactComponent as CrossIcon } from '../../../assets/svg/cross.svg'
 
 
@@ -30,7 +31,7 @@ const ViewPhoneSlider = ({ data, specs }) => {
                         alt='productI item'
                      />
                   </Link>
-                  <span><p>{item.price.toLocaleString('ru-RU', {style: 'currency',  minimumFractionDigits:0, currency:'RUB'})}</p></span>
+                  <span><p>{currency(item.price)}</p></span>
                   {specs.map((field, i) => (
                      <span key={i}>
                         <p>{item.specs[field] || '-'}</p>
