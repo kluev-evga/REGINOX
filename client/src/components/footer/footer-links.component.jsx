@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { menuLinks } from '../../../redux/selectors'
+import { menuLinks } from '../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 
 

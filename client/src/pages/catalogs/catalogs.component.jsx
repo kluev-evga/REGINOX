@@ -23,7 +23,7 @@ const Catalogs = () => {
    const isInteger = isFinite(Number(sizeParam))
    const i = isDesktopXL ? 5 : isTabletLG ? 4 : isTablet ? 3 : 2
 
-   useEffect(() => {ref.current.scrollIntoView({behavior: "smooth", block: "start"})}, [] )
+   useEffect(() => {ref.current.scrollIntoView({behavior: "smooth", block: "start"})}, [])
 
    useEffect(() => {
       if (!isInteger || searchParams.toString() !== `size=${pageSize}`) {

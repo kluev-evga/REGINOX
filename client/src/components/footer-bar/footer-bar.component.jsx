@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import { ReactComponent as Facebook } from '../../../assets/svg/facebook.svg'
-import { ReactComponent as Twitter } from '../../../assets/svg/twitter.svg'
-import { ReactComponent as Vkontakte } from '../../../assets/svg/vkontakte.svg'
-import { ReactComponent as Instagram } from '../../../assets/svg/instagram.svg'
-import { ReactComponent as Squares } from '../../../assets/svg/squares-lg.svg'
-import { ReactComponent as PRHolding } from '../../../assets/svg/PRHolding.svg'
+import { ReactComponent as Facebook } from '../../assets/svg/facebook.svg'
+import { ReactComponent as Twitter } from '../../assets/svg/twitter.svg'
+import { ReactComponent as Vkontakte } from '../../assets/svg/vkontakte.svg'
+import { ReactComponent as Instagram } from '../../assets/svg/instagram.svg'
+import { ReactComponent as Squares } from '../../assets/svg/squares-lg.svg'
+import { ReactComponent as PRHolding } from '../../assets/svg/PRHolding.svg'
 
 
 const FooterBar = () => (

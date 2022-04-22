@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { menuLoaded, appStatus, appIsPopUp } from '../../redux/selectors'
-import FooterLinks from './components/footer-links.component'
-import FooterBar from './components/footer-bar.component'
+import FooterLinks from './footer-links.component'
+import FooterBar from '../footer-bar/footer-bar.component'
 
 const Footer = () => {
    const isloaded = !useSelector(menuLoaded)

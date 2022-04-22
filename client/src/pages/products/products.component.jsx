@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTitle, queryString } from '../../redux/selectors'
@@ -17,6 +17,7 @@ const Products = () => {
    const { url } = useParams()
    const title = useSelector((state) => getTitle(state, url))
    const querySrt = useSelector((state) => queryString(state, url));
+   const scrollUp = useCallback(() => {ref.current.scrollIntoView({block: "start", behavior: 'smooth'})}, [])
 
    useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [url])
    // restore query string:
@@ -35,7 +36,7 @@ const Products = () => {
             {isDesktop && <Filters />}
             <div>
                <Header />
-               <ProductsSection />
+               <ProductsSection scrollUp={scrollUp} />
             </div>
          </div>
 

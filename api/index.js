@@ -102,7 +102,9 @@ router.post('/api/order', function (req, res, next) {
   try {
     const orderData = req.body
       console.log(orderData);
-      return reply(res, 'ok');
+      setTimeout(() => {
+         return reply(res, 'ok');
+      }, 500)
   } catch {
     return reply(res, 'wrong data', 400);
   }

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { setAppError, unsetAppError } from '../../redux/actions'
 import { ReactComponent as Crown } from '../../assets/svg/crown.svg'
 import Logo from '../../components/logo/logo.component'
-import FooterBar from '../../components/footer/components/footer-bar.component'
+import FooterBar from '../../components/footer-bar/footer-bar.component'
 
 
 const Error = () => {

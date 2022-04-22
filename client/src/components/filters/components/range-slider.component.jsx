@@ -57,7 +57,7 @@ const RangeSlider = () => {
             {...props}
             style={{
               ...props.style,
-              borderColor: isDragged ? 'var(--red)' : 'var(--gray-med)'
+              '--color': isDragged ? 'var(--red)' : 'var(--gray-med)'
             }}
           >
           </div>

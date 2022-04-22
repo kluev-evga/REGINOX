@@ -18,7 +18,7 @@
 
       width: 100%;
       height: 100%;
-   
+
       background-image: linear-gradient(#000, #000c 35%, #0000 70%);
       color: var(--white);
    }
@@ -38,6 +38,33 @@
       margin-right: 30px;
       font-size: 26px;
       font-weight: 800;
+
+      // for animation:
+      display: flex;
+      flex-wrap: wrap;
+
+      span {
+         display: block;
+         height: 1.2em;
+         padding-top: 1.2em;
+         overflow: hidden;
+      }
+   }
+
+   .swiper-slide-active h1 span {
+      opacity: 0;
+      animation: home-title 0.5s ease-out 0.1s forwards;
+
+      @keyframes home-title {
+         30% {
+            opacity: 0
+         }
+
+         to {
+            opacity: 1;
+            padding-top: 0;
+         }
+      }
    }
 
    &__sub_title {
@@ -180,6 +207,10 @@
    @media (min-width: 1200px) {
       &__background {
          height: 740px;
+      }
+
+      .swiper-slide-active h1 span {
+         animation-delay: 0.25s;
       }
    }
 

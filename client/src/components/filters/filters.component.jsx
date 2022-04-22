@@ -6,10 +6,10 @@ import FilterSection from './components/filters-section.component'
 
 
 const Filters = () => {
-   const { params } = useMatch({path: 'products/:url', end: false })
+   const { params } = useMatch({path: 'products/:url'})
    const isLoading = useSelector(state => !productsLoaded(state, params.url))
    const filterSections = useSelector(state => filters(state, params.url))
-   if (isLoading) return null
+   if (isLoading || !params) return null
 
    return (
       <div className='filters'>

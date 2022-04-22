@@ -18,8 +18,9 @@
          font-size: 12px;
          color: var(--gray);
          opacity: 0;
-         animation: fade-in 0.05s linear forwards;
-         @keyframes fade-in {
+         animation: filters-fade-in 0.05s linear forwards;
+
+         @keyframes filters-fade-in {
             to {
                opacity: 1;
             }
@@ -204,7 +205,7 @@
 
          &.disabled {
             color: var(--gray-light);
-   
+
             span:first-of-type {
                color: var(--gray-light);
             }
@@ -215,7 +216,7 @@
    @media (min-width: 1600px) {
       &__section-heading {
          p {
-           font-size: 19px;
+            font-size: 19px;
          }
 
          button {
@@ -228,25 +229,39 @@
       }
    }
 }
+
 ///////////////////////////////////
 .filters {
    &__range {
-      padding: 15px 18px 0;
+      padding: 15px 10px 0;
       font-size: 14px;
    }
 
    &__slider-thumb {
+      width: 32px !important;
       height: 16px !important;
-      width: 16px !important;
-      border-radius: 50% !important;
-      border: 3px solid var(--gray-med);
-      background-color: var(--white);
+
+      &:last-of-type::after {
+         margin-left: auto;
+      }
+
+      &::after {
+         content: '';
+         display: block;
+         height: 16px;
+         width: 16px;
+         border-radius: 50%;
+         border: 3px solid var(--color);
+         background-color: var(--white);
+      }
    }
 
    &__slider-track {
-      height: 36px;
-      display: flex;
+      height: 16px;
       width: 100%;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
       align-self: center;
       cursor: ew-resize;
 
@@ -263,16 +278,17 @@
       justify-content: space-between;
 
       div {
-         margin-top: -10px;
+         margin-top: 10px;
          min-width: 110px;
          padding: 5px;
+         user-select: none;
 
          &:first-of-type {
-            margin-left: -8px;
+            margin-left: -5px;
          }
-   
+
          &:last-of-type {
-            margin-right: -8px;
+            margin-right: -5px;
             display: flex;
             justify-content: space-between;
          }
@@ -287,14 +303,14 @@
 
    @media (min-width: 340px) {
       &__range {
-         padding: 15px 28px 0;
+         padding: 15px 20px 0;
          font-size: 15px;
       }
    }
 
    @media (min-width: 1200px) {
       &__range {
-         padding: 10px 8px 0;
+         padding: 10px 0px 0;
          font-size: 16px;
       }
    }

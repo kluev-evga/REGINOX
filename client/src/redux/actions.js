@@ -33,6 +33,7 @@ import {
    FILTERS_IS_FILTERED,
    FILTERS_IS_FILTERING,
    FILTERS_SORT_PRODUCTS_INIT,
+   ORDER_OPEN_MODAL,
    ORDER_CLOSE_MODAL
 } from './types'
 
@@ -69,6 +70,7 @@ export const toggleCompareItem = id => ({ type: COMPARE_TOGGLE_ITEM, id })
 export const removeItemfromCompare = id => ({ type: COMPARE_REMOVE_ITEM, id })
 export const openSearchMenu = () => ({ type: APP_OPEN_SEARCH })
 export const closeSearchMenu = () => ({ type: APP_CLOSE_SEARCH })
+export const openModalOrder = () => ({ type: ORDER_OPEN_MODAL })
 export const closeModalOrder = () => ({ type: ORDER_CLOSE_MODAL })
 
 

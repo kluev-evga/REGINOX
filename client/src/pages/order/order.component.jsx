@@ -1,18 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import cn from 'classnames';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
 import InputMask from "react-input-mask";
-import CartSummary from '../../components/summary/summary.component'
-import withMenuLoader from '../../hoc/with-menu-loader'
-
-import ModalOrder from './order-modal.component';
-
 import { useDispatch } from 'react-redux';
 import { submitOrder } from '../../redux/actions'
-
-
+import CartSummary from '../../components/summary/summary.component'
+import ModalOrder from './order-modal.component';
+import withMenuLoader from '../../hoc/with-menu-loader'
 
 
 const initialValues = {
@@ -54,11 +50,14 @@ const PhoneInput = ({ field }) =>
    <InputMask {...field} mask="+7 (999) 999-99-99" placeholder='Телефон' autoComplete='off' type="text" />
 
 const Order = () => {
+   const ref = useRef()
    const dispatch = useDispatch()
    const handleSubmit = (values) => { dispatch(submitOrder(values)) }
 
+   useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
+
    return (
-      <div className='container order'>
+      <div className='container order' ref={ref}>
          <div className='breadcrumbs'>
             <Link to='/'>Главная</Link> / <Link to='/cart'>Корзина</Link> / Оформление заказа
          </div>

@@ -158,6 +158,7 @@ export const cartItemsArray = createSelector( cartItems, Object.keys );
 
 
 export const orderModalIsOpen = state => state.order.modalIsOpen
+export const orderPaymentIsProceeded = state => state.order.paymentIsProceeded
 export const orderLoading = state => state.order.loading
 export const orderPaymentIsSuccessful = state => state.order.paymentIssuccessful
 

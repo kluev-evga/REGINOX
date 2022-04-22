@@ -1,30 +1,25 @@
 import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, A11y, Thumbs } from 'swiper'
+import { Navigation, A11y } from 'swiper'
+import cn from 'classnames'
+import SliderViewTouch from './slider-view-touch.component'
+import SliderViewHover from './slider-veiw-hover-component'
 
 
 const Slider = ({ images }) => {
-   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+   const [thumbsSwiper, setThumbsSwiper] = useState()
+   const [ image, setImage ] = useState({img:images[0], i: 0})
    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
+   const isAnyHover = useMediaQuery({ query: '(any-hover)' })
 
    return (
       <div className='product-slider'>
 
-         <Swiper
-            className='product-slider__image-slider'
-            thumbs={{ swiper: thumbsSwiper }}
-            allowTouchMove={false}
-            slidesPerView={1}
-            speed={0}
-            modules={[A11y, Thumbs]}
-         >
-            {images.map((img, i) => (
-               <SwiperSlide key={i}>
-                  <img src={process.env.PUBLIC_URL + img} alt='poductimage' width='600' height='600' />
-               </SwiperSlide>
-            ))}
-         </Swiper>
+         {isAnyHover
+            ? <SliderViewHover image={image.img}/>
+            : <SliderViewTouch images={images} thumbsSwiper={thumbsSwiper}/>
+         }
 
          <Swiper
             className='product-slider__thumbs-slider'
@@ -32,13 +27,17 @@ const Slider = ({ images }) => {
             navigation
             watchSlidesProgress={true}
             onSwiper={setThumbsSwiper}
-            spaceBetween={10}
+            spaceBetween={5}
             slidesPerView='auto'
             modules={[Navigation, A11y]}
          >
             {images.map((img, i) => (
-               <SwiperSlide key={i} className='product-slider__thumbs-slide'>
-                  <img src={process.env.PUBLIC_URL + img} alt='poductimage' width='600' height='600' />
+               <SwiperSlide
+                  className={cn('product-slider__thumbs-slide', {'active': i === image.i})}
+                  key={i}
+                  onClick={() => setImage({img, i})}
+               >
+                  <img src={img} alt='poductimage' width='600' height='600' />
                </SwiperSlide>
             ))}
          </Swiper>

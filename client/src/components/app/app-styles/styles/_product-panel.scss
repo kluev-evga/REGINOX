@@ -30,7 +30,8 @@
    }
 
    &__compare {
-      padding: 0 3px;
+      padding: 0 6px 0 2px;
+      margin-right: -5px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -38,10 +39,9 @@
       color: var(--gray);
 
       &.active {
-         border-radius: 2px;
-         outline: 1px solid #f2994a;
-         background-color: var(--graphite);
-         color: #f2994a;
+         border-radius: 3px;
+         background-color: var(--gray);
+         color: var(--white);
       }
    }
 

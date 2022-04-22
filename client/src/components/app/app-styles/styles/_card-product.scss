@@ -112,10 +112,9 @@
       }
 
       &.active {
-         border-radius: 5px;  
-         border: 1px solid #f2994a;
-         background-color: var(--graphite);
-         color: #f2994a;
+         border-radius: 5px;
+         background-color: var(--gray);
+         color: var(--white);
       }
    }
 

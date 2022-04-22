@@ -99,8 +99,9 @@
             margin-right: 100px;
 
             .search__btn-clear {
-               animation: fade-in 0.15s ease 0.15s forwards;
-               @keyframes fase-in {
+               animation: search-fade-in 0.15s ease 0.15s forwards;
+
+               @keyframes search-fade-in {
                   to {
                      opacity: 1;
                   }

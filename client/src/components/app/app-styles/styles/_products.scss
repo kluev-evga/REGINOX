@@ -1,5 +1,4 @@
 .products {
-
    &__section {
       display: grid;
       align-content: start;
@@ -10,13 +9,13 @@
    &__section-header {
       margin-bottom: 10px;
       padding-bottom: 10px;
-   
+
       display: flex;
       flex-wrap: wrap;
       column-gap: 12px;
       row-gap: 5px;
       justify-content: space-between;
-   
+
       border-bottom: 1px solid var(--gray-light);
       text-transform: lowercase;
    }
@@ -81,7 +80,7 @@
          order: unset;
          width: 212px;
       }
-   
+
       &__section-header-reset {
          margin-right: auto;
       }
@@ -91,7 +90,7 @@
       &__section-header {
          font-size: 17px;
       }
-   
+
       &__section-select {
          width: 260px;
       }
@@ -121,7 +120,7 @@
 
       &__section-header-btn {
          font-size: inherit;
-   
+
          svg {
             height: 20px;
          }
@@ -132,8 +131,18 @@
          align-items: center;
          gap: 10px;
 
+         button {
+            padding: 7.75px;
+
+            &:hover {
+               color: var(--red);
+            }
+         }
+
          .active {
             color: var(--red);
+            outline: 1px solid var(--gray-light);
+            outline-offset: -1px;
          }
       }
    }

@@ -16,7 +16,10 @@ const HomeSlider = () => {
          allowTouchMove={isDesktop ? false : true}
          speed={isDesktop ? 600 : 300}
          loop={true}
-         autoplay={{ delay: 5000 }}
+         autoplay={{
+            delay: 3500,
+            disableOnInteraction: false
+         }}
          effect={'creative'}
          creativeEffect={{
             prev: { translate: ["-30%", 0, -1] },
@@ -31,13 +34,17 @@ const HomeSlider = () => {
       >
 
          {slider.map(
-            ({ id, title, subtitle, img, alt, url, titleLink, imgLink, altLink }) => (
+            ({ id, title, subtitle, img, alt, url, titleLink, imgLink, altLink }) =>
                <SwiperSlide className='home-slider__slide' key={id}>
                   <img src={img} alt={alt} className='home-slider__background'/>
                   <div className='home-slider__wrapper'>
                      <div className='home-slider__container container'>
                         <div className='home-slider__content'>
-                           <h1 className='home-slider__title'>{title}</h1>
+                           <h1 className='home-slider__title'>
+                              {title.split(' ')
+                                 .map((word, i) => <span key={i}>{word}&nbsp;</span>
+                              )}
+                           </h1>
                            <p className='home-slider__sub_title'>{subtitle}</p>
 
                            <div className='home-slider__link-container'>
@@ -51,7 +58,7 @@ const HomeSlider = () => {
                   </div>
                </SwiperSlide>
             )
-         )}
+         }
       </Swiper>
    )
 }

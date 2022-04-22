@@ -7,7 +7,7 @@ import Filters from '../filters/filters.component'
 
 
 const ContainerMenu = ({ children }) => {
-   const isProductPage = Boolean(useMatch({path: '/products', end: false}))
+   const isProductPage = Boolean(useMatch({path: '/products'}))
    const isNotDesktop = useMediaQuery({ query: '(max-width: 1199.98px)' })
 
    return (

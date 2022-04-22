@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { filteredProducts, filtersIsFiltering, appIsTiles } from '../../../redux/selectors'
@@ -15,7 +15,8 @@ const sliceProducts = productItems => {
    return { products, totalItems, totalPages, pages }
 }
 
-const ProductsSection = () => {
+const ProductsSection = ({scrollUp}) => {
+   const ref = useRef()
    const [currentPage, selectPage] = useState(1)
    const { url } = useParams()
    const isTiles = useSelector(appIsTiles)
@@ -31,15 +32,15 @@ const ProductsSection = () => {
 
    const onSelectPage = useCallback(page => {
       selectPage(page)
-      window.scrollTo({ top: 260, behavior: 'smooth' })
-   }, [])
+      scrollUp()
+   }, [])//eslint-disable-line
 
    if (isFiltering) return <div>FILTERING</div>
    if (totalItems === 0) return <div className='products__section'>Ничего не найдено</div>
    if (currentPage > totalPages) return null
 
    return (
-      <div className={cn('products__section', { 'tiles': isTiles })}>
+      <div className={cn('products__section', { 'tiles': isTiles })} ref={ref}>
 
          { products[currentPage - 1].map(id => <ProductItem key={id} id={id} /> )}
 

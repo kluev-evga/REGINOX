@@ -11,11 +11,11 @@ import { ReactComponent as LoadingIcon } from '../../assets/svg/spinner.svg'
 Modal.setAppElement('#root');
 
 function ModalOrder() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const modalIsOpen = useSelector(orderModalIsOpen)
   const paymentIsSuccessful = useSelector(orderPaymentIsSuccessful)
   const isLoading = useSelector(orderLoading)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const handleClose = () => {
     dispatch(closeModalOrder())
@@ -38,7 +38,7 @@ function ModalOrder() {
         isOpen={modalIsOpen}
         onRequestClose={handleRequestClose}
         contentLabel="Платеж отправлен"
-        closeTimeoutMS={1300}
+        closeTimeoutMS={700}
       >
 
         {isLoading
@@ -52,7 +52,7 @@ function ModalOrder() {
                 <CrossIcon/>
               </button>
               <CrownIcon className='modal-order__crown'/>
-    
+
                 <h2>
                   {paymentIsSuccessful ? 'Ваш заказ успешно оформлен!' : 'Произошла ошибка'}
                 </h2>

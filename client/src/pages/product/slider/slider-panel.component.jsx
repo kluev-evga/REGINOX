@@ -37,7 +37,7 @@ const SliderPanel = ({ id, price, discount }) => {
                className={cn('product-panel__compare', { 'active': isCompareItem })}
                onClick={() => dispatch(toggleCompareItem(id))}>
                <CompareIcon />
-               {isCompareItem ? 'Добавлен' : 'Сравнить'}
+               Сравнить
             </button>
          </div>
 

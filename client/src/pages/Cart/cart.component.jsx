@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartLoaded, cartItemsArray, cartEntities, cartHasItems } from '../../redux/selectors'
@@ -10,6 +10,7 @@ import { ReactComponent as EmptyIcon } from '../../assets/svg/empty.svg'
 
 
 const Cart = () => {
+   const ref = useRef()
    const dispatch = useDispatch()
    const isLoading = !useSelector(cartLoaded)
    const cartItems = useSelector(cartItemsArray)
@@ -18,13 +19,12 @@ const Cart = () => {
 
    const itemsToLoad = useMemo( () => cartItems.filter(id => cartItemEntities[id] ? false : id), [cartItemEntities] ) //eslint-disable-line
    useEffect(() => { dispatch(loadCart(itemsToLoad)) }, []) //eslint-disable-line
+   useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
    if (isLoading || itemsToLoad.length !== 0) return <Loader />
 
    return (
-      <div className='container cart'>
-
+      <div className='container cart' ref={ref}>
          <div className='breadcrumbs'> <Link to='/'>Главная</Link> / корзина </div>
-
          <h1 className='title'>Корзина</h1>
 
          {hasItems
