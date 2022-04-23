@@ -110,4 +110,16 @@ router.post('/api/order', function (req, res, next) {
   }
 })
 
+router.post('/api/form', function (req, res, next) {
+  try {
+    const formData = req.body
+      console.log(formData);
+      setTimeout(() => {
+         return reply(res, 'ok');
+      }, 1000)
+  } catch {
+    return reply(res, 'wrong data', 400);
+  }
+})
+
 module.exports = router

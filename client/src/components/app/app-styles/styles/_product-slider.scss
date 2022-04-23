@@ -1,10 +1,5 @@
 .product-slider {
 
-   .swiper-slide {
-      -webkit-touch-callout: none;
-      -webkit-tap-highlight-color: transparent;
-   }
-
    .swiper-button-prev,
    .swiper-button-next {
       margin-top: 0;
@@ -107,7 +102,8 @@
    &__thumbs-slide {
       width: auto;
       border-radius: 5px;
-      outline-offset: -1px;
+      outline-offset: -2px;
+      padding: 1px;
       cursor: pointer;
 
       &:hover {
@@ -121,6 +117,7 @@
       img {
          height: 70px;
          width: auto;
+         margin: 1px;
       }
    }
 

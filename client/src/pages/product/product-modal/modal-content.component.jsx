@@ -5,36 +5,17 @@ import { changeCartItemCount, submitOrder } from '../../../redux/actions'
 import cn from 'classnames';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
-import InputMask from "react-input-mask";
+import { validation, Error, PhoneInput } from '../../../utils/form'
 import { ReactComponent as PlusIcon } from '../../../assets/svg/plus.svg'
 import { ReactComponent as MinusIcon } from '../../../assets/svg/minus.svg'
 
 
-const initialValues = {
-   name: '',
-   email: '',
-   phone: '',
-}
+const initialValues = { name: '', email: '', phone: '' }
+const { name, email, phone } = validation
+const validationSchema = Yup.object().shape({name, email, phone})
 
-const validationSchema = Yup.object().shape({
-   name: Yup.string()
-      .max(30, 'должно быть не болеее 30 символов')
-      .matches(/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u, {message:'укажите ваше имя'})
-      .required('Обязательное поле'),
-   email: Yup.string()
-      .email('Некорректный имейл')
-      .required('Обязательное поле'),
-   phone: Yup.string()
-      .matches(/[(]{1}[0-9]{3}[)]{1}[-\s0-9]*$/g, {message:'некорректный номер'})
-      .required('Обязательное поле'),
-})
 
-const Error = ({children}) => <div className='error'>{children}</div>
-
-const PhoneInput = ({ field }) =>
-   <InputMask {...field} mask="+7 (999) 999-99-99" placeholder='Телефон' autoComplete='off' type="text" />
-
-const ModalContent = ({ id, img, title }) => {
+const ModalContent = ({ id, img, title, close }) => {
    const dispatch = useDispatch()
    const itemsCount = useSelector(state => cartItemCount(state, id))
  
@@ -52,7 +33,7 @@ const ModalContent = ({ id, img, title }) => {
          <h2>Форма быстрого заказа</h2>
 
          <div className='product-modal__item-container'>
-         <img src={img} alt={title}/>
+         <img src={img} alt={title} loading='lazy'/>
 
          <div className='product-modal__item-count'>
             <span>Количество</span>
@@ -99,8 +80,8 @@ const ModalContent = ({ id, img, title }) => {
          <p className='product-modal__text'>Перед отправкой заказа, убедитесь в правильном заполнении данных.</p>
          <hr/>
          <p className='product-modal__text-small'>Возможно пред отправкой заказа вас заинтерсует информация:</p>
-         <Link to='/delivery'>Доставка и оплата</Link>
-         <Link to='/sertificates'>Гарантии</Link>
+         <Link to='/delivery' onClick={close}>Доставка и оплата</Link>
+         <Link to='/sertificates' onClick={close}>Гарантии</Link>
          </div>
 
          <div className="product-modal__btn-container">

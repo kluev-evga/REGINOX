@@ -12,23 +12,26 @@
 
 
 // global:
-@import './styles/fonts';
-@import './styles/base';
+@import './styles/_fonts';
+@import './styles/_base';
 @import './styles/_elements';
-@import './styles/sliders';
+
+@import './styles/_sliders';
+@import './styles/_pswp'; // photo-swipe
+@import './styles/_react-modal';
 
 
 // components:
-@import './styles/header';
-@import './styles/_search';
-@import './styles/footer';
-@import './styles/_menu-container';
-@import './styles/_menu-main';
 @import './styles/_brands';
-@import './styles/_filters';
-@import './styles/_pagination';
 @import './styles/_card-product';
 @import './styles/_card-slider';
+@import './styles/_filters';
+@import './styles/_footer';
+@import './styles/_header';
+@import './styles/_menu-container';
+@import './styles/_menu-main';
+@import './styles/_pagination';
+@import './styles/_search';
 @import './styles/_summary';
 
 
@@ -38,22 +41,21 @@
 @import './styles/_home-catalog';
 @import './styles/_home-popular-products';
 
+@import './styles/_products';
+
 @import './styles/_product-container';
 @import './styles/_product-slider';
 @import './styles/_product-panel';
 @import './styles/_product-tabs-container';
-@import './styles/_product-form';
 @import './styles/_product-feedback';
 @import './styles/_product-specifications';
 @import './styles/_product-modal';
 
-@import './styles/_products';
 
 @import './styles/_why-us';
 @import './styles/_partners';
 
 @import './styles/_sertificates';
-@import './styles/_pswp';
 
 @import './styles/_articles';
 @import './styles/_information';

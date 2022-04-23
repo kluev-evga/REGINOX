@@ -10,7 +10,6 @@ import { ReactComponent as StarIcon } from '../../assets/svg/star.svg'
 import { ReactComponent as CompareIcon } from '../../assets/svg/compare.svg'
 
 
-
 const RatingBlock = ({ r, reviewers }) => (
    <div className='card-product__rating'>
       {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : 'clear'} /> )}
@@ -42,7 +41,7 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
             to={`/products/${url}/${productUrl}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>
-            <img src={process.env.PUBLIC_URL + img} alt={alt} width='600' height='600' />
+            <img src={img} alt={alt} width='600' height='600' loading='lazy' />
          </Link>
 
          {withRating && <RatingBlock r={r} reviewers={reviewers} />}

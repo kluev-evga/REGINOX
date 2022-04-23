@@ -14,7 +14,7 @@ const CatalogsCards = ({ pageSize }) => {
    
          {catalogsArr.slice(0, pageSize).map( ({ id, url, img, title, alt }) =>
             <a href={url} download key={id} className='catalog__card'>
-                  <img src={img} alt={alt} width='380' height='550'/>
+                  <img src={img} alt={alt} width='380' height='550' loading='lazy'/>
                   <div className='catalog__card-caption'>
                      <DownloadIcon className='catalog__card-download'/>
                      <PdfIcon className='catalog__card-pdf'/>

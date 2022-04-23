@@ -1,26 +1,16 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { cartLoaded, cartItemsArray, cartEntities, cartHasItems } from '../../redux/selectors'
-import { loadCart } from '../../redux/actions'
+import { useSelector } from 'react-redux'
+import { cartHasItems } from '../../redux/selectors'
 import CartItem from './cart-item.component'
 import CartSummary from '../../components/summary/summary.component'
-import Loader from '../../components/loader/loader.coponent'
 import { ReactComponent as EmptyIcon } from '../../assets/svg/empty.svg'
 
 
-const Cart = () => {
+const Cart = ({cartItems}) => {
    const ref = useRef()
-   const dispatch = useDispatch()
-   const isLoading = !useSelector(cartLoaded)
-   const cartItems = useSelector(cartItemsArray)
-   const cartItemEntities = useSelector(cartEntities)
    const hasItems = useSelector(cartHasItems);
-
-   const itemsToLoad = useMemo( () => cartItems.filter(id => cartItemEntities[id] ? false : id), [cartItemEntities] ) //eslint-disable-line
-   useEffect(() => { dispatch(loadCart(itemsToLoad)) }, []) //eslint-disable-line
    useEffect(() => {ref.current.scrollIntoView({block: "start"})}, [])
-   if (isLoading || itemsToLoad.length !== 0) return <Loader />
 
    return (
       <div className='container cart' ref={ref}>

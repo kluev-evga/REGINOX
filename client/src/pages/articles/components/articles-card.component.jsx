@@ -11,7 +11,7 @@ const ArticlesCard = ({ id }) => {
 
    return (
       <Link to={`/articles/${url}`} className='articles__card'>
-         <img src={img} alt={alt} width={1250} height={900} />
+         <img src={img} alt={alt} width={1250} height={900} loading='lazy' />
 
          <p className='articles__card-caption'>
             <time dateTime={date}>

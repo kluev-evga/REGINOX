@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
-import ViewPhone from './components/view-phone.component'
-import ViewLarge from './components/view-large.component'
+import { ViewLarge, ViewPhone } from './components/view.component'
 import withMenuLoader from '../../hoc/with-menu-loader.js'
 
 
@@ -31,7 +30,7 @@ const Contacts = () => {
             height='460'
             style={{ border: 'none' }}
             allowFullScreen=''
-            loading='lazy'></iframe>
+            loading='lazy'/>
       </div>
    )
 }

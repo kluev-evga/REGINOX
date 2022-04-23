@@ -18,6 +18,7 @@ const FooterBar = () => (
                      alt='barcode'
                      width='160'
                      height='60'
+                     loading='lazy'
                   />
                   <PRHolding />
                </div>

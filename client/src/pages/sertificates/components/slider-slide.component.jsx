@@ -8,8 +8,8 @@ const SliderSlide = ({ id }) => {
 
    return (
       <Item
-         original={process.env.PUBLIC_URL + '/assets/sertificates/' + img}
-         thumbnail={process.env.PUBLIC_URL + '/assets/sertificates/' + img}
+         original={'/assets/sertificates/' + img}
+         thumbnail={'/assets/sertificates/' + img}
          caption={`<div>${name}</div>`}
          width="780"
          height="1150"
@@ -18,7 +18,7 @@ const SliderSlide = ({ id }) => {
 
          {({ ref, open }) => (
             <div className='sertificates-slider__slide' onClick={open} ref={ref}>
-               <img src={process.env.PUBLIC_URL + '/assets/sertificates/' + img} alt={alt} />
+               <img src={'/assets/sertificates/' + img} alt={alt} loading='lazy' />
                <p>{name}</p>
             </div>
          )}

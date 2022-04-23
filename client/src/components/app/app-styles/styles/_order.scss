@@ -48,7 +48,7 @@
          content: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Crect stroke='%23ad2131' fill='%23ad2131' x='0.5' y='0.5' width='9' height='9' rx='4.5' /%3E%3C/svg%3E");
       }
 
-      .error {
+      .error-message {
          margin-top: -8px;
          margin-bottom: -5px;
       }
@@ -56,10 +56,6 @@
 
    &__section-credentials {
       margin-bottom: 25px;
-
-      .invalid input {
-         border-color: var(--red);
-      }
    }
 
    &__section-credentials-fields {
@@ -80,7 +76,7 @@
       flex-direction: column;
       row-gap: 10px;
 
-      .error {
+      .error-message {
          margin-top: -3px;
          margin-bottom: -5px;
       }
@@ -126,10 +122,8 @@
       margin-top: 15px;
    }
 
-   .error {
+   .error-message {
       width: 100%;
-      color: var(--red);
-      font-size: 14px;
    }
 
    @media (min-width: 340px) {

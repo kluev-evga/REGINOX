@@ -1,0 +1,133 @@
+.ReactModal {
+   &__Overlay {
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: rgba(0, 0, 0, 0.8) !important;
+
+      transform: scaleY(0.01) scaleX(0);
+      animation: unfoldIn 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes unfoldIn {
+         0% {
+            transform: scaleY(0.005) scaleX(0);
+         }
+
+         40% {
+            transform: scaleY(0.005) scaleX(1);
+         }
+
+         100% {
+            transform: scaleY(1) scaleX(1);
+         }
+      }
+   }
+
+   &__Content {
+      background: var(--white);
+      transform: scale(0);
+      animation: zoomIn 0.6s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes zoomIn {
+         0% {
+            transform: scale(0);
+         }
+
+         100% {
+            transform: scale(1);
+         }
+      }
+   }
+
+   &__Overlay--before-close {
+      transform: scale(1);
+      animation: unfoldOut 0.6s 0.1s cubic-bezier(0.165, 0.84, 0.7, 0.8) forwards;
+
+      @keyframes unfoldOut {
+         0% {
+            transform: scaleY(1) scaleX(1);
+         }
+
+         50% {
+            transform: scaleY(0.005) scaleX(1);
+         }
+
+         100% {
+            transform: scaleY(0.005) scaleX(0);
+         }
+      }
+   }
+
+   &__Content--before-close {
+      animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+
+      @keyframes zoomOut {
+         0% {
+            transform: scale(1);
+         }
+
+         100% {
+            transform: scale(0);
+         }
+      }
+   }
+
+   &__Content {
+      padding: 15px 10px;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+   }
+
+   &__close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 10px;
+
+      svg {
+         width: 25px;
+         height: 25px;
+      }
+
+      &:hover {
+         color: var(--gray-med)
+      }
+   }
+
+   @media (min-width: 576px) {
+      &__Content {
+         padding: 20px;
+      }
+
+      &__close-btn {
+         top: 10px;
+         right: 10px;
+      }
+   }
+
+   @media (min-width: 992px) {
+      &__Content {
+         padding: 35px;
+      }
+
+      &__close-btn {
+         top: 20px;
+         right: 20px;
+
+         svg {
+            width: unset;
+            height: unset;
+         }
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__Content {
+         padding: 35px 50px;
+      }
+   }
+}

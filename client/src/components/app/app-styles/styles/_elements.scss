@@ -18,6 +18,7 @@
    }
 }
 
+//////////////////////////////////////////// logo
 .logo {
    position: relative;
 
@@ -52,6 +53,34 @@
    }
 }
 
+//////////////////////////////////////////// breadcrumbs
+.breadcrumbs {
+   padding: 220px 0 50px;
+   color: var(--gray);
+   font-size: 14px;
+   white-space: nowrap;
+
+   a {
+      padding: 3px 0;
+      color: var(--red);
+
+      &:hover {
+         color: var(--graphite);
+      }
+   }
+
+   @media (min-width: 768px) {
+      padding-top: 215px;
+      font-size: 16px;
+   }
+
+   @media (min-width: 1400px) {
+      padding-top: 230px;
+      font-size: 17px;
+   }
+}
+
+//////////////////////////////////////////// title
 .title {
    padding-bottom: 15px;
    font-size: 28px;
@@ -96,6 +125,7 @@
    }
 }
 
+//////////////////////////////////////////// containers
 .container {
    width: 100%;
    margin: 0 auto;
@@ -124,99 +154,6 @@
 
    @media (min-width: 1920px) {
       max-width: 1640px;
-   }
-}
-
-.breadcrumbs {
-   padding: 220px 0 50px;
-   color: var(--gray);
-   font-size: 14px;
-   white-space: nowrap;
-
-   a {
-      padding: 3px 0;
-      color: var(--red);
-
-      &:hover {
-         color: var(--graphite);
-      }
-   }
-
-   @media (min-width: 768px) {
-      padding-top: 215px;
-      font-size: 16px;
-   }
-
-   @media (min-width: 1400px) {
-      padding-top: 230px;
-      font-size: 17px;
-   }
-}
-
-.react-tabs__tab-list {
-   display: flex;
-   border-bottom: 1px solid var(--gray-light);
-   gap: 45px;
-   font-size: 17px;
-   font-weight: 500;
-   color: var(--gray-med);
-}
-
-.react-tabs__tab {
-   padding: 12px 0 6px;
-   position: relative;
-   cursor: pointer;
-   border-bottom: 3px solid transparent;
-   transition: border-color 0.08s linear;
-   -webkit-touch-callout: none;
-   -webkit-tap-highlight-color: transparent;
-   outline: none;
-
-   &:focus-visible {
-      border-color: var(--black);
-   }
-}
-
-.react-tabs__tab--selected {
-   color: var(--graphite);
-   border-color: var(--red);
-}
-
-.react-tabs__tab:hover {
-   border-color: var(--red);
-}
-
-@media (min-width: 992px) {
-   .react-tabs__tab-list {
-      font-size: 18px;
-   }
-}
-
-@media (min-width: 1400px) {
-   .react-tabs__tab-list {
-      gap: 55px;
-      font-size: 20px;
-   }
-}
-
-.button-form {
-   width: 100%;
-   padding: 12px 0;
-
-   font-size: 16px;
-   color: var(--white);
-   background-color: var(--graphite);
-   outline: none;
-   transition: 0.05s linear;
-
-   &:focus-visible,
-   &:hover {
-      background-color: var(--red);
-   }
-
-   @media (min-width: 1400px) {
-      padding: 15px 0;
-      font-size: 18px;
    }
 }
 
@@ -270,10 +207,10 @@
 
    a {
       color: var(--red);
-   }
 
-   a:hover {
-      color: var(--graphite);
+      &:hover {
+         text-decoration: underline;
+      }
    }
 
    @media (min-width: 576px) {
@@ -377,67 +314,54 @@
    }
 }
 
-.rc-collapse-header {
-   -webkit-touch-callout: none;
-   -webkit-tap-highlight-color: transparent;
-}
+//////////////////////////////////////////// tabs
+.react-tabs {
+   &__tab-list {
+      display: flex;
+      border-bottom: 1px solid var(--gray-light);
+      gap: 45px;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--gray-med);
+   }
 
-.form {
-   margin: 0 -10px;
-   padding: 20px 10px;
-   background-color: var(--gray-light);
-
-   label {
-      display: block;
-      margin-bottom: 15px;
+   &__tab {
+      padding: 12px 0 6px;
       position: relative;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.08s linear;
+      outline: none;
+
+      &:focus-visible {
+         border-color: var(--black);
+      }
+
+      &:hover {
+         border-color: var(--red);
+      }
+   }
+
+   &__tab--selected {
+      color: var(--graphite);
+      border-color: var(--red);
+   }
+
+   @media (min-width: 992px) {
+      &__tab-list {
+         font-size: 18px;
+      }
+   }
+
+   @media (min-width: 1400px) {
+      &__tab-list {
+         gap: 55px;
+         font-size: 20px;
+      }
    }
 }
 
-.form-message {
-   padding-top: 3px;
-   font-size: 14px;
-   color: var(--red);
-}
-
-.form-invalid {
-   border-radius: 4px;
-   outline-offset: -2px;
-   outline: 2px solid var(--red);
-}
-
-.form-agreement {
-   padding-left: 10px;
-   margin-top: 10px;
-   font-size: 14px;
-
-   &::before {
-      content: '*';
-      margin-left: -10px;
-      margin-right: 5px;
-   }
-}
-
-@media (min-width: 768px) {
-   .form {
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
-   }
-
-   .form-message {
-      padding: 0 10px;
-
-      position: absolute;
-      bottom: 0;
-      right: 50%;
-      transform: translate(50%, 40%);
-
-      font-size: 14px;
-      background-color: var(--white);
-   }
-}
-
+//////////////////////////////////////////// delivery page
 .delivery-iframe {
    margin-top: 50px;
 
@@ -450,127 +374,86 @@
    margin-bottom: 40px;
 }
 
-.ReactModal {
-   &__Overlay {
-      z-index: 2;
+//////////////////////////////////////////// forms
+.invalid {
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background-color: rgba(0, 0, 0, 0.8) !important;
-
-      transform: scaleY(0.01) scaleX(0);
-      animation: unfoldIn 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-
-      @keyframes unfoldIn {
-         0% {
-            transform: scaleY(0.005) scaleX(0);
-         }
-
-         40% {
-            transform: scaleY(0.005) scaleX(1);
-         }
-
-         100% {
-            transform: scaleY(1) scaleX(1);
-         }
-      }
+   input,
+   textarea {
+      border-color: var(--red);
    }
+}
 
-   &__Content {
-      padding: 10px;
-      background: var(--white);
-      transform: scale(0);
-      animation: zoomIn 0.6s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+.error-message {
+   color: var(--red);
+   font-size: 14px;
+}
 
-      @keyframes zoomIn {
-         0% {
-            transform: scale(0);
-         }
+.form-agreement {
+   // agreement message under button
+   padding-left: 10px;
+   margin-top: 10px;
+   font-size: 14px;
 
-         100% {
-            transform: scale(1);
-         }
-      }
+   &::before {
+      content: '*';
+      margin-left: -10px;
+      margin-right: 5px;
    }
+}
 
-   &__Overlay--before-close {
-      transform: scale(1);
-      animation: unfoldOut 0.6s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+.button-form {
+   //black button
+   width: 100%;
+   padding: 12px 0;
 
-      @keyframes unfoldOut {
-         0% {
-            transform: scaleY(1) scaleX(1);
-         }
+   font-size: 16px;
+   color: var(--white);
+   background-color: var(--graphite);
+   outline: none;
+   transition: 0.05s linear;
 
-         50% {
-            transform: scaleY(0.005) scaleX(1);
-         }
-
-         100% {
-            transform: scaleY(0.005) scaleX(0);
-         }
-      }
-   }
-
-   &__Content--before-close {
-      animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-
-      @keyframes zoomOut {
-         0% {
-            transform: scale(1);
-         }
-
-         100% {
-            transform: scale(0);
-         }
-      }
-   }
-
-   &__close-btn {
-      display: block;
-      margin: 0 -10px 0 auto;
-      padding: 10px;
-
-      svg {
-         width: 25px;
-         height: 25px;
-      }
-
-      &:hover {
-         color: var(--gray-med)
-      }
-   }
-
-   @media (min-width: 576px) {
-      &__Content {
-         padding: 10px 20px 20px;
-      }
-
-      &__close-btn {
-         margin: 0 -1px -5px auto;
-      }
-   }
-
-   @media (min-width: 992px) {
-      &__Content {
-         padding: 15px 35px 35px;
-      }
-
-      &__close-btn {
-         margin: 0 -20px -20px auto;
-
-         svg {
-            width: unset;
-            height: unset;
-         }
-      }
+   &:focus-visible,
+   &:hover {
+      background-color: var(--red);
    }
 
    @media (min-width: 1400px) {
-      &__Content {
-         padding: 20px 50px 35px;
-      }
+      padding: 15px 0;
+      font-size: 18px;
+   }
+}
+
+.form-contact {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.modal-response {
+   max-height: 240px;
+   max-width: 400px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   @media (min-width: 992px) {
+      max-height: 300px;
+      max-width: 480px;
+   }
+}
+
+.response-text {
+   padding: 20px 10px;
+   text-transform: uppercase;
+   text-align: center;
+   font-size: 20px;
+   font-weight: 600;
+
+   @media (min-width: 576px) {
+      font-size: 22px;
+   }
+
+   @media (min-width: 992px) {
+      font-size: 24px;
    }
 }

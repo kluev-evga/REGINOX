@@ -15,7 +15,7 @@ const ViewLargeSlideContent = ({ item, specs }) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
          >
-            <img src={item.images[0]} alt='productI item' />
+            <img src={item.images[0]} alt='productI item' loading='lazy' />
          </Link>
          <p>{currency(item.price)}</p>
          {specs.map((field, i) => (

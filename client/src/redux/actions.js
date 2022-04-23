@@ -17,7 +17,6 @@ import {
    LOAD_NEW_ITEMS,
    LOAD_REVIEWS,
    LOAD_COMPARE_ITEMS,
-   SUBMIT_ORDER,
    APP_SET_TILES,
    APP_UNSET_TILES,
    APP_OPEN_SEARCH,
@@ -33,8 +32,10 @@ import {
    FILTERS_IS_FILTERED,
    FILTERS_IS_FILTERING,
    FILTERS_SORT_PRODUCTS_INIT,
+   SUBMIT_ORDER,
    ORDER_OPEN_MODAL,
-   ORDER_CLOSE_MODAL
+   ORDER_CLOSE_MODAL,
+   FORM_SUBMIT,
 } from './types'
 
 import {
@@ -297,6 +298,7 @@ export const loadCompareItems = itemsToLoad => (dispatch, getState) => {
       .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }))
 }
 
+
 export const submitOrder = (values) => (dispatch, getState) => {
    const state = getState()
    const loading = state.order.loading
@@ -307,6 +309,19 @@ export const submitOrder = (values) => (dispatch, getState) => {
    api.post('/order', values)
       .then(() => { dispatch({ type: SUBMIT_ORDER + SUCCESS }) })
       .catch((error) => {dispatch({ type: SUBMIT_ORDER + FAILURE, error }) })
+}
+
+
+export const submitForm = (values) => (dispatch, getState) => {
+   const state = getState()
+   const loading = state.form.loading
+   if (loading) return
+
+   dispatch({ type: FORM_SUBMIT + REQUEST })
+   // values.formType === 'question' | 'contacts' | 'feedback'
+   api.post('/form', values)
+   .then(() => { dispatch({ type: FORM_SUBMIT + SUCCESS }) })
+   .catch((error) => {dispatch({ type: FORM_SUBMIT + FAILURE, error }) })
 }
 
 

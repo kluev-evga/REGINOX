@@ -29,7 +29,7 @@ const Partners = () => {
          <Link className='partners__link' to='/information/partners' >
             <CardSlider
                title='Станьте нашим партнером'
-               img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}
+               img={'/assets/information_partners.webp'}
                alt='Для партнеров'
                width='590'
                height='430'

@@ -157,12 +157,6 @@ export const cartItemCount = (state, id) => state.cart.items[id];
 export const cartItemsArray = createSelector( cartItems, Object.keys );
 
 
-export const orderModalIsOpen = state => state.order.modalIsOpen
-export const orderPaymentIsProceeded = state => state.order.paymentIsProceeded
-export const orderLoading = state => state.order.loading
-export const orderPaymentIsSuccessful = state => state.order.paymentIssuccessful
-
-
 export const similarProducts = state => state.similarProducts.entities;
 export const similarProductsloading = state => state.similarProducts.loading;
 
@@ -181,3 +175,14 @@ export const compareItem = (state, id) => state.compare.entities?.[id];
 const compareEntities = state => state.compare.entities;
 export const compareItems = createSelector( compareEntities, Object.keys );
 export const compareCount = createSelector( compareItems, (items) => Object.keys(items).length );
+
+
+export const orderModalIsOpen = state => state.order.modalIsOpen
+export const orderPaymentIsProceeded = state => state.order.paymentIsProceeded
+export const orderLoading = state => state.order.loading
+export const orderPaymentIsSuccessful = state => state.order.paymentIssuccessful
+
+
+export const formLoading = state => state.form.loading
+export const formLoaded = state => state.form.loaded
+export const formError = state => state.form.error

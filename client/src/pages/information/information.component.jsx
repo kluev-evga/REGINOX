@@ -21,7 +21,7 @@ const Information = () => {
             <Link to='buyers'>
                <CardSlider
                   title='Для розничных покупателей'
-                  img={process.env.PUBLIC_URL + '/assets/information_buyers.webp'}
+                  img={'/assets/information_buyers.webp'}
                   alt='Для розничных покупателей'
                   width='590'
                   height='430'
@@ -34,7 +34,7 @@ const Information = () => {
             <Link to='partners'>
                <CardSlider
                   title='Для партнеров'
-                  img={process.env.PUBLIC_URL + '/assets/information_partners.webp'}
+                  img={'/assets/information_partners.webp'}
                   alt='Для партнеров'
                   width='590'
                   height='430'

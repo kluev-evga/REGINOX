@@ -36,7 +36,7 @@ const HomeSlider = () => {
          {slider.map(
             ({ id, title, subtitle, img, alt, url, titleLink, imgLink, altLink }) =>
                <SwiperSlide className='home-slider__slide' key={id}>
-                  <img src={img} alt={alt} className='home-slider__background'/>
+                  <img className='home-slider__background' src={img} alt={alt} loading='lazy' />
                   <div className='home-slider__wrapper'>
                      <div className='home-slider__container container'>
                         <div className='home-slider__content'>
@@ -49,7 +49,7 @@ const HomeSlider = () => {
 
                            <div className='home-slider__link-container'>
                               <Link to={`products/${url}`} className='home-slider__link' tabIndex={-1}>
-                                 <img src={imgLink} alt={altLink} width={304} height={228} area-hidden='true' />
+                                 <img src={imgLink} alt={altLink} width={304} height={228} area-hidden='true' loading='lazy' />
                                  <span>{titleLink}</span>
                               </Link>
                            </div>

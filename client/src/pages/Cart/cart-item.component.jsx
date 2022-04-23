@@ -25,7 +25,7 @@ const CartItem = ({id}) => {
             to={`/products/${url}/${productUrl}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>
-            <img src={process.env.PUBLIC_URL + img} alt='product item' />
+            <img src={img} alt='product item' loading='lazy'/>
          </Link>
          <div>
             <h2>{title}</h2>
@@ -46,7 +46,7 @@ const CartItem = ({id}) => {
                   </button>
                </div>
                <button onClick={clearItem}>
-                  <CrossIcon className='cart__product-clear-icon' />
+                  <CrossIcon className='cart__product-clear-icon'/>
                </button>
             </div>
          </div>

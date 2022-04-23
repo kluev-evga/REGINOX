@@ -27,8 +27,9 @@ const ViewPhoneSlider = ({ data, specs }) => {
                      className='compare__view-phone-link'
                      to={`/products/${item.url}/${item.productUrl}`}>
                      <img
-                        src={process.env.PUBLIC_URL + item.images[0]}
+                        src={item.images[0]}
                         alt='productI item'
+                        loading='lazy'
                      />
                   </Link>
                   <span><p>{currency(item.price)}</p></span>

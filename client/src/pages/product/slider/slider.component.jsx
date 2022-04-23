@@ -37,7 +37,7 @@ const Slider = ({ images }) => {
                   key={i}
                   onClick={() => setImage({img, i})}
                >
-                  <img src={img} alt='poductimage' width='600' height='600' />
+                  <img src={img} alt='poductimage' width='600' height='600' loading='lazy' />
                </SwiperSlide>
             ))}
          </Swiper>

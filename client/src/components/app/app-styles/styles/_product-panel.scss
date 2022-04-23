@@ -1,5 +1,5 @@
 .product-panel {
-   padding: 30px 0 50px;
+   padding-top: 30px;
    display: grid;
    row-gap: 15px;
 
@@ -84,7 +84,7 @@
    &__buy-now {
       height: 52px;
       width: 100%;
-      background-color: var(--graphite) !important;
+      background-color: var(--graphite);
    }
 
    &__buy-cart {
@@ -114,7 +114,6 @@
 
    @media (min-width: 768px) {
       align-content: start;
-      padding-bottom: 10px;
 
       &__count {
          padding-right: 5px;

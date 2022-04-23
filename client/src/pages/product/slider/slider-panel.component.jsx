@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../../redux/actions'
 import { cartItemCount, compareItem } from '../../../redux/selectors'
 import cn from 'classnames'
-import ModalBuy from '../modal/product-modal.component'
+import ProductModal from '../product-modal/product-modal.component'
 import { currency } from '../../../utils/currency'
 import { ReactComponent as CartIcon } from '../../../assets/svg/cart.svg'
 import { ReactComponent as CompareIcon } from '../../../assets/svg/compare.svg'
@@ -55,7 +55,7 @@ const SliderPanel = ({ id, price, discount }) => {
          </div>
 
          <div className='product-panel__buy'>
-            <ModalBuy/>
+            <ProductModal/>
             <button
                onClick={onCartButtonClick}
                className={cn('product-panel__buy-cart',{ 'active': incart })}>

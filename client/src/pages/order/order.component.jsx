@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import cn from 'classnames';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
-import InputMask from "react-input-mask";
+import { validation, Error, PhoneInput } from '../../utils/form'
 import { useDispatch } from 'react-redux';
 import { submitOrder } from '../../redux/actions'
 import CartSummary from '../../components/summary/summary.component'
@@ -11,43 +11,10 @@ import ModalOrder from './order-modal.component';
 import withMenuLoader from '../../hoc/with-menu-loader'
 
 
-const initialValues = {
-   payer: '',
-   name: '',
-   email: '',
-   phone: '',
-   address: '',
-   store: '',
-   delivery: '',
-   payment: '',
-   commments: '',
-}
+const initialValues = { payer: '', name: '', email: '', phone: '', address: '', store: '', delivery: '', payment: '', commments: '' }
+const {payer, name, email, phone, address, store, delivery, payment, comments} = validation
+const validationSchema = Yup.object().shape({payer, name, email, phone, address, store, delivery, payment, comments})
 
-const validationSchema = Yup.object().shape({
-   payer: Yup.string().required('не указан тип плательщика'),
-   name: Yup.string()
-      .max(30, 'должно быть не болеее 30 символов')
-      .matches(/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u, {message:'укажите ваше имя'})
-      .required('Обязательное поле'),
-   email: Yup.string()
-      .email('Некорректный имейл')
-      .required('Обязательное поле'),
-   phone: Yup.string()
-      .matches(/[(]{1}[0-9]{3}[)]{1}[-\s0-9]*$/g, {message:'некорректный номер'})
-      .required('Обязательное поле'),
-   address: Yup.string()
-      .max(100, 'не болеее 100 символов')
-      .matches(/^[#.0-9a-zA-Zа-яА-Я\s,-]+$/, {message:'некорректный адрес'})
-      .required('Обязательное поле'),
-   store: Yup.string().required('не указан магазин'),
-   delivery: Yup.string().required('не указан способ доставки'),
-   payment: Yup.string().required('не указан способ оплаты'),
-})
-
-const Error = ({children}) => <div className='error'>{children}</div>
-
-const PhoneInput = ({ field }) =>
-   <InputMask {...field} mask="+7 (999) 999-99-99" placeholder='Телефон' autoComplete='off' type="text" />
 
 const Order = () => {
    const ref = useRef()

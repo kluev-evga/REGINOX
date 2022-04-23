@@ -28,7 +28,7 @@ const FeedbackItemsContainer = () => {
          {loading && <LoadingIcon/>}
 
          {!!totalReviewsCount && productReviews.length < totalReviewsCount &&
-            <button onClick={onClickHangler} className='product-feedback__items-btn-load button-form'>
+            <button className='button-form' onClick={onClickHangler}>
                Загрузить еще
             </button>
          }

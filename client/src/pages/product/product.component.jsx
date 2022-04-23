@@ -6,8 +6,7 @@ import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import Slider from './slider/slider.component'
 import SliderPanel from './slider/slider-panel.component'
-import TabsContainerLargeView from './tabs/tabs-container-large-view.component'
-import TabsContainerPhoneView from './tabs/tabs-container-phone-view.component'
+import { TabsContainerLargeView, TabsContainerPhoneView } from './tabs/tabs-container.component'
 import SimilarProducts from './similar-products/similar-products.component'
 
 
