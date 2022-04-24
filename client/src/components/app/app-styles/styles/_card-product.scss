@@ -1,9 +1,9 @@
 .card-product {
+   position: relative;
    height: 100%;
    display: flex;
    flex-direction: column;
-   background-color: #f0f0f0;
-   position: relative;
+   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
 
    &__link {
       margin: 0 15vw;
@@ -52,19 +52,23 @@
 
    &__btn-cart {
       width: 100%;
-      padding: 10px 0;
+      padding: 7px 0;
       display: flex;
       align-items: center;
       justify-content: center;
 
       color: var(--white);
       font-size: 14px;
+      font-weight: 300;
       background-color: var(--red);
+      transition: background-color 0.15s ease-in;
+
 
       svg {
-         margin-right: 10px;
-         width: 20px;
-         height: 20px;
+         margin-right: 6px;
+         width: 18px;
+         height: 18px;
+         color: var(--white);
       }
 
       &:hover,
@@ -74,6 +78,14 @@
 
       &.active {
          background-color: var(--gray);
+         letter-spacing: -2px;
+         animation: btn-cart-fade-in 0.05s ease-in forwards;
+
+         @keyframes btn-cart-fade-in {
+            to {
+               letter-spacing: normal;
+            }
+         }
       }
    }
 
@@ -134,6 +146,9 @@
    }
 
    @media (min-width: 768px) {
+      background-color: #efede8;
+      box-shadow: unset;
+
       &__rating {
          padding: 0 15px 5px;
       }
@@ -145,6 +160,10 @@
 
       &__price {
          font-size: 17px;
+      }
+
+      &__btn-cart {
+         padding: 8px 0;
       }
 
       &.new::after,
@@ -184,6 +203,10 @@
          font-size: 19px;
       }
 
+      &__btn-cart {
+         padding: 9px 0;
+      }
+
       &.new::after,
       &.promo::before {
          padding: 4px 9px;
@@ -196,12 +219,25 @@
    }
 
    @media (min-width: 1200px) {
-      background-color: var(--light);
-      transition: background-color 0.2s ease-out;
+      transition: background-color 0.35s ease, box-shadow 0.4s ease-out;
+
+      mask-image: linear-gradient(#000000ba 15%, #000 25%);
+      mask-size: 100% 150%;
+      animation: card-product-clip 0.9s cubic-bezier(.24, .76, .31, .98) forwards;
+
+      @keyframes card-product-clip {
+         99% {
+            mask-position: 0 50%;
+         }
+
+         to {
+            mask-image: none;
+         }
+      }
 
       &.hover {
          background-color: var(--white);
-         box-shadow: 0 0 5px #0000001a;
+         box-shadow: 0 0 7px #0000002a;
       }
 
       &__link {
@@ -234,11 +270,11 @@
       &__btn-cart {
          justify-content: flex-start;
          font-size: 16px;
-         padding: 12px 30px;
+         padding: 11px 25px;
 
          svg {
-            width: 25px;
-            height: 25px;
+            width: 22px;
+            height: 22px;
          }
       }
 
@@ -256,8 +292,16 @@
          right: 10px;
          top: 10px;
       }
+   }
 
-      /* --------------------------------------------------- */
+   @media (min-width: 1600px) {
+      &__btn-cart {
+         font-size: 17px;
+         padding: 13px 25px;
+      }
+   }
+
+   @media (min-width: 1200px) {
       &.row {
          display: grid;
          grid-template: 1fr auto / 1fr 1.8fr 200px;
@@ -265,6 +309,7 @@
          align-items: start;
          row-gap: 15px;
          column-gap: 20px;
+         mask-image: linear-gradient(#0001 10%, #000 25%, #000 25%);
       }
 
       &.row.hover {
@@ -309,7 +354,7 @@
          order: 1;
          display: flex;
          justify-content: center;
-         padding: 12px 0;
+         padding: 11px 0;
       }
 
       &.row.new::after,

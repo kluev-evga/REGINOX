@@ -1,7 +1,7 @@
 import { useMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productsLoaded, filters } from '../../redux/selectors'
-import RangeSlider from './components/range-slider.component'
+import RangeSliderContainer from './components/range-slider-container.component'
 import FilterSection from './components/filters-section.component'
 
 
@@ -13,12 +13,7 @@ const Filters = () => {
 
    return (
       <div className='filters'>
-         <section>
-            <div className='filters__section-heading'>
-               <p>Цена</p>
-            </div>
-            <RangeSlider key={params.url}/>
-         </section>
+         <RangeSliderContainer/>
          { filterSections.map( (item, i) => <FilterSection key={params.url + i} {...item} /> ) }
       </div>
    )

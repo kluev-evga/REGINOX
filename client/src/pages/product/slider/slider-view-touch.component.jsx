@@ -15,7 +15,7 @@ const SliderViewTouch = ({images, thumbsSwiper}) => (
       {images.map((img, i) => (
          <SwiperSlide key={i} zoom={true}>
             <div className="swiper-zoom-container">
-               <img src={img} alt='poductimage' width='600' height='600' loading='lazy' />
+               <img src={img} alt='poductimage' width='600' height='600' />
             </div>
          </SwiperSlide>
       ))}

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import Collapsible from 'react-collapsible'
 import FiltersItem from './filters-item.component'
-import { ReactComponent as ChevronDownIcon } from '../../../assets/svg/chevron-down.svg'
+import { ReactComponent as ChevronRightIcon } from '../../../assets/svg/chevron-right.svg'
 import { ReactComponent as ChevronUpIcon } from '../../../assets/svg/chevron-up.svg'
 
 
@@ -21,7 +21,7 @@ const CollapsibleBlock = ({ filters, searchGroup }) => {
       <div className='filters__collapsible'>
          <Outside />
          <Collapsible
-            trigger={ <> Ещё{count}<ChevronDownIcon /> </> }
+            trigger={ <> Ещё{count}<ChevronRightIcon /> </> }
             triggerWhenOpen={ <> Свернуть<ChevronUpIcon /> </> }
             triggerTagName={'button'}
             transitionTime={time}

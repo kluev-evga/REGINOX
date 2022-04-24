@@ -25,7 +25,7 @@ const CartItem = ({id}) => {
             to={`/products/${url}/${productUrl}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>
-            <img src={img} alt='product item' loading='lazy'/>
+            <img src={img} alt='product item' />
          </Link>
          <div>
             <h2>{title}</h2>

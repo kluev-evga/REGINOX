@@ -7,6 +7,7 @@ import CardSlider from '../../components/card-slider/card-slider.component'
 import Brands from '../../components/brands/brands.component'
 import Loader from '../../components/loader/loader.coponent'
 import { ReactComponent as EyeIcon } from '../../assets/svg/eye.svg'
+import './partners.scss'
 
 
 const Partners = () => {

@@ -2,16 +2,12 @@ import { useEffect } from 'react';
 import {useState} from 'react'
 import { Range, getTrackBackground } from 'react-range';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMatch } from 'react-router-dom';
-import { filtersMinMax, filterStoredMinMax } from '../../../redux/selectors';
+import { filterStoredMinMax } from '../../../redux/selectors';
 import { filterProducts } from '../../../redux/actions';
 import { currency } from '../../../utils/currency';
 
 
-const RangeSlider = () => {
-  const {params} = useMatch('/products/:url')
-  const { url } = params
-  const [MIN, MAX] = useSelector(state => filtersMinMax(state, url))
+const RangeSlider = ({MIN, MAX, url}) => {
   const [values, setValues] = useState([MIN, MAX])
   const storedMinMax = useSelector(store => filterStoredMinMax(store, url))
 

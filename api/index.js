@@ -1,5 +1,13 @@
 const router = require('express').Router()
-const { getFilters, getProduct, getProductsData, getProductData, getCardsData, getHome, getSimilarProducts, shuffleData, getCompareData, reply } = require('./utils')
+const { reply, shuffleArry } = require('./utils')
+const {
+   getFilters,
+   getProduct,
+   getProductsData,
+   getProductData,
+   getCardsData,
+   getURLMatcher
+} = require('./data')
 
 const home = require('./db/home')
 const links = require('./db/links')
@@ -18,8 +26,8 @@ const productItems = getProduct(product)
 const productsdata = getProductsData(productItems)
 const { productdata, reviewsdata } = getProductData(productItems)
 const { cartdata, promodata, newitemsdata } = getCardsData(productdata)
-const shuffledProducts = shuffleData(cartdata)
-const comparedata = getCompareData(productdata)
+const matcher = getURLMatcher(productdata)
+
 
 
 router.get('/api/menu', (req, res, next) => { reply(res, menudata) })
@@ -27,14 +35,18 @@ router.get('/api/sertificates', (req, res, next) => { reply(res, sertificates) }
 router.get('/api/brands', (req, res, next) => { reply(res, brands)})
 router.get('/api/promo-items', (req, res, next) => { reply(res, promodata) })
 router.get('/api/new-items', (req, res, next) => { reply(res, newitemsdata) })
+
 router.get('/api/home', (req, res, next) => {
-   const homedata = getHome(home, shuffledProducts)
+   const productsArray = Object.values(cartdata)
+   const shuffledProducts = shuffleArry(productsArray)
+   const popularProducts = shuffledProducts.slice(0, 8)
+   const homedata = {...home, popularProducts }
    reply(res, homedata)
 })
 
 router.get('/api/catalogs', (req, res, next) => {
    const { size, current } = req.query
-   const catalogsSlice = catalogs.slice(current, size)
+   const catalogsSlice = catalogs.slice(current, size)//////////////////////////////////////////////////
    reply(res, { catalogs: catalogsSlice, total: catalogs.length })
 })
 
@@ -84,15 +96,18 @@ router.get('/api/cart-items', (req, res, next) => {
 })
 
 router.get('/api/similar-products', (req, res, next) => {
-   const products = getSimilarProducts(shuffledProducts)
+   const productsArray = Object.values(cartdata)
+   const shuffledProducts = shuffleArry(productsArray)
+   const products = shuffledProducts.slice(0, 15)
    reply(res, products)
 })
 
-router.get('/api/compare-items', (req, res, next) => {
+router.get('/api/compare', (req, res, next) => {
    const { items } = req.query
-   const itemsArr = items.split('_')
-   const data = itemsArr.reduce((acc, id) => {
-      acc[comparedata[id].productUrl] = comparedata[id]
+   const idArr = items.split('_')
+   const data = idArr.reduce((acc, id) => {
+      const { url, productUrl } = matcher[id]
+      acc[productUrl] = productdata[url][productUrl]
       return acc
    }, {})
    reply(res, data)

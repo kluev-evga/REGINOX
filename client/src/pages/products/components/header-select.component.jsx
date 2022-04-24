@@ -10,10 +10,10 @@ const customStyles = {
    dropdownIndicator: (provided, {selectProps}) => ({...provided,  padding: selectProps.isDesktop? '8px' : '5px' }),
    container: provided => ({ ...provided, width: '100%' }),
    control: provided => ({ ...provided, cursor: 'pointer' }),
-   valueContainer: (provided, {selectProps}) => ({...provided, padding: selectProps.isDesktop? '10px' : '6px 10px', margin: '0 0 0 -3px'}),
+   valueContainer: (provided, {selectProps}) => ({...provided, padding: selectProps.isDesktop? '9px' : '6px 10px', margin: '0 0 0 -3px'}),
    input: provided => ({ ...provided, padding: 0, margin: 0 }),
    menuList: provided => ({ ...provided, padding: 0 }),
-   option: (provided, {selectProps}) => ({ ...provided, cursor: 'pointer', padding:  selectProps.isDesktop? '10px' : '6px 10px' }),
+   option: (provided, {selectProps}) => ({ ...provided, cursor: 'pointer', padding:  selectProps.isDesktop? '9px' : '6px 10px' }),
 }
 
 const options = [

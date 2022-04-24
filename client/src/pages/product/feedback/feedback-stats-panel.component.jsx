@@ -3,23 +3,17 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { productItem } from '../../../redux/selectors'
 import Response from '../../../components/response/response.component';
+import Rating from '../../../components/rating/rating.component';
 import FormFeedback from './feedback-form.component'
 import ModalContainer from '../../../components/modal-container/modal-container.component';
-import { ReactComponent as StarIcon } from '../../../assets/svg/star.svg'
 
-
-const Stars = ({ r }) => (
-   <div className='product-feedback__stats-stars'>
-      {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : 'clear'} /> )}
-   </div>
-)
 
 const fields = ['Цена', 'Качество', 'Внещний вид']
 const Bars = ({ ratings }) => (
    <div className='product-feedback__stats-bars'>
-      {fields.map((item, i) => (
+      {fields.map((field, i) => (
          <span key={i}>
-            {item}
+            {field}
             <div>
                <span style={{ width: ratings[i] + '%' }}></span>
             </div>
@@ -41,7 +35,7 @@ const FeedbackStatsPanel = () => {
       <div>
          <div className='product-feedback__stats'>
             {!!reviewsCount && <div className='product-feedback__stats-total'>{r.toFixed(1)}</div>}
-            <Stars r={r} />
+            <Rating r={r} wrapperClass='product-feedback__stats-stars' />
             Всего {reviewsCount} оценок
          </div>
          {!!reviewsCount && <Bars ratings={ratings} />}

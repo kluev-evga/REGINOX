@@ -1,7 +1,5 @@
 //node-modules:
 @import 'normalize-scss/sass/normalize';
-@import 'rc-collapse/assets/index';
-@import 'photoswipe/dist/photoswipe.css';
 @import 'swiper/scss';
 @import 'swiper/scss/pagination';
 @import 'swiper/scss/navigation';
@@ -11,15 +9,13 @@
 @import 'swiper/scss/a11y';
 
 
+
 // global:
 @import './styles/_fonts';
 @import './styles/_base';
 @import './styles/_elements';
-
 @import './styles/_sliders';
-@import './styles/_pswp'; // photo-swipe
 @import './styles/_react-modal';
-
 
 // components:
 @import './styles/_brands';
@@ -33,42 +29,3 @@
 @import './styles/_pagination';
 @import './styles/_search';
 @import './styles/_summary';
-
-
-// pages:
-@import './styles/_home-slider';
-@import './styles/_home-address';
-@import './styles/_home-catalog';
-@import './styles/_home-popular-products';
-
-@import './styles/_products';
-
-@import './styles/_product-container';
-@import './styles/_product-slider';
-@import './styles/_product-panel';
-@import './styles/_product-tabs-container';
-@import './styles/_product-feedback';
-@import './styles/_product-specifications';
-@import './styles/_product-modal';
-
-
-@import './styles/_why-us';
-@import './styles/_partners';
-
-@import './styles/_sertificates';
-
-@import './styles/_articles';
-@import './styles/_information';
-@import './styles/_catalogs';
-@import './styles/_contacts';
-
-@import './styles/_promo-section';
-
-@import './styles/_policy';
-@import './styles/_error';
-@import './styles/_not-found';
-
-@import './styles/_cart';
-@import './styles/_order';
-@import './styles/_order-modal';
-@import './styles/_compare';

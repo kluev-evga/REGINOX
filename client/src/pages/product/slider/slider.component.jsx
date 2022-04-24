@@ -9,7 +9,7 @@ import SliderViewHover from './slider-veiw-hover-component'
 
 const Slider = ({ images }) => {
    const [thumbsSwiper, setThumbsSwiper] = useState()
-   const [ image, setImage ] = useState({img:images[0], i: 0})
+   const [image, setImage] = useState({ img: images[0], i: 0 })
    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
    const isAnyHover = useMediaQuery({ query: '(any-hover)' })
 
@@ -17,8 +17,8 @@ const Slider = ({ images }) => {
       <div className='product-slider'>
 
          {isAnyHover
-            ? <SliderViewHover image={image.img}/>
-            : <SliderViewTouch images={images} thumbsSwiper={thumbsSwiper}/>
+            ? <SliderViewHover image={image.img} />
+            : <SliderViewTouch images={images} thumbsSwiper={thumbsSwiper} />
          }
 
          <Swiper
@@ -33,11 +33,11 @@ const Slider = ({ images }) => {
          >
             {images.map((img, i) => (
                <SwiperSlide
-                  className={cn('product-slider__thumbs-slide', {'active': i === image.i})}
+                  className={cn('product-slider__thumbs-slide', { 'active': i === image.i })}
                   key={i}
-                  onClick={() => setImage({img, i})}
+                  onClick={() => setImage({ img, i })}
                >
-                  <img src={img} alt='poductimage' width='600' height='600' loading='lazy' />
+                  <img src={img} alt='poductimage' width='600' height='600' />
                </SwiperSlide>
             ))}
          </Swiper>

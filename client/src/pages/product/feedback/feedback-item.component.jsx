@@ -4,9 +4,10 @@ import { ReactComponent as ChevronRight } from '../../../assets/svg/chevron-righ
 import { ReactComponent as ChevronUp } from '../../../assets/svg/chevron-up.svg'
 
 
-const FeedbackItem = ({ name, date, dateTime, text, confirmed}) => {
+const FeedbackItem = ({ name, date, text, confirmed}) => {
    const [hidden, setHidden] = useState(true)
    const [withButton, setWithButton] = useState(false)
+   const dateTime = date.replace(/\//g, '-')
    const ref = useRef()
 
    useEffect(() => { ref.current.scrollHeight > 48 && setWithButton(true) }, [])

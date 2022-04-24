@@ -53,7 +53,9 @@ import {
    productItemLoading,
    productItemLoaded,
    filtersMinMax,
-   filterStoredMinMax
+   filterStoredMinMax,
+   reviewsLoading,
+   reviewsCurrent,
 } from './selectors'
 
 import { api } from '../utils/api'
@@ -84,7 +86,7 @@ export const loadMenu = () => (dispatch, getState) => {
    dispatch({ type: LOAD_MENU + REQUEST })
 
    api.get('/menu')
-      .then(({data}) => { dispatch({ type: LOAD_MENU + SUCCESS, data }) })
+      .then(({ data }) => { dispatch({ type: LOAD_MENU + SUCCESS, data }) })
       .catch((error) => { dispatch({ type: LOAD_MENU + FAILURE, error }) })
 }
 
@@ -98,7 +100,7 @@ export const loadBrands = () => (dispatch, getState) => {
    dispatch({ type: LOAD_BRANDS + REQUEST })
 
    Promise.all([api.get('/brands'), loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
+      .then(([{ data }]) => dispatch({ type: LOAD_BRANDS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_BRANDS + FAILURE, error }))
 }
 
@@ -112,7 +114,7 @@ export const loadSertificates = () => (dispatch, getState) => {
    dispatch({ type: LOAD_SERTIFICATES + REQUEST })
 
    Promise.all([api.get('/sertificates'), loadBrands()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data }))
+      .then(([{ data }]) => dispatch({ type: LOAD_SERTIFICATES + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_SERTIFICATES + FAILURE, error }))
 }
 
@@ -126,7 +128,7 @@ export const loadHome = () => (dispatch, getState) => {
    dispatch({ type: LOAD_HOME + REQUEST })
 
    Promise.all([api.get('/home'), loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_HOME + SUCCESS, data }))
+      .then(([{ data }]) => dispatch({ type: LOAD_HOME + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_HOME + FAILURE, error }))
 }
 
@@ -140,7 +142,7 @@ export const loadCatalogs = pageSize => (dispatch, getState) => {
    dispatch({ type: LOAD_CATALOGS + REQUEST })
 
    api.get(`/catalogs?size=${pageSize}&current=${current}`)
-      .then(({data}) => { dispatch({ type: LOAD_CATALOGS + SUCCESS, data }) })
+      .then(({ data }) => { dispatch({ type: LOAD_CATALOGS + SUCCESS, data }) })
       .catch((error) => { dispatch({ type: LOAD_CATALOGS + FAILURE, error }) })
 }
 
@@ -155,7 +157,7 @@ export const loadArticles = page => (dispatch, getState) => {
    dispatch({ type: LOAD_ARTICLES + REQUEST, page })
 
    Promise.all([api.get(`/articles?page=${page}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
+      .then(([{ data }]) => dispatch({ type: LOAD_ARTICLES + SUCCESS, data, page }))
       .catch(error => dispatch({ type: LOAD_ARTICLES + FAILURE, error }))
 }
 
@@ -169,7 +171,7 @@ export const loadArticle = (article) => (dispatch, getState) => {
    dispatch({ type: LOAD_ARTICLE + REQUEST, article })
 
    Promise.all([api.get(`/articles/${article}`), loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
+      .then(([{ data }]) => dispatch({ type: LOAD_ARTICLE + SUCCESS, data, article }))
       .catch(error => dispatch({ type: LOAD_ARTICLE + FAILURE, error }))
 }
 
@@ -184,7 +186,7 @@ export const loadProducts = url => (dispatch, getState) => {
    dispatch({ type: LOAD_PRODUCTS + REQUEST, url })
 
    Promise.all([api.get(`/products/${url}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
+      .then(([{ data }]) => dispatch({ type: LOAD_PRODUCTS + SUCCESS, data, url }))
       .catch(error => dispatch({ type: LOAD_PRODUCTS + FAILURE, error, url }))
 }
 
@@ -200,20 +202,21 @@ export const loadProductItem = (url, productUrl) => (dispatch, getState) => {
    const menu = state.menu.loaded
 
    Promise.all([api.get(`/product/${url}/${productUrl}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
+      .then(([{ data }]) => dispatch({ type: LOAD_PRODUCT + SUCCESS, data, productUrl }))
       .catch(error => dispatch({ type: LOAD_PRODUCT + FAILURE, error, productUrl }))
 }
 
 
-export const loadReviews = (url, productUrl, currentSize = 0) => (dispatch, getState) => {
+export const loadReviews = (url, productUrl) => (dispatch, getState) => {
    const state = getState()
-   const loading = state.reviews.loading[productUrl]
+   const loading = reviewsLoading(state, productUrl)
+   const current = reviewsCurrent(state, productUrl)
    if (loading) return
 
    dispatch({ type: LOAD_REVIEWS + REQUEST, productUrl })
 
-   api.get(`/reviews/${url}/${productUrl}?size=${currentSize}`)
-      .then(({data}) => { dispatch({ type: LOAD_REVIEWS + SUCCESS, data, productUrl }) })
+   api.get(`/reviews/${url}/${productUrl}?size=${current}`)
+      .then(({ data }) => { dispatch({ type: LOAD_REVIEWS + SUCCESS, data, productUrl, current: current + 5 }) })
       .catch((error) => { dispatch({ type: LOAD_REVIEWS + FAILURE, error }) })
 }
 
@@ -222,17 +225,15 @@ export const loadCart = itemsToLoad => (dispatch, getState) => {
    const state = getState()
    if (state.cart.loading) return
    const menu = state.menu.loaded
-   if (menu && itemsToLoad.length === 0) return
+   if (menu && itemsToLoad.length === 0) return dispatch({ type: LOAD_CART + SUCCESS, data: {} })
 
    dispatch({ type: LOAD_CART + REQUEST })
 
    Promise.all([itemsToLoad.length === 0 ? null : api.get(`/cart-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([result]) => {
-         if (result) {
-            const {data} = result
-            dispatch({ type: LOAD_CART + SUCCESS, data })
-         }
-         dispatch({ type: LOAD_CART + SUCCESS, data: {} })
+      .then(([response]) => {
+         itemsToLoad.length === 0
+            ? dispatch({ type: LOAD_CART + SUCCESS, data: {} })
+            : dispatch({ type: LOAD_CART + SUCCESS, data: response.data })
       })
       .catch(error => dispatch({ type: LOAD_CART + FAILURE, error }))
 }
@@ -242,8 +243,8 @@ export const loadSimilarProducts = () => dispatch => {
    dispatch({ type: LOAD_SIMILAR_RPODUCTS + REQUEST })
 
    api.get('/similar-products')
-      .then(({data}) => { dispatch({ type: LOAD_SIMILAR_RPODUCTS + SUCCESS, data }) })
-      .catch((error) => {dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error }) })
+      .then(({ data }) => { dispatch({ type: LOAD_SIMILAR_RPODUCTS + SUCCESS, data }) })
+      .catch((error) => { dispatch({ type: LOAD_SIMILAR_RPODUCTS + FAILURE, error }) })
 }
 
 
@@ -258,7 +259,7 @@ export const loadPromoItems = () => (dispatch, getState) => {
    const menu = state.menu.loaded
 
    Promise.all([api.get('/promo-items'), !menu && loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_PROMO_ITEMS + SUCCESS, data }))
+      .then(([{ data }]) => dispatch({ type: LOAD_PROMO_ITEMS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_PROMO_ITEMS + FAILURE, error }))
 }
 
@@ -274,7 +275,7 @@ export const loadNewItems = () => (dispatch, getState) => {
    const menu = state.menu.loaded
 
    Promise.all([api.get('/new-items'), !menu && loadMenu()(dispatch, getState)])
-      .then(([{data}]) => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
+      .then(([{ data }]) => dispatch({ type: LOAD_NEW_ITEMS + SUCCESS, data }))
       .catch(error => dispatch({ type: LOAD_NEW_ITEMS + FAILURE, error }))
 }
 
@@ -283,18 +284,16 @@ export const loadCompareItems = itemsToLoad => (dispatch, getState) => {
    const state = getState()
    if (state.compare.loading) return
    const menu = state.menu.loaded
-   if (menu && itemsToLoad.length === 0) return
+   if (menu && itemsToLoad.length === 0) return dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: {} })
 
    dispatch({ type: LOAD_COMPARE_ITEMS + REQUEST })
 
-   Promise.all([itemsToLoad.length === 0 ? null : api.get(`/compare-items?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
-      .then(([result]) => {
-         if (result) {
-            const {data} = result
-            dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data })
-         }
-         dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: {} })
-      })
+   Promise.all([itemsToLoad.length === 0 ? null : api.get(`/compare?items=${itemsToLoad.join('_')}`), !menu && loadMenu()(dispatch, getState)])
+      .then(([response]) =>
+         itemsToLoad.length === 0
+            ? dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: {} })
+            : dispatch({ type: LOAD_COMPARE_ITEMS + SUCCESS, data: response.data })
+      )
       .catch(error => dispatch({ type: LOAD_COMPARE_ITEMS + FAILURE, error }))
 }
 
@@ -308,7 +307,7 @@ export const submitOrder = (values) => (dispatch, getState) => {
 
    api.post('/order', values)
       .then(() => { dispatch({ type: SUBMIT_ORDER + SUCCESS }) })
-      .catch((error) => {dispatch({ type: SUBMIT_ORDER + FAILURE, error }) })
+      .catch((error) => { dispatch({ type: SUBMIT_ORDER + FAILURE, error }) })
 }
 
 
@@ -320,8 +319,8 @@ export const submitForm = (values) => (dispatch, getState) => {
    dispatch({ type: FORM_SUBMIT + REQUEST })
    // values.formType === 'question' | 'contacts' | 'feedback'
    api.post('/form', values)
-   .then(() => { dispatch({ type: FORM_SUBMIT + SUCCESS }) })
-   .catch((error) => {dispatch({ type: FORM_SUBMIT + FAILURE, error }) })
+      .then(() => { dispatch({ type: FORM_SUBMIT + SUCCESS }) })
+      .catch((error) => { dispatch({ type: FORM_SUBMIT + FAILURE, error }) })
 }
 
 
@@ -371,7 +370,7 @@ const filteredProducts = (productsbyCategory, selected, normalizedFilters) => {
 }
 
 //////////////////////////////////////////////////////////////////////////
-export const filterProducts = (url, search, minmax=null) => (dispatch, getState) => {
+export const filterProducts = (url, search, minmax = null) => (dispatch, getState) => {
    const state = getState()
    const filters = state.filters.filters[url]
    const products = Object.keys(state.products.products[url])
@@ -398,25 +397,25 @@ export const filterProducts = (url, search, minmax=null) => (dispatch, getState)
 
 
    Promise.resolve(products)
-   .then((products) => {
-      // checkbox:
-      const isCheckboxSelected = Object.keys(selected).length
-      const filteredByCheckbox = (isCheckboxSelected) ? filteredProducts(products, selected, normalizedFilters) : products
+      .then((products) => {
+         // checkbox:
+         const isCheckboxSelected = Object.keys(selected).length
+         const filteredByCheckbox = (isCheckboxSelected) ? filteredProducts(products, selected, normalizedFilters) : products
 
-      // range-slider:
-      const [ MIN, MAX ] = newMinMax
-      const filteredByPrice = filteredByCheckbox.reduce((result, id) => {
-         const price = state.products.products[url][id].p
-         if (price >= MIN && price <= MAX) result.push(id)
-         return result
-      }, [])
+         // range-slider:
+         const [MIN, MAX] = newMinMax
+         const filteredByPrice = filteredByCheckbox.reduce((result, id) => {
+            const price = state.products.products[url][id].p
+            if (price >= MIN && price <= MAX) result.push(id)
+            return result
+         }, [])
 
-      // select:
-      const sortBy = state.filters.sortBy
-      const prd = state.products.products[url]
-      const sortedProducts = sortProductsByValue(sortBy, filteredByPrice, prd)
+         // select:
+         const sortBy = state.filters.sortBy
+         const prd = state.products.products[url]
+         const sortedProducts = sortProductsByValue(sortBy, filteredByPrice, prd)
 
-      // attn: searchParams stringified on purpose, so in products it can be checked if its empty string(do not change)
-      dispatch({ type: FILTERS_IS_FILTERED, sortedProducts, url, queryString: searchParams.toString() })
-   })
+         // attn: searchParams stringified on purpose, so in products it can be checked if its empty string(do not change)
+         dispatch({ type: FILTERS_IS_FILTERED, sortedProducts, url, queryString: searchParams.toString() })
+      })
 }

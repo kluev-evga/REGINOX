@@ -5,17 +5,10 @@ import { cartItemCount, compareItem } from '../../redux/selectors'
 import { changeCartItemCount, removeItemFromCart, toggleCompareItem } from '../../redux/actions'
 import cn from 'classnames'
 import { currency } from '../../utils/currency'
+import Rating from '../rating/rating.component'
 import { ReactComponent as CartIcon } from '../../assets/svg/cart.svg'
-import { ReactComponent as StarIcon } from '../../assets/svg/star.svg'
 import { ReactComponent as CompareIcon } from '../../assets/svg/compare.svg'
 
-
-const RatingBlock = ({ r, reviewers }) => (
-   <div className='card-product__rating'>
-      {[...Array(5)].map((_, i) => <StarIcon key={i} className={r > i + 0.5 ? '' : 'clear'} /> )}
-      <span>({reviewers})</span>
-   </div>
-)
 
 const CardProduct = ({ tiles, product, withRating = true }) => {
    const { id, img, alt, title, url, productUrl, reviewers, p, r, promo, newItem } = product
@@ -41,10 +34,14 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
             to={`/products/${url}/${productUrl}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>
-            <img src={img} alt={alt} width='600' height='600' loading='lazy' />
+            <img src={img} alt={alt} width='600' height='600' />
          </Link>
 
-         {withRating && <RatingBlock r={r} reviewers={reviewers} />}
+         {withRating &&
+             <Rating r={r} wrapperClass='card-product__rating'>
+               <span>({reviewers})</span>
+             </Rating>
+         }
          <p className='card-product__title'>{title}</p>
          <p className='card-product__price'>{currency(p)}</p>
 

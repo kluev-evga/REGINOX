@@ -26,7 +26,7 @@ const SliderViewHover = ({image}) => {
          style={{backgroundImage: `url(${image})`}}
          className='product-slider__hoverable'
       >
-         <img src={image} alt="proudct" loading='lazy'/>
+         <img src={image} alt="proudct" />
       </div>
    )
 }

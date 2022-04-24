@@ -8,6 +8,7 @@ import HomeAdress from './components/home-address/home-address.component'
 import HomeCatalog from './components/home-catalog.component'
 import HomePopularProducts from './components/popular-products.components'
 import HomeAbout from './components/home-about.component'
+import './styles/styles.scss'
 
 
 const Home = () => {

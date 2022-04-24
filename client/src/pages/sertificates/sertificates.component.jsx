@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import Brands from '../../components/brands/brands.component'
 import SertificatesSlider from './components/sertificates-slider.component'
 import Loader from '../../components/loader/loader.coponent'
+import './sertificates.scss'
 
 
 const Sertificates = () => {

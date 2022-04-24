@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { ViewLarge, ViewPhone } from './components/view.component'
 import withMenuLoader from '../../hoc/with-menu-loader.js'
+import './contacts.scss'
 
 
 const Contacts = () => {

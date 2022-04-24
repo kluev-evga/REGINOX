@@ -1,0 +1,28 @@
+.product-tabs {
+   &__title {
+      margin-top: 40px;
+      margin-bottom: 25px;
+
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--gray);
+   }
+
+   @media (min-width: 768px) {
+      margin-top: 10px;
+      grid-column: 1 / -1;
+
+      &__content {
+         padding-top: 20px;
+         min-height: 280px;
+      }
+   }
+
+   @media (min-width: 1200px) {
+      &__content {
+         display: flex;
+         flex-direction: column;
+      }
+   }
+}

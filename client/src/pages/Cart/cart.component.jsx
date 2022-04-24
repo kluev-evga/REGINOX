@@ -5,6 +5,7 @@ import { cartHasItems } from '../../redux/selectors'
 import CartItem from './cart-item.component'
 import CartSummary from '../../components/summary/summary.component'
 import { ReactComponent as EmptyIcon } from '../../assets/svg/empty.svg'
+import './cart.scss'
 
 
 const Cart = ({cartItems}) => {

@@ -6,24 +6,24 @@ import withMenuLoader from '../../hoc/with-menu-loader'
 
 const Delivery = () => {
    const ref = useRef()
-   useEffect(() => {ref.current.scrollIntoView({behavior: "smooth", block: "start"})}, [])
+   useEffect(() => { ref.current.scrollIntoView({ behavior: "smooth", block: "start" }) }, [])
 
    return (
       <div ref={ref}>
          <div className='container'>
             <div className='breadcrumbs'><Link to='/'>Главная</Link> / Доставка и оплата</div>
-   
+
             <h1 className='title'>Доставка и оплата</h1>
-   
-            <Tabs>
+
+            <Tabs focusTabOnClick={false}>
                <div className='delivery-tabs'>
                   <TabList>
                      <Tab>Москва</Tab>
                      <Tab>Вся Россия</Tab>
                   </TabList>
                </div>
-   
-               <TabPanel className='article'>
+
+               <TabPanel className='article react-tabs__tab-panel' forceRender={true}>
                   <b>
                      Доставка товара покупателям осуществляется в течение 1-3-х
                      рабочих дней после оформления и согласования заказа с 11 до 19
@@ -65,7 +65,7 @@ const Delivery = () => {
                      </li>
                   </ul>
                </TabPanel>
-               <TabPanel className='article'>
+               <TabPanel className='article react-tabs__tab-panel' forceRender={true}>
                   <b>
                      Mы предлагаем Вам воспользоваться услугами транспортных
                      компаний:

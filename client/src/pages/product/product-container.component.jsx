@@ -5,6 +5,7 @@ import { loadProductItem } from '../../redux/actions'
 import { productItemLoaded } from '../../redux/selectors'
 import Product from '../../pages/product/product.component'
 import Loader from '../../components/loader/loader.coponent'
+import './styles/styles.scss';
 
 
 const ProductContainer = () => {

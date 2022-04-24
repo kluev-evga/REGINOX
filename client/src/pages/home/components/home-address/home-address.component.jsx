@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux'
 import { homeAddressBar } from '../../../../redux/selectors'
 import { useMediaQuery } from 'react-responsive'
 import Collapse, { Panel } from 'rc-collapse'
-import Tab from './components/tab.component'
-import TabContent from './components/tab-content.component'
+import Tab from './tab.component'
+import TabContent from './tab-content.component'
 import { ReactComponent as Squares } from '../../../../assets/svg/squares.svg'
+import { ReactComponent as ChevronIcon } from '../../../../assets/svg/chevron-right.svg'
 
 
 const HomeAdress = () => {
@@ -22,8 +23,8 @@ const HomeAdress = () => {
             {isDesktop
                ? <ul className='home-address__tabs-wrapper'>
                      {addressData.map(data => <Tab key={data.id} {...data} /> )}
-                  </ul>
-               : <Collapse accordion={true} >
+               </ul>
+               : <Collapse accordion={true} expandIcon={<ChevronIcon/>} defaultActiveKey='asdf'>
                      {addressData.map(({ id, name, ...rest }) => (
                         <Panel key={id} header={name} headerClass='home-address__header'>
                            <TabContent {...rest} />

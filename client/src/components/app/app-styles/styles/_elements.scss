@@ -316,6 +316,27 @@
 
 //////////////////////////////////////////// tabs
 .react-tabs {
+   display: grid;
+
+   &__tab-panel {
+      grid-area: 2 / 1 / 2 / 2;
+      opacity: 0;
+      transition: opacity 0.25s linear;
+      animation: react-tabs 0.25s steps(1, end) forwards;
+
+      @keyframes react-tabs {
+         to {
+            display: none;
+         }
+      }
+   }
+
+   &__tab-panel--selected {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.15s linear 0.1s;
+   }
+
    &__tab-list {
       display: flex;
       border-bottom: 1px solid var(--gray-light);

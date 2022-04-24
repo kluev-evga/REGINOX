@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import cn from 'classnames'
 import withMenuLoader from '../../hoc/with-menu-loader'
 import CatalogsCards from './catalogs-cards.component'
+import './catalogs.scss'
 
 
 const Catalogs = () => {

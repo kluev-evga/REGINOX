@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'client/build')))
-app.use(cors({ origin: '*'}));
+app.use(cors({ origin: '*' }));
 app.use('', api)
 app.listen(port, error => {
    if (error) throw error

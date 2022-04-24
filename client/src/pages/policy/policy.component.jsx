@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import withMenuLoader from '../../hoc/with-menu-loader'
+import './policy.scss'
 
 
 const Policy = () => {

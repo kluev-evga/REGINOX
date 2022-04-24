@@ -18,7 +18,7 @@ const SliderSlide = ({ id }) => {
 
          {({ ref, open }) => (
             <div className='sertificates-slider__slide' onClick={open} ref={ref}>
-               <img src={'/assets/sertificates/' + img} alt={alt} loading='lazy' />
+               <img src={'/assets/sertificates/' + img} alt={alt} />
                <p>{name}</p>
             </div>
          )}

@@ -69,12 +69,12 @@ button {
 
 textarea {
    resize: none;
-   height: 180px;
-   padding: 8px 13px 20px;
+   height: 160px;
+   padding: 8px 15px;
 }
 
 input {
-   padding: 11px;
+   padding: 8px;
 }
 
 input,
@@ -94,9 +94,22 @@ textarea {
       font-weight: 400;
       color: var(--gray-med);
    }
+}
 
-   @media (min-width: 768px) {
+@media (min-width: 1200px) {
+
+   input,
+   textarea {
       font-size: 17px;
+   }
+
+   input {
+      padding: 11px;
+   }
+
+   textarea {
+      height: 180px;
+      padding: 8px 11px 20px;
    }
 }
 
@@ -122,8 +135,6 @@ p {
 
 .rc-collapse-header,
 .swiper-pagination span,
-.swiper-button-prev,
-.swiper-button-next,
 .swiper-slide,
 .react-tabs__tab {
    -webkit-touch-callout: none;

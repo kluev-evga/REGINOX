@@ -5,6 +5,7 @@ import { loadPromoItems, loadNewItems } from '../../redux/actions'
 import { promoItems, promoLoaded, newItems, newItemsLoaded } from '../../redux/selectors'
 import PromoSection from './promo-section.component'
 import Loader from '../../components/loader/loader.coponent'
+import './promo-section.scss'
 
 
 const Promo = ({ latest=false }) => {

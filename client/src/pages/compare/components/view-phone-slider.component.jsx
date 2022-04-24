@@ -26,11 +26,7 @@ const ViewPhoneSlider = ({ data, specs }) => {
                   <Link
                      className='compare__view-phone-link'
                      to={`/products/${item.url}/${item.productUrl}`}>
-                     <img
-                        src={item.images[0]}
-                        alt='productI item'
-                        loading='lazy'
-                     />
+                     <img src={item.images[0]} alt='productI item' />
                   </Link>
                   <span><p>{currency(item.price)}</p></span>
                   {specs.map((field, i) => (

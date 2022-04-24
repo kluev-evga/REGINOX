@@ -12,7 +12,7 @@ const Article = ({ entities }) => (
 
 const Images = ({ entities }) => (
    <div className='image-container'>
-      {entities.map(({ url, alt }, i) => <img src={url} alt={alt} key={i} loading='lazy'/> )}
+      {entities.map(({ url, alt }, i) => <img src={url} alt={alt} key={i} /> )}
    </div>
 )
 
