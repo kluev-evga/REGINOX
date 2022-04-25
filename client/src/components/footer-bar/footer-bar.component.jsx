@@ -52,7 +52,7 @@ const FooterBar = () => (
                      <Instagram />
                   </a>
                </div>
-               <Squares className='footer__squares' />
+               <Squares className='footer__squares' width="238" height="82" />
             </div>
          </div>
       </div>

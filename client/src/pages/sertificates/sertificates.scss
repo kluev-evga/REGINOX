@@ -74,7 +74,7 @@
             background: var(--red-opaque) no-repeat center url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Cpath fill='%23fff' d='M22.5 34.1h3v-8.4h8.4v-3h-8.4v-8.4h-3v8.4h-8.4v3h8.4ZM24 44q-4.1 0-7.8-1.6-3.6-1.5-6.3-4.3-2.8-2.7-4.3-6.4Q4 28.1 4 24t1.6-7.8q1.6-3.6 4.3-6.3 2.7-2.8 6.3-4.3Q19.9 4 24 4t7.8 1.6q3.7 1.6 6.3 4.3 2.8 2.7 4.3 6.3Q44 19.9 44 24v15.9q0 1.7-1.2 2.9T39.9 44Zm0-3q7.1 0 12-5 5-4.9 5-12t-5-12q-4.9-5-12-5t-12 5q-5 4.9-5 12t5 12q4.9 5 12 5Zm0-16.8Z'/%3E%3C/svg%3E");
             backdrop-filter: blur(1px);
             opacity: 0;
-            animation: sertificates-fade-in 0.2s cubic-bezier(.7, 0, .8, .7) 0.15s forwards;
+            animation: sertificates-fade-in 0.2s cubic-bezier(.7, 0, .8, .7) forwards;
 
             @keyframes sertificates-fade-in {
                to {

@@ -36,6 +36,10 @@
         user-select: none;
       }
     }
+
+    svg:hover {
+      color: var(--graphite)
+    }
   }
 
   h3 {
@@ -90,6 +94,14 @@
 
   &__message {
     margin-top: 30px;
+  }
+
+  &__btn-container button {
+    transition: background-color 0.1s linear;
+
+    &:hover {
+      background-color: lighten(#ad2131, 5%);
+    }
   }
 
   @media (min-width: 375px) {

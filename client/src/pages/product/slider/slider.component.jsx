@@ -3,30 +3,22 @@ import { useMediaQuery } from 'react-responsive'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, A11y } from 'swiper'
 import cn from 'classnames'
-import SliderViewTouch from './slider-view-touch.component'
-import SliderViewHover from './slider-veiw-hover-component'
+import ViewHover from './veiw-hover-component'
 
 
 const Slider = ({ images }) => {
-   const [thumbsSwiper, setThumbsSwiper] = useState()
    const [image, setImage] = useState({ img: images[0], i: 0 })
    const isDesktop = useMediaQuery({ query: '(min-width: 1200px)' })
-   const isAnyHover = useMediaQuery({ query: '(any-hover)' })
 
    return (
       <div className='product-slider'>
 
-         {isAnyHover
-            ? <SliderViewHover image={image.img} />
-            : <SliderViewTouch images={images} thumbsSwiper={thumbsSwiper} />
-         }
+         <ViewHover image={image.img} />
 
          <Swiper
             className='product-slider__thumbs-slider'
             direction={isDesktop ? 'vertical' : 'horizontal'}
             navigation
-            watchSlidesProgress={true}
-            onSwiper={setThumbsSwiper}
             spaceBetween={5}
             slidesPerView='auto'
             modules={[Navigation, A11y]}

@@ -66,27 +66,10 @@
       height: auto;
    }
 
-   &__image-slider {
-      max-width: 450px;
-
-      .swiper-slide {
-         .swiper-zoom-container {
-            z-index: -1;
-         }
-
-         &.swiper-slide-zoomed {
-            border-radius: 5px;
-            outline-offset: -1px;
-            outline: 1px solid var(--gray-med);
-         }
-      }
-   }
-
    &__thumbs-slide {
       width: auto;
       border-radius: 5px;
-      outline-offset: -2px;
-      padding: 1px;
+      outline-offset: -1px;
 
       &:hover {
          outline: 1px solid #e2e2e2;
@@ -99,31 +82,42 @@
       img {
          height: 70px;
          width: auto;
-         margin: 1px;
       }
    }
 
-   &__hoverable {
-      margin: 0;
-      background-position: 50% 50%;
-      border-radius: 5px;
-      cursor: url("data:image/svg+xml,%3Csvg height='20' width='20' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 42V30.5h3v6.3l7.4-7.3 2.1 2.1-7.4 7.4h6.4v3Zm24.5 0v-3h6.3l-7.3-7.3 2.1-2.2 7.4 7.4v-6.4h3V42ZM16.4 18.5 9 11.2v6.3H6V6h11.5v3h-6.3l7.3 7.3Zm15.3 0-2.2-2.1L36.9 9h-6.4V6H42v11.5h-3v-6.3Z'/%3E%3C/svg%3E") 10 10, default;
-      outline: 1px solid transparent;
-      transition: outline 0.2s linear 0.1s;
-
-      &:hover {
-         outline-color: var(--gray);
-         transition: outline 0.2s linear;
-      }
-
-      img:hover {
-         opacity: 0;
-         transition: opacity 0.2s linear;
-      }
+   &__hoverable-image {
+      background: var(--white);
 
       img {
-         background: white;
+         margin: 0 auto;
+         width: 100%;
+         max-width: 450px;
+      }
+   }
+
+   @media (any-hover) {
+      &__hoverable {
+         background-position: 50%;
+         background-size: 150%;
+         background-repeat: no-repeat;
+         border-radius: 5px;
+         cursor: url("data:image/svg+xml,%3Csvg height='20' width='20' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 42V30.5h3v6.3l7.4-7.3 2.1 2.1-7.4 7.4h6.4v3Zm24.5 0v-3h6.3l-7.3-7.3 2.1-2.2 7.4 7.4v-6.4h3V42ZM16.4 18.5 9 11.2v6.3H6V6h11.5v3h-6.3l7.3 7.3Zm15.3 0-2.2-2.1L36.9 9h-6.4V6H42v11.5h-3v-6.3Z'/%3E%3C/svg%3E") 10 10, default;
+         outline: 1px solid transparent;
+         transition: outline 0.2s linear 0.1s;
+
+         &:hover {
+            outline-color: var(--gray);
+            transition: outline 0.2s linear;
+         }
+      }
+
+      &__hoverable-image {
          transition: opacity 0.2s linear 0.1s;
+
+         &:hover {
+            opacity: 0;
+            transition: opacity 0.2s linear;
+         }
       }
    }
 
@@ -142,8 +136,8 @@
    @media (min-width: 768px) {
       grid-row: 1 / 3;
 
-      &__image-slider {
-         max-width: unset;
+      &__hoverable-image img {
+         max-width: 100%;
       }
    }
 
@@ -152,10 +146,6 @@
       display: grid;
       grid-template: 1fr / 90px 1fr;
       column-gap: 30px;
-
-      &__image-slider {
-         max-width: 100%;
-      }
 
       &__thumbs-slider {
          margin-top: 0;

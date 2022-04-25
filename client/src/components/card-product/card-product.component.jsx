@@ -38,9 +38,9 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
          </Link>
 
          {withRating &&
-             <Rating r={r} wrapperClass='card-product__rating'>
+            <Rating r={r} wrapperClass='card-product__rating'>
                <span>({reviewers})</span>
-             </Rating>
+            </Rating>
          }
          <p className='card-product__title'>{title}</p>
          <p className='card-product__price'>{currency(p)}</p>
@@ -55,7 +55,7 @@ const CardProduct = ({ tiles, product, withRating = true }) => {
             className={cn('card-product__btn-compare', { 'active': inCompare })}
             onClick={addToCompare}
             aria-label={`добавить в сравнить товары ${title}`}
-            >
+         >
             <CompareIcon />
          </button>
       </div>

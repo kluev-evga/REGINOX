@@ -17,14 +17,14 @@ const menuTitlesByUrl = createSelector(
     (links) => links.reduce((acc, item) => {
         acc[item.url] = item.title;
         return acc;
-    },{})
+    }, {})
 );
-export const getTitle = (state, url) =>  menuTitlesByUrl(state)[url]
+export const getTitle = (state, url) => menuTitlesByUrl(state)[url]
 export const menuLinksList = createSelector(
     menuCategories,
     (categories) => {
         const result = {}
-        for(let key in categories) {
+        for (let key in categories) {
             result[key] = categories[key].reduce((acc, item) => {
                 acc[item.categoryUrl] = true
                 return acc
@@ -83,14 +83,14 @@ export const selectArticlesTotalPages = createSelector(
 );
 export const selectArticlesPages = createSelector(
     selectArticlesTotalPages,
-    (total) => [...Array(total)].map((_, i) => i+1)
+    (total) => [...Array(total)].map((_, i) => i + 1)
 );
 
 
 export const articleEntity = (state, article) => state.article.entities[article];
 export const articleLoading = (state, article) => state.article.loading[article];
 export const articleLoaded = (state, article) => !!state.article.loaded[article];
-export const articleError = (state, {match}) => state.article.error?.[match.params.article];
+export const articleError = (state, { match }) => state.article.error?.[match.params.article];
 
 
 export const productsLoading = (state, url) => state.products.loading?.[url];
@@ -103,7 +103,7 @@ export const filters = (state, url) => state.filters.filters[url];
 const fltr = (state, url) => state.filters.filters[url];
 export const selectNormalizedFilters = createSelector(
     fltr,
-    (filters) => filters.reduce((acc, {searchGroup, products}) => {
+    (filters) => filters.reduce((acc, { searchGroup, products }) => {
         acc[searchGroup] = {};
         for (let [key, value] of Object.entries(products)) acc[searchGroup][key] = value;
         return acc
@@ -116,9 +116,9 @@ export const queryString = (state, url) => state.filters.queryString?.[url];
 export const filtersMinMax = createSelector(
     products,
     (products) => {
-        const productsArr =  Object.keys(products)
+        const productsArr = Object.keys(products)
         if (productsArr.length !== 0) {
-            const priceArr =productsArr.map(id => products[id].p)
+            const priceArr = productsArr.map(id => products[id].p)
             return [Math.min(...priceArr), Math.max(...priceArr)]
         } else return [0, 0.00001]// guard when no products
     }
@@ -134,15 +134,15 @@ export const productItemError = (state, productUrl) => state.productItems.error[
 export const productItemsById = createSelector(
     productItems,
     items => items && Object.keys(items).reduce((acc, url) => {
-            acc[items[url].id] = {...items[url], productUrl: url};
-            return acc;
-        }, {})
+        acc[items[url].id] = { ...items[url], productUrl: url };
+        return acc;
+    }, {})
 );
 export const productItemById = state => id => productItemsById(state)[id];
 
 
-export const reviews = (state, productUrl)  => state.reviews.entities[productUrl] || [];
-export const reviewsLoading = (state, productUrl)  => state.reviews.loading[productUrl];
+export const reviews = (state, productUrl) => state.reviews.entities[productUrl] || [];
+export const reviewsLoading = (state, productUrl) => state.reviews.loading[productUrl];
 export const reviewsCurrent = (state, productUrl) => state.reviews.current[productUrl] || 0;
 export const reviewsTotal = (state, productUrl) => productItems(state)[productUrl].reviewsCount;
 
@@ -154,7 +154,7 @@ export const cartEntities = state => state.cart.entities;
 export const cartLoading = state => state.cart.loading;
 export const cartLoaded = state => state.cart.loaded;
 export const cartItemCount = (state, id) => state.cart.items[id];
-export const cartItemsArray = createSelector( cartItems, Object.keys );
+export const cartItemsArray = createSelector(cartItems, Object.keys);
 
 
 export const similarProducts = state => state.similarProducts.entities;
@@ -173,8 +173,8 @@ export const compareLoaded = state => state.compare.loaded;
 export const compareLoading = state => state.compare.loading;
 export const compareItem = (state, id) => state.compare.entities?.[id];
 const compareEntities = state => state.compare.entities;
-export const compareItems = createSelector( compareEntities, Object.keys );
-export const compareCount = createSelector( compareItems, (items) => Object.keys(items).length );
+export const compareItems = createSelector(compareEntities, Object.keys);
+export const compareCount = createSelector(compareItems, (items) => Object.keys(items).length);
 
 
 export const orderModalIsOpen = state => state.order.modalIsOpen

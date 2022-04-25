@@ -12,13 +12,13 @@ export function ViewLarge() {
             <Tab>Обратная связь</Tab>
          </TabList>
          <div className='contacts__container-view-large'>
-            <TabPanel className='react-tabs__tab-panel' forceRender={true}>
+            <TabPanel forceRender={true}>
                <TabMoskow />
             </TabPanel>
-            <TabPanel className='react-tabs__tab-panel' forceRender={true}>
+            <TabPanel forceRender={true}>
                <TabPeterburg />
             </TabPanel>
-            <TabPanel className='react-tabs__tab-panel' forceRender={true}>
+            <TabPanel forceRender={true}>
                <FormContact formType='contacts' />
             </TabPanel>
          </div>

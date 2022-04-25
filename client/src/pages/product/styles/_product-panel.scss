@@ -37,6 +37,11 @@
       gap: 10px;
       font-weight: 500;
       color: var(--gray);
+      transition: color 0.1s linear;
+
+      &:hover {
+         color: var(--graphite);
+      }
 
       &.active {
          border-radius: 3px;
@@ -68,6 +73,14 @@
             user-select: none;
          }
       }
+
+      button {
+         transition: color 0.1s linear;
+
+         &:hover {
+            color: var(--graphite);
+         }
+      }
    }
 
    &__buy {
@@ -85,6 +98,11 @@
       height: 52px;
       width: 100%;
       background-color: var(--graphite);
+      transition: background-color 0.1s linear;
+
+      &:hover {
+         background: lighten(#333333, 5%);
+      }
    }
 
    &__buy-cart {
@@ -94,12 +112,16 @@
       align-items: center;
       justify-content: center;
       background-color: var(--red);
+      transition: background-color 0.1s linear;
+
+      &:hover {
+         background: lighten(#ad2131, 5%);
+      }
 
       span {
          width: 0;
          overflow: hidden;
          text-align: right;
-         background-color: var(--red);
          white-space: nowrap;
          opacity: 0;
          transition: width 0.1s ease, opacity 0.3s linear;
@@ -153,10 +175,6 @@
          width: 410px;
          padding: 0 10px 0 20px;
          height: 65px;
-
-         button:hover {
-            color: var(--graphite);
-         }
       }
 
       &__buy {

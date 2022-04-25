@@ -98,7 +98,7 @@
          font-weight: 500;
          text-transform: uppercase;
 
-         transition: background-color 0.18s ease-out;
+         transition: background-color 0.5s cubic-bezier(.2, .9, .4, 1);
 
          svg {
             width: 15px;
@@ -134,12 +134,12 @@
 
          &.active {
             display: block;
-            animation: tabContent 0.2s cubic-bezier(.34, .99, .64, 1) forwards;
+            animation: tabContent 0.18s cubic-bezier(.3, 1, .6, 1) forwards;
             color: transparent;
          }
 
          @keyframes tabContent {
-            50% {
+            60% {
                color: transparent;
             }
 
